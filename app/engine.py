@@ -50,6 +50,7 @@ def run_engine(
     use_halt: bool = True,
     tradable: Optional[set] = None,     # symbols new buys are allowed in (None = all)
     market=None,                        # index closes for market-regime rules: Series or {currency: Series}
+    dividend_tax: Optional[dict] = None,   # currency -> share of dividends withheld (default none)
 ) -> list[dict]:
     """Process all bar dates after pf.last_date (or `start`). Returns equity rows."""
     strategy = strategy or TrendStrategy()
@@ -81,7 +82,8 @@ def run_engine(
             # a 'dividend' above half the share price is treated as bad data and ignored
             if 0 < div < 0.5 * float(bar["close"]) and sym in pf.positions:   # held before ex-date
                 pos = pf.positions[sym]
-                amount = broker.dividend(sym, div, fx[pos.currency], iso)
+                amount = broker.dividend(sym, div, fx[pos.currency], iso,
+                                         (dividend_tax or {}).get(pos.currency, 0.0))
                 if getattr(strategy, "reinvest_dividends", False) and amount > 0:
                     extra = round(amount / (float(bar["open"]) * fx[pos.currency] * 1.003), 4)
                     if extra > 0 and not float(extra).is_integer():

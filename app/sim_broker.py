@@ -67,16 +67,17 @@ class SimBroker:
         self._log(date, symbol, "SELL", pos.qty, px, pos.currency, fx, fee, pnl, reason)
         return pos.qty
 
-    def dividend(self, symbol, per_share, fx, date) -> float:
+    def dividend(self, symbol, per_share, fx, date, tax: float = 0.0) -> float:
         """Credit a cash dividend on the ex-date and lower the stop by the same amount."""
         pos = self.pf.positions.get(symbol)
         if not pos or per_share <= 0:
             return 0.0
-        amount = pos.qty * per_share * fx
+        amount = pos.qty * per_share * fx * (1.0 - tax)     # net of tax withheld abroad
         self.pf.cash += amount
         if pos.stop > 0:
             pos.stop = round(max(pos.stop - per_share, 0.0001), 4)
-        self._log(date, symbol, "DIV", pos.qty, per_share, pos.currency, fx, 0.0, amount, "dividend")
+        self._log(date, symbol, "DIV", pos.qty, per_share, pos.currency, fx, 0.0, amount,
+                  "dividend" + (f" (after {tax:.0%} withholding)" if tax else ""))
         return amount
 
     def split(self, symbol, ratio) -> None:

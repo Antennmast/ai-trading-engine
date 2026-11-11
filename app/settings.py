@@ -34,6 +34,8 @@ class Settings:
     index_name: str = ""
     index_ticker: str = ""
     market_indices: dict = field(default_factory=dict)   # currency -> (name, yahoo ticker)
+    ask_costs: Costs = Costs(commission_rate=0.0015, min_commission=29.0)
+    ask_foreign_dividend_withholding: float = 0.15
 
     def limits_for(self, key: str) -> RiskLimits:
         return self.model_risk.get(key, self.risk)
@@ -70,6 +72,10 @@ def load_settings(path="config.yaml", known_models: set[str] | None = None) -> S
         model_risk[key] = stricter_limits(risk, overrides or {}, key)
     uni, llm = raw.get("universe") or {}, raw.get("llm") or {}
     index = raw.get("benchmark_index") or {}
+    ask = dict(raw.get("ask") or {})
+    withholding = float(ask.pop("foreign_dividend_withholding", 0.15))
+    if not 0 <= withholding < 1:
+        raise ValueError("config.yaml: ask.foreign_dividend_withholding must be between 0 and 1")
     prices = llm.get("usd_per_mtok") or {}
     return Settings(
         starting_cash=float(raw.get("starting_cash", 100_000)),
@@ -79,6 +85,8 @@ def load_settings(path="config.yaml", known_models: set[str] | None = None) -> S
         min_turnover=float(uni.get("min_turnover_nok", 1_000_000)),
         min_price=float(uni.get("min_price", 1)),
         model_risk=model_risk,
+        ask_costs=Costs(**{"commission_rate": 0.0015, "min_commission": 29.0, **ask}),
+        ask_foreign_dividend_withholding=withholding,
         index_name=str(index.get("name", "")),
         index_ticker=str(index.get("yahoo_ticker", "")),
         market_indices={str(c): (str(v.get("name", c)), str(v.get("yahoo_ticker", "")))

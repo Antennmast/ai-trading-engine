@@ -179,7 +179,7 @@ def _many(n=6, days=200, drift=None):
 
 def test_model_keys_are_unique_and_one_benchmark():
     keys = [m.key for m in MODELS]
-    assert len(keys) == len(set(keys)) == 9
+    assert len(keys) == len(set(keys)) == 11
     assert sum(m.benchmark for m in MODELS) == 1
 
 
@@ -488,3 +488,37 @@ def test_tiny_leftover_orders_are_skipped():
     b2 = SimBroker(loose, Costs(min_order_value=0))
     run_engine(loose, bars, inst, FX, RiskLimits(max_open_risk=0.0152), b2, start=date(2025, 1, 1))
     assert min(t["qty"] * t["price"] for t in b2.trades if t["side"] == "BUY") < 2000   # the crumb existed
+
+
+def test_ask_variants_only_buy_ask_shares_and_pay_dividend_tax():
+    ask_models = [m for m in MODELS if m.ask_only]
+    assert {m.key for m in ask_models} == {"scoretopp_ask", "momentum_ask"}
+    assert all(m.variant_of in {x.key for x in MODELS} for m in ask_models)
+    # ranking is done among allowed shares only: the strongest share is not ASK-eligible
+    bars, inst = _many(n=6, days=300)
+    allowed = {"S0", "S1", "S2", "S3"}                       # S4 and S5 (strongest) are excluded
+    pf = Portfolio(cash=100_000)
+    run(pf, bars, inst=inst, strategy=MomentumRotation(top_n=2), start=bars["S0"].index[-3],
+        use_halt=False, tradable=allowed)
+    assert set(pf.positions) == {"S2", "S3"}
+    # foreign dividends arrive net of withholding; Norwegian ones in full
+    div = _with_actions([100, 95, 95], div={1: 10.0})
+    inst2 = {"SE": Instrument("SE", "SEK"), "NO": Instrument("NO", "NOK")}
+    pf = Portfolio(cash=0, last_date=div.index[0].isoformat(),
+                   positions={"SE": Position("SE", 10, 100, "SEK", 0, "2024-12-31"),
+                              "NO": Position("NO", 10, 100, "NOK", 0, "2024-12-31")})
+    broker, _ = run(pf, {"SE": div, "NO": div}, inst=inst2, fx={"NOK": 1.0, "SEK": 1.0},
+                    strategy=MomentumRotation(lookback=500), use_halt=False, dividend_tax={"SEK": 0.15})
+    paid = {t["symbol"]: t["pnl"] for t in broker.trades if t["side"] == "DIV"}
+    assert paid == {"SE": 85.0, "NO": 100.0} and pf.cash == 185.0
+
+
+def test_universe_ask_flags_follow_domicile():
+    u = pd.read_csv("config/universe.csv", dtype=str).set_index("symbol")
+    assert set(u["ask"]) == {"true", "false"}
+    for sym, want in {"EQNR": "true", "FRO": "true", "CMBTO": "true", "VOLV-B.ST": "true",
+                      "OET": "false", "HSHP": "false", "HAFNI": "false", "BAKKA": "false",
+                      "ABB.ST": "false", "AZN.ST": "false"}.items():
+        assert u.loc[sym, "ask"] == want, sym
+    oslo = u[u["currency"] == "NOK"]
+    assert (oslo["isin"].str.len() == 12).all() and (oslo["isin"].str[:2] == oslo["domicile"]).all()

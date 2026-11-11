@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lekepenger: ni modeller</title>
+<title>Lekepenger: modelltesten</title>
 <style>
 :root {
   color-scheme: light;
@@ -70,7 +70,7 @@ select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid 
 </head>
 <body>
 <main>
-  <h1>Lekepenger: ni modeller</h1>
+  <h1>Lekepenger: modelltesten</h1>
   <p class="sub" id="sub">Laster …</p>
 
   <section class="card">
@@ -107,7 +107,8 @@ const COLORS = { trend: "--s1", momentum: "--s2", tilbakefall: "--s3", sentiment
 const nok = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
 const dec = new Intl.NumberFormat("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const pct = v => v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + dec.format(Math.abs(v)) + " %";
-const colorOf = m => m.index ? "var(--index)" : m.benchmark ? "var(--bench)" : `var(${COLORS[m.key] || "--bench"})`;
+// An ASK variant keeps its parent's colour and is told apart by a dashed line.
+const colorOf = m => m.index ? "var(--index)" : m.benchmark ? "var(--bench)" : `var(${COLORS[m.variant_of || m.key] || "--bench"})`;
 const el = (tag, props = {}, ...kids) => {
   const n = document.createElement(tag);
   for (const [k, v] of Object.entries(props)) k === "class" ? n.className = v : k === "text" ? n.textContent = v : n.setAttribute(k, v);
@@ -119,7 +120,7 @@ const svg = (tag, attrs = {}) => {
   for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
   return n;
 };
-const key = m => el("span", { class: "key" + (m.index ? " dot" : m.benchmark ? " dash" : ""), style: `border-color:${colorOf(m)}` });
+const key = m => el("span", { class: "key" + (m.index ? " dot" : (m.benchmark || m.variant_of) ? " dash" : ""), style: `border-color:${colorOf(m)}` });
 
 fetch("data.json", { cache: "no-store" }).then(r => r.json()).then(render).catch(() => {
   document.getElementById("sub").textContent = "Ingen data ennå. Første kjøring har ikke gått.";
@@ -205,7 +206,7 @@ function showDetail(m, d) {
       m.positions.map(p => [p.symbol, p.qty, dec.format(p.avg), dec.format(p.last), p.stop ? dec.format(p.stop) : "–", pct(p.pnl_pct)])));
   } else box.append(el("p", { class: "empty", text: "Ingen posisjoner." }));
 
-  box.append(el("h3", { text: "Ordre til neste åpning" }));
+  box.append(el("h3", { text: m.ask_only ? "Handleliste til neste åpning" : "Ordre til neste åpning" }));
   if (m.pending.length) {
     box.append(table(["Ordre", "Antall", "Begrunnelse"],
       m.pending.map(o => [(o.side === "BUY" ? "Kjøp " : "Selg ") + o.symbol, o.qty, o.reason]), [1]));
@@ -264,7 +265,8 @@ function drawChart(models, start) {
     s.vals.forEach((v, i) => { if (v == null) { pen = false; return; } dPath += (pen ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1); pen = true; });
     root.append(svg("path", { d: dPath, fill: "none", stroke: colorOf(s.m), "stroke-width": 2,
       "stroke-linejoin": "round", "stroke-linecap": "round",
-      ...(s.m.index ? { "stroke-dasharray": "1 5" } : s.m.benchmark ? { "stroke-dasharray": "5 4" } : {}) }));
+      ...(s.m.index ? { "stroke-dasharray": "1 5" } : s.m.benchmark ? { "stroke-dasharray": "5 4" }
+        : s.m.variant_of ? { "stroke-dasharray": "9 4" } : {}) }));
     if (dates.length === 1 && s.vals[0] != null)
       root.append(svg("circle", { cx: x(0), cy: y(s.vals[0]), r: 4, fill: colorOf(s.m), stroke: "var(--surface)", "stroke-width": 2 }));
   });

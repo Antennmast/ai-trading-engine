@@ -16,6 +16,8 @@ def test_repo_config_loads_and_matches_models():
     cfg = load_settings("config.yaml", {m.key for m in MODELS})
     assert cfg.risk == RiskLimits() and cfg.starting_cash == 100_000
     assert cfg.limits_for("sprakmodell").max_positions == 4
+    assert (cfg.ask_costs.commission_rate, cfg.ask_costs.min_commission) == (0.0015, 29)
+    assert cfg.ask_foreign_dividend_withholding == 0.15
     assert cfg.limits_for("trend") == cfg.risk and cfg.limits_for("momentum") == cfg.risk
 
 

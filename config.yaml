@@ -18,6 +18,16 @@ costs:
   slippage_bps: 5
   min_order_value: 2000        # NOK; smaller buys are skipped
 
+# Costs for the ASK variants: manual trading at a Norwegian broker. The defaults are
+# Nordnet's "Mini" price class for Nordic shares (November 2026). Change to your broker's.
+# foreign_dividend_withholding is an assumption: tax withheld abroad that an ASK cannot reclaim.
+ask:
+  commission_rate: 0.0015
+  min_commission: 29
+  slippage_bps: 5
+  min_order_value: 2000
+  foreign_dividend_withholding: 0.15
+
 universe:
   min_turnover_nok: 1000000    # median daily turnover, last 60 days
   min_price: 1

@@ -51,6 +51,7 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
         "dividends": 0.0}
     return {
         "key": model.key, "name": model.name, "blurb": model.blurb, "benchmark": model.benchmark,
+        "variant_of": model.variant_of, "ask_only": model.ask_only,
         "last_date": pf.last_date,
         "equity": round(eq, 2), "cash": round(pf.cash, 2),
         "return_pct": round((eq / starting_cash - 1) * 100, 3),
@@ -148,7 +149,7 @@ def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
     (Path(docs_dir) / "data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n")
 
     ranked = sorted(summaries, key=lambda m: -m["return_pct"])
-    lines = ["# Lekepenger: ni modeller", "",
+    lines = ["# Lekepenger: modelltesten", "",
              f"Siste børsdag behandlet: **{payload['last_date']}** · startkapital "
              f"{starting_cash:,.0f} {base} per modell".replace(",", " "), "",
              "| # | Modell | Verdi | Avkastning | Mot referanse | Største fall | Handler | Kurtasje |",

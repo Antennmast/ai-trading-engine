@@ -1,6 +1,6 @@
-# AI Trading Engine — nine play-money models
+# AI Trading Engine — play-money model test
 
-Nine trading models compete with 100,000 play-money NOK each on Nordic shares.
+Eleven trading models compete with 100,000 play-money NOK each on Nordic shares.
 The universe is every share in `config/universe.csv` (278 Oslo listings plus about 80
 large companies in Stockholm, Copenhagen and Helsinki); each run only
 allows new buys in shares with a median daily turnover of at least 1 MNOK over the last
@@ -20,6 +20,8 @@ Nothing here trades real money, and nothing here is a validated strategy or inve
 | `sentiment` | Trend + sentiment score | needs rows in `signals/scores.csv`; in cash until then |
 | `sprakmodell` | Trend + LLM score | needs rows in `signals/llm_scores.csv`; in cash until then |
 | `scoretopp` | Score rotation | hold the 10 shares with the highest aksjescore, re-rank monthly |
+| `scoretopp_ask` | Score rotation, ASK | as `scoretopp`, restricted to shares allowed on a Norwegian aksjesparekonto, Norwegian broker fees |
+| `momentum_ask` | Momentum, ASK | as `momentum`, same restriction and fees |
 | `dagshandel` | Day trading | buy at the open, sell everything at the same close |
 
 Models are defined in `app/models.py`; adding one is a new entry there plus a strategy
@@ -104,7 +106,9 @@ risk rule. Without the secrets both models simply stay in cash.
 - Daily bars only. Fills assume the full quantity trades at the open (or close).
 - The research behind the design choices is summarised in `FORSKNING.md`.
 - Rules are frozen during the test; changes are recorded in `ENDRINGSLOGG.md`.
-- With nine models, the best one after a few months may simply have been lucky.
+- ASK eligibility (`ask` in `config/universe.csv`) is derived from the ISIN country code.
+  Tax domicile can differ; the broker has the final word.
+- With eleven models, the best one after a few months may simply have been lucky.
 
 ---
 

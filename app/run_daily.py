@@ -26,13 +26,14 @@ from app.sim_broker import Costs, SimBroker
 from app.strategy import ScoreBook
 
 
-def load_universe(path: Path) -> tuple[dict[str, Instrument], dict[str, str], dict[str, str]]:
+def load_universe(path: Path):
     df = pd.read_csv(path, dtype={"symbol": str})
     df = df[df["enabled"].astype(str).str.lower() == "true"]
     instruments = {r.symbol: Instrument(r.symbol, r.currency) for r in df.itertuples()}
     tickers = {r.symbol: r.yahoo_ticker for r in df.itertuples()}
     names = dict(zip(df["symbol"], df["name"])) if "name" in df.columns else {}
-    return instruments, tickers, names
+    ask = set(df.loc[df["ask"].astype(str).str.lower() == "true", "symbol"]) if "ask" in df.columns else set()
+    return instruments, tickers, names, ask
 
 
 def main() -> None:
@@ -56,7 +57,7 @@ def main() -> None:
     if not models:
         raise SystemExit(f"No such model. Available: {', '.join(m.key for m in MODELS)}")
 
-    instruments, tickers, names = load_universe(Path(args.universe))
+    instruments, tickers, names, ask_ok = load_universe(Path(args.universe))
     if not instruments:
         raise SystemExit("No enabled instruments in universe file.")
 
@@ -99,6 +100,16 @@ def main() -> None:
     if not tradable:
         raise SystemExit("No instrument passes the liquidity filter; state left untouched.")
     free = Costs(commission_rate=0, min_commission=0, slippage_bps=0)
+    tradable_ask = tradable & ask_ok
+    foreign_tax = {c: cfg.ask_foreign_dividend_withholding
+                   for c in {i.currency for i in instruments.values()} if c != base}
+    print(f"[universe] {len(tradable_ask)} of the tradable shares can be held on an ASK")
+
+    def setup(m):
+        """Costs, buyable set and dividend tax for one model."""
+        if m.ask_only:
+            return cfg.ask_costs, tradable_ask, foreign_tax
+        return (free if m.cost_free else costs), tradable, None
 
     # One index per home market for the market brake; fall back to our own shares.
     markets = {}
@@ -127,10 +138,11 @@ def main() -> None:
         print(f"{'model':13s}{'return %':>10s}{'max dd %':>10s}{'fills':>7s}{'win %':>7s}{'fees':>9s}")
         for m in models:
             pf = Portfolio(cash=starting_cash, base_currency=base)
-            broker = SimBroker(pf, free if m.cost_free else costs)
+            m_costs, m_tradable, m_tax = setup(m)
+            broker = SimBroker(pf, m_costs)
             rows = run_engine(pf, bars, instruments, fx, cfg.limits_for(m.key), broker, m.strategy, scores_for(m),
                               start=Date.fromisoformat(args.backtest), use_halt=m.use_halt,
-                              tradable=tradable, market=markets)
+                              tradable=m_tradable, market=markets, dividend_tax=m_tax)
             if not rows:
                 raise SystemExit("No bars in backtest window.")
             st = stats(pd.DataFrame(rows)["equity"], pd.DataFrame(broker.trades))
@@ -157,9 +169,11 @@ def main() -> None:
         pf = Portfolio.load(d / "portfolio.json", starting_cash, base)
         if m in models:
             try:
-                broker = SimBroker(pf, free if m.cost_free else costs)
+                m_costs, m_tradable, m_tax = setup(m)
+                broker = SimBroker(pf, m_costs)
                 rows = run_engine(pf, bars, instruments, fx, cfg.limits_for(m.key), broker, m.strategy,
-                                  scores_for(m), use_halt=m.use_halt, tradable=tradable, market=markets)
+                                  scores_for(m), use_halt=m.use_halt, tradable=m_tradable,
+                                  market=markets, dividend_tax=m_tax)
                 if rows:
                     # portfolio.json is written last: if a step fails the next run redoes the day
                     append_csv(d / "trades.csv", broker.trades)

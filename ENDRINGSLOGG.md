@@ -6,7 +6,7 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
 
 ## 2026-11-11 – start
 
-- Ni modeller startet med 100 000 NOK hver på sluttkursene 10. november 2026.
+- Elleve modeller startet med 100 000 NOK hver på sluttkursene 10. november 2026.
 - Univers: 278 aksjer på Oslo Børs og 79 store selskaper i Stockholm, København og Helsinki.
   Nye kjøp bare i aksjer med minst 1 MNOK i median dagsomsetning, kurs over 1 kr og ingen
   kurshopp over 50 % på én dag siste år.
@@ -28,6 +28,10 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
   ikke til andre markeder. Sjekkes ved månedlig bytte, og markedet åpnes igjen når indeksen
   er 1 % over snittet. Oppsettet følger Faber (2007), se `FORSKNING.md`.
 - Kjøp under 2 000 kr hoppes over, fordi minstekurtasjen på 10 kr ellers spiser for mye.
+- To ASK-varianter lagt til før første handel: Score topp 10 ASK og Momentum ASK. De følger
+  samme regler som originalene, men velger bare blant aksjer i selskaper hjemmehørende i
+  EØS, bruker kurtasje som Nordnet Mini (0,15 %, minst 29 kr), og får utenlandsk utbytte
+  med 15 % kildeskatt trukket. Hjemland er lest fra landkoden i ISIN, som er en tilnærming.
 
 ## Kriterier bestemt på forhånd
 
