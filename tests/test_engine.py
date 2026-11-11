@@ -12,7 +12,7 @@ from tests.conftest import make_bars
 
 FX = {"NOK": 1.0}
 INST = {"AAA": Instrument("AAA", "NOK")}
-NO_COST = Costs(commission_rate=0, min_commission=0, slippage_bps=0)
+NO_COST = Costs(commission_rate=0, min_commission=0, slippage_bps=0, min_order_value=0)
 
 
 def run(pf, bars, costs=NO_COST, inst=INST, fx=FX, **kw):
@@ -473,3 +473,18 @@ def test_equal_weight_index_from_own_shares(uptrend):
     assert len(idx) == len(uptrend) and idx.iloc[-1] / idx.iloc[0] == pytest.approx(
         uptrend["close"].iloc[-1] / uptrend["close"].iloc[0], rel=1e-6)
     assert equal_weight_index(bars, ["S0", "S1"]) is None       # too few shares to be an index
+
+
+def test_tiny_leftover_orders_are_skipped():
+    # six identical uptrends: the open-risk cap leaves only crumbs for the last position
+    bars = {f"S{i}": make_bars([100 * 1.004 ** k for k in range(120)]) for i in range(6)}
+    inst = {s: Instrument(s) for s in bars}
+    pf = Portfolio(cash=100_000)
+    broker = SimBroker(pf, Costs(min_order_value=2000))
+    run_engine(pf, bars, inst, FX, RiskLimits(max_open_risk=0.0152), broker, start=date(2025, 1, 1))
+    buys = [t for t in broker.trades if t["side"] == "BUY"]
+    assert buys and all(t["qty"] * t["price"] >= 2000 for t in buys)
+    loose = Portfolio(cash=100_000)
+    b2 = SimBroker(loose, Costs(min_order_value=0))
+    run_engine(loose, bars, inst, FX, RiskLimits(max_open_risk=0.0152), b2, start=date(2025, 1, 1))
+    assert min(t["qty"] * t["price"] for t in b2.trades if t["side"] == "BUY") < 2000   # the crumb existed

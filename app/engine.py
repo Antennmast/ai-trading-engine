@@ -191,8 +191,8 @@ def run_engine(
                     equity=equity, cash=cash, price=close, stop=sig.stop, fx=rate,
                     open_risk=open_risk, n_open=n_open, limits=limits,
                 )
-                if size.qty <= 0:
-                    continue
+                if size.qty <= 0 or size.qty * close * rate < broker.costs.min_order_value:
+                    continue                            # nothing, or too small to be worth the fee
                 pf.pending.append(PendingOrder(sym, "BUY", size.qty, iso, round(sig.stop, 4),
                                                f"{sig.reason}; {size.reason}"))
                 open_risk += (close - sig.stop) * size.qty * rate

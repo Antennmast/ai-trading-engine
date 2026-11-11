@@ -16,6 +16,7 @@ costs:
   commission_rate: 0.0005
   min_commission: 10           # NOK per order
   slippage_bps: 5
+  min_order_value: 2000        # NOK; smaller buys are skipped
 
 universe:
   min_turnover_nok: 1000000    # median daily turnover, last 60 days

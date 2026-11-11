@@ -27,6 +27,7 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
   OMXC25, OMXH25) er under 200-dagerssnittet. Den tidelen står da i kontanter og flyttes
   ikke til andre markeder. Sjekkes ved månedlig bytte, og markedet åpnes igjen når indeksen
   er 1 % over snittet. Oppsettet følger Faber (2007), se `FORSKNING.md`.
+- Kjøp under 2 000 kr hoppes over, fordi minstekurtasjen på 10 kr ellers spiser for mye.
 
 ## Kriterier bestemt på forhånd
 

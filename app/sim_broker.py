@@ -11,6 +11,7 @@ class Costs:
     commission_rate: float = 0.0005     # 5 bps of traded value
     min_commission: float = 10.0        # base currency per order
     slippage_bps: float = 5.0           # adverse price move on every fill
+    min_order_value: float = 2000.0     # smaller buys are skipped: the minimum fee would eat them
 
     def commission(self, value_base: float) -> float:
         return max(value_base * self.commission_rate, self.min_commission)
