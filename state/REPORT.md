@@ -52,7 +52,7 @@ Ingen posisjoner.
 
 ## Språkmodell
 
-Trend + score fra språkmodell. Venter på signaler i signals/llm_scores.csv.
+Trend, men en språkmodell (Claude Haiku) avgjør hvilke aksjer som kjøpes. Skriver dagbok.
 
 Ingen posisjoner.
 
