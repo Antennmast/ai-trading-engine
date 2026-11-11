@@ -30,7 +30,7 @@ Kjøper aksjer i opptrend, glidende stop-loss.
 
 Ingen posisjoner.
 
-Ordre til neste åpning: kjøp 240 NKR, kjøp 140 ELUX-B.ST, kjøp 6 ORNBV.HE, kjøp 53 AMBU-B.CO, kjøp 2 KID
+Ordre til neste åpning: kjøp 240 NKR, kjøp 140 ELUX-B.ST, kjøp 6 ORNBV.HE, kjøp 53 AMBU-B.CO
 
 ## Momentum
 
@@ -62,7 +62,7 @@ Trend, men kjøper bare når aksjescore er 60 eller høyere.
 
 Ingen posisjoner.
 
-Ordre til neste åpning: kjøp 240 NKR, kjøp 222 MORLD, kjøp 49 MOWI, kjøp 13 SALM, kjøp 2 ENDUR
+Ordre til neste åpning: kjøp 240 NKR, kjøp 222 MORLD, kjøp 49 MOWI, kjøp 13 SALM
 
 ## Språkmodell
 
