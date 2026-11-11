@@ -57,12 +57,12 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
         "win_rate_pct": None if st["win_rate_pct"] is None else round(st["win_rate_pct"], 1),
         "fees": round(st["fees"], 2),
         "positions": [
-            {"symbol": s, "qty": p.qty, "avg": round(p.avg_price, 2),
+            {"symbol": s, "qty": round(p.qty, 2), "avg": round(p.avg_price, 2),
              "last": round(pf.last_prices.get(s, p.avg_price), 2), "stop": round(p.stop, 2),
              "currency": p.currency,
              "pnl_pct": round((pf.last_prices.get(s, p.avg_price) / p.avg_price - 1) * 100, 2)}
             for s, p in sorted(pf.positions.items())],
-        "pending": [{"side": o.side, "qty": o.qty, "symbol": o.symbol, "reason": o.reason}
+        "pending": [{"side": o.side, "qty": round(o.qty, 2), "symbol": o.symbol, "reason": o.reason}
                     for o in pf.pending],
         "last_fills": trades.tail(15).iloc[::-1].to_dict("records") if len(trades) else [],
         "curve": [[r.date, r.equity] for r in curve.itertuples()] if len(curve) else [],

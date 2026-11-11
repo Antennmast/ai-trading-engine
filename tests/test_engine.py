@@ -269,3 +269,19 @@ def test_liquidity_filter_drops_shares_with_corporate_action_jumps(uptrend):
     paid_out.iloc[60:, :4] = paid_out.iloc[60:, :4] * 0.05     # 95 % capital distribution
     paid_out["volume"] = 5_000_000
     assert liquid_symbols({"BUSY": busy, "SHELL": paid_out}, {}) == {"BUSY"}
+
+
+def test_benchmark_includes_expensive_shares_with_fractions():
+    cheap = make_bars([50.0] * 5); pricey = make_bars([40_000.0] * 5)
+    bars = {"CHEAP": cheap, "PRICEY": pricey}
+    inst = {s: Instrument(s) for s in bars}
+    pf = Portfolio(cash=100_000)
+    run(pf, bars, inst=inst, strategy=BuyAndHold(), start=cheap.index[0], use_halt=False)
+    assert set(pf.positions) == {"CHEAP", "PRICEY"}
+    assert 1.0 < pf.positions["PRICEY"].qty < 1.5 and pf.cash >= 0
+    values = [p.qty * p.avg_price for p in pf.positions.values()]
+    assert max(values) / min(values) < 1.01
+    # whole-share models are unchanged: momentum cannot buy a share it cannot afford one of
+    pf2 = Portfolio(cash=30_000)
+    run(pf2, bars, inst=inst, strategy=MomentumRotation(lookback=2, top_n=2), start=cheap.index[0], use_halt=False)
+    assert "PRICEY" not in pf2.positions and all(float(p.qty).is_integer() for p in pf2.positions.values())

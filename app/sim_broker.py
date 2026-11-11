@@ -25,12 +25,20 @@ class SimBroker:
     def buy(self, symbol, qty, price, currency, fx, stop, date, reason="") -> int:
         """Buy up to qty at price (local ccy). Shrinks qty to fit cash. Returns filled qty."""
         px = price * (1 + self.costs.slippage_bps / 1e4)
-        while qty > 0:
+        if float(qty).is_integer():
+            while qty > 0:
+                value = qty * px * fx
+                fee = self.costs.commission(value)
+                if value + fee <= self.pf.cash:
+                    break
+                qty -= 1
+        else:                                   # fractional shares (benchmark only)
+            fee = self.costs.commission(qty * px * fx)
+            qty = round(min(qty, max(self.pf.cash - fee, 0.0) / (px * fx)), 4)
             value = qty * px * fx
             fee = self.costs.commission(value)
-            if value + fee <= self.pf.cash:
-                break
-            qty -= 1
+            if value + fee > self.pf.cash:
+                qty = 0
         if qty <= 0:
             return 0
         self.pf.cash -= value + fee

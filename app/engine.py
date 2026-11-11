@@ -141,7 +141,8 @@ def run_engine(
                 rate = fx[instruments[sym].currency]
                 if sig.weight > 0:
                     # weight-based models: cash is re-checked at the fill, after sells
-                    qty = int(equity * sig.weight / (close * rate * 1.003))
+                    qty = equity * sig.weight / (close * rate * 1.003)
+                    qty = round(qty, 4) if getattr(strategy, "fractional", False) else int(qty)
                     if qty > 0:
                         pf.pending.append(PendingOrder(sym, "BUY", qty, iso, round(sig.stop, 4),
                                                        sig.reason))

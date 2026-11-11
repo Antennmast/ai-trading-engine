@@ -137,8 +137,12 @@ def rsi(close: pd.Series, n: int = 2) -> float:
 
 @dataclass
 class BuyAndHold:
-    """Benchmark: equal weight in every instrument, bought once, never sold."""
+    """Benchmark: equal weight in every instrument, bought once, never sold.
+
+    Uses fractional shares so that expensive shares are not left out of "the market".
+    """
     intraday = False
+    fractional = True
 
     def signals(self, ctx: Context) -> dict[str, Signal]:
         w = 1.0 / max(ctx.universe_size, 1)
