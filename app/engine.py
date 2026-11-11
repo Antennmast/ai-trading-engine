@@ -24,6 +24,7 @@ from app.sim_broker import SimBroker
 from app.strategy import Context, ScoreBook, TrendStrategy
 
 ORDER_TTL_DAYS = 5      # queued orders expire if the symbol does not trade
+STALE_DAYS = 10         # a held share without prices this long is closed at its last price
 
 
 @dataclass(frozen=True)
@@ -78,7 +79,13 @@ def run_engine(
             div = float(bar.get("dividends", 0) or 0)
             # a 'dividend' above half the share price is treated as bad data and ignored
             if 0 < div < 0.5 * float(bar["close"]) and sym in pf.positions:   # held before ex-date
-                broker.dividend(sym, div, fx[pf.positions[sym].currency], iso)
+                pos = pf.positions[sym]
+                amount = broker.dividend(sym, div, fx[pos.currency], iso)
+                if getattr(strategy, "reinvest_dividends", False) and amount > 0:
+                    extra = round(amount / (float(bar["open"]) * fx[pos.currency] * 1.003), 4)
+                    if extra > 0 and not float(extra).is_integer():
+                        broker.buy(sym, extra, float(bar["open"]), pos.currency, fx[pos.currency],
+                                   pos.stop, iso, "dividend reinvested")
 
         # 1. fill queued orders at the open --------------------------------
         still_pending: list[PendingOrder] = []
@@ -106,6 +113,16 @@ def run_engine(
                 fill = min(float(bar["open"]), pos.stop)
                 broker.sell_all(sym, fill, fx[pos.currency], iso, "stop hit")
 
+        # 2a. shares that have stopped trading (takeover, delisting, dead ticker) ----
+        for sym in list(pf.positions):
+            if sym in today:
+                continue
+            seen = pf.last_price_dates.get(sym) or pf.positions[sym].entry_date
+            if (day - _d(seen)).days > STALE_DAYS:
+                pos = pf.positions[sym]
+                broker.sell_all(sym, pf.last_prices.get(sym, pos.avg_price), fx[pos.currency], iso,
+                                f"no prices for {STALE_DAYS} days (delisted or taken over?)")
+
         # 2b. day-trading strategies go flat at the close --------------------
         if getattr(strategy, "intraday", False):
             for sym in list(pf.positions):
@@ -116,6 +133,10 @@ def run_engine(
         # 3. mark to market --------------------------------------------------
         for sym, bar in today.items():
             pf.last_prices[sym] = float(bar["close"])
+            if sym in pf.positions:
+                pf.last_price_dates[sym] = iso
+        for sym in [s for s in pf.last_price_dates if s not in pf.positions]:
+            del pf.last_price_dates[sym]
         equity = pf.equity(fx)
         halted = use_halt and daily_loss_breached(pf.last_equity, equity, limits)
         equity_rows.append({

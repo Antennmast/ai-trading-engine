@@ -73,6 +73,9 @@ def main() -> None:
     print(f"[data] history contains {n_div} dividend dates and {n_split} splits")
     if len(bars) < max(1, len(tickers) // 2):
         raise SystemExit("Price data missing for most instruments; state left untouched.")
+    newest = max(df.index[-1] for df in bars.values())
+    if args.provider == "yahoo" and (Date.today() - newest).days > 5:
+        raise SystemExit(f"Newest price bar is {newest}: the data source looks stale; state left untouched.")
     index_close = None
     if cfg.index_ticker and args.provider == "yahoo":
         idx = provider.history({cfg.index_name: cfg.index_ticker}, cutoff).get(cfg.index_name)

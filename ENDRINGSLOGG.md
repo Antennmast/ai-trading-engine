@@ -12,7 +12,11 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
   kurshopp over 50 % på én dag siste år.
 - Utbytte krediteres på ex-dato (uten kildeskatt), og signalene beregnes på
   utbyttejusterte kurser. Splitter justerer antall, snittkurs og stop.
-- Referanse: alle omsettelige aksjer likt vektet, uten kostnader. OSEBX vises i tillegg.
+- Referanse: alle omsettelige aksjer likt vektet, uten kostnader, med utbyttet reinvestert
+  i samme aksje. OSEBX vises i tillegg.
+- De andre modellene får utbyttet som kontanter og bruker det i neste kjøp etter egne regler.
+- En aksje uten kurser i 10 dager (oppkjøp, avnotering) selges til siste kjente kurs.
+- Feiler den daglige kjøringen, opprettes en sak (issue) i repoet.
 - De første ordrene ble lagt på dagtid 11. november og bokført til åpningskursen samme
   dag. Beslutningene brukte bare sluttkursene fra 10. november.
 

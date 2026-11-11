@@ -38,6 +38,7 @@ class Portfolio:
     last_date: Optional[str] = None           # last bar date fully processed
     last_equity: Optional[float] = None       # equity at close of last_date
     last_prices: dict[str, float] = field(default_factory=dict)  # local ccy
+    last_price_dates: dict[str, str] = field(default_factory=dict)
 
     # ---- persistence -------------------------------------------------
     @classmethod
@@ -53,6 +54,7 @@ class Portfolio:
             last_date=raw.get("last_date"),
             last_equity=raw.get("last_equity"),
             last_prices=raw.get("last_prices", {}),
+            last_price_dates=raw.get("last_price_dates", {}),
         )
 
     def save(self, path: Path) -> None:

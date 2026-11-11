@@ -303,7 +303,7 @@ def test_dividend_is_credited_and_does_not_trigger_the_stop():
     bars = _with_actions([100, 95, 95], div={1: 5.0}, opens=[None, 95, None], lows=[None, 94.5, None])
     pf = Portfolio(cash=0, last_date=bars.index[0].isoformat(), last_equity=1000,
                    positions={"AAA": Position("AAA", 10, 100, "NOK", 96, "2024-12-31")})
-    broker, rows = run(pf, {"AAA": bars}, strategy=BuyAndHold(), use_halt=False)
+    broker, rows = run(pf, {"AAA": bars}, strategy=MomentumRotation(lookback=500), use_halt=False)
     assert "AAA" in pf.positions                       # not stopped out by the ex-dividend drop
     assert pf.cash == 50 and pf.positions["AAA"].stop == 91
     assert rows[0]["equity"] == 1000                   # 950 in shares + 50 in cash: no fake loss
@@ -361,3 +361,39 @@ def test_score_rotation_holds_top_scores_and_waits_without_scores():
     pf = Portfolio(cash=100_000)
     broker, _ = run(pf, bars, inst=inst, strategy=ScoreRotation(top_n=3), start=bars["S0"].index[0], use_halt=False)
     assert broker.trades == [] and pf.pending == []
+
+
+def test_benchmark_reinvests_dividends_in_the_same_share():
+    bars = _with_actions([100, 95, 95], div={1: 5.0}, opens=[None, 95, None])
+    pf = Portfolio(cash=0, last_date=bars.index[0].isoformat(), last_equity=1000,
+                   positions={"AAA": Position("AAA", 10.0, 100, "NOK", 0, "2024-12-31")})
+    broker, rows = run(pf, {"AAA": bars}, strategy=BuyAndHold(), use_halt=False)
+    assert [t["side"] for t in broker.trades] == ["DIV", "BUY"]
+    assert 10.5 < pf.positions["AAA"].qty < 10.53 and 0 <= pf.cash < 1
+    assert rows[-1]["equity"] == pytest.approx(1000, abs=1)       # total return is flat
+    # ordinary models keep the dividend as cash
+    pf = Portfolio(cash=0, last_date=bars.index[0].isoformat(),
+                   positions={"AAA": Position("AAA", 10, 100, "NOK", 0, "2024-12-31")})
+    broker, _ = run(pf, {"AAA": bars}, strategy=MomentumRotation(), use_halt=False)
+    assert pf.cash == 50 and pf.positions["AAA"].qty == 10
+
+
+def test_position_is_closed_when_its_share_stops_trading():
+    live = make_bars([100.0] * 20)
+    dead = live.iloc[:3] * 0.5                                    # last bar on day 3 at 50
+    inst = {"LIVE": Instrument("LIVE"), "DEAD": Instrument("DEAD")}
+    pf = Portfolio(cash=0, last_date=live.index[0].isoformat(),
+                   positions={"DEAD": Position("DEAD", 10, 60, "NOK", 40, live.index[0].isoformat())})
+    broker, rows = run(pf, {"LIVE": live, "DEAD": dead}, inst=inst, strategy=MomentumRotation(lookback=500),
+                       use_halt=False)
+    sells = [t for t in broker.trades if t["symbol"] == "DEAD"]
+    assert len(sells) == 1 and sells[0]["price"] == 50 and "delisted" in sells[0]["reason"]
+    gap = (pd.Timestamp(sells[0]["date"]) - pd.Timestamp(dead.index[-1])).days
+    assert 10 < gap <= 14 and "DEAD" not in pf.positions and pf.cash == 500
+    assert "DEAD" not in pf.last_price_dates
+    # a short gap (holiday on one exchange) does not close anything
+    pf = Portfolio(cash=0, last_date=live.index[0].isoformat(),
+                   positions={"DEAD": Position("DEAD", 10, 60, "NOK", 40, live.index[0].isoformat())})
+    broker, _ = run(pf, {"LIVE": live.iloc[:8], "DEAD": dead}, inst=inst,
+                    strategy=MomentumRotation(lookback=500), use_halt=False)
+    assert "DEAD" in pf.positions and broker.trades == []

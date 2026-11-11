@@ -66,7 +66,8 @@ All models see the same prices and pay the same costs, so their results are comp
 at 17:15 UTC (after the Oslo close in both summer and winter time), commits `state/`
 and `docs/data.json`, and mirrors `docs/` to the `gh-pages` branch, which serves the
 dashboard at https://antennmast.github.io/ai-trading-engine/. Scheduled runs can start late, and GitHub pauses schedules in
-repositories with no activity for 60 days; the engine catches up on missed days.
+repositories with no activity for 60 days; the engine catches up on missed days. A failed
+run opens an issue titled "Daglig kjøring feilet".
 
 ## Settings
 
@@ -92,7 +93,9 @@ risk rule. Without the secrets both models simply stay in cash.
 - Yahoo data is unofficial, delayed and occasionally wrong or unavailable.
 - Dividends are credited on the ex-date without withholding tax, and Yahoo's dividend
   amounts are occasionally in another currency than the share. Splits adjust quantity,
-  average price and stop. Mergers, delistings, rights issues and spin-offs are not handled.
+  average price and stop. A held share with no prices for 10 days is closed at its last
+  price, which only approximates a takeover or delisting. Rights issues and spin-offs are
+  not handled.
 - Cash is NOK only. Foreign shares are converted at the day's FX rate, so currency moves
   are part of each model's result. aksjescore only covers Oslo, so `sentiment` only buys there.
 - OSEBX on the dashboard is a Norwegian total-return index; the models also hold other
