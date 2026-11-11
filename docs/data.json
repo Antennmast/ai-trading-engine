@@ -1,0 +1,1478 @@
+{
+ "updated_utc": "2026-11-11 14:25",
+ "last_date": "2026-11-10",
+ "starting_cash": 100000.0,
+ "base_currency": "NOK",
+ "models": [
+  {
+   "key": "referanse",
+   "name": "Referanse",
+   "blurb": "Kjøp og hold alle omsettelige aksjer likt vektet, uten kostnader.",
+   "benchmark": true,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 66,
+     "symbol": "ABG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 109,
+     "symbol": "ACR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "AFG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 41,
+     "symbol": "AKAST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "AKRBP",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 12,
+     "symbol": "AKSO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 12,
+     "symbol": "APR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 27,
+     "symbol": "ARCH",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 95,
+     "symbol": "ARR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "ATEA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 5,
+     "symbol": "AUSS",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 30,
+     "symbol": "AUTO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 19,
+     "symbol": "B2I",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "BAKKA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 24,
+     "symbol": "BEWI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "BONHR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 15,
+     "symbol": "BORR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 9,
+     "symbol": "BOUV",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "BRG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 8,
+     "symbol": "BRUT",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 10,
+     "symbol": "BWE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "BWLPG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 12,
+     "symbol": "BWO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 36,
+     "symbol": "CLOUD",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "CMBTO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "COSH",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 215,
+     "symbol": "DDRIL",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 26,
+     "symbol": "DELIA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 36,
+     "symbol": "DFENS",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "DNB",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 23,
+     "symbol": "DNO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "DOFG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 14,
+     "symbol": "ELK",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 13,
+     "symbol": "ELO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "ENDUR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 70,
+     "symbol": "ENH",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "ENTRA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 11,
+     "symbol": "ENVIP",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 5,
+     "symbol": "EPR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "EQNR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "FRO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "GJF",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 31,
+     "symbol": "GOD",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 5,
+     "symbol": "HAFNI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "HAUTO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 36,
+     "symbol": "HEX",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "HSHP",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 30,
+     "symbol": "HUNT",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "KCC",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "KID",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 5,
+     "symbol": "KIT",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 231,
+     "symbol": "KOA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "KOG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 18,
+     "symbol": "LINK",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 10,
+     "symbol": "LSG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "MEDI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 23,
+     "symbol": "MGN",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "MING",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "MORG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 17,
+     "symbol": "MORLD",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "MOWI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 19,
+     "symbol": "MPCC",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "MULTI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 11,
+     "symbol": "NAPA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 34,
+     "symbol": "NAS",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 235,
+     "symbol": "NEL",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 6,
+     "symbol": "NHY",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 24,
+     "symbol": "NKR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "NOD",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "NONG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 10,
+     "symbol": "NORAM",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "NORBT",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 13,
+     "symbol": "NORCO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 52,
+     "symbol": "NRC",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 13,
+     "symbol": "NSKOG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 426,
+     "symbol": "NTI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "ODF",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "ODFB",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "ODL",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 10,
+     "symbol": "OKEA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 7,
+     "symbol": "ONCIN",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "ORK",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 27,
+     "symbol": "OTEC",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 7,
+     "symbol": "OTL",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 9,
+     "symbol": "PARB",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 16,
+     "symbol": "PEN",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 6,
+     "symbol": "PEXIP",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 11,
+     "symbol": "PHO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 9,
+     "symbol": "PLSV",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 42,
+     "symbol": "PLT",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 45,
+     "symbol": "PNOR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 111,
+     "symbol": "PRS",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 27,
+     "symbol": "PUBLI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 84,
+     "symbol": "REACH",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 226,
+     "symbol": "SALME",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 10,
+     "symbol": "SATS",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "SB1NO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "SBNOR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 5,
+     "symbol": "SCATC",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 18,
+     "symbol": "SEA1",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 8,
+     "symbol": "SMOP",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "SNI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 5,
+     "symbol": "SNTIA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 6,
+     "symbol": "SOFF",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 17,
+     "symbol": "SOMA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "SPOL",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "STB",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "SUBC",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "SWON",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "TEL",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "TGS",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "TOM",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 113,
+     "symbol": "TRMED",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 9,
+     "symbol": "VAR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "VEI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "VEND",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 168,
+     "symbol": "VOW",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 14,
+     "symbol": "VTURA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "WAWI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 19,
+     "symbol": "XPLRA",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "YAR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 8,
+     "symbol": "ZAP",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "ASSA-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "ATCO-A.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 15,
+     "symbol": "ELUX-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "ERIC-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "ESSITY-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "GETI-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "HEXA-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "HM-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "INVE-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 6,
+     "symbol": "KINV-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 11,
+     "symbol": "NIBE-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "SAND.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "SCA-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "SEB-A.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "SHB-A.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 11,
+     "symbol": "SINCH.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "SKF-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "SWED-A.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "TEL2-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 10,
+     "symbol": "TELIA.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "VOLV-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "EQT.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "EPI-A.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "LIFCO-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "ADDT-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "SKA-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "TREL-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "SECU-B.ST",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "NOVO-B.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "VWS.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "ORSTED.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "TRYG.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "GN.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "ROCK-B.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "ISS.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 3,
+     "symbol": "AMBU-B.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "ZEAL.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "BAVA.CO",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 6,
+     "symbol": "NOKIA.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "NESTE.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "SAMPO.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "FORTUM.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "UPM.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "STERV.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "WRT1V.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "NDA-FI.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "ELISA.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "KESKOB.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "METSO.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "VALMT.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "TIETO.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "KCR.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "HUH1V.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 11,
+     "symbol": "OUT1V.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "KEMIRA.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 1,
+     "symbol": "QTCOM.HE",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 7,
+     "symbol": "MANTA.HE",
+     "reason": "benchmark equal weight"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": null,
+   "error": null
+  },
+  {
+   "key": "trend",
+   "name": "Trend",
+   "blurb": "Kjøper aksjer i opptrend, glidende stop-loss.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 240,
+     "symbol": "NKR",
+     "reason": "uptrend; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 140,
+     "symbol": "ELUX-B.ST",
+     "reason": "uptrend; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 53,
+     "symbol": "AMBU-B.CO",
+     "reason": "uptrend; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 6,
+     "symbol": "ORNBV.HE",
+     "reason": "uptrend; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "KID",
+     "reason": "uptrend; sized by open-risk limit"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "momentum",
+   "name": "Momentum",
+   "blurb": "Holder de 4 sterkeste siste halvår, bytter månedlig.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 1610,
+     "symbol": "HUNT",
+     "reason": "top 4 momentum (+117%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 4,
+     "symbol": "GMAB.CO",
+     "reason": "top 4 momentum (+109%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 18,
+     "symbol": "PNDORA.CO",
+     "reason": "top 4 momentum (+88%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 2217,
+     "symbol": "PLT",
+     "reason": "top 4 momentum (+66%)"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "tilbakefall",
+   "name": "Tilbakefall",
+   "blurb": "Kjøper korte dipper i aksjer i opptrend.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 74,
+     "symbol": "SCA-B.ST",
+     "reason": "dip in uptrend (RSI 7); sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 42,
+     "symbol": "HAFNI",
+     "reason": "dip in uptrend (RSI 8); sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 20,
+     "symbol": "VALMT.HE",
+     "reason": "dip in uptrend (RSI 8); sized by risk per trade"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "sentiment",
+   "name": "Sentiment",
+   "blurb": "Trend, men kjøper bare når aksjescore er 60 eller høyere.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 240,
+     "symbol": "NKR",
+     "reason": "uptrend, score +0.52; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 49,
+     "symbol": "MOWI",
+     "reason": "uptrend, score +0.58; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 226,
+     "symbol": "MORLD",
+     "reason": "uptrend, score +0.55; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 13,
+     "symbol": "SALM",
+     "reason": "uptrend, score +0.60; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "ENDUR",
+     "reason": "uptrend, score +0.50; sized by open-risk limit"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "sprakmodell",
+   "name": "Språkmodell",
+   "blurb": "Trend, men en språkmodell (Claude Haiku) avgjør hvilke aksjer som kjøpes. Skriver dagbok.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 18,
+     "symbol": "MEDI",
+     "reason": "uptrend, score +0.45; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 240,
+     "symbol": "NKR",
+     "reason": "uptrend, score +0.35; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 52,
+     "symbol": "KID",
+     "reason": "uptrend, score +0.40; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 226,
+     "symbol": "MORLD",
+     "reason": "uptrend, score +0.40; sized by risk per trade"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": {
+    "date": "2026-11-10",
+    "lines": [
+     "MEDI (MEDISTIM) +0.45: Sterk 60- og 126-dagers avkastning og nær toppen, med moderat volatilitet.",
+     "KID (KID) +0.40: Nær 52-ukers høy med jevn positiv trend og lav volatilitet.",
+     "MORLD (MORELD) +0.40: Nær 52-ukers høy med sterk 60- og 126-dagers trend og moderat volatilitet.",
+     "NKR (NEKKAR) +0.35: Står på 52-ukers høy med sterk trend på alle horisonter, men 5-dagersgevinsten på 15,9 % er utvidet.",
+     "SB1NO (SPAREBANK 1 SØR-N) +0.30: Står på 52-ukers høy med sterk 126-dagers avkastning og lav volatilitet.",
+     "ENDUR (ENDÚR) +0.25: Nær 52-ukers høy og positiv trend, men flat siste uke.",
+     "MOWI (MOWI) +0.20: Stabil positiv avkastning på alle horisonter og lav volatilitet, men 7,8 % under toppen.",
+     "SATS (SATS) +0.15: Nær toppen og positiv 20-dagers trend, men svak avkastning på lengre sikt.",
+     "KOG (KONGSBERG GRUPPEN) +0.00: Er 16 % under toppen, falt siste uke og har høy volatilitet til tross for god 20-dagers avkastning.",
+     "PROT (PROTECTOR FORSIKRG) +0.00: Negativ 60-dagers avkastning og 13,6 % under toppen, til tross for nylig oppgang.",
+     "ORK (ORKLA) -0.10: Ligger 18 % under toppen og har negativ 126-dagers avkastning, så kortsiktig oppgang er et svakt signal.",
+     "TOM (TOMRA SYSTEMS) -0.20: Ligger 27 % under toppen og har negativ 60-dagers avkastning.",
+     "VEND (VEND MARKETPLACES) -0.25: Nesten 30 % under toppen med negativ 60- og 126-dagers avkastning.",
+     "SMOP (SMARTOPTICS GROUP) -0.30: Negativ 5- og 126-dagers avkastning, 17 % under toppen og høy volatilitet.",
+     "DDRIL (DOLPHIN DRILLING) -0.60: Langt under toppen med negativ 60- og 126-dagers avkastning og høy volatilitet; den korte oppgangen er spekulativ."
+    ]
+   },
+   "llm": {
+    "calls": 1,
+    "cost_usd": 0.001,
+    "tokens": 3930
+   },
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "dagshandel",
+   "name": "Dagshandel",
+   "blurb": "Kjøper på åpning, selger alt på sluttkurs samme dag.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 997,
+     "symbol": "NKR",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 13,
+     "symbol": "PNDORA.CO",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 111,
+     "symbol": "GN.CO",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 714,
+     "symbol": "MORLD",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 177,
+     "symbol": "ORK",
+     "reason": "day trade: uptrend"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  }
+ ],
+ "universe": {
+  "total": 359,
+  "tradable": 210
+ },
+ "index": {
+  "name": "OSEBX",
+  "return_pct": 0.0,
+  "curve": [
+   [
+    "2026-11-10",
+    0.0
+   ]
+  ]
+ }
+}
