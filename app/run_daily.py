@@ -14,8 +14,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from app.data.providers import (CsvProvider, YahooProvider, last_completed_bar_date,
-                                liquid_symbols)
+from app.data.providers import (CsvProvider, YahooProvider, equal_weight_index,
+                                last_completed_bar_date, liquid_symbols)
 from app.engine import Instrument, run_engine
 from app.llm_agent import run_agent
 from app.models import MODELS
@@ -81,12 +81,6 @@ def main() -> None:
         idx = provider.history({cfg.index_name: cfg.index_ticker}, cutoff).get(cfg.index_name)
         index_close = None if idx is None else idx["close"]
         print(f"[index] {cfg.index_name}: {0 if idx is None else len(idx)} bars")
-        if idx is None:
-            print("[index] WARNING: no index data, the market brake is inactive this run")
-        elif len(idx) >= 200:
-            last, avg = float(idx["close"].iloc[-1]), float(idx["close"].tail(200).mean())
-            print(f"[index] last {last:.1f}, 200-day average {avg:.1f}: "
-                  f"market brake {'ON' if last < avg else 'off'}")
     fx = provider.fx({i.currency for i in instruments.values()}, base)
     print("[fx] " + ", ".join(f"{c}={v:.4f}" for c, v in sorted(fx.items())))
     no_fx = {s for s, i in instruments.items() if i.currency not in fx}
@@ -106,6 +100,25 @@ def main() -> None:
         raise SystemExit("No instrument passes the liquidity filter; state left untouched.")
     free = Costs(commission_rate=0, min_commission=0, slippage_bps=0)
 
+    # One index per home market for the market brake; fall back to our own shares.
+    markets = {}
+    for ccy in sorted({i.currency for i in instruments.values()}):
+        name, ticker = cfg.market_indices.get(ccy, (ccy, ""))
+        series = None
+        if ticker and args.provider == "yahoo":
+            got = provider.history({name: ticker}, cutoff).get(name)
+            series = None if got is None or len(got) < 200 else got["close"]
+        if series is None:
+            name = f"own equal-weight index ({ccy})"
+            series = equal_weight_index(bars, [s for s in tradable if instruments[s].currency == ccy])
+        if series is None or len(series) < 200:
+            print(f"[brake] {ccy}: no index data, brake inactive for this market")
+            continue
+        markets[ccy] = series
+        last, avg = float(series.iloc[-1]), float(series.tail(200).mean())
+        print(f"[brake] {ccy} {name}: last {last:.1f}, 200-day average {avg:.1f} -> "
+              f"{'ON' if last < avg else 'off'}")
+
     def scores_for(model) -> ScoreBook:
         return ScoreBook.from_csv(model.scores_file) if model.scores_file else ScoreBook()
 
@@ -117,7 +130,7 @@ def main() -> None:
             broker = SimBroker(pf, free if m.cost_free else costs)
             rows = run_engine(pf, bars, instruments, fx, cfg.limits_for(m.key), broker, m.strategy, scores_for(m),
                               start=Date.fromisoformat(args.backtest), use_halt=m.use_halt,
-                              tradable=tradable, market=index_close)
+                              tradable=tradable, market=markets)
             if not rows:
                 raise SystemExit("No bars in backtest window.")
             st = stats(pd.DataFrame(rows)["equity"], pd.DataFrame(broker.trades))
@@ -146,7 +159,7 @@ def main() -> None:
             try:
                 broker = SimBroker(pf, free if m.cost_free else costs)
                 rows = run_engine(pf, bars, instruments, fx, cfg.limits_for(m.key), broker, m.strategy,
-                                  scores_for(m), use_halt=m.use_halt, tradable=tradable, market=index_close)
+                                  scores_for(m), use_halt=m.use_halt, tradable=tradable, market=markets)
                 if rows:
                     # portfolio.json is written last: if a step fails the next run redoes the day
                     append_csv(d / "trades.csv", broker.trades)

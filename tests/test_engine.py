@@ -439,3 +439,36 @@ def test_market_brake_sells_in_a_falling_market_and_reenters_with_a_margin():
     run_engine(plain, {s: b.iloc[:340] for s, b in bars.items()}, inst, FX, RiskLimits(), SimBroker(plain, NO_COST),
                strat, start=days[290], use_halt=False, market=None)
     assert len(plain.positions) == 2
+
+
+def test_market_brake_is_per_home_market():
+    from app.strategy import MomentumWithBrake
+    n = 320
+    bars = {s: make_bars([100 * (1 + d) ** k for k in range(n)])
+            for s, d in {"NO1": 0.002, "NO2": 0.0018, "SE1": 0.0022, "SE2": 0.0019}.items()}
+    inst = {"NO1": Instrument("NO1", "NOK"), "NO2": Instrument("NO2", "NOK"),
+            "SE1": Instrument("SE1", "SEK"), "SE2": Instrument("SE2", "SEK")}
+    fx = {"NOK": 1.0, "SEK": 1.0}
+    days = list(bars["NO1"].index)
+    up = pd.Series([100 + 0.1 * k for k in range(n)], index=days)
+    down_late = pd.Series([100 + 0.1 * k for k in range(300)] + [130 - 2.0 * k for k in range(20)], index=days)
+    strat = MomentumWithBrake(top_n=4)
+    pf = Portfolio(cash=100_000)
+    broker = SimBroker(pf, NO_COST)
+    kw = dict(use_halt=False, market={"NOK": up, "SEK": down_late})
+    run_engine(pf, {s: b.iloc[:300] for s, b in bars.items()}, inst, fx, RiskLimits(), broker, strat,
+               start=days[295], **kw)
+    assert set(pf.positions) == {"NO1", "NO2", "SE1", "SE2"}
+    run_engine(pf, bars, inst, fx, RiskLimits(), broker, strat, **kw)
+    assert set(pf.positions) == {"NO1", "NO2"}                  # only the Swedish shares were sold
+    sold = {t["symbol"] for t in broker.trades if t["side"] == "SELL"}
+    assert sold == {"SE1", "SE2"} and not [o for o in pf.pending if o.symbol.startswith("SE")]
+
+
+def test_equal_weight_index_from_own_shares(uptrend):
+    from app.data.providers import equal_weight_index
+    bars = {f"S{i}": uptrend * (i + 1) for i in range(6)}
+    idx = equal_weight_index(bars, list(bars))
+    assert len(idx) == len(uptrend) and idx.iloc[-1] / idx.iloc[0] == pytest.approx(
+        uptrend["close"].iloc[-1] / uptrend["close"].iloc[0], rel=1e-6)
+    assert equal_weight_index(bars, ["S0", "S1"]) is None       # too few shares to be an index

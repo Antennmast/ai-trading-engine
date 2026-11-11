@@ -23,8 +23,9 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
 - Etter forskningsgjennomgangen (`FORSKNING.md`), før første handel: Momentum endret til
   12-1 med 10 aksjer, og språkmodellen spørres tre ganger per dag med median som score.
 - Niende modell lagt til før første handel: Momentum med brems. Den er lik Momentum, men
-  selger alt når OSEBX stenger under 200-dagerssnittet og kjøper tilbake når indeksen er
-  1 % over snittet igjen. Sammenlignes direkte med Momentum uten brems.
+  har én brems per hjemmemarked (Oslo, Stockholm, København, Helsinki). Når et markeds
+  indeks stenger under 200-dagerssnittet, selges aksjene derfra, og det kjøpes ikke nytt
+  der før indeksen er 1 % over snittet igjen. Sammenlignes direkte med Momentum uten brems.
 
 ## Kriterier bestemt på forhånd
 

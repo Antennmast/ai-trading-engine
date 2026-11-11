@@ -33,6 +33,7 @@ class Settings:
     llm: LlmSettings = LlmSettings()
     index_name: str = ""
     index_ticker: str = ""
+    market_indices: dict = field(default_factory=dict)   # currency -> (name, yahoo ticker)
 
     def limits_for(self, key: str) -> RiskLimits:
         return self.model_risk.get(key, self.risk)
@@ -80,6 +81,8 @@ def load_settings(path="config.yaml", known_models: set[str] | None = None) -> S
         model_risk=model_risk,
         index_name=str(index.get("name", "")),
         index_ticker=str(index.get("yahoo_ticker", "")),
+        market_indices={str(c): (str(v.get("name", c)), str(v.get("yahoo_ticker", "")))
+                        for c, v in (raw.get("market_indices") or {}).items()},
         llm=LlmSettings(
             enabled=bool(llm.get("enabled", True)),
             model=str(llm.get("model", "claude-haiku-5-5")),

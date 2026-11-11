@@ -28,7 +28,7 @@ MODELS = [
     Model("momentum", "Momentum", "Holder de 10 sterkeste siste år (uten siste måned), bytter månedlig.",
           MomentumRotation(), use_halt=False),
     Model("momentumbrems", "Momentum med brems",
-          "Som Momentum, men selger alt når OSEBX ligger under 200-dagerssnittet.",
+          "Som Momentum, men selger aksjene fra et marked når det markedets indeks ligger under 200-dagerssnittet.",
           MomentumWithBrake(), use_halt=False),
     Model("tilbakefall", "Tilbakefall", "Kjøper korte dipper i aksjer i opptrend.",
           MeanReversion()),

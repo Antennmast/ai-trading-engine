@@ -49,7 +49,7 @@ def run_engine(
     start: Optional[Date] = None,
     use_halt: bool = True,
     tradable: Optional[set] = None,     # symbols new buys are allowed in (None = all)
-    market: Optional[pd.Series] = None, # index closes (date index) for market-regime rules
+    market=None,                        # index closes for market-regime rules: Series or {currency: Series}
 ) -> list[dict]:
     """Process all bar dates after pf.last_date (or `start`). Returns equity rows."""
     strategy = strategy or TrendStrategy()
@@ -154,8 +154,12 @@ def run_engine(
             hist = {s: h for s, h in hist.items() if s in tradable or s in pf.positions}
         hist = {s: total_return_view(h) for s, h in hist.items()}   # dividend-adjusted signals
         n_universe = len(instruments) if tradable is None else len(tradable)
-        seen = None if market is None else market[[d <= day for d in market.index]]
-        ctx = Context(day, prev_day, hist, pf, scores, n_universe, seen)
+        def upto(series):
+            return series[[d <= day for d in series.index]]
+        seen = None if market is None else (
+            {c: upto(m) for c, m in market.items()} if isinstance(market, dict) else upto(market))
+        ctx = Context(day, prev_day, hist, pf, scores, n_universe, seen,
+                      {s: i.currency for s, i in instruments.items()})
         candidates = []
         for sym, sig in strategy.signals(ctx).items():
             if sym not in hist:

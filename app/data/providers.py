@@ -155,3 +155,12 @@ def liquid_symbols(bars: dict[str, pd.DataFrame], fx_by_symbol: dict[str, float]
         if turnover >= min_turnover and float(tail["close"].iloc[-1]) >= min_price:
             ok.add(sym)
     return ok
+
+
+def equal_weight_index(bars: dict[str, pd.DataFrame], symbols) -> pd.Series | None:
+    """A simple market index built from our own shares: average daily return, compounded."""
+    closes = pd.DataFrame({s: total_return_view(bars[s])["close"] for s in symbols if s in bars})
+    if closes.shape[1] < 5:
+        return None
+    daily = closes.pct_change(fill_method=None).clip(-0.5, 0.5).mean(axis=1, skipna=True).fillna(0.0)
+    return 100.0 * (1.0 + daily).cumprod()

@@ -26,6 +26,14 @@ benchmark_index:
   name: OSEBX
   yahoo_ticker: OSEBX.OL
 
+# Home-market indices for the market brake, by trading currency. If a ticker gives no data,
+# an equal-weight index of our own tradable shares in that market is used instead.
+market_indices:
+  NOK: {name: OSEBX, yahoo_ticker: OSEBX.OL}
+  SEK: {name: OMXS30, yahoo_ticker: "^OMX"}
+  DKK: {name: OMXC25, yahoo_ticker: "^OMXC25"}
+  EUR: {name: OMXH25, yahoo_ticker: "^OMXH25"}
+
 # Per-model overrides of the risk rules. A model may only be STRICTER than the shared
 # rules (a lower number); a looser value stops the run with an error.
 models:

@@ -71,7 +71,7 @@ etterlyser. Hullet var at agenten svarte én gang per dag.
 | Momentum brukte siste halvår inkludert siste måned, og bare 4 aksjer | Endret til standarden «12-1» (siste år uten siste måned) og 10 aksjer |
 | Språkmodellen svarte én gang per dag | Spørres 3 ganger, medianen brukes, og stort sprik noteres i dagboken |
 | Ingen statistisk målestokk | t-verdi mot referansen vises etter 60 børsdager |
-| Ingen markedsbrems | Ny modell «Momentum med brems», som går i kontanter når OSEBX er under 200-dagerssnittet |
+| Ingen markedsbrems | Ny modell «Momentum med brems», med én brems per hjemmemarked mot 200-dagerssnittet |
 | Ingen forhåndsbestemte kriterier | Skrevet inn i `ENDRINGSLOGG.md` |
 
 ## 5. Hull som står åpne

@@ -124,7 +124,8 @@ class Context:
     pf: object                          # Portfolio (read-only by convention)
     scores: ScoreBook
     universe_size: int = 0
-    market: Optional[pd.Series] = None  # index closes up to and including `day`
+    market: object = None               # index closes up to `day`: one Series, or {currency: Series}
+    currency: dict = None               # symbol -> currency (home market)
 
 
 def rsi(close: pd.Series, n: int = 2) -> float:
@@ -184,27 +185,47 @@ class MomentumRotation:
 
 @dataclass
 class MomentumWithBrake(MomentumRotation):
-    """Momentum 12-1 with a market brake: in cash while the index is below its long average.
+    """Momentum 12-1 with a market brake per home market.
 
-    Momentum's worst losses have come in falling, turbulent markets. The brake sells
-    everything when the index closes below its 200-day average and buys back when it is
-    1 % above it again (the gap avoids trading back and forth around the average).
+    Momentum's worst losses have come in falling, turbulent markets. Each share follows
+    the index of its own market (Oslo, Stockholm, Copenhagen, Helsinki). When that index
+    closes below its 200-day average, the model sells its shares from that market and buys
+    nothing new there. The market reopens for buys when the index is 1 % above the average
+    again (the gap avoids trading back and forth around the average).
     """
     sma: int = 200
     band: float = 0.01
 
+    def _state(self, series) -> tuple[bool, bool]:
+        """(braked, open_for_new_buys) for one index series."""
+        if series is None or len(series) < self.sma:
+            return False, True                          # no index data: no brake
+        level, avg = float(series.iloc[-1]), float(series.tail(self.sma).mean())
+        return level < avg, level >= avg * (1 + self.band)
+
     def signals(self, ctx: Context) -> dict[str, Signal]:
-        m = ctx.market
-        if m is None or len(m) < self.sma:              # no index data: behave like plain momentum
+        if ctx.market is None:
             return super().signals(ctx)
-        level, avg = float(m.iloc[-1]), float(m.tail(self.sma).mean())
-        if level < avg:
-            return {s: Signal("SELL", reason="market brake: index below 200-day average")
-                    for s in ctx.pf.positions if s in ctx.hist}
-        holding = bool(ctx.pf.positions) or any(o.side == "BUY" for o in ctx.pf.pending)
-        if not holding and level < avg * (1 + self.band):
-            return {}                                   # wait for a clear move back above
-        return super().signals(ctx)
+        ccy = ctx.currency or {}
+        per_market = ctx.market if isinstance(ctx.market, dict) else None
+
+        def state(sym):
+            series = per_market.get(ccy.get(sym)) if per_market is not None else ctx.market
+            return self._state(series)
+
+        held_markets = {ccy.get(s) for s in ctx.pf.positions} | \
+                       {ccy.get(o.symbol) for o in ctx.pf.pending if o.side == "BUY"}
+        out, allowed = {}, {}
+        for sym, h in ctx.hist.items():
+            braked, open_for_buys = state(sym)
+            if braked:
+                if sym in ctx.pf.positions:
+                    out[sym] = Signal("SELL", reason="market brake: home index below 200-day average")
+            elif open_for_buys or ccy.get(sym) in held_markets or sym in ctx.pf.positions:
+                allowed[sym] = h                        # already invested there, or clearly above
+        from dataclasses import replace
+        out.update(super().signals(replace(ctx, hist=allowed)))
+        return out
 
 
 @dataclass
