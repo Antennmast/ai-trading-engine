@@ -1,5 +1,5 @@
 {
- "updated_utc": "2026-11-11 14:47",
+ "updated_utc": "2026-11-11 14:56",
  "last_date": "2026-11-10",
  "starting_cash": 100000.0,
  "base_currency": "NOK",
@@ -1280,7 +1280,9 @@
    "journal": null,
    "llm": null,
    "vs_benchmark_pct": null,
-   "error": null
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
   },
   {
    "key": "trend",
@@ -1340,12 +1342,14 @@
    "journal": null,
    "llm": null,
    "vs_benchmark_pct": 0.0,
-   "error": null
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
   },
   {
    "key": "momentum",
    "name": "Momentum",
-   "blurb": "Holder de 4 sterkeste siste halvår, bytter månedlig.",
+   "blurb": "Holder de 10 sterkeste siste år (uten siste måned), bytter månedlig.",
    "benchmark": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
@@ -1361,27 +1365,63 @@
    "pending": [
     {
      "side": "BUY",
-     "qty": 1610,
+     "qty": 624,
      "symbol": "HUNT",
-     "reason": "top 4 momentum (+117%)"
+     "reason": "top 10 momentum 12-1 (+2169%)"
     },
     {
      "side": "BUY",
-     "qty": 4,
-     "symbol": "GMAB.CO",
-     "reason": "top 4 momentum (+109%)"
+     "qty": 12,
+     "symbol": "OET",
+     "reason": "top 10 momentum 12-1 (+228%)"
     },
     {
      "side": "BUY",
-     "qty": 18,
-     "symbol": "PNDORA.CO",
-     "reason": "top 4 momentum (+88%)"
+     "qty": 267,
+     "symbol": "NSKOG",
+     "reason": "top 10 momentum 12-1 (+202%)"
     },
     {
      "side": "BUY",
-     "qty": 2217,
-     "symbol": "PLT",
-     "reason": "top 4 momentum (+66%)"
+     "qty": 23,
+     "symbol": "FRO",
+     "reason": "top 10 momentum 12-1 (+171%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 64,
+     "symbol": "HSHP",
+     "reason": "top 10 momentum 12-1 (+146%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 60,
+     "symbol": "WAWI",
+     "reason": "top 10 momentum 12-1 (+133%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 165,
+     "symbol": "ZAP",
+     "reason": "top 10 momentum 12-1 (+127%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 56,
+     "symbol": "HAUTO",
+     "reason": "top 10 momentum 12-1 (+127%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 61,
+     "symbol": "CMBTO",
+     "reason": "top 10 momentum 12-1 (+125%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 214,
+     "symbol": "OKEA",
+     "reason": "top 10 momentum 12-1 (+116%)"
     }
    ],
    "last_fills": [],
@@ -1394,7 +1434,9 @@
    "journal": null,
    "llm": null,
    "vs_benchmark_pct": 0.0,
-   "error": null
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
   },
   {
    "key": "tilbakefall",
@@ -1442,7 +1484,9 @@
    "journal": null,
    "llm": null,
    "vs_benchmark_pct": 0.0,
-   "error": null
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
   },
   {
    "key": "sentiment",
@@ -1502,7 +1546,9 @@
    "journal": null,
    "llm": null,
    "vs_benchmark_pct": 0.0,
-   "error": null
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
   },
   {
    "key": "sprakmodell",
@@ -1579,7 +1625,9 @@
     "tokens": 3930
    },
    "vs_benchmark_pct": 0.0,
-   "error": null
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
   },
   {
    "key": "scoretopp",
@@ -1669,7 +1717,9 @@
    "journal": null,
    "llm": null,
    "vs_benchmark_pct": 0.0,
-   "error": null
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
   },
   {
    "key": "dagshandel",
@@ -1729,7 +1779,9 @@
    "journal": null,
    "llm": null,
    "vs_benchmark_pct": 0.0,
-   "error": null
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
   }
  ],
  "universe": {

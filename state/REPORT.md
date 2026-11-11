@@ -33,11 +33,11 @@ Ordre til neste åpning: kjøp 240 NKR, kjøp 140 ELUX-B.ST, kjøp 53 AMBU-B.CO,
 
 ## Momentum
 
-Holder de 4 sterkeste siste halvår, bytter månedlig.
+Holder de 10 sterkeste siste år (uten siste måned), bytter månedlig.
 
 Ingen posisjoner.
 
-Ordre til neste åpning: kjøp 1610 HUNT, kjøp 4 GMAB.CO, kjøp 18 PNDORA.CO, kjøp 2217 PLT
+Ordre til neste åpning: kjøp 624 HUNT, kjøp 12 OET, kjøp 267 NSKOG, kjøp 23 FRO, kjøp 64 HSHP, kjøp 60 WAWI, kjøp 165 ZAP, kjøp 56 HAUTO, kjøp 61 CMBTO, kjøp 214 OKEA
 
 ## Tilbakefall
 
