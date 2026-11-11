@@ -71,14 +71,13 @@ etterlyser. Hullet var at agenten svarte én gang per dag.
 | Momentum brukte siste halvår inkludert siste måned, og bare 4 aksjer | Endret til standarden «12-1» (siste år uten siste måned) og 10 aksjer |
 | Språkmodellen svarte én gang per dag | Spørres 3 ganger, medianen brukes, og stort sprik noteres i dagboken |
 | Ingen statistisk målestokk | t-verdi mot referansen vises etter 60 børsdager |
+| Ingen markedsbrems | Ny modell «Momentum med brems», som går i kontanter når OSEBX er under 200-dagerssnittet |
 | Ingen forhåndsbestemte kriterier | Skrevet inn i `ENDRINGSLOGG.md` |
 
 ## 5. Hull som står åpne
 
-- **Ingen markedsbrems.** Modellene kjøper like gjerne i et marked i fritt fall. Et filter
-  som stopper nye kjøp når indeksen ligger under sitt langsiktige snitt, eller som
-  halverer posisjonene når svingningene er høye, er den best dokumenterte forbedringen.
-  Den bør testes som egen modell.
+- **Brems på de andre modellene.** Bremsen testes foreløpig bare på Momentum. Virker den
+  der, kan den prøves på Trend og Score topp 10 som egne modeller.
 - **Inntjeningsmeldinger.** Kursreaksjonen etter kvartalsrapporter er et godt dokumentert
   mønster, men krever rapportdatoer vi ikke henter i dag.
 - **Bare overlevende selskaper.** Aksjelisten er dagens. Det påvirker ikke fremtidstesten,

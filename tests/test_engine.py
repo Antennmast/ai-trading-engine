@@ -179,7 +179,7 @@ def _many(n=6, days=200, drift=None):
 
 def test_model_keys_are_unique_and_one_benchmark():
     keys = [m.key for m in MODELS]
-    assert len(keys) == len(set(keys)) == 8
+    assert len(keys) == len(set(keys)) == 9
     assert sum(m.benchmark for m in MODELS) == 1
 
 
@@ -408,3 +408,34 @@ def test_momentum_skips_the_most_recent_month():
     pf = Portfolio(cash=100_000)
     run(pf, bars, inst=inst, strategy=MomentumRotation(top_n=1), start=steady.index[-3], use_halt=False)
     assert set(pf.positions) == {"STEADY"}
+
+
+def test_market_brake_sells_in_a_falling_market_and_reenters_with_a_margin():
+    from app.strategy import MomentumWithBrake
+    n = 420
+    bars, inst = {}, {}
+    for i, drift in enumerate([0.002, 0.0015, 0.001]):
+        bars[f"S{i}"] = make_bars([100 * (1 + drift) ** k for k in range(n)])
+        inst[f"S{i}"] = Instrument(f"S{i}")
+    days = list(bars["S0"].index)
+    # index: rises, then drops well below its 200-day average, then recovers
+    level = [100 + 0.1 * k for k in range(300)] + [130 - 1.0 * k for k in range(40)] + [90 + 1.5 * k for k in range(80)]
+    market = pd.Series(level, index=days)
+    strat = MomentumWithBrake(top_n=2)
+    pf = Portfolio(cash=100_000)
+    broker = SimBroker(pf, NO_COST)
+    run_engine(pf, {s: b.iloc[:300] for s, b in bars.items()}, inst, FX, RiskLimits(), broker, strat,
+               start=days[290], use_halt=False, market=market)
+    assert len(pf.positions) == 2                               # index above its average: invested
+    run_engine(pf, {s: b.iloc[:340] for s, b in bars.items()}, inst, FX, RiskLimits(), broker, strat,
+               use_halt=False, market=market)
+    assert pf.positions == {} and pf.pending == []              # brake on: all cash
+    assert any("market brake" in t["reason"] for t in broker.trades)
+    n_trades = len(broker.trades)
+    run_engine(pf, bars, inst, FX, RiskLimits(), broker, strat, use_halt=False, market=market)
+    assert len(pf.positions) == 2 and len(broker.trades) == n_trades + 2   # back in once, no churn
+    # without index data the model behaves exactly like plain momentum
+    plain = Portfolio(cash=100_000)
+    run_engine(plain, {s: b.iloc[:340] for s, b in bars.items()}, inst, FX, RiskLimits(), SimBroker(plain, NO_COST),
+               strat, start=days[290], use_halt=False, market=None)
+    assert len(plain.positions) == 2

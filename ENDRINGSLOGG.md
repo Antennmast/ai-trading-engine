@@ -6,7 +6,7 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
 
 ## 2026-11-11 – start
 
-- Åtte modeller startet med 100 000 NOK hver på sluttkursene 10. november 2026.
+- Ni modeller startet med 100 000 NOK hver på sluttkursene 10. november 2026.
 - Univers: 278 aksjer på Oslo Børs og 79 store selskaper i Stockholm, København og Helsinki.
   Nye kjøp bare i aksjer med minst 1 MNOK i median dagsomsetning, kurs over 1 kr og ingen
   kurshopp over 50 % på én dag siste år.
@@ -22,6 +22,9 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
 
 - Etter forskningsgjennomgangen (`FORSKNING.md`), før første handel: Momentum endret til
   12-1 med 10 aksjer, og språkmodellen spørres tre ganger per dag med median som score.
+- Niende modell lagt til før første handel: Momentum med brems. Den er lik Momentum, men
+  selger alt når OSEBX stenger under 200-dagerssnittet og kjøper tilbake når indeksen er
+  1 % over snittet igjen. Sammenlignes direkte med Momentum uten brems.
 
 ## Kriterier bestemt på forhånd
 

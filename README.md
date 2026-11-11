@@ -1,6 +1,6 @@
-# AI Trading Engine — eight play-money models
+# AI Trading Engine — nine play-money models
 
-Eight trading models compete with 100,000 play-money NOK each on Nordic shares.
+Nine trading models compete with 100,000 play-money NOK each on Nordic shares.
 The universe is every share in `config/universe.csv` (278 Oslo listings plus about 80
 large companies in Stockholm, Copenhagen and Helsinki); each run only
 allows new buys in shares with a median daily turnover of at least 1 MNOK over the last
@@ -15,6 +15,7 @@ Nothing here trades real money, and nothing here is a validated strategy or inve
 | `referanse` | Benchmark | buy and hold every tradable share, equal weight, no costs |
 | `trend` | Trend | buy uptrends, ATR trailing stop |
 | `momentum` | Momentum rotation | hold the 10 strongest by 12-1 momentum, re-rank monthly |
+| `momentumbrems` | Momentum with market brake | as `momentum`, but all cash while OSEBX is below its 200-day average |
 | `tilbakefall` | Mean reversion | buy sharp dips in shares that are in an uptrend |
 | `sentiment` | Trend + sentiment score | needs rows in `signals/scores.csv`; in cash until then |
 | `sprakmodell` | Trend + LLM score | needs rows in `signals/llm_scores.csv`; in cash until then |
@@ -103,7 +104,7 @@ risk rule. Without the secrets both models simply stay in cash.
 - Daily bars only. Fills assume the full quantity trades at the open (or close).
 - The research behind the design choices is summarised in `FORSKNING.md`.
 - Rules are frozen during the test; changes are recorded in `ENDRINGSLOGG.md`.
-- With eight models, the best one after a few months may simply have been lucky.
+- With nine models, the best one after a few months may simply have been lucky.
 
 ---
 

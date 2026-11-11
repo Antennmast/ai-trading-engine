@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lekepenger: åtte modeller</title>
+<title>Lekepenger: ni modeller</title>
 <style>
 :root {
   color-scheme: light;
   --page: #f4f3f0; --surface: #fcfcfb; --line: #e3e1db; --grid: #ebe9e4;
   --text: #0b0b0b; --text2: #52514e; --muted: #85837c;
-  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948;
   --bench: #77756f; --index: #0b0b0b;
 }
 @media (prefers-color-scheme: dark) {
@@ -17,7 +17,7 @@
     color-scheme: dark;
     --page: #111110; --surface: #1a1a19; --line: #2e2d2b; --grid: #262524;
     --text: #f0efec; --text2: #c3c2b7; --muted: #8d8b84;
-    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
     --bench: #a3a199; --index: #f0efec;
   }
 }
@@ -70,7 +70,7 @@ select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid 
 </head>
 <body>
 <main>
-  <h1>Lekepenger: åtte modeller</h1>
+  <h1>Lekepenger: ni modeller</h1>
   <p class="sub" id="sub">Laster …</p>
 
   <section class="card">
@@ -103,7 +103,7 @@ select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid 
 </main>
 
 <script>
-const COLORS = { trend: "--s1", momentum: "--s2", tilbakefall: "--s3", sentiment: "--s4", sprakmodell: "--s5", dagshandel: "--s6", scoretopp: "--s7" };
+const COLORS = { trend: "--s1", momentum: "--s2", tilbakefall: "--s3", sentiment: "--s4", sprakmodell: "--s5", dagshandel: "--s6", scoretopp: "--s7", momentumbrems: "--s8" };
 const nok = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
 const dec = new Intl.NumberFormat("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const pct = v => v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + dec.format(Math.abs(v)) + " %";

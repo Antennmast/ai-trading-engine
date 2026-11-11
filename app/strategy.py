@@ -124,6 +124,7 @@ class Context:
     pf: object                          # Portfolio (read-only by convention)
     scores: ScoreBook
     universe_size: int = 0
+    market: Optional[pd.Series] = None  # index closes up to and including `day`
 
 
 def rsi(close: pd.Series, n: int = 2) -> float:
@@ -179,6 +180,31 @@ class MomentumRotation:
                 out[s] = Signal("BUY", weight=0.97 / self.top_n, score=ret[s],
                                 reason=f"top {self.top_n} momentum 12-1 ({ret[s]:+.0%})")
         return out
+
+
+@dataclass
+class MomentumWithBrake(MomentumRotation):
+    """Momentum 12-1 with a market brake: in cash while the index is below its long average.
+
+    Momentum's worst losses have come in falling, turbulent markets. The brake sells
+    everything when the index closes below its 200-day average and buys back when it is
+    1 % above it again (the gap avoids trading back and forth around the average).
+    """
+    sma: int = 200
+    band: float = 0.01
+
+    def signals(self, ctx: Context) -> dict[str, Signal]:
+        m = ctx.market
+        if m is None or len(m) < self.sma:              # no index data: behave like plain momentum
+            return super().signals(ctx)
+        level, avg = float(m.iloc[-1]), float(m.tail(self.sma).mean())
+        if level < avg:
+            return {s: Signal("SELL", reason="market brake: index below 200-day average")
+                    for s in ctx.pf.positions if s in ctx.hist}
+        holding = bool(ctx.pf.positions) or any(o.side == "BUY" for o in ctx.pf.pending)
+        if not holding and level < avg * (1 + self.band):
+            return {}                                   # wait for a clear move back above
+        return super().signals(ctx)
 
 
 @dataclass

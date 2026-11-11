@@ -4,8 +4,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from app.strategy import (BuyAndHold, MeanReversion, MomentumRotation, OpenToClose,
-                          ScoreRotation, TrendStrategy)
+from app.strategy import (BuyAndHold, MeanReversion, MomentumRotation, MomentumWithBrake,
+                          OpenToClose, ScoreRotation, TrendStrategy)
 
 
 @dataclass(frozen=True)
@@ -27,6 +27,9 @@ MODELS = [
           TrendStrategy()),
     Model("momentum", "Momentum", "Holder de 10 sterkeste siste år (uten siste måned), bytter månedlig.",
           MomentumRotation(), use_halt=False),
+    Model("momentumbrems", "Momentum med brems",
+          "Som Momentum, men selger alt når OSEBX ligger under 200-dagerssnittet.",
+          MomentumWithBrake(), use_halt=False),
     Model("tilbakefall", "Tilbakefall", "Kjøper korte dipper i aksjer i opptrend.",
           MeanReversion()),
     Model("sentiment", "Sentiment", "Trend, men kjøper bare når aksjescore er 60 eller høyere.",

@@ -81,6 +81,12 @@ def main() -> None:
         idx = provider.history({cfg.index_name: cfg.index_ticker}, cutoff).get(cfg.index_name)
         index_close = None if idx is None else idx["close"]
         print(f"[index] {cfg.index_name}: {0 if idx is None else len(idx)} bars")
+        if idx is None:
+            print("[index] WARNING: no index data, the market brake is inactive this run")
+        elif len(idx) >= 200:
+            last, avg = float(idx["close"].iloc[-1]), float(idx["close"].tail(200).mean())
+            print(f"[index] last {last:.1f}, 200-day average {avg:.1f}: "
+                  f"market brake {'ON' if last < avg else 'off'}")
     fx = provider.fx({i.currency for i in instruments.values()}, base)
     print("[fx] " + ", ".join(f"{c}={v:.4f}" for c, v in sorted(fx.items())))
     no_fx = {s for s, i in instruments.items() if i.currency not in fx}
@@ -111,7 +117,7 @@ def main() -> None:
             broker = SimBroker(pf, free if m.cost_free else costs)
             rows = run_engine(pf, bars, instruments, fx, cfg.limits_for(m.key), broker, m.strategy, scores_for(m),
                               start=Date.fromisoformat(args.backtest), use_halt=m.use_halt,
-                              tradable=tradable)
+                              tradable=tradable, market=index_close)
             if not rows:
                 raise SystemExit("No bars in backtest window.")
             st = stats(pd.DataFrame(rows)["equity"], pd.DataFrame(broker.trades))
@@ -140,7 +146,7 @@ def main() -> None:
             try:
                 broker = SimBroker(pf, free if m.cost_free else costs)
                 rows = run_engine(pf, bars, instruments, fx, cfg.limits_for(m.key), broker, m.strategy,
-                                  scores_for(m), use_halt=m.use_halt, tradable=tradable)
+                                  scores_for(m), use_halt=m.use_halt, tradable=tradable, market=index_close)
                 if rows:
                     # portfolio.json is written last: if a step fails the next run redoes the day
                     append_csv(d / "trades.csv", broker.trades)

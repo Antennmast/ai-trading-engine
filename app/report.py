@@ -148,7 +148,7 @@ def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
     (Path(docs_dir) / "data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n")
 
     ranked = sorted(summaries, key=lambda m: -m["return_pct"])
-    lines = ["# Lekepenger: åtte modeller", "",
+    lines = ["# Lekepenger: ni modeller", "",
              f"Siste børsdag behandlet: **{payload['last_date']}** · startkapital "
              f"{starting_cash:,.0f} {base} per modell".replace(",", " "), "",
              "| # | Modell | Verdi | Avkastning | Mot referanse | Største fall | Handler | Kurtasje |",
