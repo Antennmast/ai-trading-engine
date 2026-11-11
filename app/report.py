@@ -43,7 +43,7 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
     """Everything the dashboard needs about one model, read back from its state dir."""
     d = Path(state_dir) / model.key
     curve = pd.read_csv(d / "equity.csv") if (d / "equity.csv").exists() else pd.DataFrame()
-    trades = pd.read_csv(d / "trades.csv") if (d / "trades.csv").exists() else pd.DataFrame()
+    trades = pd.read_csv(d / "trades.csv", dtype={"symbol": str}) if (d / "trades.csv").exists() else pd.DataFrame()
     eq = pf.equity(fx)
     st = stats(curve["equity"], trades) if len(curve) else {
         "max_drawdown_pct": 0.0, "fills": 0, "closed_trades": 0, "win_rate_pct": None, "fees": 0.0}
@@ -70,7 +70,8 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
 
 
 def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
-                  starting_cash: float, base: str, errors: dict[str, str]) -> str:
+                  starting_cash: float, base: str, errors: dict[str, str],
+                  universe: dict | None = None) -> str:
     ref = next((m["return_pct"] for m in summaries if m["benchmark"]), None)
     for m in summaries:
         m["vs_benchmark_pct"] = None if ref is None or m["benchmark"] else round(m["return_pct"] - ref, 3)
@@ -79,6 +80,7 @@ def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
         "updated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M"),
         "last_date": max((m["last_date"] or "" for m in summaries), default=""),
         "starting_cash": starting_cash, "base_currency": base, "models": summaries,
+        "universe": universe or {},
     }
     Path(docs_dir).mkdir(parents=True, exist_ok=True)
     (Path(docs_dir) / "data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n")

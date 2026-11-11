@@ -1,13 +1,16 @@
 # AI Trading Engine — seven play-money models
 
 Seven trading models compete with 100,000 play-money NOK each on Oslo Børs shares.
+The universe is every share in `config/universe.csv` (278 Oslo listings); each run only
+allows new buys in shares with a median daily turnover of at least 1 MNOK over the last
+60 days and a price of at least 1 NOK (`MIN_TURNOVER_NOK`, `MIN_PRICE`).
 A GitHub Actions job advances all of them once per trading day and publishes a dashboard.
 
 Nothing here trades real money, and nothing here is a validated strategy or investment advice.
 
 | Key | Model | Rule |
 |---|---|---|
-| `referanse` | Benchmark | buy and hold every share, equal weight |
+| `referanse` | Benchmark | buy and hold every tradable share, equal weight, no costs |
 | `trend` | Trend | buy uptrends, ATR trailing stop |
 | `momentum` | Momentum rotation | hold the 4 strongest over ~6 months, re-rank monthly |
 | `tilbakefall` | Mean reversion | buy sharp dips in shares that are in an uptrend |
@@ -22,7 +25,7 @@ class with a `signals(ctx)` method in `app/strategy.py`.
 
 ```bash
 pip install -r requirements-dev.txt
-python -m pytest -q                              # 30 tests
+python -m pytest -q
 python -m app.run_daily                          # advance all models one step
 python -m app.run_daily --backtest 2024-01-01    # dry run from a date, state untouched
 ```

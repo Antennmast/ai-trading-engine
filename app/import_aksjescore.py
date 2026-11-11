@@ -16,7 +16,7 @@ import pandas as pd
 
 
 def export_scores(db_path, universe_csv, out_csv, days: int = 400) -> int:
-    uni = pd.read_csv(universe_csv)
+    uni = pd.read_csv(universe_csv, dtype={"symbol": str})
     uni = uni[uni["enabled"].astype(str).str.lower() == "true"]
     by_ticker = dict(zip(uni["yahoo_ticker"], uni["symbol"]))
     con = sqlite3.connect(f"file:{Path(db_path).resolve()}?mode=ro", uri=True)

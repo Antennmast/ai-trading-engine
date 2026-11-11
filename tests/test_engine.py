@@ -241,3 +241,22 @@ def test_score_models_stay_in_cash_without_scores(uptrend):
     broker, _ = run(Portfolio(cash=100_000), {"AAA": uptrend}, strategy=sentiment.strategy,
                     scores=book, start=uptrend.index[0])
     assert broker.trades and broker.trades[0]["date"] == uptrend.index[61].isoformat()
+
+
+def test_liquidity_filter_and_tradable_set(uptrend):
+    from app.data.providers import liquid_symbols
+    thin = uptrend.copy(); thin["volume"] = 10                 # ~1 500 NOK/day
+    penny = uptrend.copy() * 0.005; penny["volume"] = 10_000_000
+    busy = uptrend.copy(); busy["volume"] = 50_000             # ~8 MNOK/day
+    bars = {"THIN": thin, "PENNY": penny, "BUSY": busy, "NEW": busy.tail(20)}
+    ok = liquid_symbols(bars, {})
+    assert ok == {"BUSY"}
+    inst = {s: Instrument(s) for s in bars}
+    pf = Portfolio(cash=100_000)
+    run(pf, bars, inst=inst, start=uptrend.index[0], tradable=ok)
+    assert set(pf.positions) == {"BUSY"}
+    # a position in a symbol that later turns illiquid is still managed and can be sold
+    pf2 = Portfolio(cash=0, last_date=uptrend.index[-2].isoformat(),
+                    positions={"THIN": Position("THIN", 10, 100, "NOK", 1e9, "2025-01-01")})
+    broker, _ = run(pf2, bars, inst=inst, tradable=ok)
+    assert broker.trades[0]["symbol"] == "THIN" and "THIN" not in pf2.positions

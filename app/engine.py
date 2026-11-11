@@ -45,6 +45,7 @@ def run_engine(
     scores: Optional[ScoreBook] = None,
     start: Optional[Date] = None,
     use_halt: bool = True,
+    tradable: Optional[set] = None,     # symbols new buys are allowed in (None = all)
 ) -> list[dict]:
     """Process all bar dates after pf.last_date (or `start`). Returns equity rows."""
     strategy = strategy or TrendStrategy()
@@ -115,7 +116,10 @@ def run_engine(
         queued = {o.symbol for o in pf.pending}
         hist = {s: bars[s].loc[:day] for s in today            # only symbols with a fresh bar
                 if s in instruments and s not in queued}
-        ctx = Context(day, prev_day, hist, pf, scores, len(instruments))
+        if tradable is not None:                # held positions are still managed and sold
+            hist = {s: h for s, h in hist.items() if s in tradable or s in pf.positions}
+        n_universe = len(instruments) if tradable is None else len(tradable)
+        ctx = Context(day, prev_day, hist, pf, scores, n_universe)
         candidates = []
         for sym, sig in strategy.signals(ctx).items():
             if sym not in hist:
@@ -126,7 +130,7 @@ def run_engine(
                                                    reason=sig.reason))
                 elif sig.stop > pf.positions[sym].stop:
                     pf.positions[sym].stop = round(sig.stop, 4)   # stops only move up
-            elif sig.action == "BUY":
+            elif sig.action == "BUY" and (tradable is None or sym in tradable):
                 candidates.append((sig, sym, float(today[sym]["close"])))
 
         if not halted:

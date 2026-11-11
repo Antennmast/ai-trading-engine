@@ -127,7 +127,9 @@ fetch("data.json", { cache: "no-store" }).then(r => r.json()).then(render).catch
 function render(d) {
   const start = d.starting_cash, models = d.models;
   document.getElementById("sub").textContent =
-    `Siste børsdag: ${d.last_date || "–"} · ${nok.format(start)} ${d.base_currency} per modell ved start · oppdatert ${d.updated_utc} UTC`;
+    `Siste børsdag: ${d.last_date || "–"} · ${nok.format(start)} ${d.base_currency} per modell ved start` +
+    (d.universe && d.universe.tradable ? ` · ${d.universe.tradable} omsettelige aksjer av ${d.universe.total} på Oslo Børs` : "") +
+    ` · oppdatert ${d.updated_utc} UTC`;
 
   // ---- legend ----
   const legend = document.getElementById("legend");

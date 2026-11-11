@@ -37,7 +37,7 @@ class ScoreBook:
     @classmethod
     def from_csv(cls, path, max_age_days: int = 5) -> "ScoreBook":
         try:
-            return cls(pd.read_csv(path), max_age_days)
+            return cls(pd.read_csv(path, dtype={"symbol": str}), max_age_days)
         except (FileNotFoundError, pd.errors.EmptyDataError):
             return cls(None, max_age_days)
 

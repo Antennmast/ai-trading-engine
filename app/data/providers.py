@@ -58,21 +58,32 @@ class YahooProvider:
     def __init__(self, period: str = "1y"):
         self.period = period
 
-    def history(self, tickers: dict[str, str], cutoff: Date | None = None) -> dict[str, pd.DataFrame]:
+    def history(self, tickers: dict[str, str], cutoff: Date | None = None,
+                chunk: int = 60) -> dict[str, pd.DataFrame]:
         import yfinance as yf
-        out = {}
-        for symbol, ticker in tickers.items():
+        out: dict[str, pd.DataFrame] = {}
+        items = list(tickers.items())
+        for i in range(0, len(items), chunk):
+            part = items[i:i + chunk]
             try:
                 # auto_adjust=False: raw prices, so stops/fills match what actually traded
-                raw = yf.Ticker(ticker).history(period=self.period, interval="1d", auto_adjust=False)
-                df = clean(raw, cutoff)
-            except Exception as exc:                # one bad ticker must not stop the run
-                print(f"[data] {symbol} ({ticker}) failed: {exc}")
+                raw = yf.download([t for _, t in part], period=self.period, interval="1d",
+                                  auto_adjust=False, group_by="ticker", threads=True,
+                                  progress=False)
+            except Exception as exc:                # one bad batch must not stop the run
+                print(f"[data] batch {i // chunk} failed: {exc}")
                 continue
-            if len(df):
-                out[symbol] = df
-            else:
-                print(f"[data] {symbol} ({ticker}): no bars")
+            for symbol, ticker in part:
+                try:
+                    df = clean(raw[ticker], cutoff)
+                except Exception:
+                    continue
+                if len(df):
+                    out[symbol] = df
+        missing = [s for s in tickers if s not in out]
+        if missing:
+            print(f"[data] no bars for {len(missing)}: {', '.join(missing[:25])}"
+                  + (" ..." if len(missing) > 25 else ""))
         return out
 
     def fx(self, currencies, base="NOK") -> dict[str, float]:
@@ -84,3 +95,21 @@ class YahooProvider:
                 raise RuntimeError(f"No FX rate for {ccy}{base}")
             rates[ccy] = float(px.iloc[-1])
         return rates
+
+
+def liquid_symbols(bars: dict[str, pd.DataFrame], fx_by_symbol: dict[str, float],
+                   min_turnover: float = 1e6, min_price: float = 1.0, window: int = 60,
+                   min_bars: int = 60) -> set[str]:
+    """Symbols whose median daily turnover (base currency) is high enough to trade.
+
+    Uses only the bars passed in, so it is as point-in-time as the data itself.
+    """
+    ok = set()
+    for sym, df in bars.items():
+        if len(df) < min_bars:
+            continue
+        tail = df.tail(window)
+        turnover = float((tail["close"] * tail["volume"]).median()) * fx_by_symbol.get(sym, 1.0)
+        if turnover >= min_turnover and float(tail["close"].iloc[-1]) >= min_price:
+            ok.add(sym)
+    return ok

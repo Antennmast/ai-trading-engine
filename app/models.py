@@ -17,11 +17,12 @@ class Model:
     scores_file: Optional[str] = None
     use_halt: bool = True        # daily loss halt (only meaningful for risk-sized models)
     benchmark: bool = False
+    cost_free: bool = False      # the benchmark stands in for "the market": no fees or slippage
 
 
 MODELS = [
-    Model("referanse", "Referanse", "Kjøp og hold alle aksjene likt vektet.",
-          BuyAndHold(), use_halt=False, benchmark=True),
+    Model("referanse", "Referanse", "Kjøp og hold alle omsettelige aksjer likt vektet, uten kostnader.",
+          BuyAndHold(), use_halt=False, benchmark=True, cost_free=True),
     Model("trend", "Trend", "Kjøper aksjer i opptrend, glidende stop-loss.",
           TrendStrategy()),
     Model("momentum", "Momentum", "Holder de 4 sterkeste siste halvår, bytter månedlig.",
