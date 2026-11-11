@@ -410,59 +410,60 @@ def test_momentum_skips_the_most_recent_month():
     assert set(pf.positions) == {"STEADY"}
 
 
-def test_market_brake_sells_in_a_falling_market_and_reenters_with_a_margin():
+def _brake_setup():
+    n = 330
+    start = date(2025, 1, 1)
+    bars = {s: make_bars([100 * (1 + d) ** k for k in range(n)], start=start)
+            for s, d in {"NO1": 0.0020, "NO2": 0.0018, "SE1": 0.0022, "SE2": 0.0019, "SE3": 0.0001}.items()}
+    inst = {s: Instrument(s, "NOK" if s.startswith("NO") else "SEK") for s in bars}
+    return bars, inst, list(bars["NO1"].index)
+
+
+def test_market_brake_keeps_the_braked_slice_in_cash():
     from app.strategy import MomentumWithBrake
-    n = 420
-    bars, inst = {}, {}
-    for i, drift in enumerate([0.002, 0.0015, 0.001]):
-        bars[f"S{i}"] = make_bars([100 * (1 + drift) ** k for k in range(n)])
-        inst[f"S{i}"] = Instrument(f"S{i}")
-    days = list(bars["S0"].index)
-    # index: rises, then drops well below its 200-day average, then recovers
-    level = [100 + 0.1 * k for k in range(300)] + [130 - 1.0 * k for k in range(40)] + [90 + 1.5 * k for k in range(80)]
-    market = pd.Series(level, index=days)
+    bars, inst, days = _brake_setup()
+    fx = {"NOK": 1.0, "SEK": 1.0}
+    up = pd.Series([100 + 0.1 * k for k in range(len(days))], index=days)
+    falling = pd.Series([100 + 0.1 * k for k in range(280)] + [128 - 2.0 * k for k in range(len(days) - 280)], index=days)
+    strat = MomentumWithBrake(top_n=4)
+    kw = dict(use_halt=False, market={"NOK": up, "SEK": falling})
+    pf = Portfolio(cash=100_000)
+    broker = SimBroker(pf, NO_COST)
+    run_engine(pf, {s: b.iloc[:275] for s, b in bars.items()}, inst, fx, RiskLimits(), broker, strat,
+               start=days[270], **kw)
+    assert set(pf.positions) == {"NO1", "NO2", "SE1", "SE2"}     # both markets above their averages
+    invested_before = pf.positions_value(fx)
+    run_engine(pf, bars, inst, fx, RiskLimits(), broker, strat, **kw)
+    assert set(pf.positions) == {"NO1", "NO2"}                   # Swedish winners sold at the re-rank
+    sells = [t for t in broker.trades if t["side"] == "SELL"]
+    assert {t["symbol"] for t in sells} == {"SE1", "SE2"} and all("market brake" in t["reason"] for t in sells)
+    assert len({t["date"][:7] for t in sells}) == 1              # sold once, at a month shift
+    # the freed money stays in cash: nothing new was bought anywhere
+    assert len([t for t in broker.trades if t["side"] == "BUY"]) == 4
+    assert pf.cash > 0.4 * pf.equity(fx)
+
+
+def test_market_brake_waits_for_a_clear_recovery_and_never_churns():
+    from app.strategy import MomentumWithBrake
+    bars, inst, days = _brake_setup()
+    fx = {"NOK": 1.0, "SEK": 1.0}
+    flat_then_dip = [100.0] * 250 + [99.9] * 30 + [100.5] * 25 + [103.0] * (len(days) - 305)
+    market = pd.Series(flat_then_dip, index=days)                # one index for every market
     strat = MomentumWithBrake(top_n=2)
     pf = Portfolio(cash=100_000)
     broker = SimBroker(pf, NO_COST)
-    run_engine(pf, {s: b.iloc[:300] for s, b in bars.items()}, inst, FX, RiskLimits(), broker, strat,
-               start=days[290], use_halt=False, market=market)
-    assert len(pf.positions) == 2                               # index above its average: invested
-    run_engine(pf, {s: b.iloc[:340] for s, b in bars.items()}, inst, FX, RiskLimits(), broker, strat,
-               use_halt=False, market=market)
-    assert pf.positions == {} and pf.pending == []              # brake on: all cash
-    assert any("market brake" in t["reason"] for t in broker.trades)
-    n_trades = len(broker.trades)
-    run_engine(pf, bars, inst, FX, RiskLimits(), broker, strat, use_halt=False, market=market)
-    assert len(pf.positions) == 2 and len(broker.trades) == n_trades + 2   # back in once, no churn
-    # without index data the model behaves exactly like plain momentum
-    plain = Portfolio(cash=100_000)
-    run_engine(plain, {s: b.iloc[:340] for s, b in bars.items()}, inst, FX, RiskLimits(), SimBroker(plain, NO_COST),
-               strat, start=days[290], use_halt=False, market=None)
-    assert len(plain.positions) == 2
-
-
-def test_market_brake_is_per_home_market():
-    from app.strategy import MomentumWithBrake
-    n = 320
-    bars = {s: make_bars([100 * (1 + d) ** k for k in range(n)])
-            for s, d in {"NO1": 0.002, "NO2": 0.0018, "SE1": 0.0022, "SE2": 0.0019}.items()}
-    inst = {"NO1": Instrument("NO1", "NOK"), "NO2": Instrument("NO2", "NOK"),
-            "SE1": Instrument("SE1", "SEK"), "SE2": Instrument("SE2", "SEK")}
-    fx = {"NOK": 1.0, "SEK": 1.0}
-    days = list(bars["NO1"].index)
-    up = pd.Series([100 + 0.1 * k for k in range(n)], index=days)
-    down_late = pd.Series([100 + 0.1 * k for k in range(300)] + [130 - 2.0 * k for k in range(20)], index=days)
-    strat = MomentumWithBrake(top_n=4)
-    pf = Portfolio(cash=100_000)
-    broker = SimBroker(pf, NO_COST)
-    kw = dict(use_halt=False, market={"NOK": up, "SEK": down_late})
-    run_engine(pf, {s: b.iloc[:300] for s, b in bars.items()}, inst, fx, RiskLimits(), broker, strat,
-               start=days[295], **kw)
-    assert set(pf.positions) == {"NO1", "NO2", "SE1", "SE2"}
+    kw = dict(use_halt=False, market=market)
+    run_engine(pf, {s: b.iloc[:280] for s, b in bars.items()}, inst, fx, RiskLimits(), broker, strat,
+               start=days[262], **kw)
+    assert pf.positions == {} and broker.trades == []            # index just below its average
+    run_engine(pf, {s: b.iloc[:305] for s, b in bars.items()}, inst, fx, RiskLimits(), broker, strat, **kw)
+    assert pf.positions == {} and pf.pending == []               # above, but less than 1 %: still waiting
     run_engine(pf, bars, inst, fx, RiskLimits(), broker, strat, **kw)
-    assert set(pf.positions) == {"NO1", "NO2"}                  # only the Swedish shares were sold
-    sold = {t["symbol"] for t in broker.trades if t["side"] == "SELL"}
-    assert sold == {"SE1", "SE2"} and not [o for o in pf.pending if o.symbol.startswith("SE")]
+    assert len(pf.positions) == 2 and len(broker.trades) == 2    # in once the index is clearly above
+    plain = Portfolio(cash=100_000)                              # no index data: plain momentum
+    run_engine(plain, {s: b.iloc[:280] for s, b in bars.items()}, inst, fx, RiskLimits(),
+               SimBroker(plain, NO_COST), strat, start=days[262], use_halt=False, market=None)
+    assert len(plain.positions) == 2
 
 
 def test_equal_weight_index_from_own_shares(uptrend):

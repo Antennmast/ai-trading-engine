@@ -24,6 +24,14 @@ Ingenting her er investeringsråd.
   [Alpha Architect](https://alphaarchitect.com/risk-of-momentum-crashes/),
   [Swedroe om Daniel og Moskowitz](https://www.etf.com/sections/index-investor-corner/swedroe-downside-momentum)
 
+- **Trendbrems med kontanter er dokumentert.** Faber testet en enkel regel på fem
+  aktivaklasser: hver del av porteføljen er enten investert eller i kontanter, uavhengig av
+  de andre, sjekket én gang i måneden mot 10-månederssnittet. Porteføljen var i snitt rundt
+  70 % investert og hadde klart mindre fall. Regelen er en risikodemper, ikke en kilde til
+  meravkastning, og tallene er før kostnader.
+  [CXO-sammendrag](https://www.cxoadvisory.com/technical-trading/long-term-outperformance-from-trends-defined-by-moving-averages),
+  [gjennomgang av oppsettet](https://the7circles.uk/?p=35413)
+
 **For oss:** regn med klart mindre enn det en tilbakeprøving viser. Aksjescore-testens
 +8 % per år mot lik vekt er et tak, ikke en forventning.
 
@@ -71,7 +79,7 @@ etterlyser. Hullet var at agenten svarte én gang per dag.
 | Momentum brukte siste halvår inkludert siste måned, og bare 4 aksjer | Endret til standarden «12-1» (siste år uten siste måned) og 10 aksjer |
 | Språkmodellen svarte én gang per dag | Spørres 3 ganger, medianen brukes, og stort sprik noteres i dagboken |
 | Ingen statistisk målestokk | t-verdi mot referansen vises etter 60 børsdager |
-| Ingen markedsbrems | Ny modell «Momentum med brems», med én brems per hjemmemarked mot 200-dagerssnittet |
+| Ingen markedsbrems | Ny modell «Momentum med brems»: en vinner holdes ikke når hjemmemarkedets indeks er under 200-dagerssnittet, og den delen står i kontanter |
 | Ingen forhåndsbestemte kriterier | Skrevet inn i `ENDRINGSLOGG.md` |
 
 ## 5. Hull som står åpne

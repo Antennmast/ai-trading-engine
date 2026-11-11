@@ -185,19 +185,21 @@ class MomentumRotation:
 
 @dataclass
 class MomentumWithBrake(MomentumRotation):
-    """Momentum 12-1 with a market brake per home market.
+    """Momentum 12-1 with a market brake per home market, checked at the monthly re-rank.
 
-    Momentum's worst losses have come in falling, turbulent markets. Each share follows
-    the index of its own market (Oslo, Stockholm, Copenhagen, Helsinki). When that index
-    closes below its 200-day average, the model sells its shares from that market and buys
-    nothing new there. The market reopens for buys when the index is 1 % above the average
-    again (the gap avoids trading back and forth around the average).
+    Follows the trend-timing design in Faber (2007): each slice of the portfolio is either
+    invested or in cash, independently, and the check is made once a month. The ten
+    strongest shares are ranked exactly as in MomentumRotation. A winner whose home index
+    (Oslo, Stockholm, Copenhagen, Helsinki) is below its 200-day average is not held: its
+    tenth of the portfolio stays in cash and is NOT moved to other markets, because the
+    purpose of the brake is to carry less risk when markets fall. A market reopens when its
+    index is 1 % above the average (the gap avoids trading back and forth).
     """
     sma: int = 200
     band: float = 0.01
 
     def _state(self, series) -> tuple[bool, bool]:
-        """(braked, open_for_new_buys) for one index series."""
+        """(braked, clearly_above) for one index series."""
         if series is None or len(series) < self.sma:
             return False, True                          # no index data: no brake
         level, avg = float(series.iloc[-1]), float(series.tail(self.sma).mean())
@@ -206,6 +208,10 @@ class MomentumWithBrake(MomentumRotation):
     def signals(self, ctx: Context) -> dict[str, Signal]:
         if ctx.market is None:
             return super().signals(ctx)
+        new_month = ctx.prev_day is not None and ctx.prev_day.month != ctx.day.month
+        empty = not ctx.pf.positions and not ctx.pf.pending
+        if not (new_month or empty):
+            return {}
         ccy = ctx.currency or {}
         per_market = ctx.market if isinstance(ctx.market, dict) else None
 
@@ -213,18 +219,23 @@ class MomentumWithBrake(MomentumRotation):
             series = per_market.get(ccy.get(sym)) if per_market is not None else ctx.market
             return self._state(series)
 
-        held_markets = {ccy.get(s) for s in ctx.pf.positions} | \
-                       {ccy.get(o.symbol) for o in ctx.pf.pending if o.side == "BUY"}
-        out, allowed = {}, {}
-        for sym, h in ctx.hist.items():
-            braked, open_for_buys = state(sym)
-            if braked:
-                if sym in ctx.pf.positions:
-                    out[sym] = Signal("SELL", reason="market brake: home index below 200-day average")
-            elif open_for_buys or ccy.get(sym) in held_markets or sym in ctx.pf.positions:
-                allowed[sym] = h                        # already invested there, or clearly above
-        from dataclasses import replace
-        out.update(super().signals(replace(ctx, hist=allowed)))
+        ret = {s: float(h["close"].iloc[-1 - self.skip] / h["close"].iloc[-1 - self.lookback] - 1)
+               for s, h in ctx.hist.items() if len(h) > self.lookback}
+        winners = sorted(ret, key=ret.get, reverse=True)[: self.top_n]
+        out = {}
+        for s in ctx.pf.positions:
+            if s not in ctx.hist:
+                continue
+            if s not in winners:
+                out[s] = Signal("SELL", reason="dropped out of top ranks")
+            elif state(s)[0]:
+                out[s] = Signal("SELL", reason="market brake: home index below 200-day average")
+        for s in winners:
+            braked, clearly_above = state(s)
+            if s in ctx.pf.positions or braked or not clearly_above:
+                continue                                # this slice stays in cash
+            out[s] = Signal("BUY", weight=0.97 / self.top_n, score=ret[s],
+                            reason=f"top {self.top_n} momentum 12-1 ({ret[s]:+.0%})")
         return out
 
 

@@ -15,7 +15,7 @@ Nothing here trades real money, and nothing here is a validated strategy or inve
 | `referanse` | Benchmark | buy and hold every tradable share, equal weight, no costs |
 | `trend` | Trend | buy uptrends, ATR trailing stop |
 | `momentum` | Momentum rotation | hold the 10 strongest by 12-1 momentum, re-rank monthly |
-| `momentumbrems` | Momentum with market brake | as `momentum`, but sells a market's shares while that market's index is below its 200-day average |
+| `momentumbrems` | Momentum with market brake | as `momentum`, but a winner is not held while its home index is below its 200-day average; that slice stays in cash |
 | `tilbakefall` | Mean reversion | buy sharp dips in shares that are in an uptrend |
 | `sentiment` | Trend + sentiment score | needs rows in `signals/scores.csv`; in cash until then |
 | `sprakmodell` | Trend + LLM score | needs rows in `signals/llm_scores.csv`; in cash until then |

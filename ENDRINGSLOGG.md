@@ -22,10 +22,11 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
 
 - Etter forskningsgjennomgangen (`FORSKNING.md`), før første handel: Momentum endret til
   12-1 med 10 aksjer, og språkmodellen spørres tre ganger per dag med median som score.
-- Niende modell lagt til før første handel: Momentum med brems. Den er lik Momentum, men
-  har én brems per hjemmemarked (Oslo, Stockholm, København, Helsinki). Når et markeds
-  indeks stenger under 200-dagerssnittet, selges aksjene derfra, og det kjøpes ikke nytt
-  der før indeksen er 1 % over snittet igjen. Sammenlignes direkte med Momentum uten brems.
+- Niende modell lagt til før første handel: Momentum med brems. De ti sterkeste aksjene
+  rangeres som i Momentum. En vinner holdes ikke når hjemmemarkedets indeks (OSEBX, OMXS30,
+  OMXC25, OMXH25) er under 200-dagerssnittet. Den tidelen står da i kontanter og flyttes
+  ikke til andre markeder. Sjekkes ved månedlig bytte, og markedet åpnes igjen når indeksen
+  er 1 % over snittet. Oppsettet følger Faber (2007), se `FORSKNING.md`.
 
 ## Kriterier bestemt på forhånd
 
