@@ -154,9 +154,14 @@ class BuyAndHold:
 
 @dataclass
 class MomentumRotation:
-    """Hold the top_n instruments by lookback return; re-rank on the first bar of a month."""
-    lookback: int = 126
-    top_n: int = 4
+    """Hold the top_n instruments by past return; re-rank on the first bar of a month.
+
+    Defaults follow the standard "12-1" definition from the literature: the return over
+    the last 12 months, skipping the most recent month (which tends to reverse).
+    """
+    lookback: int = 252
+    skip: int = 21
+    top_n: int = 10
     intraday = False
 
     def signals(self, ctx: Context) -> dict[str, Signal]:
@@ -164,15 +169,15 @@ class MomentumRotation:
         empty = not ctx.pf.positions and not ctx.pf.pending
         if not (new_month or empty):
             return {}
-        ret = {s: float(h["close"].iloc[-1] / h["close"].iloc[-1 - self.lookback] - 1)
+        ret = {s: float(h["close"].iloc[-1 - self.skip] / h["close"].iloc[-1 - self.lookback] - 1)
                for s, h in ctx.hist.items() if len(h) > self.lookback}
         winners = sorted(ret, key=ret.get, reverse=True)[: self.top_n]
         out = {s: Signal("SELL", reason="dropped out of top ranks")
                for s in ctx.pf.positions if s in ctx.hist and s not in winners}
         for s in winners:
             if s not in ctx.pf.positions:
-                out[s] = Signal("BUY", weight=1.0 / self.top_n, score=ret[s],
-                                reason=f"top {self.top_n} momentum ({ret[s]:+.0%})")
+                out[s] = Signal("BUY", weight=0.97 / self.top_n, score=ret[s],
+                                reason=f"top {self.top_n} momentum 12-1 ({ret[s]:+.0%})")
         return out
 
 

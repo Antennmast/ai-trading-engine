@@ -15,6 +15,7 @@ class LlmSettings:
     enabled: bool = True
     model: str = "claude-haiku-5-5"
     max_candidates: int = 15
+    samples: int = 3
     max_tokens: int = 2000
     usd_per_mtok_input: float = 0.10
     usd_per_mtok_output: float = 0.50
@@ -83,6 +84,7 @@ def load_settings(path="config.yaml", known_models: set[str] | None = None) -> S
             enabled=bool(llm.get("enabled", True)),
             model=str(llm.get("model", "claude-haiku-5-5")),
             max_candidates=int(llm.get("max_candidates", 15)),
+            samples=max(1, min(int(llm.get("samples", 3)), 5)),
             max_tokens=int(llm.get("max_tokens", 2000)),
             usd_per_mtok_input=float(prices.get("input", 0.10)),
             usd_per_mtok_output=float(prices.get("output", 0.50)),

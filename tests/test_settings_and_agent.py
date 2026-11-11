@@ -88,13 +88,14 @@ def test_agent_writes_scores_journal_and_cost_once(tmp_path):
               state_dir=tmp_path / "state", client=client)
     out = run_agent(**kw)
     assert out["status"] == "scored" and out["shares"] == 3
-    assert out["cost_usd"] == pytest.approx(1000 / 1e6 * 0.10 + 200 / 1e6 * 0.50)
+    assert out["cost_usd"] == pytest.approx(3 * (1000 / 1e6 * 0.10 + 200 / 1e6 * 0.50), abs=1e-5)
     sent = client.calls[0]
     assert sent["model"] == "claude-haiku-5-5" and "untrusted" in sent["system"]
     assert ScoreBook.from_csv(tmp_path / "sig" / "llm.csv").get("UP1", asof) == 0.5
     assert "Opp AS" in (tmp_path / "state" / "journal.md").read_text()
     assert len(pd.read_csv(tmp_path / "state" / "llm_usage.csv")) == 1
-    assert run_agent(**kw)["status"] == "already scored" and len(client.calls) == 1
+    assert out["samples"] == 3 and len(client.calls) == 3
+    assert run_agent(**kw)["status"] == "already scored" and len(client.calls) == 3
 
 
 def test_agent_failures_never_stop_the_run(tmp_path, monkeypatch):
@@ -107,3 +108,48 @@ def test_agent_failures_never_stop_the_run(tmp_path, monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     assert run_agent(**kw)["status"] == "no api key"
     assert run_agent(**{**kw, "cfg": LlmSettings(enabled=False)})["status"] == "disabled"
+
+
+class VaryingClient(FakeClient):
+    """Returns a different score for UP1 on every call; fails on the second call."""
+    def create(self, **kw):
+        import json
+        n = len(self.calls)
+        self.calls.append(kw)
+        if n == 1:
+            raise RuntimeError("timeout")
+        score = [0.9, None, -0.1, 0.4, 0.3][n]
+        rows = [{"symbol": "UP1", "score": score, "reason": f"svar {n}"}]
+        if n == 0:
+            rows.append({"symbol": "UP2", "score": 1.0, "reason": "bare ett svar"})
+        return SimpleNamespace(content=[SimpleNamespace(text=json.dumps(rows))],
+                               usage=SimpleNamespace(input_tokens=10, output_tokens=10))
+
+
+def test_agent_uses_the_median_of_several_answers(tmp_path):
+    bars, asof = _setup()
+    out = run_agent(bars=bars, tradable={"UP1", "UP2"}, held=set(), names={}, tickers={}, asof=asof,
+                    cfg=LlmSettings(samples=5), scores_csv=tmp_path / "llm.csv",
+                    state_dir=tmp_path / "s", client=VaryingClient())
+    assert out["status"] == "scored" and out["samples"] == 4          # one call failed
+    book = ScoreBook.from_csv(tmp_path / "llm.csv")
+    assert book.get("UP1", asof) == 0.3                               # median of 0.9, -0.1, 0.4, 0.3
+    assert book.get("UP2", asof) is None                              # scored in only 1 of 4 answers
+    assert "sprik 1.00 mellom 4 svar" in (tmp_path / "s" / "journal.md").read_text()
+
+
+def test_t_stat_needs_60_days_and_detects_a_real_edge():
+    from app.report import excess_t_stat
+    import numpy as np
+    rng = np.random.default_rng(1)
+    days = [f"d{i:03d}" for i in range(121)]
+    b = 100_000 * np.cumprod(1 + rng.normal(0.0003, 0.01, 121))
+    good = 100_000 * np.cumprod(1 + np.diff(np.log(b), prepend=np.log(b[0])) + 0.004)
+    bench = {"benchmark": True, "curve": [[d, v] for d, v in zip(days, b)]}
+    model = {"benchmark": False, "curve": [[d, v] for d, v in zip(days, good)]}
+    assert excess_t_stat({**model, "curve": model["curve"][:30]}, bench) == (29, None)
+    n, t = excess_t_stat(model, bench)
+    assert n == 120 and t > 5
+    same = {"benchmark": False, "curve": bench["curve"]}
+    assert excess_t_stat(same, bench) == (120, None)                  # zero variance: undefined
+    assert excess_t_stat(bench, bench)[1] is None

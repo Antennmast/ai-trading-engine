@@ -25,7 +25,7 @@ MODELS = [
           BuyAndHold(), use_halt=False, benchmark=True, cost_free=True),
     Model("trend", "Trend", "Kjøper aksjer i opptrend, glidende stop-loss.",
           TrendStrategy()),
-    Model("momentum", "Momentum", "Holder de 4 sterkeste siste halvår, bytter månedlig.",
+    Model("momentum", "Momentum", "Holder de 10 sterkeste siste år (uten siste måned), bytter månedlig.",
           MomentumRotation(), use_halt=False),
     Model("tilbakefall", "Tilbakefall", "Kjøper korte dipper i aksjer i opptrend.",
           MeanReversion()),

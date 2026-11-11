@@ -20,6 +20,20 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
 - De første ordrene ble lagt på dagtid 11. november og bokført til åpningskursen samme
   dag. Beslutningene brukte bare sluttkursene fra 10. november.
 
+- Etter forskningsgjennomgangen (`FORSKNING.md`), før første handel: Momentum endret til
+  12-1 med 10 aksjer, og språkmodellen spørres tre ganger per dag med median som score.
+
+## Kriterier bestemt på forhånd
+
+En modell regnes som bedre enn referansen først når alle tre er oppfylt:
+
+1. minst 120 børsdager i testen
+2. høyere avkastning enn referansen etter kostnader
+3. t-verdi mot referansen over 2
+
+Største fall skal ikke være mer enn dobbelt så stort som referansens. OSEBX vises som
+målestokk for alternativet indeksfond.
+
 ## Planlagte vurderingspunkter
 
 - Etter 3 måneder: første gjennomgang. Ingen regelendringer, bare observasjon.

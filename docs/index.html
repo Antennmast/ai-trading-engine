@@ -185,7 +185,10 @@ function showDetail(m, d) {
     stat("Kontanter", nok.format(m.cash)),
     stat("Avsluttede handler", String(m.closed_trades)),
     stat("Andel med gevinst", m.win_rate_pct == null ? "–" : dec.format(m.win_rate_pct) + " %"),
-    stat("Mottatt utbytte", nok.format(m.dividends || 0))));
+    stat("Mottatt utbytte", nok.format(m.dividends || 0)),
+    stat("Børsdager i testen", String(m.days || 0)),
+    stat("t-verdi mot referanse", m.benchmark ? "–" : m.t_vs_benchmark == null ? "for tidlig" : dec.format(m.t_vs_benchmark))));
+  box.append(el("p", { class: "empty", text: "t-verdi over 2 eller under −2 betyr at forskjellen mot referansen neppe er tilfeldig. Den vises etter 60 børsdager." }));
 
   if (m.journal) {
     box.append(el("h3", { text: "Dagbok " + m.journal.date }));

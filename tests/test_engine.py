@@ -196,7 +196,7 @@ def test_buy_and_hold_buys_everything_once():
 def test_momentum_holds_the_strongest_and_rotates_monthly():
     bars, inst = _many()
     pf = Portfolio(cash=100_000)
-    broker, _ = run(pf, bars, inst=inst, strategy=MomentumRotation(lookback=60, top_n=2),
+    broker, _ = run(pf, bars, inst=inst, strategy=MomentumRotation(lookback=60, skip=5, top_n=2),
                     start=date(2025, 1, 1), use_halt=False)
     assert set(pf.positions) == {"S4", "S5"}         # highest drift
     assert len({t["date"] for t in broker.trades}) == 1   # ranks never change -> no churn
@@ -283,7 +283,7 @@ def test_benchmark_includes_expensive_shares_with_fractions():
     assert max(values) / min(values) < 1.01
     # whole-share models are unchanged: momentum cannot buy a share it cannot afford one of
     pf2 = Portfolio(cash=30_000)
-    run(pf2, bars, inst=inst, strategy=MomentumRotation(lookback=2, top_n=2), start=cheap.index[0], use_halt=False)
+    run(pf2, bars, inst=inst, strategy=MomentumRotation(lookback=2, skip=0, top_n=2), start=cheap.index[0], use_halt=False)
     assert "PRICEY" not in pf2.positions and all(float(p.qty).is_integer() for p in pf2.positions.values())
 
 
@@ -397,3 +397,14 @@ def test_position_is_closed_when_its_share_stops_trading():
     broker, _ = run(pf, {"LIVE": live.iloc[:8], "DEAD": dead}, inst=inst,
                     strategy=MomentumRotation(lookback=500), use_halt=False)
     assert "DEAD" in pf.positions and broker.trades == []
+
+
+def test_momentum_skips_the_most_recent_month():
+    steady = make_bars([100 * 1.002 ** k for k in range(300)])
+    # weak for a year, then a spike in the last month: 12-1 momentum must ignore the spike
+    spike = make_bars([100 * 0.9995 ** k for k in range(280)] + [100 * 1.03 ** k for k in range(20)])
+    bars = {"STEADY": steady, "SPIKE": spike}
+    inst = {s_: Instrument(s_) for s_ in bars}
+    pf = Portfolio(cash=100_000)
+    run(pf, bars, inst=inst, strategy=MomentumRotation(top_n=1), start=steady.index[-3], use_halt=False)
+    assert set(pf.positions) == {"STEADY"}

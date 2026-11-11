@@ -141,15 +141,28 @@ def run_agent(*, bars, tradable, held, names, tickers, asof: Date, cfg, scores_c
     payload = [{"symbol": s, "name": names.get(s, s), "held": s in held,
                 **features(total_return_view(bars[s])), "headlines": news.get(s, [])} for s in picks]
     user = f"Date: {asof.isoformat()}\nShares:\n{json.dumps(payload, ensure_ascii=False)}"
-    try:
-        reply = client.messages.create(model=cfg.model, max_tokens=cfg.max_tokens, system=SYSTEM,
-                                       messages=[{"role": "user", "content": user}])
-        text = "".join(getattr(b, "text", "") for b in reply.content)
-        rows = parse_scores(text, set(picks))
-        tin, tout = int(reply.usage.input_tokens), int(reply.usage.output_tokens)
-    except Exception as exc:                           # the other models must still run
-        print(f"[llm] failed: {type(exc).__name__}: {exc}")
-        return {"status": f"error: {type(exc).__name__}"}
+    # LLM answers vary from run to run, so ask several times and use the median score.
+    answers, tin, tout, last_error = [], 0, 0, None
+    for _ in range(cfg.samples):
+        try:
+            reply = client.messages.create(model=cfg.model, max_tokens=cfg.max_tokens, system=SYSTEM,
+                                           messages=[{"role": "user", "content": user}])
+            tin += int(reply.usage.input_tokens)
+            tout += int(reply.usage.output_tokens)
+            text = "".join(getattr(b, "text", "") for b in reply.content)
+            answers.append({r["symbol"]: r for r in parse_scores(text, set(picks))})
+        except Exception as exc:                       # the other models must still run
+            last_error = exc
+            print(f"[llm] sample failed: {type(exc).__name__}: {exc}")
+    if not answers:
+        return {"status": f"error: {type(last_error).__name__}"}
+    rows = []
+    for sym in picks:
+        got = sorted((a[sym] for a in answers if sym in a), key=lambda r: r["score"])
+        if len(got) * 2 <= len(answers):               # scored in a minority of answers: skip
+            continue
+        mid = got[(len(got) - 1) // 2]
+        rows.append({**mid, "spread": round(got[-1]["score"] - got[0]["score"], 3), "n": len(got)})
 
     cost = tin / 1e6 * cfg.usd_per_mtok_input + tout / 1e6 * cfg.usd_per_mtok_output
     _append(state_dir / "llm_usage.csv", ["date", "model", "shares", "input_tokens", "output_tokens", "cost_usd"],
@@ -159,10 +172,11 @@ def run_agent(*, bars, tradable, held, names, tickers, asof: Date, cfg, scores_c
                 [[r["symbol"], asof.isoformat(), r["score"]] for r in rows])
         lines = [f"\n## {asof.isoformat()}\n"]
         for r in sorted(rows, key=lambda r: -r["score"]):
-            lines.append(f"- **{r['symbol']}** ({names.get(r['symbol'], '')}) {r['score']:+.2f}: {r['reason']}")
+            unsure = f" (sprik {r['spread']:.2f} mellom {r['n']} svar)" if r.get("spread", 0) >= 0.3 else ""
+            lines.append(f"- **{r['symbol']}** ({names.get(r['symbol'], '')}) {r['score']:+.2f}{unsure}: {r['reason']}")
         journal = state_dir / "journal.md"
         head = "" if journal.exists() else "# Dagbok – språkmodellen\n"
         with journal.open("a") as fh:
             fh.write(head + "\n".join(lines) + "\n")
-    return {"status": "scored", "shares": len(rows), "input_tokens": tin, "output_tokens": tout,
+    return {"status": "scored", "shares": len(rows), "samples": len(answers), "input_tokens": tin, "output_tokens": tout,
             "cost_usd": round(cost, 5)}

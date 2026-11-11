@@ -14,7 +14,7 @@ Nothing here trades real money, and nothing here is a validated strategy or inve
 |---|---|---|
 | `referanse` | Benchmark | buy and hold every tradable share, equal weight, no costs |
 | `trend` | Trend | buy uptrends, ATR trailing stop |
-| `momentum` | Momentum rotation | hold the 4 strongest over ~6 months, re-rank monthly |
+| `momentum` | Momentum rotation | hold the 10 strongest by 12-1 momentum, re-rank monthly |
 | `tilbakefall` | Mean reversion | buy sharp dips in shares that are in an uptrend |
 | `sentiment` | Trend + sentiment score | needs rows in `signals/scores.csv`; in cash until then |
 | `sprakmodell` | Trend + LLM score | needs rows in `signals/llm_scores.csv`; in cash until then |
@@ -82,7 +82,7 @@ only to something stricter; a looser value stops the run with an error.
 - **`sprakmodell`** reads `signals/llm_scores.csv`, written by `app/llm_agent.py`. With the
   `ANTHROPIC_API_KEY` secret set, the agent sends the day's trend candidates (price
   statistics, plus news headlines when aksjescore is available) to the model in
-  `config.yaml`, once per trading day. It logs its reasons in
+  `config.yaml`, three times per trading day, and uses the median score. It logs its reasons in
   `state/sprakmodell/journal.md` and tokens and cost in `state/sprakmodell/llm_usage.csv`.
 
 A score can veto a buy or force an exit; it can never change position size or bypass a
@@ -101,6 +101,7 @@ risk rule. Without the secrets both models simply stay in cash.
 - OSEBX on the dashboard is a Norwegian total-return index; the models also hold other
   Nordic shares and ignore dividends, so it is a yardstick, not a like-for-like benchmark.
 - Daily bars only. Fills assume the full quantity trades at the open (or close).
+- The research behind the design choices is summarised in `FORSKNING.md`.
 - Rules are frozen during the test; changes are recorded in `ENDRINGSLOGG.md`.
 - With eight models, the best one after a few months may simply have been lucky.
 

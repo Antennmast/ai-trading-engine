@@ -41,6 +41,7 @@ llm:
   enabled: true
   model: claude-haiku-5-5
   max_candidates: 15           # shares sent to the model per day
+  samples: 3                   # independent answers per day; the median score is used
   max_tokens: 4000
   usd_per_mtok:                # used only for the cost column; update if prices change
     input: 0.10

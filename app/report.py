@@ -108,13 +108,35 @@ def index_curve(index: tuple | None, summaries: list[dict]) -> dict | None:
     return {"name": name, "return_pct": curve[-1][1], "curve": curve}
 
 
+MIN_DAYS_FOR_T = 60
+
+
+def excess_t_stat(model: dict, bench: dict | None) -> tuple[int, float | None]:
+    """Trading days observed, and the t-statistic of daily return minus the benchmark's.
+
+    |t| above about 2 means the difference is unlikely to be luck. With eight models, one
+    will pass that bar by chance fairly often, so it is a minimum, not proof.
+    """
+    curve = pd.Series({d: v for d, v in model["curve"]}, dtype=float)
+    days = max(len(curve) - 1, 0)
+    if bench is None or model["benchmark"] or days < MIN_DAYS_FOR_T:
+        return days, None
+    ref = pd.Series({d: v for d, v in bench["curve"]}, dtype=float)
+    diff = (curve.pct_change() - ref.pct_change()).dropna()
+    if len(diff) < MIN_DAYS_FOR_T or float(diff.std()) == 0:
+        return days, None
+    return days, round(float(diff.mean() / (diff.std() / len(diff) ** 0.5)), 2)
+
+
 def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
                   starting_cash: float, base: str, errors: dict[str, str],
                   universe: dict | None = None, index: tuple | None = None) -> str:
     ref = next((m["return_pct"] for m in summaries if m["benchmark"]), None)
+    bench = next((m for m in summaries if m["benchmark"]), None)
     for m in summaries:
         m["vs_benchmark_pct"] = None if ref is None or m["benchmark"] else round(m["return_pct"] - ref, 3)
         m["error"] = errors.get(m["key"])
+        m["days"], m["t_vs_benchmark"] = excess_t_stat(m, bench)
     payload = {
         "updated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M"),
         "last_date": max((m["last_date"] or "" for m in summaries), default=""),
