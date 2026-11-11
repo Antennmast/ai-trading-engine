@@ -1,4 +1,4 @@
-# Lekepenger: åtte modeller
+# Lekepenger: ni modeller
 
 Siste børsdag behandlet: **2026-11-10** · startkapital 100 000 NOK per modell
 
@@ -7,11 +7,12 @@ Siste børsdag behandlet: **2026-11-10** · startkapital 100 000 NOK per modell
 | 1 | Referanse | 100 000 | +0.00 % | – | 0.00 % | 0 | 0 |
 | 2 | Trend | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
 | 3 | Momentum | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 4 | Tilbakefall | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 5 | Sentiment | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 6 | Språkmodell | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 7 | Score topp 10 | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 8 | Dagshandel | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 4 | Momentum med brems | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 5 | Tilbakefall | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 6 | Sentiment | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 7 | Språkmodell | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 8 | Score topp 10 | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 9 | Dagshandel | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
 
 OSEBX (indeks, med utbytte) i samme periode: **+0.00 %**
 
@@ -34,6 +35,14 @@ Ordre til neste åpning: kjøp 240 NKR, kjøp 140 ELUX-B.ST, kjøp 53 AMBU-B.CO,
 ## Momentum
 
 Holder de 10 sterkeste siste år (uten siste måned), bytter månedlig.
+
+Ingen posisjoner.
+
+Ordre til neste åpning: kjøp 624 HUNT, kjøp 12 OET, kjøp 267 NSKOG, kjøp 23 FRO, kjøp 64 HSHP, kjøp 60 WAWI, kjøp 165 ZAP, kjøp 56 HAUTO, kjøp 61 CMBTO, kjøp 214 OKEA
+
+## Momentum med brems
+
+Som Momentum, men selger alt når OSEBX ligger under 200-dagerssnittet.
 
 Ingen posisjoner.
 
