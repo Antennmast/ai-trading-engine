@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lekepenger: sju modeller</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f4f3f0; --surface: #fcfcfb; --line: #e3e1db; --grid: #ebe9e4;
+  --text: #0b0b0b; --text2: #52514e; --muted: #85837c;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300;
+  --bench: #77756f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #111110; --surface: #1a1a19; --line: #2e2d2b; --grid: #262524;
+    --text: #f0efec; --text2: #c3c2b7; --muted: #8d8b84;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300;
+    --bench: #a3a199;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 20px 14px 48px; }
+h1 { font-size: 22px; margin: 0 0 2px; letter-spacing: -0.01em; }
+h2 { font-size: 15px; margin: 0 0 10px; }
+.sub { color: var(--text2); margin: 0 0 16px; font-size: 13.5px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px; margin-bottom: 14px; }
+.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0 0 8px; padding: 0; list-style: none;
+  font-size: 13px; color: var(--text2); }
+.legend li { display: flex; align-items: center; gap: 6px; }
+.key { width: 16px; height: 0; border-top: 2px solid; flex: none; }
+.key.dash { border-top-style: dashed; }
+.chartwrap { position: relative; }
+svg { display: block; width: 100%; height: auto; touch-action: pan-y; }
+svg text { fill: var(--muted); font-size: 11px; }
+.tip { position: absolute; top: 4px; pointer-events: none; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 12.5px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / .12); min-width: 170px; display: none; }
+.tip b { display: block; margin-bottom: 4px; }
+.tip div { display: flex; align-items: center; gap: 6px; color: var(--text2); }
+.tip div span:last-child { margin-left: auto; color: var(--text); font-variant-numeric: tabular-nums; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th { text-align: left; font-weight: 500; color: var(--muted); font-size: 12px; padding: 4px 6px; }
+td { padding: 7px 6px; border-top: 1px solid var(--line); }
+td:first-child { white-space: nowrap; }
+.scroll { overflow-x: auto; }
+tr.model { cursor: pointer; }
+tr.model:focus-visible { outline: 2px solid var(--s1); outline-offset: -2px; }
+.name { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.blurb { color: var(--text2); font-size: 13px; margin: 0 0 10px; }
+.tag { font-size: 11.5px; color: var(--text2); border: 1px solid var(--line); border-radius: 99px;
+  padding: 1px 8px; font-weight: 500; white-space: nowrap; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.stats div { font-size: 12px; color: var(--muted); }
+.stats strong { display: block; font-size: 17px; color: var(--text); font-variant-numeric: tabular-nums; }
+h3 { font-size: 12px; color: var(--muted); font-weight: 500; margin: 14px 0 4px; text-transform: uppercase; letter-spacing: .04em; }
+.empty { color: var(--muted); font-size: 13px; margin: 0; }
+.err { color: var(--text); border-left: 3px solid #e34948; padding-left: 8px; font-size: 13px; }
+footer { color: var(--muted); font-size: 12px; margin-top: 18px; }
+select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--text); max-width: 100%; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Lekepenger: sju modeller</h1>
+  <p class="sub" id="sub">Laster …</p>
+
+  <section class="card">
+    <h2>Avkastning siden start</h2>
+    <ul class="legend" id="legend"></ul>
+    <div class="chartwrap">
+      <svg id="chart" viewBox="0 0 720 320" role="img" aria-label="Avkastning i prosent siden start for hver modell. Tallene står i tabellen under."></svg>
+      <div class="tip" id="tip"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Rangering</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>#</th><th>Modell</th><th class="num">Verdi</th><th class="num">Avkastning</th>
+          <th class="num">Mot referanse</th><th class="num">Største fall</th><th class="num">Handler</th><th class="num">Kurtasje</th></tr></thead>
+        <tbody id="rank"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="detail">
+    <h2><label for="pick">Detaljer</label></h2>
+    <select id="pick"></select>
+    <div id="detailBody" style="margin-top:12px"></div>
+  </section>
+
+  <footer>Simulerte handler med lekepenger på forsinkede dagskurser. Utbytte er ikke med. Ingenting her er investeringsråd.</footer>
+</main>
+
+<script>
+const COLORS = { trend: "--s1", momentum: "--s2", tilbakefall: "--s3", sentiment: "--s4", sprakmodell: "--s5", dagshandel: "--s6" };
+const nok = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
+const dec = new Intl.NumberFormat("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const pct = v => v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + dec.format(Math.abs(v)) + " %";
+const colorOf = m => m.benchmark ? "var(--bench)" : `var(${COLORS[m.key] || "--bench"})`;
+const el = (tag, props = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) k === "class" ? n.className = v : k === "text" ? n.textContent = v : n.setAttribute(k, v);
+  kids.forEach(k => n.append(k));
+  return n;
+};
+const svg = (tag, attrs = {}) => {
+  const n = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  return n;
+};
+const key = m => el("span", { class: "key" + (m.benchmark ? " dash" : ""), style: `border-color:${colorOf(m)}` });
+
+fetch("data.json", { cache: "no-store" }).then(r => r.json()).then(render).catch(() => {
+  document.getElementById("sub").textContent = "Ingen data ennå. Første kjøring har ikke gått.";
+});
+
+function render(d) {
+  const start = d.starting_cash, models = d.models;
+  document.getElementById("sub").textContent =
+    `Siste børsdag: ${d.last_date || "–"} · ${nok.format(start)} ${d.base_currency} per modell ved start · oppdatert ${d.updated_utc} UTC`;
+
+  // ---- legend ----
+  const legend = document.getElementById("legend");
+  models.forEach(m => legend.append(el("li", {}, key(m), el("span", { text: m.name }))));
+
+  drawChart(models, start);
+
+  // ---- ranking ----
+  const rank = document.getElementById("rank");
+  [...models].sort((a, b) => b.return_pct - a.return_pct).forEach((m, i) => {
+    const tr = el("tr", { class: "model", tabindex: "0" },
+      el("td", { class: "num", text: String(i + 1) }),
+      el("td", {}, el("span", { class: "name" }, key(m), el("span", { text: m.name }))),
+      el("td", { class: "num", text: nok.format(m.equity) }),
+      el("td", { class: "num", text: pct(m.return_pct) }),
+      el("td", { class: "num", text: pct(m.vs_benchmark_pct) }),
+      el("td", { class: "num", text: pct(m.max_drawdown_pct) }),
+      el("td", { class: "num", text: String(m.fills) }),
+      el("td", { class: "num", text: nok.format(m.fees) }));
+    const go = () => { pick.value = m.key; showDetail(m, d); document.getElementById("detail").scrollIntoView({ behavior: "smooth" }); };
+    tr.addEventListener("click", go);
+    tr.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
+    rank.append(tr);
+  });
+
+  // ---- detail picker ----
+  const pick = document.getElementById("pick");
+  models.forEach(m => pick.append(el("option", { value: m.key, text: m.name })));
+  pick.addEventListener("change", () => showDetail(models.find(m => m.key === pick.value), d));
+  showDetail(models[0], d);
+}
+
+function showDetail(m, d) {
+  const box = document.getElementById("detailBody");
+  box.replaceChildren();
+  box.append(el("p", { class: "blurb", text: m.blurb }));
+  if (m.error) box.append(el("p", { class: "err", text: "Feil ved siste kjøring: " + m.error }));
+  const stat = (label, value) => el("div", {}, el("strong", { text: value }), document.createTextNode(label));
+  box.append(el("div", { class: "stats" },
+    stat("Verdi", nok.format(m.equity) + " " + d.base_currency),
+    stat("Kontanter", nok.format(m.cash)),
+    stat("Avsluttede handler", String(m.closed_trades)),
+    stat("Andel med gevinst", m.win_rate_pct == null ? "–" : dec.format(m.win_rate_pct) + " %")));
+
+  box.append(el("h3", { text: "Posisjoner" }));
+  if (m.positions.length) {
+    box.append(table(["Aksje", "Antall", "Snitt", "Sist", "Stop", "+/−"],
+      m.positions.map(p => [p.symbol, p.qty, dec.format(p.avg), dec.format(p.last), p.stop ? dec.format(p.stop) : "–", pct(p.pnl_pct)])));
+  } else box.append(el("p", { class: "empty", text: "Ingen posisjoner." }));
+
+  box.append(el("h3", { text: "Ordre til neste åpning" }));
+  if (m.pending.length) {
+    box.append(table(["Ordre", "Antall", "Begrunnelse"],
+      m.pending.map(o => [(o.side === "BUY" ? "Kjøp " : "Selg ") + o.symbol, o.qty, o.reason]), [1]));
+  } else box.append(el("p", { class: "empty", text: "Ingen." }));
+
+  box.append(el("h3", { text: "Siste handler" }));
+  if (m.last_fills.length) {
+    box.append(table(["Dato", "Handel", "Antall", "Kurs", "Resultat"],
+      m.last_fills.map(t => [t.date, (t.side === "BUY" ? "Kjøp " : "Salg ") + t.symbol, t.qty, dec.format(t.price),
+        t.side === "SELL" ? nok.format(t.pnl) : "–"]), [2, 3, 4]));
+  } else box.append(el("p", { class: "empty", text: "Ingen handler ennå." }));
+}
+
+function table(heads, rows, numCols) {
+  numCols = numCols || heads.map((_, i) => i).slice(1);
+  const t = el("table");
+  t.append(el("thead", {}, el("tr", {}, ...heads.map((h, i) => el("th", { class: numCols.includes(i) ? "num" : "", text: h })))));
+  const tb = el("tbody");
+  rows.forEach(r => tb.append(el("tr", {}, ...r.map((c, i) => el("td", { class: numCols.includes(i) ? "num" : "", text: String(c) })))));
+  t.append(tb);
+  return el("div", { class: "scroll" }, t);
+}
+
+function drawChart(models, start) {
+  const root = document.getElementById("chart"), tip = document.getElementById("tip");
+  const W = Math.max(root.clientWidth || 720, 280), H = Math.round(Math.max(240, Math.min(360, W * 0.55))), L = 46, R = 14, T = 12, B = 26;
+  root.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const dates = [...new Set(models.flatMap(m => m.curve.map(c => c[0])))].sort();
+  if (dates.length < 1) { root.append(svg("text", { x: W / 2, y: H / 2, "text-anchor": "middle" })).textContent = "Ingen kurshistorikk ennå"; return; }
+  const series = models.map(m => {
+    const map = new Map(m.curve.map(c => [c[0], (c[1] / start - 1) * 100]));
+    return { m, vals: dates.map(dt => map.has(dt) ? map.get(dt) : null) };
+  });
+  const all = series.flatMap(s => s.vals.filter(v => v != null)).concat([0]);
+  let lo = Math.min(...all), hi = Math.max(...all);
+  const pad = Math.max((hi - lo) * 0.08, 0.5); lo -= pad; hi += pad;
+  const x = i => dates.length === 1 ? (L + W - R) / 2 : L + i * (W - L - R) / (dates.length - 1);
+  const y = v => T + (hi - v) * (H - T - B) / (hi - lo);
+
+  // grid + y labels (one axis: percent return since start)
+  const step = [0.5, 1, 2, 5, 10, 20, 50].find(s => (hi - lo) / s <= 6) || 100;
+  for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) {
+    root.append(svg("line", { x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: Math.abs(v) < 1e-9 ? "var(--muted)" : "var(--grid)", "stroke-width": 1 }));
+    const t = svg("text", { x: L - 6, y: y(v) + 4, "text-anchor": "end" });
+    t.textContent = (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(+v.toFixed(1)) + " %"; root.append(t);
+  }
+  [0, Math.floor((dates.length - 1) / 2), dates.length - 1].filter((v, i, a) => a.indexOf(v) === i).forEach((i, k, a) => {
+    const t = svg("text", { x: x(i), y: H - 8, "text-anchor": k === 0 ? "start" : k === a.length - 1 ? "end" : "middle" });
+    t.textContent = dates[i]; root.append(t);
+  });
+
+  // lines: benchmark first (dashed, underneath), then models in fixed color order
+  [...series].sort((a, b) => b.m.benchmark - a.m.benchmark).forEach(s => {
+    let dPath = "", pen = false;
+    s.vals.forEach((v, i) => { if (v == null) { pen = false; return; } dPath += (pen ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1); pen = true; });
+    root.append(svg("path", { d: dPath, fill: "none", stroke: colorOf(s.m), "stroke-width": 2,
+      "stroke-linejoin": "round", "stroke-linecap": "round", ...(s.m.benchmark ? { "stroke-dasharray": "5 4" } : {}) }));
+    if (dates.length === 1 && s.vals[0] != null)
+      root.append(svg("circle", { cx: x(0), cy: y(s.vals[0]), r: 4, fill: colorOf(s.m), stroke: "var(--surface)", "stroke-width": 2 }));
+  });
+
+  // crosshair + one tooltip listing every series
+  const hair = svg("line", { y1: T, y2: H - B, stroke: "var(--muted)", "stroke-width": 1, visibility: "hidden" });
+  root.append(hair);
+  const move = e => {
+    const box = root.getBoundingClientRect();
+    const px = (e.clientX - box.left) * W / box.width;
+    const i = Math.max(0, Math.min(dates.length - 1, Math.round((px - L) / ((W - L - R) / Math.max(dates.length - 1, 1)))));
+    hair.setAttribute("x1", x(i)); hair.setAttribute("x2", x(i)); hair.setAttribute("visibility", "visible");
+    tip.replaceChildren(el("b", { text: dates[i] }));
+    [...series].filter(s => s.vals[i] != null).sort((a, b) => b.vals[i] - a.vals[i]).forEach(s =>
+      tip.append(el("div", {}, key(s.m), el("span", { text: s.m.name }), el("span", { text: pct(s.vals[i]) }))));
+    tip.style.display = "block";
+    const left = x(i) / W * box.width;
+    tip.style.left = (left > box.width / 2 ? Math.max(0, left - tip.offsetWidth - 10) : Math.min(box.width - tip.offsetWidth, left + 10)) + "px";
+  };
+  root.addEventListener("pointermove", move);
+  root.addEventListener("pointerdown", move);
+  root.addEventListener("pointerleave", () => { tip.style.display = "none"; hair.setAttribute("visibility", "hidden"); });
+}
+</script>
+</body>
+</html>

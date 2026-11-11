@@ -1,0 +1,5 @@
+symbol,currency,primary_exchange,market,enabled
+EQNR,NOK,VERIFY_IN_TWS,Norway,false
+VOLV B,SEK,VERIFY_IN_TWS,Sweden,false
+NOVO B,DKK,VERIFY_IN_TWS,Denmark,false
+NDA FI,EUR,VERIFY_IN_TWS,Finland,false

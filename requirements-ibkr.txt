@@ -1,0 +1,3 @@
+# Only needed for app.main (IBKR Paper Trading connector), not for the simulated run.
+# PyPI only carries an old ibapi; prefer the package shipped with IBKR's TWS API download.
+ibapi>=9.81.1

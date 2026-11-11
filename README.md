@@ -1,0 +1,205 @@
+# AI Trading Engine — seven play-money models
+
+Seven trading models compete with 100,000 play-money NOK each on Oslo Børs shares.
+A GitHub Actions job advances all of them once per trading day and publishes a dashboard.
+
+Nothing here trades real money, and nothing here is a validated strategy or investment advice.
+
+| Key | Model | Rule |
+|---|---|---|
+| `referanse` | Benchmark | buy and hold every share, equal weight |
+| `trend` | Trend | buy uptrends, ATR trailing stop |
+| `momentum` | Momentum rotation | hold the 4 strongest over ~6 months, re-rank monthly |
+| `tilbakefall` | Mean reversion | buy sharp dips in shares that are in an uptrend |
+| `sentiment` | Trend + sentiment score | needs rows in `signals/scores.csv`; in cash until then |
+| `sprakmodell` | Trend + LLM score | needs rows in `signals/llm_scores.csv`; in cash until then |
+| `dagshandel` | Day trading | buy at the open, sell everything at the same close |
+
+Models are defined in `app/models.py`; adding one is a new entry there plus a strategy
+class with a `signals(ctx)` method in `app/strategy.py`.
+
+## Run it
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest -q                              # 30 tests
+python -m app.run_daily                          # advance all models one step
+python -m app.run_daily --backtest 2024-01-01    # dry run from a date, state untouched
+```
+
+For every new *completed* daily bar, each model:
+
+1. fills orders queued on the previous bar at the open (slippage + commission applied)
+2. triggers stops against the day's low (a gap through the stop fills at the open)
+3. marks to market and records equity
+4. produces signals and queues orders for the next open
+
+Decisions are made on the close and filled at the next open, so there is no look-ahead.
+A date is processed once per model; running the job twice does nothing the second time.
+All models see the same prices and pay the same costs, so their results are comparable.
+
+| Path | Role |
+|---|---|
+| `app/engine.py` | daily loop (shared by live run and backtest) |
+| `app/models.py` | the seven models |
+| `app/strategy.py` | strategy rules and `ScoreBook` (external AI scores) |
+| `app/risk.py` | position sizing, open-risk cap, max positions, daily loss halt |
+| `app/sim_broker.py` | fills, commission, slippage, cash accounting |
+| `app/data/providers.py` | Yahoo (yfinance) and CSV price data |
+| `config/universe.csv` | instruments; `enabled=true` rows are traded |
+| `state/<model>/` | `portfolio.json`, `trades.csv`, `equity.csv` |
+| `state/REPORT.md` | combined report |
+| `docs/` | dashboard (GitHub Pages): `index.html` reads `data.json` |
+
+## Schedule
+
+`.github/workflows/paper-trade.yml` runs the tests and then the daily step every weekday
+at 16:45 UTC (after the Oslo close in both summer and winter time) and commits `state/`
+and `docs/data.json`. Scheduled runs can start late, and GitHub pauses schedules in
+repositories with no activity for 60 days; the engine catches up on missed days.
+
+## Where the AI goes
+
+A sentiment model or an LLM only has to append `symbol,date,score` rows (score -1..1) to
+its CSV in `signals/` before the daily step runs. A score can veto a buy or force an
+exit; it can never change position size or bypass a risk limit. See `signals/README.md`.
+
+## Known limitations
+
+- Yahoo data is unofficial, delayed and occasionally wrong or unavailable.
+- Raw (unadjusted) prices: dividends are not credited, splits are not handled. This
+  understates the benchmark and every model that holds shares for long.
+- Cash is NOK only; non-NOK rows in the universe are disabled.
+- Daily bars only. Fills assume the full quantity trades at the open (or close).
+- With seven models, the best one after a few months may simply have been lucky.
+
+---
+
+# Part B — IBKR Paper Trading connector (optional, runs on your own machine)
+
+A deliberately conservative first implementation for connecting Python to an IBKR
+Paper Trading session. It reads account summary, qualifies one stock contract and
+can request historical bars. It does **not** run an autonomous strategy and does
+not submit orders unless the explicit test-order command is used.
+
+## V1 decisions
+
+- Capital reference: NOK 100,000
+- Universe: Nordic equities (Norway, Sweden, Denmark, Finland)
+- Style: swing trading, with intraday monitoring
+- Long-only; no leverage; no short selling
+- Paper Trading only
+- Initial risk settings are in `.env.example`; they are not validated performance claims.
+
+## 1. Requirements
+
+- Python 3.11+
+- IBKR account with Paper Trading enabled
+- IB Gateway or Trader Workstation logged into the **Paper Trading** account
+- TWS API socket access enabled
+- Market-data permissions appropriate for the instruments you request
+
+Install:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt -r requirements-ibkr.txt
+cp .env.example .env
+```
+
+Use the API package version supported by the installed TWS / IB Gateway version.
+If `ibapi` is not available from PyPI in your environment, install the Python API
+package from the official IBKR TWS API download.
+
+## 2. IBKR setup
+
+For IB Gateway Paper Trading, the common default socket port is `4002`.
+For TWS Paper Trading, the common default is `7497`.
+
+In TWS/IB Gateway:
+1. Log in to Paper Trading.
+2. Enable socket/API clients.
+3. Confirm the socket port matches `.env`.
+4. Keep API access restricted to localhost.
+5. Do not expose the API socket to the public internet.
+
+The program additionally refuses to start unless `IBKR_PAPER_ONLY=true` and the
+configured port is one of the standard paper ports (4002 or 7497). This is a
+guardrail, not proof of account type; verify the Paper Trading login in the GUI.
+
+## 3. First connection test
+
+```bash
+python -m app.main --account
+```
+
+This connects, prints account summary values, and disconnects.
+
+Test a contract and retrieve historical daily bars:
+
+```bash
+python -m app.main --history --symbol EQNR --currency NOK --primary-exchange OSE
+```
+
+The example symbol/exchange is a starting point only. Contract availability,
+routing and market-data permissions must be confirmed in IBKR Contract Details.
+For other Nordic listings, set the correct symbol, currency and primary exchange
+after verifying the exact listing in TWS.
+
+## 4. Explicit paper test order
+
+Order submission is disabled by default. To submit a small limit order to the
+Paper Trading account, explicitly set:
+
+```dotenv
+ALLOW_PAPER_TEST_ORDERS=true
+```
+
+Then run with an instrument you have verified and a deliberately conservative
+limit price / quantity:
+
+```bash
+python -m app.main --paper-limit-order \
+  --symbol EQNR --currency NOK --primary-exchange OSE \
+  --quantity 1 --limit-price 1.00
+```
+
+The example price is intentionally unlikely to execute; it demonstrates order
+submission and status callbacks. Never use this command against a live session.
+The application checks the paper-only port and paper-only flag but cannot
+independently prove which account is logged into the GUI.
+
+## 5. Nordic contract mapping
+
+Use `SMART` for routing and specify `primaryExchange` to disambiguate the listing.
+Confirm the exact IBKR exchange code in Contract Details before adding a symbol.
+Do not assume the venue code from the local exchange brand name.
+
+Suggested configuration fields:
+- Norway: currency NOK; verify primary exchange code in IBKR
+- Sweden: currency SEK; verify primary exchange code in IBKR
+- Denmark: currency DKK; verify primary exchange code in IBKR
+- Finland: currency EUR; verify primary exchange code in IBKR
+
+Maintain a curated instrument master with `symbol`, `currency`, `primary_exchange`,
+`con_id`, `min_tick`, `lot_size`, `trading_hours`, and `eligible=true/false`.
+Prefer `con_id` after qualification to avoid ambiguous contracts.
+
+## 6. Market data and OSE caveat
+
+IBKR market data availability depends on account permissions and subscriptions.
+IBKR currently documents OSE API streaming data as 15-minute delayed. Confirm
+the live/delayed status returned by IBKR before designing intraday execution
+around Norwegian equities. Do not treat delayed quotes as live execution prices.
+
+## 7. What is deliberately not implemented yet
+
+- Live trading
+- Routing the simulator's orders to IBKR (the simulator in Part A keeps its own book)
+- Automatic universe discovery
+- Stop / bracket orders at IBKR, reconnect orchestration, order reconciliation
+- Production-grade monitoring
+
+These must be added and tested in later milestones. Do not deploy this scaffold
+as an unattended live trading system.
