@@ -230,3 +230,32 @@ class OpenToClose:
         picks = sorted(cands, key=cands.get, reverse=True)[: self.top_n]
         w = 0.95 / self.top_n
         return {s: Signal("BUY", weight=w, score=cands[s], reason="day trade: uptrend") for s in picks}
+
+
+@dataclass
+class ScoreRotation:
+    """Hold the top_n instruments by external score; re-rank on the first bar of a month.
+
+    This mirrors the strategy aksjescore's own backtest evaluates (top-ranked shares,
+    equal weight, periodic rebalance), with fewer positions to suit a small account.
+    """
+    top_n: int = 10
+    intraday = False
+
+    def signals(self, ctx: Context) -> dict[str, Signal]:
+        new_month = ctx.prev_day is not None and ctx.prev_day.month != ctx.day.month
+        empty = not ctx.pf.positions and not ctx.pf.pending
+        if not (new_month or empty):
+            return {}
+        scored = {s: ctx.scores.get(s, ctx.day) for s in ctx.hist}
+        scored = {s: v for s, v in scored.items() if v is not None}
+        if len(scored) < self.top_n:            # no fresh scores: do nothing rather than guess
+            return {}
+        winners = sorted(scored, key=scored.get, reverse=True)[: self.top_n]
+        out = {s: Signal("SELL", reason="dropped out of top scores")
+               for s in ctx.pf.positions if s in ctx.hist and s not in winners}
+        for s in winners:
+            if s not in ctx.pf.positions:
+                out[s] = Signal("BUY", weight=0.97 / self.top_n, score=scored[s],
+                                reason=f"top {self.top_n} score ({50 + 50 * scored[s]:.0f})")
+        return out

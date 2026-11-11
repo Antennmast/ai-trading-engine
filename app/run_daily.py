@@ -68,6 +68,9 @@ def main() -> None:
     bars = provider.history(tickers, cutoff)
     print(f"[data] {len(bars)}/{len(tickers)} instruments, "
           f"latest bar {max(df.index[-1] for df in bars.values()) if bars else 'n/a'}")
+    n_div = sum(int((df["dividends"] > 0).sum()) for df in bars.values())
+    n_split = sum(int((df["splits"] > 0).sum()) for df in bars.values())
+    print(f"[data] history contains {n_div} dividend dates and {n_split} splits")
     if len(bars) < max(1, len(tickers) // 2):
         raise SystemExit("Price data missing for most instruments; state left untouched.")
     index_close = None

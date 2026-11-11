@@ -29,10 +29,11 @@ def stats(equity: pd.Series, trades: pd.DataFrame | None = None) -> dict:
     out["max_drawdown_pct"] = float((equity / equity.cummax() - 1).min() * 100)
     out["fills"] = out["closed_trades"] = 0
     out["win_rate_pct"] = None
-    out["fees"] = 0.0
+    out["fees"] = out["dividends"] = 0.0
     if trades is not None and len(trades):
         sells = trades[trades["side"] == "SELL"]
-        out["fills"] = int(len(trades))
+        out["fills"] = int((trades["side"] != "DIV").sum())
+        out["dividends"] = float(trades.loc[trades["side"] == "DIV", "pnl"].sum())
         out["closed_trades"] = int(len(sells))
         out["win_rate_pct"] = float((sells["pnl"] > 0).mean() * 100) if len(sells) else None
         out["fees"] = float(trades["fee"].sum())
@@ -46,7 +47,8 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
     trades = pd.read_csv(d / "trades.csv", dtype={"symbol": str}) if (d / "trades.csv").exists() else pd.DataFrame()
     eq = pf.equity(fx)
     st = stats(curve["equity"], trades) if len(curve) else {
-        "max_drawdown_pct": 0.0, "fills": 0, "closed_trades": 0, "win_rate_pct": None, "fees": 0.0}
+        "max_drawdown_pct": 0.0, "fills": 0, "closed_trades": 0, "win_rate_pct": None, "fees": 0.0,
+        "dividends": 0.0}
     return {
         "key": model.key, "name": model.name, "blurb": model.blurb, "benchmark": model.benchmark,
         "last_date": pf.last_date,
@@ -55,7 +57,7 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
         "max_drawdown_pct": round(st["max_drawdown_pct"], 3),
         "fills": st["fills"], "closed_trades": st["closed_trades"],
         "win_rate_pct": None if st["win_rate_pct"] is None else round(st["win_rate_pct"], 1),
-        "fees": round(st["fees"], 2),
+        "fees": round(st["fees"], 2), "dividends": round(st["dividends"], 2),
         "positions": [
             {"symbol": s, "qty": round(p.qty, 2), "avg": round(p.avg_price, 2),
              "last": round(pf.last_prices.get(s, p.avg_price), 2), "stop": round(p.stop, 2),
@@ -124,7 +126,7 @@ def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
     (Path(docs_dir) / "data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n")
 
     ranked = sorted(summaries, key=lambda m: -m["return_pct"])
-    lines = ["# Lekepenger: sju modeller", "",
+    lines = ["# Lekepenger: åtte modeller", "",
              f"Siste børsdag behandlet: **{payload['last_date']}** · startkapital "
              f"{starting_cash:,.0f} {base} per modell".replace(",", " "), "",
              "| # | Modell | Verdi | Avkastning | Mot referanse | Største fall | Handler | Kurtasje |",

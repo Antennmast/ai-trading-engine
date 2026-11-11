@@ -1,6 +1,6 @@
-# AI Trading Engine — seven play-money models
+# AI Trading Engine — eight play-money models
 
-Seven trading models compete with 100,000 play-money NOK each on Nordic shares.
+Eight trading models compete with 100,000 play-money NOK each on Nordic shares.
 The universe is every share in `config/universe.csv` (278 Oslo listings plus about 80
 large companies in Stockholm, Copenhagen and Helsinki); each run only
 allows new buys in shares with a median daily turnover of at least 1 MNOK over the last
@@ -18,6 +18,7 @@ Nothing here trades real money, and nothing here is a validated strategy or inve
 | `tilbakefall` | Mean reversion | buy sharp dips in shares that are in an uptrend |
 | `sentiment` | Trend + sentiment score | needs rows in `signals/scores.csv`; in cash until then |
 | `sprakmodell` | Trend + LLM score | needs rows in `signals/llm_scores.csv`; in cash until then |
+| `scoretopp` | Score rotation | hold the 10 shares with the highest aksjescore, re-rank monthly |
 | `dagshandel` | Day trading | buy at the open, sell everything at the same close |
 
 Models are defined in `app/models.py`; adding one is a new entry there plus a strategy
@@ -34,6 +35,7 @@ python -m app.run_daily --backtest 2024-01-01    # dry run from a date, state un
 
 For every new *completed* daily bar, each model:
 
+0. applies splits and credits dividends for shares held since before the ex-date
 1. fills orders queued on the previous bar at the open (slippage + commission applied)
 2. triggers stops against the day's low (a gap through the stop fills at the open)
 3. marks to market and records equity
@@ -88,14 +90,16 @@ risk rule. Without the secrets both models simply stay in cash.
 ## Known limitations
 
 - Yahoo data is unofficial, delayed and occasionally wrong or unavailable.
-- Raw (unadjusted) prices: dividends are not credited, splits are not handled. This
-  understates the benchmark and every model that holds shares for long.
+- Dividends are credited on the ex-date without withholding tax, and Yahoo's dividend
+  amounts are occasionally in another currency than the share. Splits adjust quantity,
+  average price and stop. Mergers, delistings, rights issues and spin-offs are not handled.
 - Cash is NOK only. Foreign shares are converted at the day's FX rate, so currency moves
   are part of each model's result. aksjescore only covers Oslo, so `sentiment` only buys there.
 - OSEBX on the dashboard is a Norwegian total-return index; the models also hold other
   Nordic shares and ignore dividends, so it is a yardstick, not a like-for-like benchmark.
 - Daily bars only. Fills assume the full quantity trades at the open (or close).
-- With seven models, the best one after a few months may simply have been lucky.
+- Rules are frozen during the test; changes are recorded in `ENDRINGSLOGG.md`.
+- With eight models, the best one after a few months may simply have been lucky.
 
 ---
 

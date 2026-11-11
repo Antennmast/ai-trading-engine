@@ -21,13 +21,35 @@ def last_completed_bar_date(now: datetime | None = None) -> Date:
 
 
 def clean(df: pd.DataFrame, cutoff: Date | None = None) -> pd.DataFrame:
-    df = df.rename(columns=str.lower)[COLUMNS].dropna(subset=["open", "high", "low", "close"])
+    """OHLCV plus `dividends` (cash per share on the ex-date) and `splits` (ratio, 0 = none)."""
+    df = df.rename(columns=lambda c: str(c).lower().replace("stock splits", "splits"))
+    for extra in ("dividends", "splits"):
+        if extra not in df.columns:
+            df[extra] = 0.0
+    df = df[COLUMNS + ["dividends", "splits"]].dropna(subset=["open", "high", "low", "close"])
+    df[["dividends", "splits"]] = df[["dividends", "splits"]].fillna(0.0)
     df.index = pd.to_datetime(df.index).date
     df = df[~pd.Index(df.index).duplicated(keep="last")].sort_index()
     df = df[(df[["open", "high", "low", "close"]] > 0).all(axis=1)]
     if cutoff:
         df = df[[d <= cutoff for d in df.index]]
     return df
+
+
+def total_return_view(bars: pd.DataFrame) -> pd.DataFrame:
+    """Prices adjusted for dividends, anchored so the LAST bar equals the traded price.
+
+    Signals are computed on this view so an ex-dividend drop is not mistaken for a loss
+    or a broken trend. Fills always use the raw prices.
+    """
+    if "dividends" not in bars.columns or not (bars["dividends"] > 0).any():
+        return bars
+    step = 1.0 - (bars["dividends"] / bars["close"].shift(1)).fillna(0.0).clip(upper=0.9)
+    factor = step[::-1].cumprod()[::-1].shift(-1).fillna(1.0)   # product of later ex-dates
+    out = bars.copy()
+    for col in ("open", "high", "low", "close"):
+        out[col] = bars[col] * factor
+    return out
 
 
 class CsvProvider:
@@ -68,8 +90,8 @@ class YahooProvider:
             try:
                 # auto_adjust=False: raw prices, so stops/fills match what actually traded
                 raw = yf.download([t for _, t in part], period=self.period, interval="1d",
-                                  auto_adjust=False, group_by="ticker", threads=True,
-                                  progress=False)
+                                  auto_adjust=False, actions=True, group_by="ticker",
+                                  threads=True, progress=False)
             except Exception as exc:                # one bad batch must not stop the run
                 print(f"[data] batch {i // chunk} failed: {exc}")
                 continue

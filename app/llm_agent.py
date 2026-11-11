@@ -16,6 +16,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from app.data.providers import total_return_view
 from app.strategy import TrendStrategy
 
 SYSTEM = """You are the analyst in a play-money trading experiment on Oslo Børs shares.
@@ -54,7 +55,7 @@ def pick_candidates(bars, tradable, held, asof: Date, max_n: int) -> list[str]:
         df = bars.get(sym)
         if df is None or df.index[-1] != asof or sym in held:
             continue
-        sig = trend.decide(df, None)
+        sig = trend.decide(total_return_view(df), None)
         if sig.action == "BUY":
             ranked.append((sig.score, sym))
     picks = [s for s in held if s in bars]
@@ -138,7 +139,7 @@ def run_agent(*, bars, tradable, held, names, tickers, asof: Date, cfg, scores_c
 
     news = recent_headlines(news_db, tickers, asof)
     payload = [{"symbol": s, "name": names.get(s, s), "held": s in held,
-                **features(bars[s]), "headlines": news.get(s, [])} for s in picks]
+                **features(total_return_view(bars[s])), "headlines": news.get(s, [])} for s in picks]
     user = f"Date: {asof.isoformat()}\nShares:\n{json.dumps(payload, ensure_ascii=False)}"
     try:
         reply = client.messages.create(model=cfg.model, max_tokens=cfg.max_tokens, system=SYSTEM,

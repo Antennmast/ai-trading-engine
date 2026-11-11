@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lekepenger: sju modeller</title>
+<title>Lekepenger: åtte modeller</title>
 <style>
 :root {
   color-scheme: light;
   --page: #f4f3f0; --surface: #fcfcfb; --line: #e3e1db; --grid: #ebe9e4;
   --text: #0b0b0b; --text2: #52514e; --muted: #85837c;
-  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6;
   --bench: #77756f; --index: #0b0b0b;
 }
 @media (prefers-color-scheme: dark) {
@@ -17,7 +17,7 @@
     color-scheme: dark;
     --page: #111110; --surface: #1a1a19; --line: #2e2d2b; --grid: #262524;
     --text: #f0efec; --text2: #c3c2b7; --muted: #8d8b84;
-    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9;
     --bench: #a3a199; --index: #f0efec;
   }
 }
@@ -70,7 +70,7 @@ select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid 
 </head>
 <body>
 <main>
-  <h1>Lekepenger: sju modeller</h1>
+  <h1>Lekepenger: åtte modeller</h1>
   <p class="sub" id="sub">Laster …</p>
 
   <section class="card">
@@ -99,11 +99,11 @@ select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid 
     <div id="detailBody" style="margin-top:12px"></div>
   </section>
 
-  <footer>Simulerte handler med lekepenger på forsinkede dagskurser. Utbytte er ikke med. Ingenting her er investeringsråd.</footer>
+  <footer>Simulerte handler med lekepenger på forsinkede dagskurser. Utbytte krediteres uten kildeskatt. Ingenting her er investeringsråd.</footer>
 </main>
 
 <script>
-const COLORS = { trend: "--s1", momentum: "--s2", tilbakefall: "--s3", sentiment: "--s4", sprakmodell: "--s5", dagshandel: "--s6" };
+const COLORS = { trend: "--s1", momentum: "--s2", tilbakefall: "--s3", sentiment: "--s4", sprakmodell: "--s5", dagshandel: "--s6", scoretopp: "--s7" };
 const nok = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
 const dec = new Intl.NumberFormat("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const pct = v => v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + dec.format(Math.abs(v)) + " %";
@@ -184,7 +184,8 @@ function showDetail(m, d) {
     stat("Verdi", nok.format(m.equity) + " " + d.base_currency),
     stat("Kontanter", nok.format(m.cash)),
     stat("Avsluttede handler", String(m.closed_trades)),
-    stat("Andel med gevinst", m.win_rate_pct == null ? "–" : dec.format(m.win_rate_pct) + " %")));
+    stat("Andel med gevinst", m.win_rate_pct == null ? "–" : dec.format(m.win_rate_pct) + " %"),
+    stat("Mottatt utbytte", nok.format(m.dividends || 0))));
 
   if (m.journal) {
     box.append(el("h3", { text: "Dagbok " + m.journal.date }));
@@ -210,8 +211,8 @@ function showDetail(m, d) {
   box.append(el("h3", { text: "Siste handler" }));
   if (m.last_fills.length) {
     box.append(table(["Dato", "Handel", "Antall", "Kurs", "Resultat"],
-      m.last_fills.map(t => [t.date, (t.side === "BUY" ? "Kjøp " : "Salg ") + t.symbol, t.qty, dec.format(t.price),
-        t.side === "SELL" ? nok.format(t.pnl) : "–"]), [2, 3, 4]));
+      m.last_fills.map(t => [t.date, (t.side === "BUY" ? "Kjøp " : t.side === "DIV" ? "Utbytte " : "Salg ") + t.symbol,
+        t.qty, dec.format(t.price), t.side === "BUY" ? "–" : nok.format(t.pnl)]), [2, 3, 4]));
   } else box.append(el("p", { class: "empty", text: "Ingen handler ennå." }));
 }
 

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from app.strategy import (BuyAndHold, MeanReversion, MomentumRotation, OpenToClose,
-                          TrendStrategy)
+                          ScoreRotation, TrendStrategy)
 
 
 @dataclass(frozen=True)
@@ -33,6 +33,8 @@ MODELS = [
           TrendStrategy(require_score=True), scores_file="signals/scores.csv"),
     Model("sprakmodell", "Språkmodell", "Trend, men en språkmodell (Claude Haiku) avgjør hvilke aksjer som kjøpes. Skriver dagbok.",
           TrendStrategy(require_score=True), scores_file="signals/llm_scores.csv"),
+    Model("scoretopp", "Score topp 10", "Holder de 10 aksjene med høyest aksjescore, bytter månedlig.",
+          ScoreRotation(), scores_file="signals/scores.csv", use_halt=False),
     Model("dagshandel", "Dagshandel", "Kjøper på åpning, selger alt på sluttkurs samme dag.",
           OpenToClose(), use_halt=False),
 ]

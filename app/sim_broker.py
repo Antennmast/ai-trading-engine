@@ -66,6 +66,37 @@ class SimBroker:
         self._log(date, symbol, "SELL", pos.qty, px, pos.currency, fx, fee, pnl, reason)
         return pos.qty
 
+    def dividend(self, symbol, per_share, fx, date) -> float:
+        """Credit a cash dividend on the ex-date and lower the stop by the same amount."""
+        pos = self.pf.positions.get(symbol)
+        if not pos or per_share <= 0:
+            return 0.0
+        amount = pos.qty * per_share * fx
+        self.pf.cash += amount
+        if pos.stop > 0:
+            pos.stop = round(max(pos.stop - per_share, 0.0001), 4)
+        self._log(date, symbol, "DIV", pos.qty, per_share, pos.currency, fx, 0.0, amount, "dividend")
+        return amount
+
+    def split(self, symbol, ratio) -> None:
+        """A ratio-for-1 split: more shares at a proportionally lower price (value unchanged)."""
+        if ratio <= 0 or ratio == 1:
+            return
+        pos = self.pf.positions.get(symbol)
+        if pos:
+            whole = float(pos.qty).is_integer()
+            pos.qty = pos.qty * ratio
+            if whole and float(pos.qty).is_integer():
+                pos.qty = int(pos.qty)
+            pos.avg_price /= ratio
+            pos.stop = round(pos.stop / ratio, 4)
+        if symbol in self.pf.last_prices:
+            self.pf.last_prices[symbol] /= ratio
+        for o in self.pf.pending:
+            if o.symbol == symbol:
+                o.qty = o.qty * ratio if not float(o.qty).is_integer() else int(o.qty * ratio)
+                o.stop = round(o.stop / ratio, 4)
+
     def _log(self, date, symbol, side, qty, px, ccy, fx, fee, pnl, reason):
         self.trades.append({
             "date": date, "symbol": symbol, "side": side, "qty": qty,

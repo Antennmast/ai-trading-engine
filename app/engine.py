@@ -1,6 +1,7 @@
 """Daily bar engine. The same code path is used for the scheduled run and backtests.
 
 For each new completed bar date D:
+  0. apply splits and credit dividends for shares held since before the ex-date
   1. fill orders queued on the previous bar at D's open (sells first)
   2. trigger stops against D's low (gap-down fills at the open)
   3. mark to market at D's close, record equity
@@ -16,6 +17,7 @@ from typing import Optional
 
 import pandas as pd
 
+from app.data.providers import total_return_view
 from app.portfolio import PendingOrder, Portfolio
 from app.risk import RiskLimits, daily_loss_breached, size_position
 from app.sim_broker import SimBroker
@@ -68,6 +70,16 @@ def run_engine(
         iso = day.isoformat()
         today = {s: df.loc[day] for s, df in bars.items() if day in df.index}
 
+        # 0. corporate actions on this date, before anything trades -----------
+        for sym, bar in today.items():
+            ratio = float(bar.get("splits", 0) or 0)
+            if ratio > 0 and ratio != 1:
+                broker.split(sym, ratio)
+            div = float(bar.get("dividends", 0) or 0)
+            # a 'dividend' above half the share price is treated as bad data and ignored
+            if 0 < div < 0.5 * float(bar["close"]) and sym in pf.positions:   # held before ex-date
+                broker.dividend(sym, div, fx[pf.positions[sym].currency], iso)
+
         # 1. fill queued orders at the open --------------------------------
         still_pending: list[PendingOrder] = []
         for o in sorted(pf.pending, key=lambda o: o.side != "SELL"):
@@ -118,6 +130,7 @@ def run_engine(
                 if s in instruments and s not in queued}
         if tradable is not None:                # held positions are still managed and sold
             hist = {s: h for s, h in hist.items() if s in tradable or s in pf.positions}
+        hist = {s: total_return_view(h) for s, h in hist.items()}   # dividend-adjusted signals
         n_universe = len(instruments) if tradable is None else len(tradable)
         ctx = Context(day, prev_day, hist, pf, scores, n_universe)
         candidates = []

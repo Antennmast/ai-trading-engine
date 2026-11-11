@@ -179,7 +179,7 @@ def _many(n=6, days=200, drift=None):
 
 def test_model_keys_are_unique_and_one_benchmark():
     keys = [m.key for m in MODELS]
-    assert len(keys) == len(set(keys)) == 7
+    assert len(keys) == len(set(keys)) == 8
     assert sum(m.benchmark for m in MODELS) == 1
 
 
@@ -285,3 +285,79 @@ def test_benchmark_includes_expensive_shares_with_fractions():
     pf2 = Portfolio(cash=30_000)
     run(pf2, bars, inst=inst, strategy=MomentumRotation(lookback=2, top_n=2), start=cheap.index[0], use_halt=False)
     assert "PRICEY" not in pf2.positions and all(float(p.qty).is_integer() for p in pf2.positions.values())
+
+
+# ---- dividends, splits, score rotation --------------------------------------
+def _with_actions(closes, div=None, split=None, **kw):
+    bars = make_bars(closes, **kw)
+    bars["dividends"] = 0.0; bars["splits"] = 0.0
+    for i, v in (div or {}).items():
+        bars.iloc[i, bars.columns.get_loc("dividends")] = v
+    for i, v in (split or {}).items():
+        bars.iloc[i, bars.columns.get_loc("splits")] = v
+    return bars
+
+
+def test_dividend_is_credited_and_does_not_trigger_the_stop():
+    # 100 -> ex-dividend 5 -> opens and trades at 95; the stop was 96
+    bars = _with_actions([100, 95, 95], div={1: 5.0}, opens=[None, 95, None], lows=[None, 94.5, None])
+    pf = Portfolio(cash=0, last_date=bars.index[0].isoformat(), last_equity=1000,
+                   positions={"AAA": Position("AAA", 10, 100, "NOK", 96, "2024-12-31")})
+    broker, rows = run(pf, {"AAA": bars}, strategy=BuyAndHold(), use_halt=False)
+    assert "AAA" in pf.positions                       # not stopped out by the ex-dividend drop
+    assert pf.cash == 50 and pf.positions["AAA"].stop == 91
+    assert rows[0]["equity"] == 1000                   # 950 in shares + 50 in cash: no fake loss
+    assert broker.trades[0]["side"] == "DIV" and broker.trades[0]["pnl"] == 50
+
+
+def test_dividend_not_paid_to_shares_bought_on_the_ex_date_and_bad_data_ignored():
+    bars = _with_actions([100, 95, 95], div={1: 5.0})
+    pf = Portfolio(cash=10_000, last_date=bars.index[0].isoformat(),
+                   pending=[PendingOrder("AAA", "BUY", 10, bars.index[0].isoformat(), 0)])
+    broker, _ = run(pf, {"AAA": bars}, strategy=BuyAndHold(), use_halt=False)
+    assert [t["side"] for t in broker.trades if t["symbol"] == "AAA"][0] == "BUY"
+    assert not [t for t in broker.trades if t["side"] == "DIV"]
+    crazy = _with_actions([100, 100], div={1: 80.0})
+    pf = Portfolio(cash=0, last_date=crazy.index[0].isoformat(),
+                   positions={"AAA": Position("AAA", 10, 100, "NOK", 0, "2024-12-31")})
+    run(pf, {"AAA": crazy}, strategy=BuyAndHold(), use_halt=False)
+    assert pf.cash == 0
+
+
+def test_split_keeps_value_and_rescales_stop_and_pending():
+    bars = _with_actions([10, 10, 10], split={1: 10.0})        # history is already split-adjusted
+    pf = Portfolio(cash=0, last_date=bars.index[0].isoformat(), last_prices={"AAA": 100.0},
+                   positions={"AAA": Position("AAA", 5, 100, "NOK", 90, "2024-12-31")},
+                   pending=[PendingOrder("BBB", "BUY", 3, bars.index[0].isoformat(), 80)])
+    broker, rows = run(pf, {"AAA": bars}, strategy=BuyAndHold(), use_halt=False,
+                       inst={"AAA": Instrument("AAA"), "BBB": Instrument("BBB")})
+    pos = pf.positions["AAA"]
+    assert (pos.qty, pos.avg_price, pos.stop) == (50, 10, 9) and rows[0]["equity"] == 500
+    assert not [t for t in broker.trades if t["reason"] == "stop hit"]
+    b = SimBroker(Portfolio(cash=0, pending=[PendingOrder("X", "BUY", 3, "2025-01-01", 80)]), NO_COST)
+    b.split("X", 4)
+    assert (b.pf.pending[0].qty, b.pf.pending[0].stop) == (12, 20)
+
+
+def test_total_return_view_removes_the_ex_dividend_drop():
+    from app.data.providers import total_return_view
+    bars = _with_actions([100, 100, 95, 95], div={2: 5.0})
+    view = total_return_view(bars)
+    assert list(view["close"].round(4)) == [95, 95, 95, 95]     # flat total return
+    assert view["close"].iloc[-1] == bars["close"].iloc[-1]     # anchored at the traded price
+    assert total_return_view(make_bars([1, 2, 3])) is not None  # no dividend columns: unchanged
+
+
+def test_score_rotation_holds_top_scores_and_waits_without_scores():
+    from app.strategy import ScoreRotation
+    bars, inst = _many(n=6, days=30)
+    day = bars["S0"].index[10].isoformat()
+    book = ScoreBook(pd.DataFrame({"symbol": [f"S{i}" for i in range(6)], "date": [day] * 6,
+                                   "score": [0.1, 0.9, -0.2, 0.8, 0.3, 0.7]}))
+    pf = Portfolio(cash=100_000)
+    run(pf, bars, inst=inst, strategy=ScoreRotation(top_n=3), scores=book,
+        start=bars["S0"].index[10], use_halt=False)
+    assert set(pf.positions) == {"S1", "S3", "S5"} and pf.cash >= 0
+    pf = Portfolio(cash=100_000)
+    broker, _ = run(pf, bars, inst=inst, strategy=ScoreRotation(top_n=3), start=bars["S0"].index[0], use_halt=False)
+    assert broker.trades == [] and pf.pending == []
