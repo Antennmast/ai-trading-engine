@@ -99,7 +99,7 @@ class YahooProvider:
 
 def liquid_symbols(bars: dict[str, pd.DataFrame], fx_by_symbol: dict[str, float],
                    min_turnover: float = 1e6, min_price: float = 1.0, window: int = 60,
-                   min_bars: int = 60) -> set[str]:
+                   min_bars: int = 60, max_daily_move: float = 0.5, move_window: int = 252) -> set[str]:
     """Symbols whose median daily turnover (base currency) is high enough to trade.
 
     Uses only the bars passed in, so it is as point-in-time as the data itself.
@@ -107,6 +107,11 @@ def liquid_symbols(bars: dict[str, pd.DataFrame], fx_by_symbol: dict[str, float]
     ok = set()
     for sym, df in bars.items():
         if len(df) < min_bars:
+            continue
+        # A one-day move beyond +/-50 % is almost always a corporate action (capital
+        # distribution, unadjusted split) or a bad tick; price-based signals are meaningless.
+        jumps = df["close"].tail(move_window + 1).pct_change().abs()
+        if float(jumps.max()) > max_daily_move:
             continue
         tail = df.tail(window)
         turnover = float((tail["close"] * tail["volume"]).median()) * fx_by_symbol.get(sym, 1.0)

@@ -260,3 +260,12 @@ def test_liquidity_filter_and_tradable_set(uptrend):
                     positions={"THIN": Position("THIN", 10, 100, "NOK", 1e9, "2025-01-01")})
     broker, _ = run(pf2, bars, inst=inst, tradable=ok)
     assert broker.trades[0]["symbol"] == "THIN" and "THIN" not in pf2.positions
+
+
+def test_liquidity_filter_drops_shares_with_corporate_action_jumps(uptrend):
+    from app.data.providers import liquid_symbols
+    busy = uptrend.copy(); busy["volume"] = 50_000
+    paid_out = busy.copy()
+    paid_out.iloc[60:, :4] = paid_out.iloc[60:, :4] * 0.05     # 95 % capital distribution
+    paid_out["volume"] = 5_000_000
+    assert liquid_symbols({"BUSY": busy, "SHELL": paid_out}, {}) == {"BUSY"}
