@@ -60,8 +60,9 @@ All models see the same prices and pay the same costs, so their results are comp
 ## Schedule
 
 `.github/workflows/paper-trade.yml` runs the tests and then the daily step every weekday
-at 16:45 UTC (after the Oslo close in both summer and winter time) and commits `state/`
-and `docs/data.json`. Scheduled runs can start late, and GitHub pauses schedules in
+at 17:15 UTC (after the Oslo close in both summer and winter time), commits `state/`
+and `docs/data.json`, and mirrors `docs/` to the `gh-pages` branch, which serves the
+dashboard at https://antennmast.github.io/ai-trading-engine/. Scheduled runs can start late, and GitHub pauses schedules in
 repositories with no activity for 60 days; the engine catches up on missed days.
 
 ## Settings

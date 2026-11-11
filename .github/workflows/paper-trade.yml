@@ -2,12 +2,13 @@ name: paper-trade
 
 on:
   schedule:
-    # 16:45 UTC = 17:45 (winter) / 18:45 (summer) in Oslo, i.e. after the close all year.
-    - cron: "45 16 * * 1-5"
+    # 17:15 UTC = 18:15 (winter) / 19:15 (summer) in Oslo: after the close all year, and
+    # after aksjescore's own daily job (16:30 UTC) has had time to finish.
+    - cron: "15 17 * * 1-5"
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["app/**", "tests/**", "requirements*.txt", "config.yaml"]
+    paths: ["app/**", "tests/**", "requirements*.txt", "config.yaml", "docs/**"]
 
 permissions:
   contents: write
@@ -56,6 +57,9 @@ jobs:
           git diff --cached --quiet || git commit -m "state: $(date -u +%F)"
           git pull --rebase --autostash -q || true
           git push
+      # The website is served from the gh-pages branch, which mirrors docs/.
+      - name: Publish website
+        run: git push origin "$(git subtree split --prefix docs HEAD)":refs/heads/gh-pages --force
       - name: Show report
         if: github.event_name != 'push'
         run: cat state/REPORT.md >> "$GITHUB_STEP_SUMMARY" || true
