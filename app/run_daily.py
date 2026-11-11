@@ -70,7 +70,22 @@ def main() -> None:
           f"latest bar {max(df.index[-1] for df in bars.values()) if bars else 'n/a'}")
     if len(bars) < max(1, len(tickers) // 2):
         raise SystemExit("Price data missing for most instruments; state left untouched.")
+    index_close = None
+    if cfg.index_ticker and args.provider == "yahoo":
+        idx = provider.history({cfg.index_name: cfg.index_ticker}, cutoff).get(cfg.index_name)
+        index_close = None if idx is None else idx["close"]
+        print(f"[index] {cfg.index_name}: {0 if idx is None else len(idx)} bars")
     fx = provider.fx({i.currency for i in instruments.values()}, base)
+    print("[fx] " + ", ".join(f"{c}={v:.4f}" for c, v in sorted(fx.items())))
+    no_fx = {s for s, i in instruments.items() if i.currency not in fx}
+    held_no_fx = set()
+    for m in MODELS:
+        held_no_fx |= no_fx & set(Portfolio.load(Path(args.state_dir) / m.key / "portfolio.json",
+                                                 starting_cash, base).positions)
+    if held_no_fx:        # cannot value held positions: stop rather than write wrong equity
+        raise SystemExit(f"No FX rate for held positions {sorted(held_no_fx)}; state left untouched.")
+    instruments = {s: i for s, i in instruments.items() if s not in no_fx}
+    bars = {s: df for s, df in bars.items() if s in instruments}
     tradable = liquid_symbols(
         bars, {s: fx[i.currency] for s, i in instruments.items()},
         min_turnover=cfg.min_turnover, min_price=cfg.min_price)
@@ -133,7 +148,8 @@ def main() -> None:
         summaries.append(model_summary(m, state_dir, pf, fx, starting_cash))
 
     print(write_outputs(summaries, state_dir, Path(args.docs_dir), starting_cash, base, errors,
-                        {"total": len(instruments), "tradable": len(tradable)})[:1500])
+                        {"total": len(instruments), "tradable": len(tradable)},
+                        index=(cfg.index_name, index_close))[:1500])
     if errors:
         raise SystemExit(f"Models failed: {', '.join(errors)}")
 

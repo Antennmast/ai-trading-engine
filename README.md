@@ -1,7 +1,8 @@
 # AI Trading Engine — seven play-money models
 
-Seven trading models compete with 100,000 play-money NOK each on Oslo Børs shares.
-The universe is every share in `config/universe.csv` (278 Oslo listings); each run only
+Seven trading models compete with 100,000 play-money NOK each on Nordic shares.
+The universe is every share in `config/universe.csv` (278 Oslo listings plus about 80
+large companies in Stockholm, Copenhagen and Helsinki); each run only
 allows new buys in shares with a median daily turnover of at least 1 MNOK over the last
 60 days and a price of at least 1 NOK, and never in shares with a one-day move above
 50 % in the last year (see `universe:` in `config.yaml`).
@@ -89,7 +90,10 @@ risk rule. Without the secrets both models simply stay in cash.
 - Yahoo data is unofficial, delayed and occasionally wrong or unavailable.
 - Raw (unadjusted) prices: dividends are not credited, splits are not handled. This
   understates the benchmark and every model that holds shares for long.
-- Cash is NOK only; non-NOK rows in the universe are disabled.
+- Cash is NOK only. Foreign shares are converted at the day's FX rate, so currency moves
+  are part of each model's result. aksjescore only covers Oslo, so `sentiment` only buys there.
+- OSEBX on the dashboard is a Norwegian total-return index; the models also hold other
+  Nordic shares and ignore dividends, so it is a yardstick, not a like-for-like benchmark.
 - Daily bars only. Fills assume the full quantity trades at the open (or close).
 - With seven models, the best one after a few months may simply have been lucky.
 

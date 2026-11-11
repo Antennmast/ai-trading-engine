@@ -89,9 +89,26 @@ def _llm_usage(path: Path) -> dict | None:
             "tokens": int(u["input_tokens"].sum() + u["output_tokens"].sum())}
 
 
+def index_curve(index: tuple | None, summaries: list[dict]) -> dict | None:
+    """Index return in percent since the models' first day, on the dates we have."""
+    if not index or index[1] is None or not len(index[1]):
+        return None
+    name, close = index
+    starts = [m["curve"][0][0] for m in summaries if m["curve"]]
+    if not starts:
+        return None
+    start = min(starts)
+    close = close[[d.isoformat() >= start for d in close.index]]
+    if close.empty:
+        return None
+    base = float(close.iloc[0])
+    curve = [[d.isoformat(), round((float(v) / base - 1) * 100, 3)] for d, v in close.items()]
+    return {"name": name, "return_pct": curve[-1][1], "curve": curve}
+
+
 def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
                   starting_cash: float, base: str, errors: dict[str, str],
-                  universe: dict | None = None) -> str:
+                  universe: dict | None = None, index: tuple | None = None) -> str:
     ref = next((m["return_pct"] for m in summaries if m["benchmark"]), None)
     for m in summaries:
         m["vs_benchmark_pct"] = None if ref is None or m["benchmark"] else round(m["return_pct"] - ref, 3)
@@ -101,6 +118,7 @@ def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
         "last_date": max((m["last_date"] or "" for m in summaries), default=""),
         "starting_cash": starting_cash, "base_currency": base, "models": summaries,
         "universe": universe or {},
+        "index": index_curve(index, summaries),
     }
     Path(docs_dir).mkdir(parents=True, exist_ok=True)
     (Path(docs_dir) / "data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n")
@@ -115,6 +133,9 @@ def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
         vs = "–" if m["vs_benchmark_pct"] is None else f"{m['vs_benchmark_pct']:+.2f} %"
         lines.append(f"| {i} | {m['name']} | {m['equity']:,.0f} | {m['return_pct']:+.2f} % | {vs} "
                      f"| {m['max_drawdown_pct']:.2f} % | {m['fills']} | {m['fees']:,.0f} |".replace(",", " "))
+    if payload["index"]:
+        lines += ["", f"{payload['index']['name']} (indeks, med utbytte) i samme periode: "
+                      f"**{payload['index']['return_pct']:+.2f} %**"]
     for m in summaries:
         lines += ["", f"## {m['name']}", "", m["blurb"], ""]
         if m["error"]:

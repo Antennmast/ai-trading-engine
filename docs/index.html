@@ -10,7 +10,7 @@
   --page: #f4f3f0; --surface: #fcfcfb; --line: #e3e1db; --grid: #ebe9e4;
   --text: #0b0b0b; --text2: #52514e; --muted: #85837c;
   --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300;
-  --bench: #77756f;
+  --bench: #77756f; --index: #0b0b0b;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -18,7 +18,7 @@
     --page: #111110; --surface: #1a1a19; --line: #2e2d2b; --grid: #262524;
     --text: #f0efec; --text2: #c3c2b7; --muted: #8d8b84;
     --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300;
-    --bench: #a3a199;
+    --bench: #a3a199; --index: #f0efec;
   }
 }
 * { box-sizing: border-box; }
@@ -36,6 +36,7 @@ h2 { font-size: 15px; margin: 0 0 10px; }
 .legend li { display: flex; align-items: center; gap: 6px; }
 .key { width: 16px; height: 0; border-top: 2px solid; flex: none; }
 .key.dash { border-top-style: dashed; }
+.key.dot { border-top-style: dotted; }
 .chartwrap { position: relative; }
 svg { display: block; width: 100%; height: auto; touch-action: pan-y; }
 svg text { fill: var(--muted); font-size: 11px; }
@@ -106,7 +107,7 @@ const COLORS = { trend: "--s1", momentum: "--s2", tilbakefall: "--s3", sentiment
 const nok = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
 const dec = new Intl.NumberFormat("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const pct = v => v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + dec.format(Math.abs(v)) + " %";
-const colorOf = m => m.benchmark ? "var(--bench)" : `var(${COLORS[m.key] || "--bench"})`;
+const colorOf = m => m.index ? "var(--index)" : m.benchmark ? "var(--bench)" : `var(${COLORS[m.key] || "--bench"})`;
 const el = (tag, props = {}, ...kids) => {
   const n = document.createElement(tag);
   for (const [k, v] of Object.entries(props)) k === "class" ? n.className = v : k === "text" ? n.textContent = v : n.setAttribute(k, v);
@@ -118,7 +119,7 @@ const svg = (tag, attrs = {}) => {
   for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
   return n;
 };
-const key = m => el("span", { class: "key" + (m.benchmark ? " dash" : ""), style: `border-color:${colorOf(m)}` });
+const key = m => el("span", { class: "key" + (m.index ? " dot" : m.benchmark ? " dash" : ""), style: `border-color:${colorOf(m)}` });
 
 fetch("data.json", { cache: "no-store" }).then(r => r.json()).then(render).catch(() => {
   document.getElementById("sub").textContent = "Ingen data ennå. Første kjøring har ikke gått.";
@@ -128,14 +129,18 @@ function render(d) {
   const start = d.starting_cash, models = d.models;
   document.getElementById("sub").textContent =
     `Siste børsdag: ${d.last_date || "–"} · ${nok.format(start)} ${d.base_currency} per modell ved start` +
-    (d.universe && d.universe.tradable ? ` · ${d.universe.tradable} omsettelige aksjer av ${d.universe.total} på Oslo Børs` : "") +
+    (d.universe && d.universe.tradable ? ` · ${d.universe.tradable} omsettelige aksjer av ${d.universe.total} i Norden` : "") +
     ` · oppdatert ${d.updated_utc} UTC`;
 
   // ---- legend ----
   const legend = document.getElementById("legend");
+  // the market index is drawn as an extra, dotted line; it is not a traded portfolio
+  const idx = d.index ? { index: true, name: d.index.name + " (indeks)", curvePct: d.index.curve,
+                          return_pct: d.index.return_pct } : null;
   models.forEach(m => legend.append(el("li", {}, key(m), el("span", { text: m.name }))));
+  if (idx) legend.append(el("li", {}, key(idx), el("span", { text: idx.name })));
 
-  drawChart(models, start);
+  drawChart(idx ? [...models, idx] : models, start);
 
   // ---- ranking ----
   const rank = document.getElementById("rank");
@@ -154,6 +159,13 @@ function render(d) {
     tr.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
     rank.append(tr);
   });
+
+  if (idx) rank.append(el("tr", {},
+    el("td", { class: "num", text: "" }),
+    el("td", {}, el("span", { class: "name" }, key(idx), el("span", { text: idx.name }))),
+    el("td", { class: "num", text: "–" }), el("td", { class: "num", text: pct(idx.return_pct) }),
+    el("td", { class: "num", text: "–" }), el("td", { class: "num", text: "–" }),
+    el("td", { class: "num", text: "–" }), el("td", { class: "num", text: "–" })));
 
   // ---- detail picker ----
   const pick = document.getElementById("pick");
@@ -217,10 +229,11 @@ function drawChart(models, start) {
   const root = document.getElementById("chart"), tip = document.getElementById("tip");
   const W = Math.max(root.clientWidth || 720, 280), H = Math.round(Math.max(240, Math.min(360, W * 0.55))), L = 46, R = 14, T = 12, B = 26;
   root.setAttribute("viewBox", `0 0 ${W} ${H}`);
-  const dates = [...new Set(models.flatMap(m => m.curve.map(c => c[0])))].sort();
+  const pts = m => m.curvePct || m.curve.map(c => [c[0], (c[1] / start - 1) * 100]);
+  const dates = [...new Set(models.flatMap(m => pts(m).map(c => c[0])))].sort();
   if (dates.length < 1) { root.append(svg("text", { x: W / 2, y: H / 2, "text-anchor": "middle" })).textContent = "Ingen kurshistorikk ennå"; return; }
   const series = models.map(m => {
-    const map = new Map(m.curve.map(c => [c[0], (c[1] / start - 1) * 100]));
+    const map = new Map(pts(m));
     return { m, vals: dates.map(dt => map.has(dt) ? map.get(dt) : null) };
   });
   const all = series.flatMap(s => s.vals.filter(v => v != null)).concat([0]);
@@ -246,7 +259,8 @@ function drawChart(models, start) {
     let dPath = "", pen = false;
     s.vals.forEach((v, i) => { if (v == null) { pen = false; return; } dPath += (pen ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1); pen = true; });
     root.append(svg("path", { d: dPath, fill: "none", stroke: colorOf(s.m), "stroke-width": 2,
-      "stroke-linejoin": "round", "stroke-linecap": "round", ...(s.m.benchmark ? { "stroke-dasharray": "5 4" } : {}) }));
+      "stroke-linejoin": "round", "stroke-linecap": "round",
+      ...(s.m.index ? { "stroke-dasharray": "1 5" } : s.m.benchmark ? { "stroke-dasharray": "5 4" } : {}) }));
     if (dates.length === 1 && s.vals[0] != null)
       root.append(svg("circle", { cx: x(0), cy: y(s.vals[0]), r: 4, fill: colorOf(s.m), stroke: "var(--surface)", "stroke-width": 2 }));
   });

@@ -30,6 +30,8 @@ class Settings:
     min_price: float = 1.0
     model_risk: dict = field(default_factory=dict)      # key -> RiskLimits
     llm: LlmSettings = LlmSettings()
+    index_name: str = ""
+    index_ticker: str = ""
 
     def limits_for(self, key: str) -> RiskLimits:
         return self.model_risk.get(key, self.risk)
@@ -65,6 +67,7 @@ def load_settings(path="config.yaml", known_models: set[str] | None = None) -> S
             raise ValueError(f"config.yaml: unknown model '{key}'")
         model_risk[key] = stricter_limits(risk, overrides or {}, key)
     uni, llm = raw.get("universe") or {}, raw.get("llm") or {}
+    index = raw.get("benchmark_index") or {}
     prices = llm.get("usd_per_mtok") or {}
     return Settings(
         starting_cash=float(raw.get("starting_cash", 100_000)),
@@ -74,6 +77,8 @@ def load_settings(path="config.yaml", known_models: set[str] | None = None) -> S
         min_turnover=float(uni.get("min_turnover_nok", 1_000_000)),
         min_price=float(uni.get("min_price", 1)),
         model_risk=model_risk,
+        index_name=str(index.get("name", "")),
+        index_ticker=str(index.get("yahoo_ticker", "")),
         llm=LlmSettings(
             enabled=bool(llm.get("enabled", True)),
             model=str(llm.get("model", "claude-haiku-5-5")),

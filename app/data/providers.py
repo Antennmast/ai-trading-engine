@@ -9,7 +9,7 @@ import pandas as pd
 
 COLUMNS = ["open", "high", "low", "close", "volume"]
 MARKET_TZ = ZoneInfo("Europe/Oslo")
-BAR_FINAL_AFTER = time(17, 15)      # Nordic closes ~16:25-17:30 local; Yahoo is delayed
+BAR_FINAL_AFTER = time(18, 0)       # Oslo closes 16:25, Stockholm/Helsinki 17:30 CET; Yahoo is delayed
 
 
 def last_completed_bar_date(now: datetime | None = None) -> Date:
@@ -89,11 +89,15 @@ class YahooProvider:
     def fx(self, currencies, base="NOK") -> dict[str, float]:
         import yfinance as yf
         rates = {base: 1.0}
-        for ccy in set(currencies) - {base}:
-            px = yf.Ticker(f"{ccy}{base}=X").history(period="5d")["Close"].dropna()
-            if px.empty:
-                raise RuntimeError(f"No FX rate for {ccy}{base}")
-            rates[ccy] = float(px.iloc[-1])
+        for ccy in sorted(set(currencies) - {base}):
+            try:
+                px = yf.Ticker(f"{ccy}{base}=X").history(period="5d")["Close"].dropna()
+                if not px.empty and float(px.iloc[-1]) > 0:
+                    rates[ccy] = float(px.iloc[-1])
+                    continue
+            except Exception as exc:
+                print(f"[fx] {ccy}{base} failed: {exc}")
+            print(f"[fx] no rate for {ccy}{base}; shares in {ccy} are skipped this run")
         return rates
 
 

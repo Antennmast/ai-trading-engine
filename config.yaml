@@ -21,6 +21,11 @@ universe:
   min_turnover_nok: 1000000    # median daily turnover, last 60 days
   min_price: 1
 
+# A market index drawn on the dashboard for comparison (not traded).
+benchmark_index:
+  name: OSEBX
+  yahoo_ticker: OSEBX.OL
+
 # Per-model overrides of the risk rules. A model may only be STRICTER than the shared
 # rules (a lower number); a looser value stops the run with an error.
 models:
