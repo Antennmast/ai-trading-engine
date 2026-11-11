@@ -102,6 +102,17 @@ class YahooProvider:
                     continue
                 if len(df):
                     out[symbol] = df
+        # The threaded batch download occasionally drops a ticker (cache lock, timeout).
+        # Retry those one by one so a held share does not silently miss a day.
+        for symbol in [s for s in tickers if s not in out][:40]:
+            try:
+                raw = yf.Ticker(tickers[symbol]).history(period=self.period, interval="1d",
+                                                         auto_adjust=False, actions=True)
+                df = clean(raw, cutoff)
+                if len(df):
+                    out[symbol] = df
+            except Exception:
+                pass
         missing = [s for s in tickers if s not in out]
         if missing:
             print(f"[data] no bars for {len(missing)}: {', '.join(missing[:25])}"
