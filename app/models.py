@@ -31,7 +31,7 @@ MODELS = [
           MeanReversion()),
     Model("sentiment", "Sentiment", "Trend, men kjøper bare når aksjescore er 60 eller høyere.",
           TrendStrategy(require_score=True), scores_file="signals/scores.csv"),
-    Model("sprakmodell", "Språkmodell", "Trend + score fra språkmodell. Venter på signaler i signals/llm_scores.csv.",
+    Model("sprakmodell", "Språkmodell", "Trend, men en språkmodell (Claude Haiku) avgjør hvilke aksjer som kjøpes. Skriver dagbok.",
           TrendStrategy(require_score=True), scores_file="signals/llm_scores.csv"),
     Model("dagshandel", "Dagshandel", "Kjøper på åpning, selger alt på sluttkurs samme dag.",
           OpenToClose(), use_halt=False),

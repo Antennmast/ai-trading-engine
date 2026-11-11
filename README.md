@@ -3,7 +3,8 @@
 Seven trading models compete with 100,000 play-money NOK each on Oslo Børs shares.
 The universe is every share in `config/universe.csv` (278 Oslo listings); each run only
 allows new buys in shares with a median daily turnover of at least 1 MNOK over the last
-60 days and a price of at least 1 NOK (`MIN_TURNOVER_NOK`, `MIN_PRICE`).
+60 days and a price of at least 1 NOK, and never in shares with a one-day move above
+50 % in the last year (see `universe:` in `config.yaml`).
 A GitHub Actions job advances all of them once per trading day and publishes a dashboard.
 
 Nothing here trades real money, and nothing here is a validated strategy or investment advice.
@@ -46,6 +47,8 @@ All models see the same prices and pay the same costs, so their results are comp
 | `app/engine.py` | daily loop (shared by live run and backtest) |
 | `app/models.py` | the seven models |
 | `app/strategy.py` | strategy rules and `ScoreBook` (external AI scores) |
+| `app/settings.py` | loads `config.yaml`, enforces stricter-only model rules |
+| `app/llm_agent.py` | language-model agent (scores, journal, cost) |
 | `app/risk.py` | position sizing, open-risk cap, max positions, daily loss halt |
 | `app/sim_broker.py` | fills, commission, slippage, cash accounting |
 | `app/data/providers.py` | Yahoo (yfinance) and CSV price data |
@@ -61,11 +64,24 @@ at 16:45 UTC (after the Oslo close in both summer and winter time) and commits `
 and `docs/data.json`. Scheduled runs can start late, and GitHub pauses schedules in
 repositories with no activity for 60 days; the engine catches up on missed days.
 
+## Settings
+
+Everything is in `config.yaml`: starting cash, shared risk rules, costs, the liquidity
+filter and the language-model agent. Under `models:` a model can override a risk rule, but
+only to something stricter; a looser value stops the run with an error.
+
 ## Where the AI goes
 
-A sentiment model or an LLM only has to append `symbol,date,score` rows (score -1..1) to
-its CSV in `signals/` before the daily step runs. A score can veto a buy or force an
-exit; it can never change position size or bypass a risk limit. See `signals/README.md`.
+- **`sentiment`** reads `signals/scores.csv`. With the `AKSJESCORE_TOKEN` secret set, the
+  workflow imports the daily aksjescore (0-100 becomes -1..1) before the models run.
+- **`sprakmodell`** reads `signals/llm_scores.csv`, written by `app/llm_agent.py`. With the
+  `ANTHROPIC_API_KEY` secret set, the agent sends the day's trend candidates (price
+  statistics, plus news headlines when aksjescore is available) to the model in
+  `config.yaml`, once per trading day. It logs its reasons in
+  `state/sprakmodell/journal.md` and tokens and cost in `state/sprakmodell/llm_usage.csv`.
+
+A score can veto a buy or force an exit; it can never change position size or bypass a
+risk rule. Without the secrets both models simply stay in cash.
 
 ## Known limitations
 

@@ -8,7 +8,6 @@
 from __future__ import annotations
 
 import argparse
-import os
 import traceback
 from datetime import date as Date
 from pathlib import Path
@@ -18,24 +17,22 @@ import pandas as pd
 from app.data.providers import (CsvProvider, YahooProvider, last_completed_bar_date,
                                 liquid_symbols)
 from app.engine import Instrument, run_engine
+from app.llm_agent import run_agent
 from app.models import MODELS
 from app.portfolio import Portfolio
 from app.report import append_csv, model_summary, stats, write_outputs
-from app.risk import RiskLimits
+from app.settings import load_settings
 from app.sim_broker import Costs, SimBroker
 from app.strategy import ScoreBook
 
 
-def env(name: str, default: str) -> str:
-    return os.getenv(name, default)
-
-
-def load_universe(path: Path) -> tuple[dict[str, Instrument], dict[str, str]]:
+def load_universe(path: Path) -> tuple[dict[str, Instrument], dict[str, str], dict[str, str]]:
     df = pd.read_csv(path, dtype={"symbol": str})
     df = df[df["enabled"].astype(str).str.lower() == "true"]
     instruments = {r.symbol: Instrument(r.symbol, r.currency) for r in df.itertuples()}
     tickers = {r.symbol: r.yahoo_ticker for r in df.itertuples()}
-    return instruments, tickers
+    names = dict(zip(df["symbol"], df["name"])) if "name" in df.columns else {}
+    return instruments, tickers, names
 
 
 def main() -> None:
@@ -45,36 +42,21 @@ def main() -> None:
     p.add_argument("--universe", default="config/universe.csv")
     p.add_argument("--state-dir", default="state")
     p.add_argument("--docs-dir", default="docs")
+    p.add_argument("--config", default="config.yaml")
+    p.add_argument("--news-db", default="_aksjescore/pipeline/aksjescore.db",
+                   help="optional aksjescore database with news headlines for the LLM agent")
     p.add_argument("--models", default="", help="comma-separated model keys (default: all)")
     p.add_argument("--backtest", metavar="YYYY-MM-DD", help="simulate from date; state untouched")
     args = p.parse_args()
 
-    try:
-        from dotenv import load_dotenv
-        load_dotenv()
-    except ImportError:
-        pass
-
-    starting_cash = float(env("STARTING_CAPITAL_NOK", "100000"))
-    base = env("BASE_CURRENCY", "NOK")
-    limits = RiskLimits(
-        risk_per_trade=float(env("RISK_PER_TRADE", "0.005")),
-        max_open_risk=float(env("MAX_OPEN_RISK", "0.02")),
-        max_positions=int(env("MAX_POSITIONS", "5")),
-        max_position_weight=float(env("MAX_POSITION_WEIGHT", "0.20")),
-        daily_loss_limit=float(env("DAILY_LOSS_LIMIT", "0.01")),
-    )
-    costs = Costs(
-        commission_rate=float(env("SIM_COMMISSION_RATE", "0.0005")),
-        min_commission=float(env("SIM_MIN_COMMISSION", "10")),
-        slippage_bps=float(env("SIM_SLIPPAGE_BPS", "5")),
-    )
+    cfg = load_settings(args.config, {m.key for m in MODELS})
+    starting_cash, base, costs = cfg.starting_cash, cfg.base_currency, cfg.costs
     wanted = {k.strip() for k in args.models.split(",") if k.strip()}
     models = [m for m in MODELS if not wanted or m.key in wanted]
     if not models:
         raise SystemExit(f"No such model. Available: {', '.join(m.key for m in MODELS)}")
 
-    instruments, tickers = load_universe(Path(args.universe))
+    instruments, tickers, names = load_universe(Path(args.universe))
     if not instruments:
         raise SystemExit("No enabled instruments in universe file.")
 
@@ -91,8 +73,7 @@ def main() -> None:
     fx = provider.fx({i.currency for i in instruments.values()}, base)
     tradable = liquid_symbols(
         bars, {s: fx[i.currency] for s, i in instruments.items()},
-        min_turnover=float(env("MIN_TURNOVER_NOK", "1000000")),
-        min_price=float(env("MIN_PRICE", "1")))
+        min_turnover=cfg.min_turnover, min_price=cfg.min_price)
     print(f"[universe] {len(tradable)} of {len(instruments)} instruments pass the liquidity filter")
     if not tradable:
         raise SystemExit("No instrument passes the liquidity filter; state left untouched.")
@@ -107,7 +88,7 @@ def main() -> None:
         for m in models:
             pf = Portfolio(cash=starting_cash, base_currency=base)
             broker = SimBroker(pf, free if m.cost_free else costs)
-            rows = run_engine(pf, bars, instruments, fx, limits, broker, m.strategy, scores_for(m),
+            rows = run_engine(pf, bars, instruments, fx, cfg.limits_for(m.key), broker, m.strategy, scores_for(m),
                               start=Date.fromisoformat(args.backtest), use_halt=m.use_halt,
                               tradable=tradable)
             if not rows:
@@ -119,6 +100,17 @@ def main() -> None:
         return
 
     state_dir = Path(args.state_dir)
+
+    # The language-model agent scores candidates before the models run (once per bar date).
+    llm_model = next((m for m in models if m.key == "sprakmodell"), None)
+    if llm_model is not None:
+        asof = max(df.index[-1] for df in bars.values())
+        held = set(Portfolio.load(state_dir / "sprakmodell" / "portfolio.json", starting_cash, base).positions)
+        status = run_agent(bars=bars, tradable=tradable, held=held, names=names, tickers=tickers,
+                           asof=asof, cfg=cfg.llm, scores_csv=llm_model.scores_file,
+                           state_dir=state_dir / "sprakmodell", news_db=args.news_db)
+        print(f"[llm] {status}")
+
     summaries, errors = [], {}
     for m in MODELS:                                # summaries always cover every model
         d = state_dir / m.key
@@ -126,7 +118,7 @@ def main() -> None:
         if m in models:
             try:
                 broker = SimBroker(pf, free if m.cost_free else costs)
-                rows = run_engine(pf, bars, instruments, fx, limits, broker, m.strategy,
+                rows = run_engine(pf, bars, instruments, fx, cfg.limits_for(m.key), broker, m.strategy,
                                   scores_for(m), use_halt=m.use_halt, tradable=tradable)
                 if rows:
                     # portfolio.json is written last: if a step fails the next run redoes the day

@@ -1,0 +1,42 @@
+# All settings for the play-money engine. Edit and commit; the next run uses them.
+
+starting_cash: 100000
+base_currency: NOK
+
+# Shared risk rules. They apply to every model that sizes positions by risk
+# (trend, tilbakefall, sentiment, sprakmodell).
+risk:
+  risk_per_trade: 0.005        # max loss per trade if the stop is hit (share of equity)
+  max_open_risk: 0.02          # max total loss if every stop is hit
+  max_positions: 5
+  max_position_weight: 0.20
+  daily_loss_limit: 0.01       # no new buys the day equity falls this much
+
+costs:
+  commission_rate: 0.0005
+  min_commission: 10           # NOK per order
+  slippage_bps: 5
+
+universe:
+  min_turnover_nok: 1000000    # median daily turnover, last 60 days
+  min_price: 1
+
+# Per-model overrides of the risk rules. A model may only be STRICTER than the shared
+# rules (a lower number); a looser value stops the run with an error.
+models:
+  trend: {}
+  tilbakefall: {}
+  sentiment: {}
+  sprakmodell:
+    max_positions: 4
+
+# The language-model agent that scores shares for the "sprakmodell" model.
+# It only runs when the ANTHROPIC_API_KEY secret is set.
+llm:
+  enabled: true
+  model: claude-haiku-5-5
+  max_candidates: 15           # shares sent to the model per day
+  max_tokens: 2000
+  usd_per_mtok:                # used only for the cost column; update if prices change
+    input: 0.10
+    output: 0.50

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["app/**", "tests/**", "requirements*.txt"]
+    paths: ["app/**", "tests/**", "requirements*.txt", "config.yaml"]
 
 permissions:
   contents: write
@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AKSJESCORE_TOKEN: ${{ secrets.AKSJESCORE_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -51,7 +52,7 @@ jobs:
         run: |
           git config user.name "paper-trade-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add state/ docs/data.json signals/scores.csv
+          git add state/ docs/data.json signals/scores.csv signals/llm_scores.csv
           git diff --cached --quiet || git commit -m "state: $(date -u +%F)"
           git pull --rebase --autostash -q || true
           git push

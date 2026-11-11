@@ -66,7 +66,27 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
                     for o in pf.pending],
         "last_fills": trades.tail(15).iloc[::-1].to_dict("records") if len(trades) else [],
         "curve": [[r.date, r.equity] for r in curve.itertuples()] if len(curve) else [],
+        "journal": _last_journal(d / "journal.md"),
+        "llm": _llm_usage(d / "llm_usage.csv"),
     }
+
+
+def _last_journal(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    parts = path.read_text().split("\n## ")
+    if len(parts) < 2:
+        return None
+    head, *body = parts[-1].strip().splitlines()
+    return {"date": head.strip(), "lines": [b[2:].replace("**", "") for b in body if b.startswith("- ")]}
+
+
+def _llm_usage(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    u = pd.read_csv(path)
+    return {"calls": int(len(u)), "cost_usd": round(float(u["cost_usd"].sum()), 4),
+            "tokens": int(u["input_tokens"].sum() + u["output_tokens"].sum())}
 
 
 def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
