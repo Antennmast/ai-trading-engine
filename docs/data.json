@@ -1,5 +1,5 @@
 {
- "updated_utc": "2026-11-11 15:41",
+ "updated_utc": "2026-11-11 16:14",
  "last_date": "2026-11-10",
  "starting_cash": 100000.0,
  "base_currency": "NOK",
@@ -9,6 +9,8 @@
    "name": "Referanse",
    "blurb": "Kjøp og hold alle omsettelige aksjer likt vektet, uten kostnader.",
    "benchmark": true,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,
@@ -1289,6 +1291,8 @@
    "name": "Trend",
    "blurb": "Kjøper aksjer i opptrend, glidende stop-loss.",
    "benchmark": false,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,
@@ -1345,6 +1349,8 @@
    "name": "Momentum",
    "blurb": "Holder de 10 sterkeste siste år (uten siste måned), bytter månedlig.",
    "benchmark": false,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,
@@ -1437,6 +1443,8 @@
    "name": "Momentum med brems",
    "blurb": "Som Momentum, men en aksje holdes ikke når hjemmemarkedets indeks er under 200-dagerssnittet. Den delen står i kontanter.",
    "benchmark": false,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,
@@ -1529,6 +1537,8 @@
    "name": "Tilbakefall",
    "blurb": "Kjøper korte dipper i aksjer i opptrend.",
    "benchmark": false,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,
@@ -1579,6 +1589,8 @@
    "name": "Sentiment",
    "blurb": "Trend, men kjøper bare når aksjescore er 60 eller høyere.",
    "benchmark": false,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,
@@ -1635,6 +1647,8 @@
    "name": "Språkmodell",
    "blurb": "Trend, men en språkmodell (Claude Haiku) avgjør hvilke aksjer som kjøpes. Skriver dagbok.",
    "benchmark": false,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,
@@ -1714,6 +1728,8 @@
    "name": "Score topp 10",
    "blurb": "Holder de 10 aksjene med høyest aksjescore, bytter månedlig.",
    "benchmark": false,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,
@@ -1802,10 +1818,200 @@
    "t_vs_benchmark": null
   },
   {
+   "key": "scoretopp_ask",
+   "name": "Score topp 10 ASK",
+   "blurb": "Som Score topp 10, men bare aksjer som kan eies på aksjesparekonto, og med kurtasje som hos norsk megler.",
+   "benchmark": false,
+   "variant_of": "scoretopp",
+   "ask_only": true,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "dividends": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 46,
+     "symbol": "SBNOR",
+     "reason": "top 10 score (81)"
+    },
+    {
+     "side": "BUY",
+     "qty": 165,
+     "symbol": "ZAP",
+     "reason": "top 10 score (80)"
+    },
+    {
+     "side": "BUY",
+     "qty": 16,
+     "symbol": "SALM",
+     "reason": "top 10 score (80)"
+    },
+    {
+     "side": "BUY",
+     "qty": 42,
+     "symbol": "MOWI",
+     "reason": "top 10 score (79)"
+    },
+    {
+     "side": "BUY",
+     "qty": 57,
+     "symbol": "ATEA",
+     "reason": "top 10 score (79)"
+    },
+    {
+     "side": "BUY",
+     "qty": 11,
+     "symbol": "WWIB",
+     "reason": "top 10 score (79)"
+    },
+    {
+     "side": "BUY",
+     "qty": 93,
+     "symbol": "KCC",
+     "reason": "top 10 score (78)"
+    },
+    {
+     "side": "BUY",
+     "qty": 40,
+     "symbol": "SB1NO",
+     "reason": "top 10 score (78)"
+    },
+    {
+     "side": "BUY",
+     "qty": 364,
+     "symbol": "MORLD",
+     "reason": "top 10 score (77)"
+    },
+    {
+     "side": "BUY",
+     "qty": 52,
+     "symbol": "NONG",
+     "reason": "top 10 score (77)"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": 0.0,
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
+  },
+  {
+   "key": "momentum_ask",
+   "name": "Momentum ASK",
+   "blurb": "Som Momentum, men bare aksjer som kan eies på aksjesparekonto, og med kurtasje som hos norsk megler.",
+   "benchmark": false,
+   "variant_of": "momentum",
+   "ask_only": true,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "dividends": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 624,
+     "symbol": "HUNT",
+     "reason": "top 10 momentum 12-1 (+2169%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 267,
+     "symbol": "NSKOG",
+     "reason": "top 10 momentum 12-1 (+202%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 23,
+     "symbol": "FRO",
+     "reason": "top 10 momentum 12-1 (+171%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 60,
+     "symbol": "WAWI",
+     "reason": "top 10 momentum 12-1 (+133%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 165,
+     "symbol": "ZAP",
+     "reason": "top 10 momentum 12-1 (+127%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 56,
+     "symbol": "HAUTO",
+     "reason": "top 10 momentum 12-1 (+127%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 61,
+     "symbol": "CMBTO",
+     "reason": "top 10 momentum 12-1 (+125%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 214,
+     "symbol": "OKEA",
+     "reason": "top 10 momentum 12-1 (+116%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 860,
+     "symbol": "PLT",
+     "reason": "top 10 momentum 12-1 (+116%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 649,
+     "symbol": "GOD",
+     "reason": "top 10 momentum 12-1 (+108%)"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": 0.0,
+   "error": null,
+   "days": 0,
+   "t_vs_benchmark": null
+  },
+  {
    "key": "dagshandel",
    "name": "Dagshandel",
    "blurb": "Kjøper på åpning, selger alt på sluttkurs samme dag.",
    "benchmark": false,
+   "variant_of": null,
+   "ask_only": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
    "cash": 100000.0,

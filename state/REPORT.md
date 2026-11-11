@@ -1,4 +1,4 @@
-# Lekepenger: ni modeller
+# Lekepenger: modelltesten
 
 Siste børsdag behandlet: **2026-11-10** · startkapital 100 000 NOK per modell
 
@@ -12,7 +12,9 @@ Siste børsdag behandlet: **2026-11-10** · startkapital 100 000 NOK per modell
 | 6 | Sentiment | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
 | 7 | Språkmodell | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
 | 8 | Score topp 10 | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 9 | Dagshandel | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 9 | Score topp 10 ASK | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 10 | Momentum ASK | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 11 | Dagshandel | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
 
 OSEBX (indeks, med utbytte) i samme periode: **+0.00 %**
 
@@ -79,6 +81,22 @@ Holder de 10 aksjene med høyest aksjescore, bytter månedlig.
 Ingen posisjoner.
 
 Ordre til neste åpning: kjøp 46 SBNOR, kjøp 165 ZAP, kjøp 16 SALM, kjøp 42 MOWI, kjøp 57 ATEA, kjøp 11 WWIB, kjøp 193 PLSV, kjøp 93 KCC, kjøp 40 SB1NO, kjøp 364 MORLD
+
+## Score topp 10 ASK
+
+Som Score topp 10, men bare aksjer som kan eies på aksjesparekonto, og med kurtasje som hos norsk megler.
+
+Ingen posisjoner.
+
+Ordre til neste åpning: kjøp 46 SBNOR, kjøp 165 ZAP, kjøp 16 SALM, kjøp 42 MOWI, kjøp 57 ATEA, kjøp 11 WWIB, kjøp 93 KCC, kjøp 40 SB1NO, kjøp 364 MORLD, kjøp 52 NONG
+
+## Momentum ASK
+
+Som Momentum, men bare aksjer som kan eies på aksjesparekonto, og med kurtasje som hos norsk megler.
+
+Ingen posisjoner.
+
+Ordre til neste åpning: kjøp 624 HUNT, kjøp 267 NSKOG, kjøp 23 FRO, kjøp 60 WAWI, kjøp 165 ZAP, kjøp 56 HAUTO, kjøp 61 CMBTO, kjøp 214 OKEA, kjøp 860 PLT, kjøp 649 GOD
 
 ## Dagshandel
 
