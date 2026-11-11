@@ -42,7 +42,7 @@ Ordre til neste åpning: kjøp 624 HUNT, kjøp 12 OET, kjøp 267 NSKOG, kjøp 23
 
 ## Momentum med brems
 
-Som Momentum, men selger alt når OSEBX ligger under 200-dagerssnittet.
+Som Momentum, men selger aksjene fra et marked når det markedets indeks ligger under 200-dagerssnittet.
 
 Ingen posisjoner.
 

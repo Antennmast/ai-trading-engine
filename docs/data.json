@@ -1,5 +1,5 @@
 {
- "updated_utc": "2026-11-11 15:08",
+ "updated_utc": "2026-11-11 15:25",
  "last_date": "2026-11-10",
  "starting_cash": 100000.0,
  "base_currency": "NOK",
@@ -1441,7 +1441,7 @@
   {
    "key": "momentumbrems",
    "name": "Momentum med brems",
-   "blurb": "Som Momentum, men selger alt når OSEBX ligger under 200-dagerssnittet.",
+   "blurb": "Som Momentum, men selger aksjene fra et marked når det markedets indeks ligger under 200-dagerssnittet.",
    "benchmark": false,
    "last_date": "2026-11-10",
    "equity": 100000.0,
