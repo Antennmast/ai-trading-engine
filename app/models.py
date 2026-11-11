@@ -28,7 +28,7 @@ MODELS = [
           MomentumRotation(), use_halt=False),
     Model("tilbakefall", "Tilbakefall", "Kjøper korte dipper i aksjer i opptrend.",
           MeanReversion()),
-    Model("sentiment", "Sentiment", "Trend + sentimentscore. Venter på signaler i signals/scores.csv.",
+    Model("sentiment", "Sentiment", "Trend, men kjøper bare når aksjescore er 60 eller høyere.",
           TrendStrategy(require_score=True), scores_file="signals/scores.csv"),
     Model("sprakmodell", "Språkmodell", "Trend + score fra språkmodell. Venter på signaler i signals/llm_scores.csv.",
           TrendStrategy(require_score=True), scores_file="signals/llm_scores.csv"),

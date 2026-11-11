@@ -19,6 +19,8 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
+    env:
+      AKSJESCORE_TOKEN: ${{ secrets.AKSJESCORE_TOKEN }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -28,6 +30,19 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Tests (a failing test blocks trading)
         run: python -m pytest -q
+      # Optional: needs a repository secret AKSJESCORE_TOKEN (read access to Antennmast/aksjescore).
+      - name: Fetch aksjescore
+        if: github.event_name != 'push' && env.AKSJESCORE_TOKEN != ''
+        uses: actions/checkout@v5
+        with:
+          repository: Antennmast/aksjescore
+          token: ${{ secrets.AKSJESCORE_TOKEN }}
+          path: _aksjescore
+          sparse-checkout: pipeline/aksjescore.db
+          sparse-checkout-cone-mode: false
+      - name: Import sentiment scores
+        if: github.event_name != 'push' && env.AKSJESCORE_TOKEN != ''
+        run: python -m app.import_aksjescore _aksjescore/pipeline/aksjescore.db
       - name: Advance simulated portfolio
         if: github.event_name != 'push'
         run: python -m app.run_daily --provider yahoo
@@ -36,7 +51,7 @@ jobs:
         run: |
           git config user.name "paper-trade-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add state/ docs/data.json
+          git add state/ docs/data.json signals/scores.csv
           git diff --cached --quiet || git commit -m "state: $(date -u +%F)"
           git pull --rebase --autostash -q || true
           git push
