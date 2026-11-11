@@ -1,5 +1,5 @@
 {
- "updated_utc": "2026-11-11 14:30",
+ "updated_utc": "2026-11-11 14:38",
  "last_date": "2026-11-10",
  "starting_cash": 100000.0,
  "base_currency": "NOK",
@@ -18,6 +18,7 @@
    "closed_trades": 0,
    "win_rate_pct": null,
    "fees": 0.0,
+   "dividends": 0.0,
    "positions": [],
    "pending": [
     {
@@ -1295,6 +1296,7 @@
    "closed_trades": 0,
    "win_rate_pct": null,
    "fees": 0.0,
+   "dividends": 0.0,
    "positions": [],
    "pending": [
     {
@@ -1354,6 +1356,7 @@
    "closed_trades": 0,
    "win_rate_pct": null,
    "fees": 0.0,
+   "dividends": 0.0,
    "positions": [],
    "pending": [
     {
@@ -1407,6 +1410,7 @@
    "closed_trades": 0,
    "win_rate_pct": null,
    "fees": 0.0,
+   "dividends": 0.0,
    "positions": [],
    "pending": [
     {
@@ -1454,6 +1458,7 @@
    "closed_trades": 0,
    "win_rate_pct": null,
    "fees": 0.0,
+   "dividends": 0.0,
    "positions": [],
    "pending": [
     {
@@ -1513,6 +1518,7 @@
    "closed_trades": 0,
    "win_rate_pct": null,
    "fees": 0.0,
+   "dividends": 0.0,
    "positions": [],
    "pending": [
     {
@@ -1576,6 +1582,96 @@
    "error": null
   },
   {
+   "key": "scoretopp",
+   "name": "Score topp 10",
+   "blurb": "Holder de 10 aksjene med høyest aksjescore, bytter månedlig.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "dividends": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 46,
+     "symbol": "SBNOR",
+     "reason": "top 10 score (81)"
+    },
+    {
+     "side": "BUY",
+     "qty": 165,
+     "symbol": "ZAP",
+     "reason": "top 10 score (80)"
+    },
+    {
+     "side": "BUY",
+     "qty": 16,
+     "symbol": "SALM",
+     "reason": "top 10 score (80)"
+    },
+    {
+     "side": "BUY",
+     "qty": 42,
+     "symbol": "MOWI",
+     "reason": "top 10 score (79)"
+    },
+    {
+     "side": "BUY",
+     "qty": 57,
+     "symbol": "ATEA",
+     "reason": "top 10 score (79)"
+    },
+    {
+     "side": "BUY",
+     "qty": 11,
+     "symbol": "WWIB",
+     "reason": "top 10 score (79)"
+    },
+    {
+     "side": "BUY",
+     "qty": 193,
+     "symbol": "PLSV",
+     "reason": "top 10 score (78)"
+    },
+    {
+     "side": "BUY",
+     "qty": 93,
+     "symbol": "KCC",
+     "reason": "top 10 score (78)"
+    },
+    {
+     "side": "BUY",
+     "qty": 40,
+     "symbol": "SB1NO",
+     "reason": "top 10 score (78)"
+    },
+    {
+     "side": "BUY",
+     "qty": 364,
+     "symbol": "MORLD",
+     "reason": "top 10 score (77)"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "journal": null,
+   "llm": null,
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
    "key": "dagshandel",
    "name": "Dagshandel",
    "blurb": "Kjøper på åpning, selger alt på sluttkurs samme dag.",
@@ -1589,6 +1685,7 @@
    "closed_trades": 0,
    "win_rate_pct": null,
    "fees": 0.0,
+   "dividends": 0.0,
    "positions": [],
    "pending": [
     {

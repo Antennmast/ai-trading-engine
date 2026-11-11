@@ -1,4 +1,4 @@
-# Lekepenger: sju modeller
+# Lekepenger: åtte modeller
 
 Siste børsdag behandlet: **2026-11-10** · startkapital 100 000 NOK per modell
 
@@ -10,7 +10,8 @@ Siste børsdag behandlet: **2026-11-10** · startkapital 100 000 NOK per modell
 | 4 | Tilbakefall | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
 | 5 | Sentiment | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
 | 6 | Språkmodell | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 7 | Dagshandel | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 7 | Score topp 10 | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 8 | Dagshandel | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
 
 OSEBX (indeks, med utbytte) i samme periode: **+0.00 %**
 
@@ -61,6 +62,14 @@ Trend, men en språkmodell (Claude Haiku) avgjør hvilke aksjer som kjøpes. Skr
 Ingen posisjoner.
 
 Ordre til neste åpning: kjøp 18 MEDI, kjøp 240 NKR, kjøp 52 KID, kjøp 226 MORLD
+
+## Score topp 10
+
+Holder de 10 aksjene med høyest aksjescore, bytter månedlig.
+
+Ingen posisjoner.
+
+Ordre til neste åpning: kjøp 46 SBNOR, kjøp 165 ZAP, kjøp 16 SALM, kjøp 42 MOWI, kjøp 57 ATEA, kjøp 11 WWIB, kjøp 193 PLSV, kjøp 93 KCC, kjøp 40 SB1NO, kjøp 364 MORLD
 
 ## Dagshandel
 
