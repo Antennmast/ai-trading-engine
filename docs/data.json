@@ -1,0 +1,350 @@
+{
+ "updated_utc": "2026-11-11 12:48",
+ "last_date": "2026-11-10",
+ "starting_cash": 100000.0,
+ "base_currency": "NOK",
+ "models": [
+  {
+   "key": "referanse",
+   "name": "Referanse",
+   "blurb": "Kjøp og hold alle aksjene likt vektet.",
+   "benchmark": true,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 21,
+     "symbol": "EQNR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 25,
+     "symbol": "DNB",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 61,
+     "symbol": "TEL",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 119,
+     "symbol": "NHY",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 77,
+     "symbol": "ORK",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 36,
+     "symbol": "MOWI",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 20,
+     "symbol": "YAR",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 26,
+     "symbol": "AKRBP",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 23,
+     "symbol": "KOG",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 40,
+     "symbol": "STB",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 30,
+     "symbol": "GJF",
+     "reason": "benchmark equal weight"
+    },
+    {
+     "side": "BUY",
+     "qty": 14,
+     "symbol": "SALM",
+     "reason": "benchmark equal weight"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "vs_benchmark_pct": null,
+   "error": null
+  },
+  {
+   "key": "trend",
+   "name": "Trend",
+   "blurb": "Kjøper aksjer i opptrend, glidende stop-loss.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 111,
+     "symbol": "ORK",
+     "reason": "uptrend; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 15,
+     "symbol": "KOG",
+     "reason": "uptrend; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 49,
+     "symbol": "MOWI",
+     "reason": "uptrend; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 13,
+     "symbol": "SALM",
+     "reason": "uptrend; sized by risk per trade"
+    },
+    {
+     "side": "BUY",
+     "qty": 2,
+     "symbol": "DNB",
+     "reason": "uptrend; sized by open-risk limit"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "momentum",
+   "name": "Momentum",
+   "blurb": "Holder de 4 sterkeste siste halvår, bytter månedlig.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 70,
+     "symbol": "KOG",
+     "reason": "top 4 momentum (+21%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 120,
+     "symbol": "STB",
+     "reason": "top 4 momentum (+16%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 76,
+     "symbol": "DNB",
+     "reason": "top 4 momentum (+16%)"
+    },
+    {
+     "side": "BUY",
+     "qty": 110,
+     "symbol": "MOWI",
+     "reason": "top 4 momentum (+14%)"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "tilbakefall",
+   "name": "Tilbakefall",
+   "blurb": "Kjøper korte dipper i aksjer i opptrend.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "sentiment",
+   "name": "Sentiment",
+   "blurb": "Trend + sentimentscore. Venter på signaler i signals/scores.csv.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "sprakmodell",
+   "name": "Språkmodell",
+   "blurb": "Trend + score fra språkmodell. Venter på signaler i signals/llm_scores.csv.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  },
+  {
+   "key": "dagshandel",
+   "name": "Dagshandel",
+   "blurb": "Kjøper på åpning, selger alt på sluttkurs samme dag.",
+   "benchmark": false,
+   "last_date": "2026-11-10",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "return_pct": 0.0,
+   "max_drawdown_pct": 0.0,
+   "fills": 0,
+   "closed_trades": 0,
+   "win_rate_pct": null,
+   "fees": 0.0,
+   "positions": [],
+   "pending": [
+    {
+     "side": "BUY",
+     "qty": 177,
+     "symbol": "ORK",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 84,
+     "symbol": "MOWI",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 58,
+     "symbol": "DNB",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 31,
+     "symbol": "SALM",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 53,
+     "symbol": "KOG",
+     "reason": "day trade: uptrend"
+    }
+   ],
+   "last_fills": [],
+   "curve": [
+    [
+     "2026-11-10",
+     100000.0
+    ]
+   ],
+   "vs_benchmark_pct": 0.0,
+   "error": null
+  }
+ ]
+}

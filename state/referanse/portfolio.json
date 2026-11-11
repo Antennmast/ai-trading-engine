@@ -1,0 +1,119 @@
+{
+  "base_currency": "NOK",
+  "cash": 100000.0,
+  "last_date": "2026-11-10",
+  "last_equity": 100000.0,
+  "last_prices": {
+    "AKRBP": 314.6000061035156,
+    "DNB": 324.29998779296875,
+    "EQNR": 382.20001220703125,
+    "GJF": 276.20001220703125,
+    "KOG": 355.0,
+    "MOWI": 225.1999969482422,
+    "NHY": 69.45999908447266,
+    "ORK": 106.5999984741211,
+    "SALM": 592.0,
+    "STB": 206.39999389648438,
+    "TEL": 135.3000030517578,
+    "YAR": 403.5
+  },
+  "pending": [
+    {
+      "created": "2026-11-10",
+      "qty": 21,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "EQNR"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 25,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "DNB"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 61,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "TEL"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 119,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "NHY"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 77,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "ORK"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 36,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "MOWI"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 20,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "YAR"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 26,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "AKRBP"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 23,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "KOG"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 40,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "STB"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 30,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "GJF"
+    },
+    {
+      "created": "2026-11-10",
+      "qty": 14,
+      "reason": "benchmark equal weight",
+      "side": "BUY",
+      "stop": 0.0,
+      "symbol": "SALM"
+    }
+  ],
+  "positions": {}
+}
