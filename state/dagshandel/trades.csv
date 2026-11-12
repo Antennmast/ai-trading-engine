@@ -1,0 +1,11 @@
+date,symbol,side,qty,price,currency,fx,fee,pnl,reason
+2026-11-11,NKR,BUY,997,19.0095,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-11,PNDORA.CO,BUY,13,956.0778,DKK,1.4171,10,0.0,day trade: uptrend
+2026-11-11,MORLD,BUY,714,26.8634,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-11,GN.CO,BUY,111,119.6098,DKK,1.4171,10,0.0,day trade: uptrend
+2026-11-11,ORK,BUY,177,106.053,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-11,NKR,SELL,997,19.6901,NOK,1.0,10,668.61,flat at close
+2026-11-11,PNDORA.CO,SELL,13,959.52,DKK,1.4171,10,53.41,flat at close
+2026-11-11,MORLD,SELL,714,26.6367,NOK,1.0,10,-171.9,flat at close
+2026-11-11,GN.CO,SELL,111,122.9885,DKK,1.4171,10,521.46,flat at close
+2026-11-11,ORK,SELL,177,104.8476,NOK,1.0,10,-223.36,flat at close

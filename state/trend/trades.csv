@@ -1,0 +1,5 @@
+date,symbol,side,qty,price,currency,fx,fee,pnl,reason
+2026-11-11,NKR,BUY,240,19.0095,NOK,1.0,10,0.0,uptrend; sized by risk per trade
+2026-11-11,ELUX-B.ST,BUY,140,32.2961,SEK,0.9584,10,0.0,uptrend; sized by risk per trade
+2026-11-11,ORNBV.HE,BUY,6,101.951,EUR,10.6011,10,0.0,uptrend; sized by risk per trade
+2026-11-11,AMBU-B.CO,BUY,53,86.3932,DKK,1.4171,10,0.0,uptrend; sized by risk per trade

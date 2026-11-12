@@ -1,0 +1,4 @@
+date,symbol,side,qty,price,currency,fx,fee,pnl,reason
+2026-11-11,SCA-B.ST,BUY,74,119.8599,SEK,0.9584,10,0.0,dip in uptrend (RSI 7); sized by risk per trade
+2026-11-11,HAFNI,BUY,42,86.5433,NOK,1.0,10,0.0,dip in uptrend (RSI 8); sized by risk per trade
+2026-11-11,VALMT.HE,BUY,20,28.7544,EUR,10.6011,10,0.0,dip in uptrend (RSI 8); sized by risk per trade

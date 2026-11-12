@@ -1,0 +1,5 @@
+date,symbol,side,qty,price,currency,fx,fee,pnl,reason
+2026-11-11,NKR,BUY,240,19.0095,NOK,1.0,10,0.0,"uptrend, score +0.30; sized by risk per trade"
+2026-11-11,ORNBV.HE,BUY,6,101.951,EUR,10.6011,10,0.0,"uptrend, score +0.30; sized by risk per trade"
+2026-11-11,MEDI,BUY,18,316.158,NOK,1.0,10,0.0,"uptrend, score +0.30; sized by risk per trade"
+2026-11-11,MORLD,BUY,222,26.8634,NOK,1.0,10,0.0,"uptrend, score +0.30; sized by risk per trade"

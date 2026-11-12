@@ -17,3 +17,21 @@
 - **ROCK-B.CO** (ROCKWOOL) +0.00: Negativ 60-dagers avkastning og 7,7 % under toppen gir ingen klar oppside.
 - **ORK** (ORKLA) -0.05: Negativ halvårsutvikling og 14 prosent under toppen, selv om den siste uken var sterk.
 - **ELUX-B.ST** (ELECTROLUX) -0.30: Svært svak langsiktig utvikling med -35,6 % over 126 dager og -63 % fra toppen, så den korte oppgangen er skjør.
+
+## 2026-11-11
+
+- **PNDORA.CO** (PANDORA) +0.40: Svært sterk 126-dagersavkastning, står på 52-ukers høy og har moderat volatilitet.
+- **NKR** (NEKKAR) +0.35: Nær 52-ukers høy med sterk 5-dagersavkastning og en konkret kontraktsgevinst, selv om kontraktene er beskjedne.
+- **ORNBV.HE** (ORION) +0.35: Jevn oppgang på lav volatilitet og kursen står på 52-ukers høy.
+- **GMAB.CO** (GENMAB) +0.30: Sterk momentum over 60 og 126 dager, men 9 % under toppen og høy daglig volatilitet gir risiko.
+- **KID** (KID) +0.30: Står på 52-ukers høy med god 5-dagersoppgang og lav volatilitet.
+- **MEDI** (MEDISTIM) +0.30: Solid oppgang over 60 og 126 dager, nær toppen og med moderat volatilitet.
+- **MORLD** (MORELD) +0.30: Sterk 5-dagersavkastning, nær toppen og ny kontraktsnyhet med positiv trend over 126 dager.
+- **GN.CO** (GN STORE NORD) +0.25: Sterk kortsiktig oppgang nær toppen, men svakere enn de beste kandidatene på lengre sikt.
+- **AMBU-B.CO** (AMBU) +0.15: Positiv trend på 126 dager, men svakere 60-dagers utvikling og kursen 4,5 % under toppen.
+- **KOG** (KONGSBERG GRUPPEN) +0.10: Positiv 20-dagersavkastning, men 15 % under toppen og svakere langsiktig momentum.
+- **ENDUR** (ENDÚR) +0.00: Flat kurs og nøytrale nyheter uten tydelig kjøpssignal.
+- **ROCK-B.CO** (ROCKWOOL) +0.00: Svak trend over 60 dager og 8 % under toppen, uten klart kjøpssignal.
+- **DSV.CO** (DSV) -0.10: Nylig oppgang, men 22,5 % under toppen og negativ avkastning over 126 dager.
+- **ELUX-B.ST** (ELECTROLUX) -0.40: Kraftig fall på 126 dager og 64 % under 52-ukers høyden, selv om den har tatt seg opp de siste 20 dagene.
+- **DDRIL** (DOLPHIN DRILLING) -0.40: Negativ trend over 60 og 126 dager, 30 % under toppen og høy volatilitet.

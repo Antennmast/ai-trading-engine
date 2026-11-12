@@ -1,102 +1,370 @@
 # Lekepenger: modelltesten
 
-Siste børsdag behandlet: **2026-11-10** · startkapital 100 000 NOK per modell
+Siste børsdag behandlet: **2026-11-11** · startkapital 100 000 NOK per modell
 
 | # | Modell | Verdi | Avkastning | Mot referanse | Største fall | Handler | Kurtasje |
 |---:|---|---:|---:|---:|---:|---:|---:|
-| 1 | Referanse | 100 000 | +0.00 % | – | 0.00 % | 0 | 0 |
-| 2 | Trend | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 3 | Momentum | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 4 | Momentum med brems | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 5 | Tilbakefall | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 6 | Sentiment | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 7 | Språkmodell | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 8 | Score topp 10 | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 9 | Score topp 10 ASK | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 10 | Momentum ASK | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
-| 11 | Dagshandel | 100 000 | +0.00 % | +0.00 % | 0.00 % | 0 | 0 |
+| 1 | Momentum | 102 288 | +2.29 % | +1.53 % | 0.00 % | 10 | 100 |
+| 2 | Momentum med brems | 102 288 | +2.29 % | +1.53 % | 0.00 % | 10 | 100 |
+| 3 | Momentum ASK | 101 040 | +1.04 % | +0.29 % | 0.00 % | 10 | 290 |
+| 4 | Dagshandel | 100 798 | +0.80 % | +0.04 % | 0.00 % | 10 | 100 |
+| 5 | Referanse | 100 753 | +0.75 % | – | 0.00 % | 207 | 0 |
+| 6 | Score topp 10 | 100 152 | +0.15 % | -0.60 % | 0.00 % | 10 | 100 |
+| 7 | Sentiment | 100 134 | +0.13 % | -0.62 % | 0.00 % | 4 | 40 |
+| 8 | Trend | 100 125 | +0.12 % | -0.63 % | 0.00 % | 4 | 40 |
+| 9 | Språkmodell | 100 076 | +0.08 % | -0.68 % | 0.00 % | 4 | 40 |
+| 10 | Tilbakefall | 100 066 | +0.07 % | -0.69 % | 0.00 % | 3 | 30 |
+| 11 | Score topp 10 ASK | 99 750 | -0.25 % | -1.00 % | -0.25 % | 10 | 290 |
 
-OSEBX (indeks, med utbytte) i samme periode: **+0.00 %**
+OSEBX (indeks, med utbytte) i samme periode: **+1.21 %**
 
 ## Referanse
 
 Kjøp og hold alle omsettelige aksjer likt vektet, uten kostnader.
 
-Ingen posisjoner.
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| ABB.ST | 0.6 | 839.60 | 846.80 | – | +0.9 |
+| ABG | 66.77 | 7.15 | 7.13 | – | -0.3 |
+| ACR | 109.9 | 4.16 | 4.33 | – | +4.3 |
+| ADDT-B.ST | 1.52 | 327.60 | 334.80 | – | +2.2 |
+| AFG | 2.35 | 199.00 | 205.00 | – | +3.0 |
+| AKAST | 41.87 | 12.04 | 11.88 | – | -1.3 |
+| AKER | 0.43 | 1098.00 | 1130.00 | – | +2.9 |
+| AKRBP | 1.51 | 317.10 | 322.20 | – | +1.6 |
+| AKSO | 12.91 | 36.96 | 37.68 | – | +1.9 |
+| ALFA.ST | 0.93 | 540.80 | 546.40 | – | +1.0 |
+| AMBU-B.CO | 3.88 | 86.35 | 87.10 | – | +0.9 |
+| APR | 12.4 | 33.00 | 33.50 | – | +1.5 |
+| ARCH | 27.54 | 17.02 | 17.58 | – | +3.3 |
+| ARR | 95.72 | 5.02 | 5.44 | – | +8.4 |
+| ASSA-B.ST | 1.28 | 389.00 | 392.50 | – | +0.9 |
+| ATCO-A.ST | 2.61 | 193.00 | 194.65 | – | +0.8 |
+| ATEA | 2.81 | 169.80 | 168.00 | – | -1.1 |
+| AUSS | 5.26 | 90.40 | 90.10 | – | -0.3 |
+| AUTO | 30.41 | 15.70 | 16.15 | – | +2.9 |
+| AZN.ST | 0.27 | 1836.50 | 1840.00 | – | +0.2 |
+| B2I | 19.3 | 24.75 | 25.00 | – | +1.0 |
+| BAKKA | 1.08 | 442.60 | 435.00 | – | -1.7 |
+| BAVA.CO | 1.39 | 241.20 | 238.00 | – | -1.3 |
+| BEWI | 24.7 | 19.30 | 19.36 | – | +0.3 |
+| BNOR | 0.89 | 535.00 | 543.00 | – | +1.5 |
+| BOL.ST | 0.96 | 527.40 | 521.80 | – | -1.1 |
+| BONHR | 1.73 | 277.00 | 282.00 | – | +1.8 |
+| BORR | 15.75 | 30.20 | 32.00 | – | +6.0 |
+| BOUV | 9.4 | 50.80 | 50.40 | – | -0.8 |
+| BRG | 3.01 | 157.60 | 157.60 | – | -0.0 |
+| BWE | 10.5 | 46.05 | 47.80 | – | +3.8 |
+| BWLPG | 2.33 | 206.60 | 209.60 | – | +1.4 |
+| BWO | 12.19 | 38.70 | 40.00 | – | +3.4 |
+| CARL-B.CO | 0.33 | 1018.50 | 1008.00 | – | -1.0 |
+| CLOUD | 36.8 | 12.70 | 13.10 | – | +3.1 |
+| CMBTO | 3.0 | 157.80 | 165.00 | – | +4.6 |
+| COLO-B.CO | 0.69 | 490.00 | 493.20 | – | +0.7 |
+| COSH | 3.65 | 131.00 | 131.00 | – | +0.0 |
+| DANSKE.CO | 0.91 | 372.00 | 371.00 | – | -0.3 |
+| DDRIL | 215.8 | 2.20 | 2.25 | – | +2.3 |
+| DELIA | 26.41 | 18.20 | 18.32 | – | +0.7 |
+| DEMANT.CO | 0.91 | 369.20 | 370.20 | – | +0.3 |
+| DFENS | 36.8 | 12.90 | 12.60 | – | -2.3 |
+| DNB | 1.46 | 326.10 | 326.00 | – | -0.0 |
+| DNO | 23.76 | 20.34 | 20.86 | – | +2.6 |
+| DOFG | 3.72 | 129.00 | 131.00 | – | +1.6 |
+| DSV.CO | 0.23 | 1438.50 | 1468.00 | – | +2.0 |
+| ELISA.HE | 1.32 | 33.64 | 34.00 | – | +1.1 |
+| ELK | 14.81 | 32.38 | 32.50 | – | +0.4 |
+| ELO | 13.35 | 36.20 | 36.35 | – | +0.4 |
+| ELUX-B.ST | 15.38 | 32.28 | 31.49 | – | -2.5 |
+| ENDUR | 3.67 | 129.20 | 130.00 | – | +0.6 |
+| ENH | 70.13 | 6.80 | 6.77 | – | -0.4 |
+| ENTRA | 4.67 | 100.20 | 100.00 | – | -0.2 |
+| ENVIP | 11.21 | 39.65 | 39.90 | – | +0.6 |
+| EPI-A.ST | 2.01 | 251.70 | 252.00 | – | +0.1 |
+| EPR | 5.71 | 83.00 | 83.10 | – | +0.1 |
+| EQNR | 1.24 | 385.40 | 395.20 | – | +2.5 |
+| EQT.ST | 1.59 | 313.20 | 316.40 | – | +1.0 |
+| ERIC-B.ST | 4.81 | 104.75 | 106.40 | – | +1.6 |
+| ESSITY-B.ST | 1.7 | 290.10 | 286.50 | – | -1.2 |
+| EVO.ST | 0.58 | 852.40 | 862.20 | – | +1.1 |
+| FLS.CO | 0.59 | 593.00 | 604.00 | – | +1.9 |
+| FORTUM.HE | 1.92 | 23.43 | 23.29 | – | -0.6 |
+| FRO | 1.14 | 419.40 | 437.70 | – | +4.4 |
+| GETI-B.ST | 1.83 | 271.20 | 277.30 | – | +2.2 |
+| GJF | 1.72 | 276.00 | 277.20 | – | +0.4 |
+| GMAB.CO | 0.09 | 3600.00 | 3561.00 | – | -1.1 |
+| GN.CO | 2.8 | 119.55 | 123.05 | – | +2.9 |
+| GOD | 31.86 | 14.90 | 14.55 | – | -2.4 |
+| HAFNI | 5.52 | 86.50 | 89.85 | – | +3.9 |
+| HAUTO | 2.79 | 171.90 | 176.60 | – | +2.7 |
+| HEX | 36.98 | 12.90 | 13.23 | – | +2.6 |
+| HEXA-B.ST | 4.63 | 107.45 | 109.25 | – | +1.7 |
+| HM-B.ST | 2.77 | 178.15 | 176.25 | – | -1.1 |
+| HSHP | 3.17 | 152.60 | 157.00 | – | +2.9 |
+| HUH1V.HE | 1.69 | 26.60 | 26.66 | – | +0.2 |
+| HUNT | 30.67 | 15.50 | 16.20 | – | +4.5 |
+| INDU-C.ST | 0.92 | 545.20 | 546.40 | – | +0.2 |
+| INVE-B.ST | 1.15 | 433.20 | 435.25 | – | +0.5 |
+| ISS.CO | 1.08 | 311.40 | 311.60 | – | +0.1 |
+| JYSK.CO | 0.29 | 1155.00 | 1149.00 | – | -0.5 |
+| KCC | 4.58 | 103.60 | 107.00 | – | +3.3 |
+| KCR.HE | 1.52 | 29.56 | 29.70 | – | +0.5 |
+| KEMIRA.HE | 2.87 | 15.59 | 15.59 | – | -0.0 |
+| KESKOB.HE | 1.75 | 25.62 | 25.34 | – | -1.1 |
+| KID | 3.19 | 150.20 | 149.60 | – | -0.4 |
+| KINV-B.ST | 6.89 | 71.84 | 72.12 | – | +0.4 |
+| KIT | 5.18 | 92.40 | 92.85 | – | +0.5 |
+| KNEBV.HE | 0.78 | 57.64 | 57.52 | – | -0.2 |
+| KOA | 231.59 | 2.03 | 2.08 | – | +2.5 |
+| KOG | 1.34 | 358.00 | 353.50 | – | -1.3 |
+| LIFCO-B.ST | 1.73 | 287.20 | 288.20 | – | +0.3 |
+| LINK | 18.57 | 25.50 | 25.64 | – | +0.6 |
+| LSG | 10.55 | 44.44 | 44.66 | – | +0.5 |
+| MAERSK-B.CO | 0.02 | 19345.00 | 19895.00 | – | +2.8 |
+| MANTA.HE | 7.69 | 5.89 | 5.83 | – | -0.8 |
+| MEDI | 1.51 | 316.00 | 313.00 | – | -0.9 |
+| METSO.HE | 2.6 | 17.44 | 17.51 | – | +0.4 |
+| MGN | 23.16 | 20.65 | 20.75 | – | +0.5 |
+| MING | 2.13 | 222.50 | 222.45 | – | -0.0 |
+| MORG | 4.2 | 112.90 | 113.00 | – | +0.1 |
+| MORLD | 17.92 | 26.85 | 26.65 | – | -0.7 |
+| MOWI | 2.11 | 226.00 | 227.20 | – | +0.5 |
+| MPCC | 19.47 | 24.54 | 25.38 | – | +3.4 |
+| MULTI | 3.57 | 134.00 | 133.60 | – | -0.3 |
+| NAPA | 11.47 | 41.90 | 40.95 | – | -2.3 |
+| NAS | 34.74 | 13.62 | 13.60 | – | -0.1 |
+| NDA-FI.HE | 2.64 | 17.07 | 16.93 | – | -0.8 |
+| NEL | 235.62 | 2.04 | 2.00 | – | -2.2 |
+| NESTE.HE | 1.66 | 27.07 | 27.36 | – | +1.1 |
+| NHY | 6.84 | 70.26 | 70.14 | – | -0.2 |
+| NIBE-B.ST | 11.07 | 43.65 | 44.74 | – | +2.5 |
+| NKR | 24.99 | 19.00 | 19.70 | – | +3.7 |
+| NKT.CO | 0.39 | 885.00 | 885.00 | – | +0.0 |
+| NOD | 2.61 | 184.20 | 187.50 | – | +1.8 |
+| NOKIA.HE | 6.03 | 7.63 | 7.75 | – | +1.6 |
+| NONG | 2.58 | 184.00 | 184.36 | – | +0.2 |
+| NORAM | 10.64 | 44.60 | 45.10 | – | +1.1 |
+| NORBT | 2.81 | 171.40 | 163.70 | – | -4.5 |
+| NORCO | 13.24 | 36.25 | 36.10 | – | -0.4 |
+| NOVO-B.CO | 1.24 | 271.50 | 272.70 | – | +0.4 |
+| NRC | 52.29 | 9.10 | 9.23 | – | +1.4 |
+| NSIS-B.CO | 0.76 | 440.20 | 452.50 | – | +2.8 |
+| NSKOG | 13.15 | 36.40 | 35.90 | – | -1.4 |
+| NTI | 426.18 | 1.14 | 1.12 | – | -1.9 |
+| ODF | 4.04 | 118.00 | 119.60 | – | +1.4 |
+| ODFB | 4.06 | 118.60 | 119.00 | – | +0.3 |
+| ODL | 4.58 | 104.40 | 105.80 | – | +1.3 |
+| OET | 0.61 | 781.00 | 821.00 | – | +5.1 |
+| OKEA | 10.52 | 45.50 | 45.90 | – | +0.9 |
+| ONCIN | 7.19 | 63.80 | 68.00 | – | +6.6 |
+| ORK | 4.45 | 106.00 | 104.90 | – | -1.0 |
+| ORNBV.HE | 0.44 | 101.90 | 102.80 | – | +0.9 |
+| ORSTED.CO | 2.32 | 145.75 | 143.70 | – | -1.4 |
+| OTEC | 27.29 | 17.46 | 17.88 | – | +2.4 |
+| OTL | 7.94 | 60.00 | 61.00 | – | +1.7 |
+| OUT1V.HE | 11.93 | 3.76 | 3.78 | – | +0.6 |
+| PARB | 9.5 | 50.40 | 50.60 | – | +0.4 |
+| PEN | 16.12 | 29.60 | 30.55 | – | +3.2 |
+| PEXIP | 6.86 | 69.70 | 69.60 | – | -0.1 |
+| PHO | 11.36 | 42.00 | 41.95 | – | -0.1 |
+| PLSV | 9.51 | 49.80 | 51.00 | – | +2.4 |
+| PLT | 42.24 | 11.20 | 11.12 | – | -0.7 |
+| PNDORA.CO | 0.35 | 955.60 | 960.00 | – | +0.5 |
+| PNOR | 45.04 | 10.58 | 10.92 | – | +3.2 |
+| PROT | 0.99 | 481.00 | 475.60 | – | -1.1 |
+| PRS | 111.06 | 4.50 | 4.33 | – | -3.8 |
+| PUBLI | 27.1 | 17.60 | 17.37 | – | -1.3 |
+| QTCOM.HE | 1.48 | 30.30 | 30.78 | – | +1.6 |
+| RBREW.CO | 0.74 | 450.20 | 449.00 | – | -0.3 |
+| REACH | 84.03 | 5.70 | 5.79 | – | +1.6 |
+| ROCK-B.CO | 1.55 | 215.80 | 215.80 | – | -0.0 |
+| SAAB-B.ST | 0.76 | 659.80 | 641.40 | – | -2.8 |
+| SALM | 0.8 | 593.00 | 593.50 | – | +0.1 |
+| SALME | 226.08 | 2.12 | 2.46 | – | +15.5 |
+| SAMPO.HE | 4.5 | 9.95 | 9.97 | – | +0.2 |
+| SAND.ST | 1.36 | 371.60 | 373.70 | – | +0.6 |
+| SATS | 10.39 | 45.85 | 45.20 | – | -1.4 |
+| SB1NO | 1.98 | 239.50 | 237.50 | – | -0.8 |
+| SBNOR | 2.27 | 208.50 | 207.40 | – | -0.5 |
+| SCA-B.ST | 4.15 | 119.80 | 119.00 | – | -0.7 |
+| SCATC | 5.2 | 91.75 | 89.90 | – | -2.0 |
+| SEA1 | 18.88 | 25.15 | 25.95 | – | +3.2 |
+| SEB-A.ST | 2.24 | 222.70 | 222.20 | – | -0.2 |
+| SECU-B.ST | 3.1 | 160.10 | 161.70 | – | +1.0 |
+| SHB-A.ST | 3.02 | 165.05 | 162.95 | – | -1.3 |
+| SINCH.ST | 11.83 | 42.05 | 42.85 | – | +1.9 |
+| SKA-B.ST | 1.64 | 301.90 | 305.00 | – | +1.0 |
+| SKF-B.ST | 1.81 | 278.30 | 279.10 | – | +0.3 |
+| SMOP | 8.92 | 54.20 | 53.80 | – | -0.7 |
+| SNI | 1.48 | 322.00 | 329.50 | – | +2.3 |
+| SNTIA | 5.49 | 89.00 | 90.90 | – | +2.1 |
+| SOFF | 6.93 | 66.70 | 69.90 | – | +4.8 |
+| SOMA | 17.08 | 28.00 | 27.90 | – | -0.4 |
+| SPOL | 2.26 | 210.00 | 209.95 | – | -0.0 |
+| STB | 2.3 | 206.00 | 205.20 | – | -0.4 |
+| STERV.HE | 4.74 | 9.44 | 9.48 | – | +0.5 |
+| SUBC | 1.51 | 316.40 | 322.00 | – | +1.8 |
+| SWED-A.ST | 1.19 | 420.00 | 419.30 | – | -0.2 |
+| SWON | 4.52 | 105.00 | 100.40 | – | -4.4 |
+| TEL | 3.51 | 134.90 | 136.20 | – | +1.0 |
+| TEL2-B.ST | 3.06 | 162.00 | 162.85 | – | +0.5 |
+| TELIA.ST | 10.17 | 48.54 | 48.98 | – | +0.9 |
+| TGS | 3.53 | 136.00 | 138.10 | – | +1.5 |
+| TIETO.HE | 2.47 | 18.10 | 18.39 | – | +1.6 |
+| TOM | 4.71 | 101.10 | 100.70 | – | -0.4 |
+| TREL-B.ST | 1.08 | 463.60 | 472.60 | – | +1.9 |
+| TRMED | 113.85 | 4.20 | 4.14 | – | -1.3 |
+| TRYG.CO | 2.05 | 163.00 | 163.70 | – | +0.4 |
+| UPM.HE | 2.06 | 21.80 | 22.00 | – | +0.9 |
+| VALMT.HE | 1.56 | 28.74 | 28.84 | – | +0.3 |
+| VAR | 9.77 | 48.98 | 49.60 | – | +1.3 |
+| VEI | 2.14 | 221.50 | 223.00 | – | +0.7 |
+| VEND | 2.01 | 236.00 | 235.80 | – | -0.1 |
+| VOLV-B.ST | 1.55 | 322.80 | 323.10 | – | +0.1 |
+| VOW | 168.66 | 2.82 | 2.78 | – | -1.4 |
+| VTURA | 14.05 | 34.00 | 33.60 | – | -1.2 |
+| VWS.CO | 1.69 | 187.50 | 191.05 | – | +1.9 |
+| WAWI | 2.99 | 160.60 | 165.50 | – | +3.0 |
+| WRT1V.HE | 1.74 | 26.21 | 26.22 | – | +0.0 |
+| WWI | 0.54 | 882.00 | 895.00 | – | +1.5 |
+| WWIB | 0.55 | 832.00 | 844.00 | – | +1.4 |
+| XPLRA | 19.3 | 25.00 | 24.05 | – | -3.8 |
+| YAR | 1.18 | 402.00 | 408.80 | – | +1.7 |
+| ZAP | 8.13 | 58.30 | 57.50 | – | -1.4 |
+| ZEAL.CO | 1.34 | 249.60 | 245.10 | – | -1.8 |
 
-Ordre til neste åpning: kjøp 66.77 ABG, kjøp 109.9 ACR, kjøp 2.35 AFG, kjøp 41.87 AKAST, kjøp 0.43 AKER, kjøp 1.51 AKRBP, kjøp 12.91 AKSO, kjøp 12.4 APR, kjøp 27.54 ARCH, kjøp 95.72 ARR, kjøp 2.81 ATEA, kjøp 5.26 AUSS, kjøp 30.41 AUTO, kjøp 19.3 B2I, kjøp 1.08 BAKKA, kjøp 24.7 BEWI, kjøp 0.89 BNOR, kjøp 1.73 BONHR, kjøp 15.75 BORR, kjøp 9.4 BOUV, kjøp 3.01 BRG, kjøp 8.33 BRUT, kjøp 10.5 BWE, kjøp 2.33 BWLPG, kjøp 12.19 BWO, kjøp 36.8 CLOUD, kjøp 3.0 CMBTO, kjøp 3.65 COSH, kjøp 215.8 DDRIL, kjøp 26.41 DELIA, kjøp 36.8 DFENS, kjøp 1.46 DNB, kjøp 23.76 DNO, kjøp 3.72 DOFG, kjøp 14.81 ELK, kjøp 13.35 ELO, kjøp 3.67 ENDUR, kjøp 70.13 ENH, kjøp 4.67 ENTRA, kjøp 11.21 ENVIP, kjøp 5.71 EPR, kjøp 1.24 EQNR, kjøp 1.14 FRO, kjøp 1.72 GJF, kjøp 31.86 GOD, kjøp 5.52 HAFNI, kjøp 2.79 HAUTO, kjøp 36.98 HEX, kjøp 3.17 HSHP, kjøp 30.67 HUNT, kjøp 4.58 KCC, kjøp 3.19 KID, kjøp 5.18 KIT, kjøp 231.59 KOA, kjøp 1.34 KOG, kjøp 18.57 LINK, kjøp 10.55 LSG, kjøp 1.51 MEDI, kjøp 23.16 MGN, kjøp 2.13 MING, kjøp 4.2 MORG, kjøp 17.92 MORLD, kjøp 2.11 MOWI, kjøp 19.47 MPCC, kjøp 3.57 MULTI, kjøp 11.47 NAPA, kjøp 34.74 NAS, kjøp 235.62 NEL, kjøp 6.84 NHY, kjøp 24.99 NKR, kjøp 2.61 NOD, kjøp 2.58 NONG, kjøp 10.64 NORAM, kjøp 2.81 NORBT, kjøp 13.24 NORCO, kjøp 52.29 NRC, kjøp 13.15 NSKOG, kjøp 426.18 NTI, kjøp 4.04 ODF, kjøp 4.06 ODFB, kjøp 4.58 ODL, kjøp 0.61 OET, kjøp 10.52 OKEA, kjøp 7.19 ONCIN, kjøp 4.45 ORK, kjøp 27.29 OTEC, kjøp 7.94 OTL, kjøp 9.5 PARB, kjøp 16.12 PEN, kjøp 6.86 PEXIP, kjøp 11.36 PHO, kjøp 9.51 PLSV, kjøp 42.24 PLT, kjøp 45.04 PNOR, kjøp 0.99 PROT, kjøp 111.06 PRS, kjøp 27.1 PUBLI, kjøp 84.03 REACH, kjøp 0.8 SALM, kjøp 226.08 SALME, kjøp 10.39 SATS, kjøp 1.98 SB1NO, kjøp 2.27 SBNOR, kjøp 5.2 SCATC, kjøp 18.88 SEA1, kjøp 8.92 SMOP, kjøp 1.48 SNI, kjøp 5.49 SNTIA, kjøp 6.93 SOFF, kjøp 17.08 SOMA, kjøp 2.26 SPOL, kjøp 2.3 STB, kjøp 1.51 SUBC, kjøp 4.52 SWON, kjøp 3.51 TEL, kjøp 3.53 TGS, kjøp 4.71 TOM, kjøp 113.85 TRMED, kjøp 9.77 VAR, kjøp 2.14 VEI, kjøp 2.01 VEND, kjøp 168.66 VOW, kjøp 14.05 VTURA, kjøp 2.99 WAWI, kjøp 0.54 WWI, kjøp 0.55 WWIB, kjøp 19.3 XPLRA, kjøp 1.18 YAR, kjøp 8.13 ZAP, kjøp 0.6 ABB.ST, kjøp 0.93 ALFA.ST, kjøp 1.28 ASSA-B.ST, kjøp 0.27 AZN.ST, kjøp 2.61 ATCO-A.ST, kjøp 0.96 BOL.ST, kjøp 15.38 ELUX-B.ST, kjøp 4.81 ERIC-B.ST, kjøp 1.7 ESSITY-B.ST, kjøp 0.58 EVO.ST, kjøp 1.83 GETI-B.ST, kjøp 4.63 HEXA-B.ST, kjøp 2.77 HM-B.ST, kjøp 1.15 INVE-B.ST, kjøp 6.89 KINV-B.ST, kjøp 11.07 NIBE-B.ST, kjøp 0.76 SAAB-B.ST, kjøp 1.36 SAND.ST, kjøp 4.15 SCA-B.ST, kjøp 2.24 SEB-A.ST, kjøp 3.02 SHB-A.ST, kjøp 11.83 SINCH.ST, kjøp 1.81 SKF-B.ST, kjøp 1.19 SWED-A.ST, kjøp 3.06 TEL2-B.ST, kjøp 10.17 TELIA.ST, kjøp 1.55 VOLV-B.ST, kjøp 1.59 EQT.ST, kjøp 2.01 EPI-A.ST, kjøp 1.73 LIFCO-B.ST, kjøp 0.92 INDU-C.ST, kjøp 1.52 ADDT-B.ST, kjøp 1.64 SKA-B.ST, kjøp 1.08 TREL-B.ST, kjøp 3.1 SECU-B.ST, kjøp 1.24 NOVO-B.CO, kjøp 0.23 DSV.CO, kjøp 0.02 MAERSK-B.CO, kjøp 1.69 VWS.CO, kjøp 0.33 CARL-B.CO, kjøp 0.69 COLO-B.CO, kjøp 0.91 DANSKE.CO, kjøp 2.32 ORSTED.CO, kjøp 0.09 GMAB.CO, kjøp 0.76 NSIS-B.CO, kjøp 0.35 PNDORA.CO, kjøp 2.05 TRYG.CO, kjøp 0.91 DEMANT.CO, kjøp 2.8 GN.CO, kjøp 1.55 ROCK-B.CO, kjøp 1.08 ISS.CO, kjøp 0.29 JYSK.CO, kjøp 0.59 FLS.CO, kjøp 3.88 AMBU-B.CO, kjøp 1.34 ZEAL.CO, kjøp 1.39 BAVA.CO, kjøp 0.39 NKT.CO, kjøp 0.74 RBREW.CO, kjøp 6.03 NOKIA.HE, kjøp 1.66 NESTE.HE, kjøp 0.78 KNEBV.HE, kjøp 4.5 SAMPO.HE, kjøp 1.92 FORTUM.HE, kjøp 2.06 UPM.HE, kjøp 4.74 STERV.HE, kjøp 1.74 WRT1V.HE, kjøp 2.64 NDA-FI.HE, kjøp 1.32 ELISA.HE, kjøp 1.75 KESKOB.HE, kjøp 2.6 METSO.HE, kjøp 0.44 ORNBV.HE, kjøp 1.56 VALMT.HE, kjøp 2.47 TIETO.HE, kjøp 1.52 KCR.HE, kjøp 1.69 HUH1V.HE, kjøp 11.93 OUT1V.HE, kjøp 2.87 KEMIRA.HE, kjøp 1.48 QTCOM.HE, kjøp 7.69 MANTA.HE
+Ordre til neste åpning: kjøp 8.33 BRUT
 
 ## Trend
 
 Kjøper aksjer i opptrend, glidende stop-loss.
 
-Ingen posisjoner.
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| AMBU-B.CO | 53 | 86.39 | 87.10 | 80.39 | +0.8 |
+| ELUX-B.ST | 140 | 32.30 | 31.49 | 28.57 | -2.5 |
+| NKR | 240 | 19.01 | 19.70 | 17.57 | +3.6 |
+| ORNBV.HE | 6 | 101.95 | 102.80 | 95.61 | +0.8 |
 
-Ordre til neste åpning: kjøp 240 NKR, kjøp 140 ELUX-B.ST, kjøp 6 ORNBV.HE, kjøp 53 AMBU-B.CO
+Ordre til neste åpning: kjøp 14 KID
 
 ## Momentum
 
 Holder de 10 sterkeste siste år (uten siste måned), bytter månedlig.
 
-Ingen posisjoner.
-
-Ordre til neste åpning: kjøp 624 HUNT, kjøp 12 OET, kjøp 267 NSKOG, kjøp 23 FRO, kjøp 64 HSHP, kjøp 60 WAWI, kjøp 165 ZAP, kjøp 56 HAUTO, kjøp 61 CMBTO, kjøp 214 OKEA
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| CMBTO | 61 | 157.88 | 165.00 | – | +4.5 |
+| FRO | 23 | 419.61 | 437.70 | – | +4.3 |
+| HAUTO | 56 | 171.99 | 176.60 | – | +2.7 |
+| HSHP | 64 | 152.68 | 157.00 | – | +2.8 |
+| HUNT | 624 | 15.51 | 16.20 | – | +4.5 |
+| NSKOG | 267 | 36.42 | 35.90 | – | -1.4 |
+| OET | 12 | 781.39 | 821.00 | – | +5.1 |
+| OKEA | 214 | 45.52 | 45.90 | – | +0.8 |
+| WAWI | 60 | 160.68 | 165.50 | – | +3.0 |
+| ZAP | 165 | 58.33 | 57.50 | – | -1.4 |
 
 ## Momentum med brems
 
 Som Momentum, men en aksje holdes ikke når hjemmemarkedets indeks er under 200-dagerssnittet. Den delen står i kontanter.
 
-Ingen posisjoner.
-
-Ordre til neste åpning: kjøp 624 HUNT, kjøp 12 OET, kjøp 267 NSKOG, kjøp 23 FRO, kjøp 64 HSHP, kjøp 60 WAWI, kjøp 165 ZAP, kjøp 56 HAUTO, kjøp 61 CMBTO, kjøp 214 OKEA
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| CMBTO | 61 | 157.88 | 165.00 | – | +4.5 |
+| FRO | 23 | 419.61 | 437.70 | – | +4.3 |
+| HAUTO | 56 | 171.99 | 176.60 | – | +2.7 |
+| HSHP | 64 | 152.68 | 157.00 | – | +2.8 |
+| HUNT | 624 | 15.51 | 16.20 | – | +4.5 |
+| NSKOG | 267 | 36.42 | 35.90 | – | -1.4 |
+| OET | 12 | 781.39 | 821.00 | – | +5.1 |
+| OKEA | 214 | 45.52 | 45.90 | – | +0.8 |
+| WAWI | 60 | 160.68 | 165.50 | – | +3.0 |
+| ZAP | 165 | 58.33 | 57.50 | – | -1.4 |
 
 ## Tilbakefall
 
 Kjøper korte dipper i aksjer i opptrend.
 
-Ingen posisjoner.
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| HAFNI | 42 | 86.54 | 89.85 | 74.13 | +3.8 |
+| SCA-B.ST | 74 | 119.86 | 119.00 | 112.64 | -0.7 |
+| VALMT.HE | 20 | 28.75 | 28.84 | 26.47 | +0.3 |
 
-Ordre til neste åpning: kjøp 74 SCA-B.ST, kjøp 42 HAFNI, kjøp 20 VALMT.HE
+Ordre til neste åpning: selg 42 HAFNI
 
 ## Sentiment
 
 Trend, men kjøper bare når aksjescore er 60 eller høyere.
 
-Ingen posisjoner.
-
-Ordre til neste åpning: kjøp 240 NKR, kjøp 222 MORLD, kjøp 49 MOWI, kjøp 13 SALM
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| MORLD | 222 | 26.86 | 26.65 | 24.5 | -0.8 |
+| MOWI | 49 | 226.11 | 227.20 | 217.09 | +0.5 |
+| NKR | 240 | 19.01 | 19.70 | 17.57 | +3.6 |
+| SALM | 13 | 593.30 | 593.50 | 555.82 | +0.0 |
 
 ## Språkmodell
 
 Trend, men en språkmodell (Claude Haiku) avgjør hvilke aksjer som kjøpes. Skriver dagbok.
 
-Ingen posisjoner.
-
-Ordre til neste åpning: kjøp 240 NKR, kjøp 6 ORNBV.HE, kjøp 18 MEDI, kjøp 222 MORLD
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| MEDI | 18 | 316.16 | 313.00 | 286.94 | -1.0 |
+| MORLD | 222 | 26.86 | 26.65 | 24.5 | -0.8 |
+| NKR | 240 | 19.01 | 19.70 | 17.57 | +3.6 |
+| ORNBV.HE | 6 | 101.95 | 102.80 | 95.61 | +0.8 |
 
 ## Score topp 10
 
 Holder de 10 aksjene med høyest aksjescore, bytter månedlig.
 
-Ingen posisjoner.
-
-Ordre til neste åpning: kjøp 46 SBNOR, kjøp 165 ZAP, kjøp 16 SALM, kjøp 42 MOWI, kjøp 57 ATEA, kjøp 11 WWIB, kjøp 193 PLSV, kjøp 93 KCC, kjøp 40 SB1NO, kjøp 364 MORLD
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| ATEA | 57 | 169.88 | 168.00 | – | -1.1 |
+| KCC | 93 | 103.65 | 107.00 | – | +3.2 |
+| MORLD | 364 | 26.86 | 26.65 | – | -0.8 |
+| MOWI | 42 | 226.11 | 227.20 | – | +0.5 |
+| PLSV | 193 | 49.82 | 51.00 | – | +2.4 |
+| SALM | 16 | 593.30 | 593.50 | – | +0.0 |
+| SB1NO | 40 | 239.62 | 237.50 | – | -0.9 |
+| SBNOR | 46 | 208.60 | 207.40 | – | -0.6 |
+| WWIB | 11 | 832.42 | 844.00 | – | +1.4 |
+| ZAP | 165 | 58.33 | 57.50 | – | -1.4 |
 
 ## Score topp 10 ASK
 
 Som Score topp 10, men bare aksjer som kan eies på aksjesparekonto, og med kurtasje som hos norsk megler.
 
-Ingen posisjoner.
-
-Ordre til neste åpning: kjøp 46 SBNOR, kjøp 165 ZAP, kjøp 16 SALM, kjøp 42 MOWI, kjøp 57 ATEA, kjøp 11 WWIB, kjøp 93 KCC, kjøp 40 SB1NO, kjøp 364 MORLD, kjøp 52 NONG
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| ATEA | 57 | 169.88 | 168.00 | – | -1.1 |
+| KCC | 93 | 103.65 | 107.00 | – | +3.2 |
+| MORLD | 364 | 26.86 | 26.65 | – | -0.8 |
+| MOWI | 42 | 226.11 | 227.20 | – | +0.5 |
+| NONG | 52 | 184.09 | 184.36 | – | +0.1 |
+| SALM | 16 | 593.30 | 593.50 | – | +0.0 |
+| SB1NO | 40 | 239.62 | 237.50 | – | -0.9 |
+| SBNOR | 46 | 208.60 | 207.40 | – | -0.6 |
+| WWIB | 11 | 832.42 | 844.00 | – | +1.4 |
+| ZAP | 165 | 58.33 | 57.50 | – | -1.4 |
 
 ## Momentum ASK
 
 Som Momentum, men bare aksjer som kan eies på aksjesparekonto, og med kurtasje som hos norsk megler.
 
-Ingen posisjoner.
-
-Ordre til neste åpning: kjøp 624 HUNT, kjøp 267 NSKOG, kjøp 23 FRO, kjøp 60 WAWI, kjøp 165 ZAP, kjøp 56 HAUTO, kjøp 61 CMBTO, kjøp 214 OKEA, kjøp 860 PLT, kjøp 649 GOD
+| Aksje | Antall | Snitt | Sist | Stop | +/- % |
+|---|---:|---:|---:|---:|---:|
+| CMBTO | 61 | 157.88 | 165.00 | – | +4.5 |
+| FRO | 23 | 419.61 | 437.70 | – | +4.3 |
+| GOD | 649 | 14.91 | 14.55 | – | -2.4 |
+| HAUTO | 56 | 171.99 | 176.60 | – | +2.7 |
+| HUNT | 624 | 15.51 | 16.20 | – | +4.5 |
+| NSKOG | 267 | 36.42 | 35.90 | – | -1.4 |
+| OKEA | 214 | 45.52 | 45.90 | – | +0.8 |
+| PLT | 860 | 11.21 | 11.12 | – | -0.8 |
+| WAWI | 60 | 160.68 | 165.50 | – | +3.0 |
+| ZAP | 165 | 58.33 | 57.50 | – | -1.4 |
 
 ## Dagshandel
 
@@ -104,4 +372,4 @@ Kjøper på åpning, selger alt på sluttkurs samme dag.
 
 Ingen posisjoner.
 
-Ordre til neste åpning: kjøp 997 NKR, kjøp 13 PNDORA.CO, kjøp 714 MORLD, kjøp 111 GN.CO, kjøp 177 ORK
+Ordre til neste åpning: kjøp 969 NKR, kjøp 109 GN.CO, kjøp 716 MORLD, kjøp 127 KID, kjøp 65 SKA-B.ST
