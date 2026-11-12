@@ -54,6 +54,7 @@ målestokk for alternativet indeksfond.
 - Første planlagte kjøring startet seks timer for sent og bokførte ingenting, fordi Yahoo
   leverer nyeste dagsrad uten sluttkurs. Kursene hentes nå direkte fra Yahoo, og
   sluttnoteringen brukes for nyeste dag. 11. november ble bokført i etterkant.
-- Kjøretider: 17:15 og 19:15 UTC på børsdager, og 05:30 UTC morgenen etter.
+- Kjøretider: fire forsøk hver kveld (17:23–21:07 UTC) og to morgenen etter, fordi GitHub
+  startet planlagte kjøringer 6–8 timer for sent de to første dagene.
 - Varsel (sak i repoet) hvis en modell ikke er bokført på over tre dager, og hvis mer enn
   10 % av sluttkursene avviker fra aksjescore sine.

@@ -2,14 +2,16 @@ name: paper-trade
 
 on:
   schedule:
-    # 17:15 UTC = 18:15 (winter) / 19:15 (summer) in Oslo: after the close all year, and
-    # after aksjescore's own daily job (16:30 UTC) has had time to finish.
-    - cron: "15 17 * * 1-5"
-    # Second evening run: GitHub can start scheduled jobs hours late, or skip one.
-    - cron: "15 19 * * 1-5"
-    # Catch-up next morning: Yahoo sometimes publishes the close late, and GitHub can start
-    # the evening run hours late. A second run does nothing if the day is already booked.
-    - cron: "30 5 * * 2-6"
+    # GitHub starts scheduled jobs late, sometimes by many hours, so there are several
+    # slots at odd minutes. A day is only booked once; extra runs do nothing.
+    # Evening (UTC), after the Nordic close at 16:30 UTC and Yahoo's delay:
+    - cron: "23 17 * * 1-5"
+    - cron: "37 18 * * 1-5"
+    - cron: "47 19 * * 1-5"
+    - cron: "7 21 * * 1-5"
+    # Morning catch-up for the previous trading day:
+    - cron: "11 4 * * 2-6"
+    - cron: "43 6 * * 2-6"
   workflow_dispatch:
   push:
     branches: [main]

@@ -45,7 +45,8 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
     d = Path(state_dir) / model.key
     curve = pd.read_csv(d / "equity.csv") if (d / "equity.csv").exists() else pd.DataFrame()
     trades = pd.read_csv(d / "trades.csv", dtype={"symbol": str}) if (d / "trades.csv").exists() else pd.DataFrame()
-    eq = pf.equity(fx)
+    # Show the value booked at the last processed close, not a revaluation at today's FX.
+    eq = pf.last_equity if pf.last_equity else pf.equity(fx)
     st = stats(curve["equity"], trades) if len(curve) else {
         "max_drawdown_pct": 0.0, "fills": 0, "closed_trades": 0, "win_rate_pct": None, "fees": 0.0,
         "dividends": 0.0}
