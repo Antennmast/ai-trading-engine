@@ -79,16 +79,31 @@ YAHOO_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; FinanceBot/1.0)", "Acce
 RETRY_STATUS = {429, 500, 502, 503, 504}
 
 
-def parse_chart(payload: dict, closes_only: bool = False) -> pd.DataFrame:
+def parse_chart(payload: dict, closes_only: bool = False, now_ts: float | None = None) -> pd.DataFrame:
     """Turn one Yahoo chart response into our bar format.
 
-    A bar without a close is dropped (Yahoo publishes the day's close with a delay).
+    Yahoo leaves the close of the newest daily bar empty for many hours after the session
+    and reports the closing price as `regularMarketPrice` instead. That price is used for
+    the newest bar when it belongs to the same day and is at least 15 minutes old (the
+    session is over). Any other bar without a close is dropped.
     With closes_only (indices, FX) the other price fields may be missing or zero.
     """
+    import time as _time
     result = payload["chart"]["result"][0]
     stamps = result.get("timestamp") or []
-    offset = int((result.get("meta") or {}).get("gmtoffset") or 0)
-    quote = result["indicators"]["quote"][0]
+    meta = result.get("meta") or {}
+    offset = int(meta.get("gmtoffset") or 0)
+    quote = {k: list(v) if v else v for k, v in result["indicators"]["quote"][0].items()}
+    closes = quote.get("close") or []
+    last_price, last_time = meta.get("regularMarketPrice"), meta.get("regularMarketTime")
+    if (stamps and closes and closes[-1] is None and last_price and last_time
+            and (int(last_time) + offset) // 86400 == (int(stamps[-1]) + offset) // 86400
+            and (now_ts or _time.time()) - int(last_time) >= 15 * 60):
+        closes[-1] = float(last_price)
+        for key, pick in (("high", max), ("low", min)):
+            series = quote.get(key)
+            if series and series[-1]:
+                series[-1] = pick(series[-1], closes[-1])
 
     def day(ts) -> Date:
         return datetime.fromtimestamp(int(ts) + offset, tz=ZoneInfo("UTC")).date()

@@ -64,7 +64,7 @@ def test_parse_chart_keeps_the_newest_bar_and_drops_bars_without_close():
     from app.data.providers import parse_chart
     payload, stamps = _chart([10.0, None, 12.0])
     df = parse_chart(payload)
-    assert list(df.index) == [date(2026, 11, 9), date(2026, 11, 11)]      # the null close is dropped
+    assert list(df.index) == [date(2026, 11, 9), date(2026, 11, 11)]      # a null close mid-series is dropped
     assert df.loc[date(2026, 11, 11), "close"] == 12.0 and df.loc[date(2026, 11, 11), "open"] == 12.0
     # a late-evening UTC timestamp still lands on the exchange's own date
     payload, _ = _chart([10.0, 11.0], gmtoffset=3600)
@@ -85,3 +85,28 @@ def test_parse_chart_reads_dividends_and_splits_and_index_mode():
     assert len(parse_chart(payload)) == 0
     idx = parse_chart(payload, closes_only=True)
     assert idx["close"].tolist() == [2000.0, 2010.0] and (idx["open"] > 0).all()
+
+
+def test_newest_bar_gets_its_close_from_the_market_price_once_the_session_is_over():
+    from app.data.providers import parse_chart
+    payload, stamps = _chart([382.2, None], opens=[381.0, 385.4])
+    quote = payload["chart"]["result"][0]["indicators"]["quote"][0]
+    quote["high"], quote["low"] = [383.8, 395.0], [373.2, 385.4]
+    meta = payload["chart"]["result"][0]["meta"]
+    close_time = stamps[-1] + 7 * 3600 + 26 * 60                          # 16:26 Oslo time, same day
+    meta.update(regularMarketPrice=395.2, regularMarketTime=close_time)
+    df = parse_chart(payload, now_ts=close_time + 3600)
+    bar = df.loc[date(2026, 11, 11)]
+    assert (bar["open"], bar["close"], bar["high"], bar["low"]) == (385.4, 395.2, 395.2, 385.4)
+    # still trading (price is only minutes old): the unfinished bar is left out
+    assert list(parse_chart(payload, now_ts=close_time + 60).index) == [date(2026, 11, 10)]
+    # a price from another day is never used for this bar
+    meta["regularMarketTime"] = close_time - 86400
+    assert list(parse_chart(payload, now_ts=close_time + 3600).index) == [date(2026, 11, 10)]
+    # index mode: zero open/high/low on the newest bar is fine
+    payload, stamps = _chart([2081.4, None], opens=[2079.9, 0.0])
+    q2 = payload["chart"]["result"][0]["indicators"]["quote"][0]
+    q2["high"], q2["low"] = [2084.9, 0.0], [2068.4, 0.0]
+    payload["chart"]["result"][0]["meta"].update(regularMarketPrice=2106.49, regularMarketTime=stamps[-1] + 9 * 3600)
+    idx = parse_chart(payload, closes_only=True, now_ts=stamps[-1] + 12 * 3600)
+    assert idx["close"].tolist() == [2081.4, 2106.49]
