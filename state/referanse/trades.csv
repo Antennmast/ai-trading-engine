@@ -206,3 +206,5 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-11,KEMIRA.HE,BUY,2.8735,15.59,EUR,10.6011,0.0,0.0,benchmark equal weight
 2026-11-11,QTCOM.HE,BUY,1.4804,30.3,EUR,10.6011,0.0,0.0,benchmark equal weight
 2026-11-11,MANTA.HE,BUY,7.689,5.885,EUR,10.6011,0.0,0.0,benchmark equal weight
+2026-11-12,ODL,DIV,4.5827,2.5822,NOK,1.0,0.0,11.83,dividend
+2026-11-12,ODL,BUY,0.1154,102.2,NOK,1.0,0.0,0.0,dividend reinvested

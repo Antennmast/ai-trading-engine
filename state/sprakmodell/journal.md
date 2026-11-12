@@ -35,3 +35,21 @@
 - **DSV.CO** (DSV) -0.10: Nylig oppgang, men 22,5 % under toppen og negativ avkastning over 126 dager.
 - **ELUX-B.ST** (ELECTROLUX) -0.40: Kraftig fall på 126 dager og 64 % under 52-ukers høyden, selv om den har tatt seg opp de siste 20 dagene.
 - **DDRIL** (DOLPHIN DRILLING) -0.40: Negativ trend over 60 og 126 dager, 30 % under toppen og høy volatilitet.
+
+## 2026-11-12
+
+- **NKR** (NEKKAR) +0.45: Sterk momentum med nær 52-ukershøy og nye ordrer på til sammen 88 MNOK, men volatiliteten er høy.
+- **ORNBV.HE** (ORION) +0.40: Jevn opptrend over 20, 60 og 126 dager, handler nær årshøyden og har lav volatilitet.
+- **MORLD** (MORELD) +0.38: Solid trend over 126 dager og en utvidet kontrakt fra Ocean Installer støtter kursen.
+- **PNDORA.CO** (PANDORA) +0.35: Kraftig oppgang over 126 dager og kurs nær årshøy, med moderat volatilitet.
+- **MEDI** (MEDISTIM) +0.32: Stabil oppgang over 60 og 126 dager, kurs nær toppen og moderat volatilitet.
+- **ENDUR** (ENDÚR) +0.30: Nær årshøyden med god 5-dagers avkastning, men nyheten er bare en innsidemelding.
+- **KID** (KID) +0.25: Jevn oppgang over 126 dager, nær toppen og lav volatilitet.
+- **GN.CO** (GN STORE NORD) +0.25: God trend over 60 og 126 dager og kurs nær toppen, men kortsiktig svakhet i siste uke.
+- **ROCK-B.CO** (ROCKWOOL) +0.15: Moderat positiv trend, men 8 % under toppen og svakere langsiktig momentum.
+- **AMBU-B.CO** (AMBU) +0.10: Positiv 126-dagerstrend, men svak uke og 4,4 % under toppen gir liten støtte nå.
+- **GMAB.CO** (GENMAB) +0.05: Svært sterk langsiktig avkastning, men 9,8 % under toppen med høy volatilitet og svak uke.
+- **NORBT** (NORBIT) +0.00: Sterk siste uke, men svak langsiktig trend og 19 % under 52-ukers høy.
+- **DSV.CO** (DSV) -0.10: 22 % under høyden og negativ 126-dagers avkastning, selv om siste måned har vært sterk.
+- **ELUX-B.ST** (ELECTROLUX) -0.30: 63,5 % under 52-ukershøyden, noe som tyder på svak langsiktig trend eller datafeil.
+- **DDRIL** (DOLPHIN DRILLING) -0.40: Negativ trend over 60 og 126 dager, stor nedgang fra toppen og høy volatilitet.
