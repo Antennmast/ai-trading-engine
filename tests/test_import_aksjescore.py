@@ -25,3 +25,21 @@ def test_export_maps_tickers_and_rescales(tmp_path):
     df = pd.read_csv(out).set_index("symbol")
     assert df.loc["EQNR", "score"] == 0.6 and df.loc["DNB", "score"] == -0.5
     assert ScoreBook.from_csv(out).get("EQNR", date.today()) == 0.6
+
+
+def test_compare_closes_flags_disagreements(tmp_path):
+    from datetime import date
+    from app.import_aksjescore import compare_closes
+    today, yday = date.today(), date.today() - timedelta(days=1)
+    db = tmp_path / "a.db"
+    con = sqlite3.connect(db)
+    con.execute("CREATE TABLE daily_scores (ticker TEXT, score_date TEXT, close_price REAL)")
+    rows = [(f"S{i}.OL", yday.isoformat(), 100.0) for i in range(25)]
+    rows += [("S0.OL", today.isoformat(), 101.0)]                    # too few rows today: skip that date
+    con.executemany("INSERT INTO daily_scores VALUES (?,?,?)", rows); con.commit(); con.close()
+    bars = {f"S{i}": pd.DataFrame({"close": [100.0, 100.4]}, index=[yday, today]) for i in range(25)}
+    bars["S3"] = pd.DataFrame({"close": [90.0, 90.0]}, index=[yday, today])   # 10 % off
+    out = compare_closes(db, bars, {f"S{i}": f"S{i}.OL" for i in range(25)})
+    assert out["date"] == yday.isoformat() and out["compared"] == 25
+    assert out["mismatched"] == [("S3", 90.0, 100.0)]
+    assert compare_closes(tmp_path / "missing.db", bars, {}) is None

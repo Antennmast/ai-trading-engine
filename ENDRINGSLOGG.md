@@ -48,3 +48,12 @@ målestokk for alternativet indeksfond.
 
 - Etter 3 måneder: første gjennomgang. Ingen regelendringer, bare observasjon.
 - Etter 6 måneder: vurder hvilke modeller som kobles til IBKR-papirkonto.
+
+## 2026-11-12 – drift (ingen regelendringer)
+
+- Første planlagte kjøring startet seks timer for sent og bokførte ingenting, fordi Yahoo
+  leverer nyeste dagsrad uten sluttkurs. Kursene hentes nå direkte fra Yahoo, og
+  sluttnoteringen brukes for nyeste dag. 11. november ble bokført i etterkant.
+- Kjøretider: 17:15 og 19:15 UTC på børsdager, og 05:30 UTC morgenen etter.
+- Varsel (sak i repoet) hvis en modell ikke er bokført på over tre dager, og hvis mer enn
+  10 % av sluttkursene avviker fra aksjescore sine.

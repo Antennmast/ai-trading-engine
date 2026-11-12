@@ -5,6 +5,8 @@ on:
     # 17:15 UTC = 18:15 (winter) / 19:15 (summer) in Oslo: after the close all year, and
     # after aksjescore's own daily job (16:30 UTC) has had time to finish.
     - cron: "15 17 * * 1-5"
+    # Second evening run: GitHub can start scheduled jobs hours late, or skip one.
+    - cron: "15 19 * * 1-5"
     # Catch-up next morning: Yahoo sometimes publishes the close late, and GitHub can start
     # the evening run hours late. A second run does nothing if the day is already booked.
     - cron: "30 5 * * 2-6"

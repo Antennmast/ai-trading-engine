@@ -131,7 +131,8 @@ def excess_t_stat(model: dict, bench: dict | None) -> tuple[int, float | None]:
 
 def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
                   starting_cash: float, base: str, errors: dict[str, str],
-                  universe: dict | None = None, index: tuple | None = None) -> str:
+                  universe: dict | None = None, index: tuple | None = None,
+                  data_check: dict | None = None) -> str:
     ref = next((m["return_pct"] for m in summaries if m["benchmark"]), None)
     bench = next((m for m in summaries if m["benchmark"]), None)
     for m in summaries:
@@ -144,6 +145,8 @@ def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
         "starting_cash": starting_cash, "base_currency": base, "models": summaries,
         "universe": universe or {},
         "index": index_curve(index, summaries),
+        "data_check": data_check and {"date": data_check["date"], "compared": data_check["compared"],
+                                      "mismatched": [m[0] for m in data_check["mismatched"]]},
     }
     Path(docs_dir).mkdir(parents=True, exist_ok=True)
     (Path(docs_dir) / "data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n")

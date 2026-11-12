@@ -9,14 +9,15 @@ from __future__ import annotations
 
 import argparse
 import traceback
-from datetime import date as Date
+from datetime import date as Date, datetime
 from pathlib import Path
 
 import pandas as pd
 
-from app.data.providers import (CsvProvider, YahooProvider, equal_weight_index,
+from app.data.providers import (MARKET_TZ, CsvProvider, YahooProvider, equal_weight_index,
                                 last_completed_bar_date, liquid_symbols)
 from app.engine import Instrument, run_engine
+from app.import_aksjescore import compare_closes
 from app.llm_agent import run_agent
 from app.models import MODELS
 from app.portfolio import Portfolio
@@ -24,6 +25,9 @@ from app.report import append_csv, model_summary, stats, write_outputs
 from app.settings import load_settings
 from app.sim_broker import Costs, SimBroker
 from app.strategy import ScoreBook
+
+
+MAX_BOOKED_AGE_DAYS = 3     # Friday's close is 3 days old on Monday; more means a missed day
 
 
 def load_universe(path: Path):
@@ -155,6 +159,13 @@ def main() -> None:
 
     state_dir = Path(args.state_dir)
 
+    # Independent data check: aksjescore fetches the same closes on its own.
+    check = compare_closes(args.news_db, bars, tickers) if args.provider == "yahoo" else None
+    if check:
+        print(f"[check] {check['date']}: {check['compared'] - len(check['mismatched'])} of "
+              f"{check['compared']} closes agree with aksjescore"
+              + (f"; differ: {check['mismatched'][:8]}" if check["mismatched"] else ""))
+
     # The language-model agent scores candidates before the models run (once per bar date).
     llm_model = next((m for m in models if m.key == "sprakmodell"), None)
     if llm_model is not None:
@@ -190,9 +201,20 @@ def main() -> None:
 
     print(write_outputs(summaries, state_dir, Path(args.docs_dir), starting_cash, base, errors,
                         {"total": len(instruments), "tradable": len(tradable)},
-                        index=(cfg.index_name, index_close))[:1500])
+                        index=(cfg.index_name, index_close), data_check=check)[:1500])
     if errors:
         raise SystemExit(f"Models failed: {', '.join(errors)}")
+    # Quiet failures: a run that books nothing still "succeeds", so check the outcome.
+    booked = [m["last_date"] for m in summaries if m["last_date"]]
+    if args.provider == "yahoo" and booked:
+        today = datetime.now(MARKET_TZ).date()
+        age = (today - Date.fromisoformat(min(booked))).days
+        if age > MAX_BOOKED_AGE_DAYS:
+            raise SystemExit(f"Stale: a model was last booked {min(booked)}, {age} days ago. "
+                             "Prices are not arriving (or the exchanges have had a long holiday).")
+    if check and check["compared"] >= 50 and len(check["mismatched"]) > 0.1 * check["compared"]:
+        raise SystemExit(f"Data check failed: {len(check['mismatched'])} of {check['compared']} closes "
+                         f"differ from aksjescore on {check['date']}.")
 
 
 if __name__ == "__main__":

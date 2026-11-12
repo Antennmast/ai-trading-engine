@@ -133,6 +133,13 @@ function render(d) {
     (d.universe && d.universe.tradable ? ` · ${d.universe.tradable} omsettelige aksjer av ${d.universe.total} i Norden` : "") +
     ` · oppdatert ${d.updated_utc} UTC`;
 
+  if (d.data_check) {
+    const c = d.data_check, ok = c.compared - c.mismatched.length;
+    document.querySelector("footer").append(el("div", { style: "margin-top:6px", text:
+      `Datakontroll ${c.date}: ${ok} av ${c.compared} sluttkurser stemmer med aksjescore` +
+      (c.mismatched.length ? `. Avvik: ${c.mismatched.slice(0, 8).join(", ")}` : ".") }));
+  }
+
   // ---- legend ----
   const legend = document.getElementById("legend");
   // the market index is drawn as an extra, dotted line; it is not a traded portfolio
