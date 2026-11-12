@@ -13,4 +13,4 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python tools/diag_prices.py
+      - run: python -m tools.diag_prices

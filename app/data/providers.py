@@ -74,45 +74,98 @@ class CsvProvider:
         return rates
 
 
-class YahooProvider:
-    """Free delayed daily data via yfinance (unofficial). Fine for play money only."""
+YAHOO_HOSTS = ["https://query1.finance.yahoo.com", "https://query2.finance.yahoo.com"]
+YAHOO_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; FinanceBot/1.0)", "Accept": "application/json"}
+RETRY_STATUS = {429, 500, 502, 503, 504}
 
-    def __init__(self, period: str = "1y"):
-        self.period = period
+
+def parse_chart(payload: dict, closes_only: bool = False) -> pd.DataFrame:
+    """Turn one Yahoo chart response into our bar format.
+
+    A bar without a close is dropped (Yahoo publishes the day's close with a delay).
+    With closes_only (indices, FX) the other price fields may be missing or zero.
+    """
+    result = payload["chart"]["result"][0]
+    stamps = result.get("timestamp") or []
+    offset = int((result.get("meta") or {}).get("gmtoffset") or 0)
+    quote = result["indicators"]["quote"][0]
+
+    def day(ts) -> Date:
+        return datetime.fromtimestamp(int(ts) + offset, tz=ZoneInfo("UTC")).date()
+
+    events = result.get("events") or {}
+    divs = {day(e["date"]): float(e["amount"]) for e in (events.get("dividends") or {}).values()
+            if e.get("amount")}
+    splits = {day(e["date"]): float(e["numerator"]) / float(e["denominator"])
+              for e in (events.get("splits") or {}).values()
+              if e.get("numerator") and e.get("denominator")}
+    rows, index = [], []
+    cols = [quote.get(k) or [None] * len(stamps) for k in ("open", "high", "low", "close", "volume")]
+    for ts, o, h, l, c, v in zip(stamps, *cols):
+        if c is None or c <= 0:
+            continue
+        if closes_only:
+            o, h, l = (x if x else c for x in (o, h, l))
+        elif None in (o, h, l) or min(o, h, l) <= 0:
+            continue
+        d = day(ts)
+        index.append(d)
+        rows.append({"open": float(o), "high": float(h), "low": float(l), "close": float(c),
+                     "volume": float(v or 0), "dividends": divs.get(d, 0.0), "splits": splits.get(d, 0.0)})
+    df = pd.DataFrame(rows, index=index, columns=COLUMNS + ["dividends", "splits"])
+    return df[~pd.Index(df.index).duplicated(keep="last")].sort_index()
+
+
+class YahooProvider:
+    """Free delayed daily data straight from Yahoo's chart endpoint. Play money only.
+
+    (The yfinance library was dropped: version 1.8 returned the newest bar without a close.)
+    """
+
+    def __init__(self, period: str = "2y", workers: int = 4):
+        self.period, self.workers = period, workers
+
+    def _get(self, ticker: str) -> dict | None:
+        import json, time, urllib.error, urllib.parse, urllib.request
+        query = urllib.parse.urlencode({"interval": "1d", "range": self.period, "events": "div,splits"})
+        for host in YAHOO_HOSTS:
+            url = f"{host}/v8/finance/chart/{urllib.parse.quote(ticker)}?{query}"
+            for attempt in range(1, 4):
+                try:
+                    req = urllib.request.Request(url, headers=YAHOO_HEADERS)
+                    with urllib.request.urlopen(req, timeout=20) as resp:
+                        return json.loads(resp.read().decode("utf-8"))
+                except urllib.error.HTTPError as exc:
+                    if exc.code == 404:
+                        return None
+                    if exc.code not in RETRY_STATUS:
+                        break
+                except (urllib.error.URLError, TimeoutError, ValueError):
+                    pass
+                time.sleep(2 ** attempt)
+        return None
+
+    def _one(self, ticker: str, cutoff, closes_only: bool) -> pd.DataFrame | None:
+        payload = self._get(ticker)
+        if payload is None:
+            return None
+        try:
+            df = parse_chart(payload, closes_only)
+        except (KeyError, IndexError, TypeError, ValueError):
+            return None
+        if cutoff:
+            df = df[[d <= cutoff for d in df.index]]
+        return df if len(df) else None
 
     def history(self, tickers: dict[str, str], cutoff: Date | None = None,
-                chunk: int = 60) -> dict[str, pd.DataFrame]:
-        import yfinance as yf
+                closes_only: bool = False) -> dict[str, pd.DataFrame]:
+        from concurrent.futures import ThreadPoolExecutor
         out: dict[str, pd.DataFrame] = {}
-        items = list(tickers.items())
-        for i in range(0, len(items), chunk):
-            part = items[i:i + chunk]
-            try:
-                # auto_adjust=False: raw prices, so stops/fills match what actually traded
-                raw = yf.download([t for _, t in part], period=self.period, interval="1d",
-                                  auto_adjust=False, actions=True, group_by="ticker",
-                                  threads=True, progress=False)
-            except Exception as exc:                # one bad batch must not stop the run
-                print(f"[data] batch {i // chunk} failed: {exc}")
-                continue
-            for symbol, ticker in part:
-                try:
-                    df = clean(raw[ticker], cutoff)
-                except Exception:
-                    continue
-                if len(df):
+        with ThreadPoolExecutor(max_workers=self.workers) as pool:
+            for symbol, df in zip(tickers, pool.map(lambda t: self._one(t, cutoff, closes_only),
+                                                     tickers.values())):
+                if df is not None:
                     out[symbol] = df
-        # The threaded batch download occasionally drops a ticker (cache lock, timeout).
-        # Retry those one by one so a held share does not silently miss a day.
-        for symbol in [s for s in tickers if s not in out][:40]:
-            try:
-                raw = yf.Ticker(tickers[symbol]).history(period=self.period, interval="1d",
-                                                         auto_adjust=False, actions=True)
-                df = clean(raw, cutoff)
-                if len(df):
-                    out[symbol] = df
-            except Exception:
-                pass
         missing = [s for s in tickers if s not in out]
         if missing:
             print(f"[data] no bars for {len(missing)}: {', '.join(missing[:25])}"
@@ -120,17 +173,13 @@ class YahooProvider:
         return out
 
     def fx(self, currencies, base="NOK") -> dict[str, float]:
-        import yfinance as yf
         rates = {base: 1.0}
         for ccy in sorted(set(currencies) - {base}):
-            try:
-                px = yf.Ticker(f"{ccy}{base}=X").history(period="5d")["Close"].dropna()
-                if not px.empty and float(px.iloc[-1]) > 0:
-                    rates[ccy] = float(px.iloc[-1])
-                    continue
-            except Exception as exc:
-                print(f"[fx] {ccy}{base} failed: {exc}")
-            print(f"[fx] no rate for {ccy}{base}; shares in {ccy} are skipped this run")
+            df = self._one(f"{ccy}{base}=X", None, True)
+            if df is not None and float(df["close"].iloc[-1]) > 0:
+                rates[ccy] = float(df["close"].iloc[-1])
+            else:
+                print(f"[fx] no rate for {ccy}{base}; shares in {ccy} are skipped this run")
         return rates
 
 

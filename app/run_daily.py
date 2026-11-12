@@ -75,11 +75,13 @@ def main() -> None:
     if len(bars) < max(1, len(tickers) // 2):
         raise SystemExit("Price data missing for most instruments; state left untouched.")
     newest = max(df.index[-1] for df in bars.values())
+    if cutoff and newest < cutoff and cutoff.weekday() < 5:
+        print(f"[data] NOTE: no bars for {cutoff} yet (holiday, or Yahoo has not published the close)")
     if args.provider == "yahoo" and (Date.today() - newest).days > 5:
         raise SystemExit(f"Newest price bar is {newest}: the data source looks stale; state left untouched.")
     index_close = None
     if cfg.index_ticker and args.provider == "yahoo":
-        idx = provider.history({cfg.index_name: cfg.index_ticker}, cutoff).get(cfg.index_name)
+        idx = provider.history({cfg.index_name: cfg.index_ticker}, cutoff, closes_only=True).get(cfg.index_name)
         index_close = None if idx is None else idx["close"]
         print(f"[index] {cfg.index_name}: {0 if idx is None else len(idx)} bars")
     fx = provider.fx({i.currency for i in instruments.values()}, base)
@@ -117,7 +119,7 @@ def main() -> None:
         name, ticker = cfg.market_indices.get(ccy, (ccy, ""))
         series = None
         if ticker and args.provider == "yahoo":
-            got = provider.history({name: ticker}, cutoff).get(name)
+            got = provider.history({name: ticker}, cutoff, closes_only=True).get(name)
             series = None if got is None or len(got) < 200 else got["close"]
         if series is None:
             name = f"own equal-weight index ({ccy})"

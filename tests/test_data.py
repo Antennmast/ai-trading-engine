@@ -46,3 +46,42 @@ def test_universe_file_is_consistent():
     assert set(u["currency"]) == {"NOK", "SEK", "DKK", "EUR"}
     suffix = {"NOK": ".OL", "SEK": ".ST", "DKK": ".CO", "EUR": ".HE"}
     assert all(t.endswith(suffix[c]) for t, c in zip(u["yahoo_ticker"], u["currency"]))
+
+
+def _chart(closes, opens=None, gmtoffset=3600, events=None):
+    base = 1794384000                       # 2026-11-11 08:00 UTC = 09:00 in Oslo
+    n = len(closes)
+    stamps = [base + 86400 * (i - (n - 1)) for i in range(n)]
+    opens = opens or closes
+    return {"chart": {"result": [{
+        "meta": {"gmtoffset": gmtoffset}, "timestamp": stamps, "events": events or {},
+        "indicators": {"quote": [{"open": opens, "high": [c and c + 1 for c in closes],
+                                  "low": [c and c - 1 for c in closes], "close": closes,
+                                  "volume": [1000] * n}]}}]}}, stamps
+
+
+def test_parse_chart_keeps_the_newest_bar_and_drops_bars_without_close():
+    from app.data.providers import parse_chart
+    payload, stamps = _chart([10.0, None, 12.0])
+    df = parse_chart(payload)
+    assert list(df.index) == [date(2026, 11, 9), date(2026, 11, 11)]      # the null close is dropped
+    assert df.loc[date(2026, 11, 11), "close"] == 12.0 and df.loc[date(2026, 11, 11), "open"] == 12.0
+    # a late-evening UTC timestamp still lands on the exchange's own date
+    payload, _ = _chart([10.0, 11.0], gmtoffset=3600)
+    payload["chart"]["result"][0]["timestamp"][-1] = 1794438000           # 2026-11-11 23:00 UTC
+    assert parse_chart(payload).index[-1] == date(2026, 11, 12)
+
+
+def test_parse_chart_reads_dividends_and_splits_and_index_mode():
+    from app.data.providers import parse_chart
+    payload, stamps = _chart([10.0, 11.0, 12.0])
+    payload["chart"]["result"][0]["events"] = {
+        "dividends": {str(stamps[1]): {"amount": 0.5, "date": stamps[1]}},
+        "splits": {str(stamps[2]): {"date": stamps[2], "numerator": 5, "denominator": 1}}}
+    df = parse_chart(payload)
+    assert df["dividends"].tolist() == [0.0, 0.5, 0.0] and df["splits"].tolist() == [0.0, 0.0, 5.0]
+    # indices often come with zero open/high/low: usable when only the close is needed
+    payload, _ = _chart([2000.0, 2010.0], opens=[0.0, 0.0])
+    assert len(parse_chart(payload)) == 0
+    idx = parse_chart(payload, closes_only=True)
+    assert idx["close"].tolist() == [2000.0, 2010.0] and (idx["open"] > 0).all()
