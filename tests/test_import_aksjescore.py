@@ -43,3 +43,11 @@ def test_compare_closes_flags_disagreements(tmp_path):
     assert out["date"] == yday.isoformat() and out["compared"] == 25
     assert out["mismatched"] == [("S3", 90.0, 100.0)]
     assert compare_closes(tmp_path / "missing.db", bars, {}) is None
+    # a close that aksjescore merely carried over from its previous day is not compared
+    con = sqlite3.connect(db)
+    two_days = (today - timedelta(days=2)).isoformat()
+    con.executemany("INSERT INTO daily_scores VALUES (?,?,?)",
+                    [("S3.OL", two_days, 100.0)] + [(f"S{i}.OL", two_days, 99.0) for i in range(25) if i != 3])
+    con.commit(); con.close()
+    out = compare_closes(db, bars, {f"S{i}": f"S{i}.OL" for i in range(25)})
+    assert out["compared"] == 24 and out["mismatched"] == []

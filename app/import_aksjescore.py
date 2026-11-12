@@ -60,9 +60,13 @@ def compare_closes(db_path, bars: dict, tickers: dict[str, str], tolerance: floa
     for ticker, day, close in rows:
         if ticker in by_ticker:
             theirs.setdefault(day, {})[by_ticker[ticker]] = float(close)
-    for day in sorted(theirs, reverse=True):               # newest date that we also have
+    days = sorted(theirs, reverse=True)
+    for n, day in enumerate(days):                         # newest date that we also have
+        previous = theirs[days[n + 1]] if n + 1 < len(days) else {}
         pairs = []
         for sym, close in theirs[day].items():
+            if previous.get(sym) == close:
+                continue        # unchanged since their previous run: no trade, or their fetch was stale
             df = bars.get(sym)
             if df is None:
                 continue
