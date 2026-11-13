@@ -208,3 +208,9 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-11,MANTA.HE,BUY,7.689,5.885,EUR,10.6011,0.0,0.0,benchmark equal weight
 2026-11-12,ODL,DIV,4.5827,2.5822,NOK,1.0,0.0,11.83,dividend
 2026-11-12,ODL,BUY,0.1154,102.2,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-13,AKAST,DIV,41.8665,2.5,NOK,1.0,0.0,104.67,dividend
+2026-11-13,AKAST,BUY,10.8701,9.6,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-13,EQNR,DIV,1.2422,3.7283,NOK,1.0,0.0,4.63,dividend
+2026-11-13,EQNR,BUY,0.0114,404.0,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-13,MOWI,DIV,2.1082,2.3,NOK,1.0,0.0,4.85,dividend
+2026-11-13,MOWI,BUY,0.0216,224.0,NOK,1.0,0.0,0.0,dividend reinvested

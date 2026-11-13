@@ -3,3 +3,4 @@ date,model,shares,input_tokens,output_tokens,cost_usd
 2026-11-10,claude-haiku-5-5,15,7680,4628,0.00308
 2026-11-11,claude-haiku-5-5,15,7596,4470,0.00299
 2026-11-12,claude-haiku-5-5,15,7485,4537,0.00302
+2026-11-13,claude-haiku-5-5,15,7629,4567,0.00305

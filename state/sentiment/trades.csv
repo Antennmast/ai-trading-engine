@@ -3,3 +3,5 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-11,MORLD,BUY,222,26.8634,NOK,1.0,10,0.0,"uptrend, score +0.55; sized by risk per trade"
 2026-11-11,MOWI,BUY,49,226.113,NOK,1.0,10,0.0,"uptrend, score +0.58; sized by risk per trade"
 2026-11-11,SALM,BUY,13,593.2965,NOK,1.0,10,0.0,"uptrend, score +0.60; sized by risk per trade"
+2026-11-13,MOWI,DIV,49,2.3,NOK,1.0,0.0,112.7,dividend
+2026-11-13,ENDUR,BUY,29,140.8704,NOK,1.0,10,0.0,"uptrend, score +0.49; sized by open-risk limit"

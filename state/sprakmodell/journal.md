@@ -53,3 +53,21 @@
 - **DSV.CO** (DSV) -0.10: 22 % under høyden og negativ 126-dagers avkastning, selv om siste måned har vært sterk.
 - **ELUX-B.ST** (ELECTROLUX) -0.30: 63,5 % under 52-ukershøyden, noe som tyder på svak langsiktig trend eller datafeil.
 - **DDRIL** (DOLPHIN DRILLING) -0.40: Negativ trend over 60 og 126 dager, stor nedgang fra toppen og høy volatilitet.
+
+## 2026-11-13
+
+- **ORNBV.HE** (ORION) +0.40: Sterk trend over 60 og 126 dager, står på 52-ukers høy og har lav volatilitet.
+- **NKR** (NEKKAR) +0.35: Sterk momentum og positive kontraktsnyheter, men høy daglig volatilitet gir økt risiko.
+- **MORLD** (MORELD) +0.35: Stabil trend over 126 dager og en positiv kontraktsoppdatering.
+- **MEDI** (MEDISTIM) +0.30: Jevn oppgang over flere perioder og nær 52-ukers høy, uten nyhetsdrevet risiko.
+- **AMBU-B.CO** (AMBU) +0.30: Står på 52-ukers høy med jevn oppgang over 20 og 126 dager.
+- **AZN.ST** (ASTRAZENECA) +0.30: Nær 52-ukers høy med jevn oppgang over 20 og 60 dager og lav volatilitet.
+- **KID** (KID) +0.25: Står på 52-ukers høy med rolig, jevn trend og lav volatilitet.
+- **BONHR** (BONHEUR) +0.20: Står på 52-ukers høy med positiv trend, men kortsiktig oppgang på 12 prosent er strukket.
+- **ENDUR** (ENDÚR) +0.15: Kraftig 5-dagersoppgang gjør inngangen strukket, selv om trenden er positiv.
+- **GMAB.CO** (GENMAB) +0.10: Sterk langsiktig oppgang, men høy volatilitet og svak 5-dagersutvikling gir moderat score.
+- **COLO-B.CO** (COLOPLAST) +0.00: Flat siste 5 dager og 12 prosent under 52-ukers høy, uten tydelig trendstyrke nå.
+- **NAS** (NORWEGIAN AIR SHUT) -0.10: Negativ utvikling over 126 dager og 21 % under toppen, til tross for god siste måned.
+- **RBREW.CO** (ROYAL UNIBREW) -0.10: Ligger 23 prosent under 52-ukers høy og har svak langsiktig momentum.
+- **ELUX-B.ST** (ELECTROLUX) -0.20: Ligger over 60 % under 52-ukers høy, så den kortsiktige oppgangen er svak mot den langsiktige nedgangen.
+- **DSV.CO** (DSV) -0.20: Er 21,7 % under toppen og har negativ 126-dagers avkastning.

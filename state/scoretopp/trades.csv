@@ -9,3 +9,4 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-11,KCC,BUY,93,103.6518,NOK,1.0,10,0.0,top 10 score (78)
 2026-11-11,SB1NO,BUY,40,239.6197,NOK,1.0,10,0.0,top 10 score (78)
 2026-11-11,MORLD,BUY,364,26.8634,NOK,1.0,10,0.0,top 10 score (77)
+2026-11-13,MOWI,DIV,42,2.3,NOK,1.0,0.0,96.6,dividend

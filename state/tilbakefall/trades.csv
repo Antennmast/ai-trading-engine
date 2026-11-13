@@ -3,3 +3,6 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-11,HAFNI,BUY,42,86.5433,NOK,1.0,10,0.0,dip in uptrend (RSI 8); sized by risk per trade
 2026-11-11,VALMT.HE,BUY,20,28.7544,EUR,10.6011,10,0.0,dip in uptrend (RSI 8); sized by risk per trade
 2026-11-12,HAFNI,SELL,42,89.955,NOK,1.0,10,133.29,bounce: close above 5-day average
+2026-11-13,VALMT.HE,SELL,20,28.9655,EUR,10.54849,10,34.54,bounce: close above 5-day average
+2026-11-13,DEMANT.CO,BUY,11,345.1725,DKK,1.4099,10,0.0,dip in uptrend (RSI 2); sized by risk per trade
+2026-11-13,GOD,BUY,221,14.057,NOK,1.0,10,0.0,dip in uptrend (RSI 5); sized by open-risk limit
