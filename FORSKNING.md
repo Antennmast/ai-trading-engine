@@ -32,6 +32,14 @@ Ingenting her er investeringsråd.
   [CXO-sammendrag](https://www.cxoadvisory.com/technical-trading/long-term-outperformance-from-trends-defined-by-moving-averages),
   [gjennomgang av oppsettet](https://the7circles.uk/?p=35413)
 
+- **Momentum på Oslo Børs.** Masteroppgaver fra CBS (1996–2016) og NHH (1998–2018) fant
+  begge at momentum var priset på Oslo Børs, mens størrelse og verdi var svakere eller
+  uklare. Dette er studentarbeid, ikke fagfellevurdert forskning.
+  [CBS](https://research.cbs.dk/en/studentProjects/beae3b6c-9189-4e30-9325-35ac337875dd/),
+  [NHH](https://openaccess.nhh.no/nhh-xmlui/handle/11250/2609798)
+- **Aksjescore sin egen tilbakeprøving (2018–2026):** ren momentum 12-1 ga +8,5 % i året
+  mot lik vekt (t = 2,1), med bare dagens overlevende selskaper i datagrunnlaget.
+
 **For oss:** regn med klart mindre enn det en tilbakeprøving viser. Aksjescore-testens
 +8 % per år mot lik vekt er et tak, ikke en forventning.
 

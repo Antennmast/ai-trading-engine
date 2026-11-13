@@ -35,14 +35,26 @@ Alt som endres i oppsettet noteres her med dato og begrunnelse.
 
 ## Kriterier bestemt på forhånd
 
-En modell regnes som bedre enn referansen først når alle tre er oppfylt:
+Revidert 13. november 2026, etter to børsdager og før noe resultat kunne si noe. Bare
+vurderingen er endret, ingen handelsregler.
 
-1. minst 120 børsdager i testen
-2. høyere avkastning enn referansen etter kostnader
-3. t-verdi mot referansen over 2
+Det opprinnelige kravet (t-verdi over 2 etter 120 børsdager) fanger bare en meravkastning
+på rundt 40 % i året, og vil oftere slippe gjennom flaks enn en ekte fordel. En realistisk
+fordel på 5–10 % i året tar mange år å bevise i en fremtidstest. Derfor:
 
-Største fall skal ikke være mer enn dobbelt så stort som referansens. OSEBX vises som
-målestokk for alternativet indeksfond.
+1. **Beviset for en fordel kommer fra lang historikk** (forskningen og aksjescore sin
+   tilbakeprøving 2018–2026), ikke fra denne testen.
+2. **Fremtidstesten brukes til å avkrefte.** Etter minst 120 børsdager tas en modell ut hvis
+   - t-verdien mot referansen er under −2 (klart dårligere etter kostnader), eller
+   - den har en historisk forventning og t-verdien mot den er under −2 (fordelen er
+     trolig borte), eller
+   - største fall er mer enn dobbelt så stort som referansens.
+3. **Ingen modell erklæres som vinner** før «år før forskjellen er sikker» er under
+   tiden testen faktisk har gått.
+
+Historiske forventninger mot lik vekt, fra aksjescore sin tilbakeprøving (topp 30 aksjer,
+30 bp kostnad): Momentum +8,5 % i året (t = 2,1), aksjescore +8,3 % i året (t = 2,2).
+Våre modeller holder 10 aksjer og har derfor større avvik fra referansen.
 
 ## Planlagte vurderingspunkter
 

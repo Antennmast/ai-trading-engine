@@ -53,6 +53,7 @@ def model_summary(model, state_dir: Path, pf: Portfolio, fx: dict, starting_cash
     return {
         "key": model.key, "name": model.name, "blurb": model.blurb, "benchmark": model.benchmark,
         "variant_of": model.variant_of, "ask_only": model.ask_only,
+        "historical_excess": model.historical_excess,
         "last_date": pf.last_date,
         "equity": round(eq, 2), "cash": round(pf.cash, 2),
         "return_pct": round((eq / starting_cash - 1) * 100, 3),
@@ -111,23 +112,44 @@ def index_curve(index: tuple | None, summaries: list[dict]) -> dict | None:
 
 
 MIN_DAYS_FOR_T = 60
+TRADING_DAYS = 250
+
+
+def excess_stats(model: dict, bench: dict | None, historical_excess: float | None = None) -> dict:
+    """Daily return minus the benchmark's, summarised.
+
+    t_vs_benchmark : |t| above about 2 means the difference is unlikely to be luck.
+    tracking_error : annualised volatility of the difference (how far the model wanders).
+    years_needed   : years of data for the current excess to reach t = 2 at this tracking
+                     error. Many years means the gap so far cannot be told apart from noise.
+    t_vs_history   : the live excess tested against the backtest's excess. Clearly below -2
+                     means the historical edge is probably not there any more.
+    """
+    curve = pd.Series({d: v for d, v in model["curve"]}, dtype=float)
+    out = {"days": max(len(curve) - 1, 0), "t_vs_benchmark": None, "tracking_error_pct": None,
+           "excess_annual_pct": None, "years_needed": None, "t_vs_history": None}
+    if bench is None or model["benchmark"] or out["days"] < MIN_DAYS_FOR_T:
+        return out
+    ref = pd.Series({d: v for d, v in bench["curve"]}, dtype=float)
+    diff = (curve.pct_change() - ref.pct_change()).dropna()
+    sd = float(diff.std())
+    if len(diff) < MIN_DAYS_FOR_T or sd == 0:
+        return out
+    se = sd / len(diff) ** 0.5
+    mean = float(diff.mean())
+    te, excess = sd * TRADING_DAYS ** 0.5, mean * TRADING_DAYS
+    out.update(t_vs_benchmark=round(mean / se, 2), tracking_error_pct=round(te * 100, 1),
+               excess_annual_pct=round(excess * 100, 1),
+               years_needed=round(min((2 * te / abs(excess)) ** 2, 999), 1) if excess else 999.0)
+    if historical_excess is not None:
+        out["t_vs_history"] = round((mean - historical_excess / TRADING_DAYS) / se, 2)
+    return out
 
 
 def excess_t_stat(model: dict, bench: dict | None) -> tuple[int, float | None]:
-    """Trading days observed, and the t-statistic of daily return minus the benchmark's.
-
-    |t| above about 2 means the difference is unlikely to be luck. With eight models, one
-    will pass that bar by chance fairly often, so it is a minimum, not proof.
-    """
-    curve = pd.Series({d: v for d, v in model["curve"]}, dtype=float)
-    days = max(len(curve) - 1, 0)
-    if bench is None or model["benchmark"] or days < MIN_DAYS_FOR_T:
-        return days, None
-    ref = pd.Series({d: v for d, v in bench["curve"]}, dtype=float)
-    diff = (curve.pct_change() - ref.pct_change()).dropna()
-    if len(diff) < MIN_DAYS_FOR_T or float(diff.std()) == 0:
-        return days, None
-    return days, round(float(diff.mean() / (diff.std() / len(diff) ** 0.5)), 2)
+    """Backward-compatible wrapper: (days, t-statistic against the benchmark)."""
+    s = excess_stats(model, bench)
+    return s["days"], s["t_vs_benchmark"]
 
 
 def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
@@ -139,7 +161,7 @@ def write_outputs(summaries: list[dict], state_dir: Path, docs_dir: Path,
     for m in summaries:
         m["vs_benchmark_pct"] = None if ref is None or m["benchmark"] else round(m["return_pct"] - ref, 3)
         m["error"] = errors.get(m["key"])
-        m["days"], m["t_vs_benchmark"] = excess_t_stat(m, bench)
+        m.update(excess_stats(m, bench, m.get("historical_excess")))
     payload = {
         "updated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M"),
         "last_date": max((m["last_date"] or "" for m in summaries), default=""),

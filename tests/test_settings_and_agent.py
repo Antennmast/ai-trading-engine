@@ -155,3 +155,23 @@ def test_t_stat_needs_60_days_and_detects_a_real_edge():
     same = {"benchmark": False, "curve": bench["curve"]}
     assert excess_t_stat(same, bench) == (120, None)                  # zero variance: undefined
     assert excess_t_stat(bench, bench)[1] is None
+
+
+def test_excess_stats_years_needed_and_history_check():
+    from app.report import excess_stats
+    import numpy as np
+    rng = np.random.default_rng(7)
+    n = 250
+    days = [f"d{i:03d}" for i in range(n + 1)]
+    b = 100_000 * np.cumprod(1 + rng.normal(0.0004, 0.01, n + 1))
+    noise = rng.normal(0, 0.006, n + 1)                      # ~9.5 % tracking error a year
+    m = b * np.cumprod(1 + noise - noise.mean())               # zero excess in sample
+    bench = {"benchmark": True, "curve": [[d, v] for d, v in zip(days, b)]}
+    model = {"benchmark": False, "curve": [[d, v] for d, v in zip(days, m)]}
+    s = excess_stats(model, bench, historical_excess=0.30)
+    assert 8 < s["tracking_error_pct"] < 11 and abs(s["t_vs_benchmark"]) < 1
+    assert s["years_needed"] > 50                               # tiny gap: can't be told from noise
+    assert s["t_vs_history"] < -2                               # nowhere near a 30 % edge
+    assert excess_stats(model, bench)["t_vs_history"] is None
+    early = {"benchmark": False, "curve": model["curve"][:30]}
+    assert excess_stats(early, bench)["years_needed"] is None

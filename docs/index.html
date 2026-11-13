@@ -195,8 +195,16 @@ function showDetail(m, d) {
     stat("Andel med gevinst", m.win_rate_pct == null ? "–" : dec.format(m.win_rate_pct) + " %"),
     stat("Mottatt utbytte", nok.format(m.dividends || 0)),
     stat("Børsdager i testen", String(m.days || 0)),
-    stat("t-verdi mot referanse", m.benchmark ? "–" : m.t_vs_benchmark == null ? "for tidlig" : dec.format(m.t_vs_benchmark))));
-  box.append(el("p", { class: "empty", text: "t-verdi over 2 eller under −2 betyr at forskjellen mot referansen neppe er tilfeldig. Den vises etter 60 børsdager." }));
+    stat("t-verdi mot referanse", m.benchmark ? "–" : m.t_vs_benchmark == null ? "for tidlig" : dec.format(m.t_vs_benchmark)),
+    stat("År før forskjellen er sikker", m.benchmark ? "–" : m.years_needed == null ? "for tidlig"
+         : m.years_needed >= 999 ? "aldri" : dec.format(m.years_needed)),
+    stat("Mot historisk resultat", m.historical_excess == null ? "–" : m.t_vs_history == null ? "for tidlig"
+         : (m.t_vs_history < -2 ? "svakere (t " : "i tråd (t ") + dec.format(m.t_vs_history) + ")")));
+  box.append(el("p", { class: "empty", text: "t-verdi over 2 eller under −2 betyr at forskjellen mot referansen neppe er tilfeldig. " +
+    "«År før forskjellen er sikker» anslår hvor lenge dagens forskjell må vare før den er det. " +
+    "«Mot historisk resultat» sjekker om modellen fortsatt leverer det tilbakeprøvingen viste" +
+    (m.historical_excess == null ? "" : ` (+${dec.format(m.historical_excess * 100)} % i året mot lik vekt)`) +
+    ". Alt vises etter 60 børsdager." }));
 
   if (m.journal) {
     box.append(el("h3", { text: "Dagbok " + m.journal.date }));
