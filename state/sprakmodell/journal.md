@@ -71,3 +71,21 @@
 - **RBREW.CO** (ROYAL UNIBREW) -0.10: Ligger 23 prosent under 52-ukers høy og har svak langsiktig momentum.
 - **ELUX-B.ST** (ELECTROLUX) -0.20: Ligger over 60 % under 52-ukers høy, så den kortsiktige oppgangen er svak mot den langsiktige nedgangen.
 - **DSV.CO** (DSV) -0.20: Er 21,7 % under toppen og har negativ 126-dagers avkastning.
+
+## 2026-11-16
+
+- **NKR** (NEKKAR) +0.45: Sterk momentum, kurs nær 52-ukers høy og positive kontraktsnyheter fra Syncrolift.
+- **ORNBV.HE** (ORION) +0.35: Jevn oppgang på alle horisonter, lav volatilitet og kurs på 52-ukers høy.
+- **MORLD** (MORELD) +0.30: God 20- og 126-dagers avkastning med kurs nær toppen og moderat volatilitet.
+- **AMBU-B.CO** (AMBU) +0.30: Brede gevinster over flere horisonter og positiv siste uke, nær 52-ukers høy.
+- **BONHR** (BONHEUR) +0.30: Sterk siste uke og kurs på 52-ukers høy med jevn trend over 60 dager.
+- **MEDI** (MEDISTIM) +0.25: Positiv 126-dagers avkastning og moderat volatilitet, men svak siste uke.
+- **ENDUR** (ENDÚR) +0.25: Sterk uke og god 60-dagers trend, men nøytrale insider-meldinger gir begrenset tilleggsinformasjon.
+- **KID** (KID) +0.25: Står på 52-ukers høy med jevn oppgang og lav volatilitet, men begrenset kortsiktig momentum.
+- **AZN.ST** (ASTRAZENECA) +0.20: Nær årshøy med stabil trend og moderat volatilitet, men begrenset ekstra momentum.
+- **GMAB.CO** (GENMAB) +0.10: Svært sterk langsiktig trend, men høy volatilitet og kurs under toppen etter nylig fall.
+- **COLO-B.CO** (COLOPLAST) +0.00: Blandet bilde: positiv 126-dagers trend, men rundt 12 % under høyden og svakere måned.
+- **ORK** (ORKLA) -0.10: Lav volatilitet og moderat oppgang, men svak halvårsutvikling og 14 % under toppen.
+- **NAS** (NORWEGIAN AIR SHUT) -0.15: Negativ halvårsavkastning og over 20 % under toppen; kortsiktig bounce gir ikke nok grunnlag.
+- **ELUX-B.ST** (ELECTROLUX) -0.20: Over 60 % under 52-ukers høy, så den langsiktige trenden er svak til tross for kort oppgang.
+- **DSV.CO** (DSV) -0.20: Over 20 % under toppen og negativ 126-dagers avkastning, selv om siste måned er bedre.

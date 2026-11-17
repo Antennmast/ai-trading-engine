@@ -6,3 +6,5 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-13,VALMT.HE,SELL,20,28.9655,EUR,10.54849,10,34.54,bounce: close above 5-day average
 2026-11-13,DEMANT.CO,BUY,11,345.1725,DKK,1.4099,10,0.0,dip in uptrend (RSI 2); sized by risk per trade
 2026-11-13,GOD,BUY,221,14.057,NOK,1.0,10,0.0,dip in uptrend (RSI 5); sized by open-risk limit
+2026-11-16,SCA-B.ST,SELL,74,118.4408,SEK,0.9558,10,-110.38,bounce: close above 5-day average
+2026-11-16,KINV-B.ST,BUY,40,70.2351,SEK,0.9558,10,0.0,dip in uptrend (RSI 3); sized by open-risk limit
