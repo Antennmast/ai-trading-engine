@@ -8,3 +8,5 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-13,GOD,BUY,221,14.057,NOK,1.0,10,0.0,dip in uptrend (RSI 5); sized by open-risk limit
 2026-11-16,SCA-B.ST,SELL,74,118.4408,SEK,0.9558,10,-110.38,bounce: close above 5-day average
 2026-11-16,KINV-B.ST,BUY,40,70.2351,SEK,0.9558,10,0.0,dip in uptrend (RSI 3); sized by open-risk limit
+2026-11-17,GOD,SELL,221,14.5927,NOK,1.0,10,108.38,bounce: close above 5-day average
+2026-11-17,METSO.HE,BUY,32,16.4882,EUR,10.57783,10,0.0,dip in uptrend (RSI 7); sized by risk per trade

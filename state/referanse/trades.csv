@@ -214,3 +214,11 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-13,EQNR,BUY,0.0114,404.0,NOK,1.0,0.0,0.0,dividend reinvested
 2026-11-13,MOWI,DIV,2.1082,2.3,NOK,1.0,0.0,4.85,dividend
 2026-11-13,MOWI,BUY,0.0216,224.0,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-17,AFG,DIV,2.3503,4.5,NOK,1.0,0.0,10.58,dividend
+2026-11-17,AFG,BUY,0.0522,202.0,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-17,KID,DIV,3.1949,2.75,NOK,1.0,0.0,8.79,dividend
+2026-11-17,KID,BUY,0.0586,149.4,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-17,NORBT,DIV,2.8126,2.0,NOK,1.0,0.0,5.63,dividend
+2026-11-17,NORBT,BUY,0.0328,171.0,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-17,VAR,DIV,9.7729,1.368,NOK,1.0,0.0,13.37,dividend
+2026-11-17,VAR,BUY,0.2763,48.24,NOK,1.0,0.0,0.0,dividend reinvested

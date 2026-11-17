@@ -39,3 +39,13 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-16,NORBT,SELL,105,176.4118,NOK,1.0,10,-291.16,flat at close
 2026-11-16,SMOP,SELL,341,53.3733,NOK,1.0,10,-642.32,flat at close
 2026-11-16,BOUV,SELL,351,52.2739,NOK,1.0,10,-449.77,flat at close
+2026-11-17,BONHR,BUY,62,298.6492,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-17,ENDUR,BUY,132,142.2711,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-17,AUSS,BUY,206,89.5447,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-17,VEI,BUY,78,235.1175,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-17,BOUV,BUY,353,52.3261,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-17,BONHR,SELL,62,290.8545,NOK,1.0,10,-493.27,flat at close
+2026-11-17,ENDUR,SELL,132,145.7271,NOK,1.0,10,446.19,flat at close
+2026-11-17,AUSS,SELL,206,89.5552,NOK,1.0,10,-7.85,flat at close
+2026-11-17,VEI,SELL,78,234.8825,NOK,1.0,10,-28.33,flat at close
+2026-11-17,BOUV,SELL,353,51.7741,NOK,1.0,10,-204.87,flat at close

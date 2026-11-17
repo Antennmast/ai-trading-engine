@@ -89,3 +89,21 @@
 - **NAS** (NORWEGIAN AIR SHUT) -0.15: Negativ halvårsavkastning og over 20 % under toppen; kortsiktig bounce gir ikke nok grunnlag.
 - **ELUX-B.ST** (ELECTROLUX) -0.20: Over 60 % under 52-ukers høy, så den langsiktige trenden er svak til tross for kort oppgang.
 - **DSV.CO** (DSV) -0.20: Over 20 % under toppen og negativ 126-dagers avkastning, selv om siste måned er bedre.
+
+## 2026-11-17
+
+- **NKR** (NEKKAR) +0.40: Sterk momentum på 20 dager og kontraktsnyheter, men høy volatilitet og kursen er strukket opp.
+- **ENDUR** (ENDÚR) +0.35: Nytt høyt nivå med sterk 5-dagersoppgang, og meldinger om handler tyder på aktivitet.
+- **ORNBV.HE** (ORION) +0.30: Jevn oppgang over 60 og 126 dager, lav volatilitet og kun små avvik fra toppen.
+- **MEDI** (MEDISTIM) +0.30: Stabil trend over flere perioder og lav-moderat volatilitet, uten nye nyheter.
+- **PNDORA.CO** (PANDORA) +0.30: Svært sterk 126-dagers trend og nær toppen, men litt svakere den siste uken.
+- **VEI** (VEIDEKKE) +0.30: På 52-ukers høy med god 126-dagers avkastning og lav volatilitet.
+- **AMBU-B.CO** (AMBU) +0.25: Positiv trend over 20 og 126 dager, tett på toppen og med moderat risiko.
+- **BONHR** (BONHEUR) +0.25: Konsistent oppgang over 20, 60 og 126 dager, nær toppen med moderat volatilitet.
+- **MORLD** (MORELD) +0.15: Solid 126-dagers trend og lav nedgang fra toppen, men kun insiderhandelsvarsler som nyhet og ingen klar katalysator.
+- **GMAB.CO** (GENMAB) +0.10: Svært sterk langsiktig trend, men daglig volatilitet på over 7 % og 10,5 % under toppen gjør inngang risikabel.
+- **KID** (KID) +0.05 (sprik 0.30 mellom 3 svar): Stabil trend, men utbytte på 2,75 NOK går ex i dag og trekker kursen mekanisk ned.
+- **COLO-B.CO** (COLOPLAST) +0.00: Svak trend på 60 dager og 12,4 % under toppen, selv om siste uke var positiv.
+- **DSV.CO** (DSV) -0.20: Svak 126-dagers utvikling og 23 % under toppen, selv om den siste måneden har vært sterk.
+- **NAS** (NORWEGIAN AIR SHUT) -0.30: Negativ 126-dagers trend og 21,7 % under toppen; nyheten om Widerøe gir lite støtte til Norwegian.
+- **ELUX-B.ST** (ELECTROLUX) -0.40: Ligger 63 % under 52-ukers høy og har svak langsiktig utvikling, selv om kursen har steget den siste måneden.
