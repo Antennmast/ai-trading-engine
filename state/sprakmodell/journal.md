@@ -107,3 +107,21 @@
 - **DSV.CO** (DSV) -0.20: Svak 126-dagers utvikling og 23 % under toppen, selv om den siste måneden har vært sterk.
 - **NAS** (NORWEGIAN AIR SHUT) -0.30: Negativ 126-dagers trend og 21,7 % under toppen; nyheten om Widerøe gir lite støtte til Norwegian.
 - **ELUX-B.ST** (ELECTROLUX) -0.40: Ligger 63 % under 52-ukers høy og har svak langsiktig utvikling, selv om kursen har steget den siste måneden.
+
+## 2026-11-18
+
+- **ORNBV.HE** (ORION) +0.30 (sprik 0.30 mellom 3 svar): Sterk 126-dagers trend og lav volatilitet, men kursen har falt 1,4 % siste uke og ligger nær toppen.
+- **NKR** (NEKKAR) +0.30: Sterk momentum på 20 dager med en konkret kontraktsnyhet, men volatiliteten er høy.
+- **MORLD** (MORELD) +0.30: Jevn oppgang på 41 % over 126 dager og nær toppen, men flere meldinger om insiderhandel uten tydelig retning.
+- **WWIB** (WILH. WILHELMSEN B) +0.30: Står på 52-ukers høy med sterk 126-dagersavkastning og god kortsiktig oppgang.
+- **MEDI** (MEDISTIM) +0.25: Stabil oppgang på 12 % over 20 dager og kurs i nærheten av 52-ukers høy, men handelsvarselet gir lite ny informasjon.
+- **AMBU-B.CO** (AMBU) +0.25: Jevn oppgang over 60 og 126 dager med moderat volatilitet og kurs nær årshøyden.
+- **ENDUR** (ENDÚR) +0.20: Brå 5-dagersøkning på 11,5 % og nær toppen gir momentum, men kortsiktig strakt pris.
+- **BONHR** (BONHEUR) +0.20: Jevn oppgang over flere perioder og kurs nær toppen, med moderat volatilitet.
+- **GMAB.CO** (GENMAB) +0.10: Svært sterk langsiktig trend, men 10,6 % under toppen, ekstrem volatilitet på 7,4 % per dag og negativ uke gir høy risiko.
+- **RBREW.CO** (ROYAL UNIBREW) +0.05: Moderat oppgang, men 22,8 % under 52-ukers høy og svakere langsiktig utvikling.
+- **COLO-B.CO** (COLOPLAST) +0.00: Positiv langsiktig trend, men svak kortsiktig utvikling og kurs omtrent 13 % under årshøyden.
+- **KID** (KID) -0.05: Utbytte på 2,75 NOK går ex i dag, så kursfallet er mekanisk og gir ingen reell svakhet, men trenden er moderat.
+- **ELUX-B.ST** (ELECTROLUX) -0.20: Kursen er over 60 % under 52-ukers høyden, og dataene passer dårlig med beskrivelsen av opptrend.
+- **NAS** (NORWEGIAN AIR SHUT) -0.30: Negativ avkastning over 126 dager og kurs godt under årshøyden, til tross for nylig oppgang.
+- **DSV.CO** (DSV) -0.30: Negativ 126-dagers avkastning og kurs over 23 % under årshøyden, med svak langsiktig trend.
