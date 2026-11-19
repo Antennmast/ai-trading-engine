@@ -125,3 +125,21 @@
 - **ELUX-B.ST** (ELECTROLUX) -0.20: Kursen er over 60 % under 52-ukers høyden, og dataene passer dårlig med beskrivelsen av opptrend.
 - **NAS** (NORWEGIAN AIR SHUT) -0.30: Negativ avkastning over 126 dager og kurs godt under årshøyden, til tross for nylig oppgang.
 - **DSV.CO** (DSV) -0.30: Negativ 126-dagers avkastning og kurs over 23 % under årshøyden, med svak langsiktig trend.
+
+## 2026-11-19
+
+- **ORNBV.HE** (ORION) +0.35: Sterk trend over 60 og 126 dager, kun 2,2 % under 52-ukershøyden og moderat volatilitet.
+- **SNTIA** (SENTIA) +0.35: Handler på 52-ukershøyden med jevn oppgang over 20 og 126 dager.
+- **MEDI** (MEDISTIM) +0.30: Nær 52-ukershøyden med jevn 20-dagers oppgang; meldingen om handel gir ingen klar retning.
+- **MORLD** (MORELD) +0.30: Solid momentum over 126 dager og 17,6 % siste 20 dager, men meldingene om handel er nøytrale.
+- **ENDUR** (ENDÚR) +0.30: Handler på 52-ukershøyden med 23,8 % oppgang siste 20 dager og positiv 60-dagersutvikling.
+- **AMBU-B.CO** (AMBU) +0.25: Stabil oppgang over 60 og 126 dager, 3 % under toppen og moderat volatilitet.
+- **BONHR** (BONHEUR) +0.25: Stabil oppgang, kun 1,7 % under 52-ukershøyden og moderat volatilitet.
+- **PNDORA.CO** (PANDORA) +0.25: Svært sterk 126-dagers utvikling og nær toppen, men volatiliteten er høy.
+- **NKR** (NEKKAR) +0.20: Kraftig 20-dagers oppgang og positiv kontraktsnyhet, men høy volatilitet gir risiko for tilbakeslag.
+- **KID** (KID) +0.00: Går ex-utbytte i dag, så kursfallet er delvis mekanisk, og momentumet er svakere enn i sterkere aksjer.
+- **SMOP** (SMARTOPTICS GROUP) +0.00: Kort oppgang etter fall over 126 dager, og svært høy volatilitet gir lav tiltro.
+- **COLO-B.CO** (COLOPLAST) +0.00: 13 % under 52-ukershøyden og svakt momentum de siste 20 dagene.
+- **RBREW.CO** (ROYAL UNIBREW) -0.10: 22,9 % under 52-ukershøyden og svak trend, selv om den siste uken har vært positiv.
+- **NAS** (NORWEGIAN AIR SHUT) -0.25: Negativ 126-dagers avkastning og 22 % under 52-ukers høy, så oppgangen den siste måneden er skjør.
+- **ELUX-B.ST** (ELECTROLUX) -0.30 (sprik 0.30 mellom 3 svar): Kraftig fall på 64,5 % fra 52-ukers høy og svak 126-dagers utvikling, selv om siste måned er positiv.

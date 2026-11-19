@@ -59,3 +59,13 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-18,NKR,SELL,908,19.99,NOK,1.0,10,-482.39,flat at close
 2026-11-18,BONHR,SELL,63,291.854,NOK,1.0,10,34.64,flat at close
 2026-11-18,VEI,SELL,78,230.3848,NOK,1.0,10,-262.1,flat at close
+2026-11-19,ENDUR,BUY,125,145.0725,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-19,RBREW.CO,BUY,26,481.6407,DKK,1.4325,10,0.0,day trade: uptrend
+2026-11-19,WWIB,BUY,20,905.4525,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-19,BONHR,BUY,62,292.146,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-19,VEI,BUY,79,231.1155,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-19,ENDUR,SELL,125,145.5272,NOK,1.0,10,46.84,flat at close
+2026-11-19,RBREW.CO,SELL,26,482.3587,DKK,1.4325,10,16.74,flat at close
+2026-11-19,WWIB,SELL,20,902.5485,NOK,1.0,10,-68.08,flat at close
+2026-11-19,BONHR,SELL,62,290.8545,NOK,1.0,10,-90.07,flat at close
+2026-11-19,VEI,SELL,79,232.3838,NOK,1.0,10,90.19,flat at close
