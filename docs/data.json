@@ -1,5 +1,5 @@
 {
- "updated_utc": "2026-11-19 02:31",
+ "updated_utc": "2026-11-19 12:53",
  "last_date": "2026-11-18",
  "starting_cash": 100000.0,
  "base_currency": "NOK",
@@ -4642,7 +4642,7 @@
  },
  "data_check": {
   "date": "2026-11-18",
-  "compared": 225,
+  "compared": 232,
   "mismatched": []
  }
 }
