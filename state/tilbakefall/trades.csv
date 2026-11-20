@@ -12,3 +12,6 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-17,METSO.HE,BUY,32,16.4882,EUR,10.57783,10,0.0,dip in uptrend (RSI 7); sized by risk per trade
 2026-11-18,HEXA-B.ST,BUY,84,104.7523,SEK,0.9533,10,0.0,dip in uptrend (RSI 4); sized by risk per trade
 2026-11-18,INVE-B.ST,BUY,26,426.4131,SEK,0.9533,10,0.0,dip in uptrend (RSI 4); sized by open-risk limit
+2026-11-20,KINV-B.ST,SELL,40,66.9465,SEK,0.9547,10,-135.58,bounce: close above 5-day average
+2026-11-20,INVE-B.ST,SELL,26,407.5423,SEK,0.9547,10,-478.41,stop hit
+2026-11-20,METSO.HE,SELL,32,15.1024,EUR,10.71198,10,-485.03,stop hit

@@ -143,3 +143,21 @@
 - **RBREW.CO** (ROYAL UNIBREW) -0.10: 22,9 % under 52-ukershøyden og svak trend, selv om den siste uken har vært positiv.
 - **NAS** (NORWEGIAN AIR SHUT) -0.25: Negativ 126-dagers avkastning og 22 % under 52-ukers høy, så oppgangen den siste måneden er skjør.
 - **ELUX-B.ST** (ELECTROLUX) -0.30 (sprik 0.30 mellom 3 svar): Kraftig fall på 64,5 % fra 52-ukers høy og svak 126-dagers utvikling, selv om siste måned er positiv.
+
+## 2026-11-20
+
+- **MEDI** (MEDISTIM) +0.35: Stabil oppgang over 60 og 126 dager, lav volatilitet og kursen står i 52-ukers høy.
+- **VEI** (VEIDEKKE) +0.35: Stabil oppgang over 126 dager, lav volatilitet og kun 1,3 % under toppen.
+- **NKR** (NEKKAR) +0.30: Sterk trend over 60 og 126 dager, men kursen ligger nær 52-ukers høy og volatiliteten er moderat.
+- **ENDUR** (ENDÚR) +0.30: God 20- og 60-dagers avkastning nær toppen, med moderat volatilitet.
+- **SNTIA** (SENTIA) +0.25: God 20-dagers avkastning og positiv 126-dagers trend, men 60-dagers avkastningen er moderat.
+- **ORNBV.HE** (ORION) +0.20: Solid langsiktig momentum, men svakere siste 5 dager og litt under toppen.
+- **PNDORA.CO** (PANDORA) +0.15: Sterk 126-dagers oppgang, men høy volatilitet og fall på 2,7 % siste uke.
+- **MORLD** (MORELD) +0.10: Langsiktig trend er god, men kursen har falt 3,9 % siste uke og innsidemeldingene gir ingen tydelig signal.
+- **BONHR** (BONHEUR) +0.10: God 20-dagers trend, men -3,9 % fra toppen og -3,2 % siste uke.
+- **MOWI** (MOWI) +0.10: Moderat positiv trend med lav volatilitet, men svak kortsiktig avkastning og litt under toppen.
+- **AMBU-B.CO** (AMBU) +0.00: Solid langsiktig trend, men -4,2 % siste uke gjør inngangen mindre attraktiv nå.
+- **KID** (KID) +0.00: Svakere momentum og utbytte går ex i dag, noe som trekker kursen ned mekanisk med NOK 2,75.
+- **TRYG.CO** (TRYG) +0.00: Lav volatilitet og moderat trend, men lite som tilsier en klar innkjøpsmulighet nå.
+- **RBREW.CO** (ROYAL UNIBREW) -0.20: Nesten 23 % under 52-ukers høy og svak trend, så oppgangen de siste 20 dagene virker skjør.
+- **NAS** (NORWEGIAN AIR SHUT) -0.30: Negativ 126-dagers avkastning og 23 % under 52-ukers høy; kortsiktig oppgang er ikke nok til å veie opp.

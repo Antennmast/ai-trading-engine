@@ -228,3 +228,9 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-18,NORAM,BUY,0.1076,43.0,NOK,1.0,0.0,0.0,dividend reinvested
 2026-11-18,SECU-B.ST,DIV,3.0993,2.65,SEK,0.9533,0.0,7.83,dividend
 2026-11-18,SECU-B.ST,BUY,0.0509,161.0,SEK,0.9533,0.0,0.0,dividend reinvested
+2026-11-20,DOFG,DIV,3.7237,3.9027,NOK,1.0,0.0,14.53,dividend
+2026-11-20,DOFG,BUY,0.1164,124.5,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-20,HSHP,DIV,3.1693,1.9514,NOK,1.0,0.0,6.18,dividend
+2026-11-20,HSHP,BUY,0.0422,146.2,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-20,OET,DIV,0.6118,68.2976,NOK,1.0,0.0,41.78,dividend
+2026-11-20,OET,BUY,0.0559,745.0,NOK,1.0,0.0,0.0,dividend reinvested
