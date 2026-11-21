@@ -70,3 +70,12 @@ Våre modeller holder 10 aksjer og har derfor større avvik fra referansen.
   startet planlagte kjøringer 6–8 timer for sent de to første dagene.
 - Varsel (sak i repoet) hvis en modell ikke er bokført på over tre dager, og hvis mer enn
   10 % av sluttkursene avviker fra aksjescore sine.
+
+## 2026-11-21 – drift (ingen regelendringer)
+
+- Kjøringen natt til torsdag 19. november feilet ved publisering av nettsiden
+  («missing necessary objects» fra git subtree split på en grunn kloning). Ingen data
+  ble berørt: den dagen var allerede bokført. Publiseringen lager nå én frittstående
+  commit av docs-mappen.
+- Aksjescore lagret mandag 16. november som 17. november fordi jobben startet etter
+  midnatt UTC. Rettet 17. november i aksjescore; 16. november mangler der.

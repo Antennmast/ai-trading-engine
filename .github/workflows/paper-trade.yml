@@ -65,9 +65,14 @@ jobs:
           git diff --cached --quiet || git commit -m "state: $(date -u +%F)"
           git pull --rebase --autostash -q || true
           git push
-      # The website is served from the gh-pages branch, which mirrors docs/.
+      # The website is served from the gh-pages branch, which mirrors docs/. It is published
+      # as one parentless commit of the docs/ tree. (git subtree split failed on the shallow
+      # checkout with "missing necessary objects", 2026-11-19.)
       - name: Publish website
-        run: git push origin "$(git subtree split --prefix docs HEAD)":refs/heads/gh-pages --force
+        run: |
+          commit=$(git -c user.name=paper-trade-bot -c user.email=actions@users.noreply.github.com \
+            commit-tree "$(git rev-parse HEAD:docs)" -m "site $(date -u +%F)")
+          git push origin "$commit":refs/heads/gh-pages --force
       - name: Show report
         if: github.event_name != 'push'
         run: cat state/REPORT.md >> "$GITHUB_STEP_SUMMARY" || true
