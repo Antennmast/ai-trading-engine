@@ -11,3 +11,4 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-11,OKEA,BUY,214,45.5227,NOK,1.0,10,0.0,top 10 momentum 12-1 (+116%)
 2026-11-20,HSHP,DIV,64,1.9514,NOK,1.0,0.0,124.89,dividend
 2026-11-20,OET,DIV,12,68.2976,NOK,1.0,0.0,819.57,dividend
+2026-11-23,HAUTO,DIV,56,5.0461,NOK,1.0,0.0,282.58,dividend

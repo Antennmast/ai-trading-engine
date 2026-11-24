@@ -15,3 +15,7 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-20,KINV-B.ST,SELL,40,66.9465,SEK,0.9547,10,-135.58,bounce: close above 5-day average
 2026-11-20,INVE-B.ST,SELL,26,407.5423,SEK,0.9547,10,-478.41,stop hit
 2026-11-20,METSO.HE,SELL,32,15.1024,EUR,10.71198,10,-485.03,stop hit
+2026-11-23,DEMANT.CO,SELL,11,345.0274,DKK,1.4331,10,-12.29,time exit
+2026-11-23,VALMT.HE,BUY,28,27.0935,EUR,10.7217,10,0.0,dip in uptrend (RSI 0); sized by risk per trade
+2026-11-23,JYSK.CO,BUY,6,1083.5415,DKK,1.4331,10,0.0,dip in uptrend (RSI 1); sized by risk per trade
+2026-11-23,DSV.CO,BUY,2,1382.1907,DKK,1.4331,10,0.0,dip in uptrend (RSI 1); sized by open-risk limit

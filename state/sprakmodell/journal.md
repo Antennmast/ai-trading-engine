@@ -161,3 +161,21 @@
 - **TRYG.CO** (TRYG) +0.00: Lav volatilitet og moderat trend, men lite som tilsier en klar innkjøpsmulighet nå.
 - **RBREW.CO** (ROYAL UNIBREW) -0.20: Nesten 23 % under 52-ukers høy og svak trend, så oppgangen de siste 20 dagene virker skjør.
 - **NAS** (NORWEGIAN AIR SHUT) -0.30: Negativ 126-dagers avkastning og 23 % under 52-ukers høy; kortsiktig oppgang er ikke nok til å veie opp.
+
+## 2026-11-23
+
+- **NKR** (NEKKAR) +0.35: Sterk trend over 60 dager og kurs på 52-ukers høy, men ingen nye nyheter å støtte videre oppgang.
+- **ORNBV.HE** (ORION) +0.30: Solid langsiktig momentum med kun liten avstand til 52-ukers høy og lav volatilitet.
+- **MEDI** (MEDISTIM) +0.30: Står på 52-ukershøyden med stabil stigning over 60 og 126 dager og lav volatilitet.
+- **VEI** (VEIDEKKE) +0.30: Solid 29 % oppgang over 126 dager og prosjektnyhet, med aksjen nær 52-ukershøyden.
+- **MORLD** (MORELD) +0.20: Godt 126-dagers momentum, men svak siste uke og meldinger om insiderhandel gir ingen klar retning.
+- **SNTIA** (SENTIA) +0.15: Jevn oppgang over 126 dager og nær toppen, men svakere momentum enn de sterkeste kandidatene.
+- **ENDUR** (ENDÚR) +0.10: God 60-dagers trend, men nedstengning av skipsvedlikehold er en negativ nyhet som bør veies inn.
+- **MOWI** (MOWI) +0.10: Lav volatilitet og moderat oppgang, men kursen er litt under toppen og momentumet er begrenset.
+- **SMOP** (SMARTOPTICS GROUP) +0.05: Kortsiktig oppgang og kontraktsnyhet, men negativ 126-dagers avkastning og høy volatilitet (4,5 %) gir svak score.
+- **TRYG.CO** (TRYG) +0.05: Stabil, lavvolatil aksje med svak positiv trend, men lite som skiller den ut.
+- **AMBU-B.CO** (AMBU) +0.00: Trenden er intakt, men aksjen er svakere de siste fem dagene og 4,3 % under toppen.
+- **KID** (KID) +0.00: Aksjen går ex-utbytte i dag, så prisfallet på 2,75 NOK er mekanisk og gir ingen ekstra signal.
+- **RBREW.CO** (ROYAL UNIBREW) -0.10: Ligger over 22 prosent under 52-ukers høy, selv om den siste måneden er positiv.
+- **NAS** (NORWEGIAN AIR SHUT) -0.20: Kursen er over 21 % under 52-ukers høy og 126-dagers avkastningen er negativ, til tross for god 20-dagers oppgang.
+- **ELUX-B.ST** (ELECTROLUX) -0.40: Kursen er over 60 prosent under 52-ukers høy, noe som tyder på alvorlig svakhet til tross for nylig oppgang.

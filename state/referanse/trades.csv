@@ -234,3 +234,6 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-20,HSHP,BUY,0.0422,146.2,NOK,1.0,0.0,0.0,dividend reinvested
 2026-11-20,OET,DIV,0.6118,68.2976,NOK,1.0,0.0,41.78,dividend
 2026-11-20,OET,BUY,0.0559,745.0,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-23,HAUTO,DIV,2.7944,5.0461,NOK,1.0,0.0,14.1,dividend
+2026-11-23,HAUTO,BUY,0.086,163.5,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-23,CRNA,BUY,48.8371,9.4,NOK,1.0,0.0,0.0,benchmark equal weight

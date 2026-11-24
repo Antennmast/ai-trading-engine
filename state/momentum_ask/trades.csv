@@ -9,3 +9,4 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-11,OKEA,BUY,214,45.5227,NOK,1.0,29,0.0,top 10 momentum 12-1 (+116%)
 2026-11-11,PLT,BUY,860,11.2056,NOK,1.0,29,0.0,top 10 momentum 12-1 (+116%)
 2026-11-11,GOD,BUY,649,14.9074,NOK,1.0,29,0.0,top 10 momentum 12-1 (+108%)
+2026-11-23,HAUTO,DIV,56,5.0461,NOK,1.0,0.0,282.58,dividend
