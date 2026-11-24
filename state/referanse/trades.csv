@@ -237,3 +237,5 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-23,HAUTO,DIV,2.7944,5.0461,NOK,1.0,0.0,14.1,dividend
 2026-11-23,HAUTO,BUY,0.086,163.5,NOK,1.0,0.0,0.0,dividend reinvested
 2026-11-23,CRNA,BUY,48.8371,9.4,NOK,1.0,0.0,0.0,benchmark equal weight
+2026-11-24,SNI,DIV,1.479,9.7896,NOK,1.0,0.0,14.48,dividend
+2026-11-24,SNI,BUY,0.0448,322.0,NOK,1.0,0.0,0.0,dividend reinvested

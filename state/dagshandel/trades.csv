@@ -89,3 +89,13 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-23,MEDI,SELL,56,322.8385,NOK,1.0,10,27.94,flat at close
 2026-11-23,ENDUR,SELL,125,143.3283,NOK,1.0,10,-2.91,flat at close
 2026-11-23,NKR,SELL,903,20.2899,NOK,1.0,10,423.4,flat at close
+2026-11-24,SMOP,BUY,319,57.0285,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-24,BAVA.CO,BUY,50,249.9249,DKK,1.4355,10,0.0,day trade: uptrend
+2026-11-24,WWIB,BUY,20,896.448,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-24,OET,BUY,23,775.3875,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-24,NKR,BUY,895,20.4102,NOK,1.0,10,0.0,day trade: uptrend
+2026-11-24,SMOP,SELL,319,53.973,NOK,1.0,10,-984.7,flat at close
+2026-11-24,BAVA.CO,SELL,50,252.8735,DKK,1.4355,10,201.64,flat at close
+2026-11-24,WWIB,SELL,20,854.5725,NOK,1.0,10,-847.51,flat at close
+2026-11-24,OET,SELL,23,780.6095,NOK,1.0,10,110.11,flat at close
+2026-11-24,NKR,SELL,895,20.6897,NOK,1.0,10,240.11,flat at close

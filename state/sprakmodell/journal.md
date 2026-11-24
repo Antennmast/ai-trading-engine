@@ -179,3 +179,21 @@
 - **RBREW.CO** (ROYAL UNIBREW) -0.10: Ligger over 22 prosent under 52-ukers høy, selv om den siste måneden er positiv.
 - **NAS** (NORWEGIAN AIR SHUT) -0.20: Kursen er over 21 % under 52-ukers høy og 126-dagers avkastningen er negativ, til tross for god 20-dagers oppgang.
 - **ELUX-B.ST** (ELECTROLUX) -0.40: Kursen er over 60 prosent under 52-ukers høy, noe som tyder på alvorlig svakhet til tross for nylig oppgang.
+
+## 2026-11-24
+
+- **NKR** (NEKKAR) +0.35: God momentum på 20, 60 og 126 dager og på 52-ukers høy, uten negative nyheter.
+- **MORLD** (MORELD) +0.30: Sterk trend over 126 dager og på 52-ukers høy, men headlinene er kun rutinemessige insiderhandelsmeldinger.
+- **MEDI** (MEDISTIM) +0.30: Jevn oppgang over 60 og 126 dager med lav volatilitet, og kun rapporteringspliktig handel som nyhet.
+- **GMAB.CO** (GENMAB) +0.30: Svært sterk momentum over flere perioder, men høy volatilitet gir stor risiko for raske tilbakefall.
+- **ORNBV.HE** (ORION) +0.25: Stabil oppadgående trend med lav volatilitet, nær 52-ukers høy uten nye nyheter.
+- **AZN.ST** (ASTRAZENECA) +0.25: Jevn trend over flere perioder, lav volatilitet og kurs nær toppen.
+- **SNTIA** (SENTIA) +0.15: Positiv 20-dagers trend og nær toppen, men moderat avkastning over lengre horisont.
+- **KID** (KID) +0.10: Stabil trend, men kursen faller mekanisk med utbytte (2,75 NOK) i dag, og momentumen er moderat.
+- **PNDORA.CO** (PANDORA) +0.10: Sterk 126-dagers avkastning, men svak siste uke og høy volatilitet gir usikker kortsiktig retning.
+- **TELIA.ST** (TELIA) +0.10: Lav volatilitet og positiv trend, men svak langsiktig momentum gir begrenset overbevisning.
+- **AMBU-B.CO** (AMBU) +0.05: Moderat langsiktig trend, men svak siste uke og 5 % under 52-ukers høy.
+- **RBREW.CO** (ROYAL UNIBREW) +0.00: Er 22 % under 52-ukers høy til tross for positiv kortsiktig utvikling, så oppsiden er usikker.
+- **COLO-B.CO** (COLOPLAST) -0.10: Svak 60-dagers utvikling og 12 % under 52-ukers høy gir lite støtte for kjøp.
+- **ENDUR** (ENDÚR) -0.20: Nyhet om nedleggelse av skipsvedlikeholdsvirksomheten og negativ 5-dagersavkastning svekker bildet.
+- **NAS** (NORWEGIAN AIR SHUT) -0.40: Negativ 126-dagers avkastning, kurs 23 % under toppen og selskapet er stengt.
