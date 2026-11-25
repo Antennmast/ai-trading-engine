@@ -197,3 +197,21 @@
 - **COLO-B.CO** (COLOPLAST) -0.10: Svak 60-dagers utvikling og 12 % under 52-ukers høy gir lite støtte for kjøp.
 - **ENDUR** (ENDÚR) -0.20: Nyhet om nedleggelse av skipsvedlikeholdsvirksomheten og negativ 5-dagersavkastning svekker bildet.
 - **NAS** (NORWEGIAN AIR SHUT) -0.40: Negativ 126-dagers avkastning, kurs 23 % under toppen og selskapet er stengt.
+
+## 2026-11-25
+
+- **MORLD** (MORELD) +0.40: Står på 52-ukers høy med sterk momentum over 20, 60 og 126 dager, og volatiliteten er moderat.
+- **ORNBV.HE** (ORION) +0.30: Stabil oppgang over 60 og 126 dager, men svak nedgang siste 5 dager.
+- **MEDI** (MEDISTIM) +0.30: Stabil oppgang på alle horisonter og på 52-ukers høy; insiderhandel er nøytral.
+- **NKR** (NEKKAR) +0.30: Sterk kortsiktig oppgang på 31 % siste 20 dager og på toppen, men volatiliteten er høy.
+- **GMAB.CO** (GENMAB) +0.30: Svært sterk trend over 126 dager og god 5-dagersavkastning, men litt svakere siste måned.
+- **KID** (KID) +0.25: Jevn oppgang på alle horisonter og på 52-ukers høy, med lav til moderat volatilitet.
+- **AZN.ST** (ASTRAZENECA) +0.20: Stabil oppgang over flere horisonter og nær 52-ukers høy, men svakere over 126 dager.
+- **PNDORA.CO** (PANDORA) +0.20: Sterk 126-dagers oppgang, men høy volatilitet og litt under toppen.
+- **MOWI** (MOWI) +0.10: Moderat positiv trend med lav volatilitet, men ingen tydelig oppsidekatalysator.
+- **HM-B.ST** (H&M) +0.10: Moderat oppgang og nær toppen, men svak trend over 60 og 126 dager.
+- **TRYG.CO** (TRYG) +0.05: Stabil, lavvolatil oppgang, men svak momentum sammenlignet med andre kandidater.
+- **RBREW.CO** (ROYAL UNIBREW) +0.00: Positiv trend, men 22 % under 52-ukers høy gir svak teknisk støtte.
+- **COLO-B.CO** (COLOPLAST) +0.00: Svak kortsiktig momentum og 11,7 % under 52-ukers høy.
+- **NAS** (NORWEGIAN AIR SHUT) -0.30: Negativ 126-dagers avkastning og 23 % under 52-ukers høy.
+- **ENDUR** (ENDÚR) -0.40: Nedgang på 6,5 % siste 5 dager og nyhet om nedleggelse av skipsvedlikehold er negativ.

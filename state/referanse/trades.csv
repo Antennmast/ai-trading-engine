@@ -239,3 +239,5 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-23,CRNA,BUY,48.8371,9.4,NOK,1.0,0.0,0.0,benchmark equal weight
 2026-11-24,SNI,DIV,1.479,9.7896,NOK,1.0,0.0,14.48,dividend
 2026-11-24,SNI,BUY,0.0448,322.0,NOK,1.0,0.0,0.0,dividend reinvested
+2026-11-25,COSH,DIV,3.652,7.1522,NOK,1.0,0.0,26.12,dividend
+2026-11-25,COSH,BUY,0.2305,113.0,NOK,1.0,0.0,0.0,dividend reinvested
