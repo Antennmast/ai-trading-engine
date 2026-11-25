@@ -14,3 +14,4 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python -m tools.diag_prices
+      - run: python -m tools.fill_sensitivity
