@@ -7,3 +7,5 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-13,ENDUR,BUY,29,140.8704,NOK,1.0,10,0.0,"uptrend, score +0.49; sized by open-risk limit"
 2026-11-25,ENDUR,SELL,29,135.8035,NOK,1.0,10,-156.94,stop hit
 2026-11-25,SALM,SELL,13,569.715,NOK,1.0,10,-316.56,stop hit
+2026-11-26,MEDI,BUY,20,325.1625,NOK,1.0,10,0.0,"uptrend, score +0.57; sized by risk per trade"
+2026-11-26,AFG,BUY,25,199.0995,NOK,1.0,10,0.0,"uptrend, score +0.67; sized by open-risk limit"

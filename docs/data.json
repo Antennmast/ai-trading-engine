@@ -1,6 +1,6 @@
 {
- "updated_utc": "2026-11-26 13:49",
- "last_date": "2026-11-25",
+ "updated_utc": "2026-11-26 17:18",
+ "last_date": "2026-11-26",
  "starting_cash": 100000.0,
  "base_currency": "NOK",
  "models": [
@@ -12,10 +12,10 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": null,
-   "last_date": "2026-11-25",
-   "equity": 96572.34,
+   "last_date": "2026-11-26",
+   "equity": 97898.86,
    "cash": 956.96,
-   "return_pct": -3.428,
+   "return_pct": -2.101,
    "max_drawdown_pct": -4.283,
    "fills": 225,
    "closed_trades": 0,
@@ -27,361 +27,361 @@
      "symbol": "ABB.ST",
      "qty": 0.6,
      "avg": 839.6,
-     "last": 784.2,
+     "last": 800.0,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -6.6
+     "pnl_pct": -4.72
     },
     {
      "symbol": "ABG",
      "qty": 66.77,
      "avg": 7.15,
-     "last": 6.73,
+     "last": 6.79,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.87
+     "pnl_pct": -5.03
     },
     {
      "symbol": "ACR",
      "qty": 109.9,
      "avg": 4.16,
-     "last": 4.03,
+     "last": 4.05,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.01
+     "pnl_pct": -2.53
     },
     {
      "symbol": "ADDT-B.ST",
      "qty": 1.52,
      "avg": 327.6,
-     "last": 317.2,
+     "last": 326.4,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -3.17
+     "pnl_pct": -0.37
     },
     {
      "symbol": "AFG",
      "qty": 2.4,
      "avg": 199.07,
-     "last": 198.4,
+     "last": 199.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.33
+     "pnl_pct": 0.27
     },
     {
      "symbol": "AKAST",
      "qty": 52.74,
      "avg": 11.54,
-     "last": 8.74,
+     "last": 8.91,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -24.24
+     "pnl_pct": -22.77
     },
     {
      "symbol": "AKER",
      "qty": 0.43,
      "avg": 1098.0,
-     "last": 1030.0,
+     "last": 1046.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -6.19
+     "pnl_pct": -4.74
     },
     {
      "symbol": "AKRBP",
      "qty": 1.51,
      "avg": 317.1,
-     "last": 302.0,
+     "last": 307.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.76
+     "pnl_pct": -3.06
     },
     {
      "symbol": "AKSO",
      "qty": 12.91,
      "avg": 36.96,
-     "last": 34.84,
+     "last": 35.22,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.74
+     "pnl_pct": -4.71
     },
     {
      "symbol": "ALFA.ST",
      "qty": 0.93,
      "avg": 540.8,
-     "last": 520.6,
+     "last": 528.4,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -3.74
+     "pnl_pct": -2.29
     },
     {
      "symbol": "AMBU-B.CO",
      "qty": 3.88,
      "avg": 86.35,
-     "last": 85.85,
+     "last": 86.85,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -0.58
+     "pnl_pct": 0.58
     },
     {
      "symbol": "APR",
      "qty": 12.4,
      "avg": 33.0,
-     "last": 33.8,
+     "last": 34.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 2.42
+     "pnl_pct": 3.03
     },
     {
      "symbol": "ARCH",
      "qty": 27.54,
      "avg": 17.02,
-     "last": 17.1,
+     "last": 17.44,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 0.47
+     "pnl_pct": 2.47
     },
     {
      "symbol": "ARR",
      "qty": 95.72,
      "avg": 5.02,
-     "last": 4.5,
+     "last": 4.33,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -10.36
+     "pnl_pct": -13.75
     },
     {
      "symbol": "ASSA-B.ST",
      "qty": 1.28,
      "avg": 389.0,
-     "last": 385.8,
+     "last": 390.8,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -0.82
+     "pnl_pct": 0.46
     },
     {
      "symbol": "ATCO-A.ST",
      "qty": 2.61,
      "avg": 193.0,
-     "last": 179.15,
+     "last": 182.8,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -7.18
+     "pnl_pct": -5.28
     },
     {
      "symbol": "ATEA",
      "qty": 2.87,
      "avg": 169.72,
-     "last": 163.6,
+     "last": 166.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.6
+     "pnl_pct": -1.72
     },
     {
      "symbol": "AUSS",
      "qty": 5.26,
      "avg": 90.4,
-     "last": 86.0,
+     "last": 86.9,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.87
+     "pnl_pct": -3.87
     },
     {
      "symbol": "AUTO",
      "qty": 30.41,
      "avg": 15.7,
-     "last": 15.07,
+     "last": 15.45,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.01
+     "pnl_pct": -1.59
     },
     {
      "symbol": "AZN.ST",
      "qty": 0.27,
      "avg": 1836.5,
-     "last": 1876.0,
+     "last": 1881.5,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": 2.15
+     "pnl_pct": 2.45
     },
     {
      "symbol": "B2I",
      "qty": 19.3,
      "avg": 24.75,
-     "last": 23.6,
+     "last": 24.05,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.65
+     "pnl_pct": -2.83
     },
     {
      "symbol": "BAKKA",
      "qty": 1.08,
      "avg": 442.6,
-     "last": 423.4,
+     "last": 425.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.34
+     "pnl_pct": -3.84
     },
     {
      "symbol": "BAVA.CO",
      "qty": 1.39,
      "avg": 241.2,
-     "last": 249.0,
+     "last": 251.8,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": 3.23
+     "pnl_pct": 4.39
     },
     {
      "symbol": "BEWI",
      "qty": 24.7,
      "avg": 19.3,
-     "last": 18.36,
+     "last": 18.48,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.87
+     "pnl_pct": -4.25
     },
     {
      "symbol": "BNOR",
      "qty": 0.89,
      "avg": 535.0,
-     "last": 499.0,
+     "last": 499.5,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -6.73
+     "pnl_pct": -6.64
     },
     {
      "symbol": "BOL.ST",
      "qty": 0.96,
      "avg": 527.4,
-     "last": 447.1,
+     "last": 462.6,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -15.23
+     "pnl_pct": -12.29
     },
     {
      "symbol": "BONHR",
      "qty": 1.73,
      "avg": 277.0,
-     "last": 276.5,
+     "last": 280.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.18
+     "pnl_pct": 1.08
     },
     {
      "symbol": "BORR",
      "qty": 15.75,
      "avg": 30.2,
-     "last": 39.22,
+     "last": 38.1,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 29.87
+     "pnl_pct": 26.16
     },
     {
      "symbol": "BOUV",
      "qty": 9.4,
      "avg": 50.8,
-     "last": 49.5,
+     "last": 50.1,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.56
+     "pnl_pct": -1.38
     },
     {
      "symbol": "BRG",
      "qty": 3.01,
      "avg": 157.6,
-     "last": 149.8,
+     "last": 152.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.95
+     "pnl_pct": -3.43
     },
     {
      "symbol": "BWE",
      "qty": 10.5,
      "avg": 46.05,
-     "last": 46.1,
+     "last": 47.9,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 0.11
+     "pnl_pct": 4.02
     },
     {
      "symbol": "BWLPG",
      "qty": 2.33,
      "avg": 206.6,
-     "last": 219.6,
+     "last": 222.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 6.29
+     "pnl_pct": 7.74
     },
     {
      "symbol": "BWO",
      "qty": 12.19,
      "avg": 38.7,
-     "last": 40.65,
+     "last": 40.95,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 5.04
+     "pnl_pct": 5.81
     },
     {
      "symbol": "CARL-B.CO",
      "qty": 0.33,
      "avg": 1018.5,
-     "last": 1009.0,
+     "last": 1009.5,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -0.93
+     "pnl_pct": -0.88
     },
     {
      "symbol": "CLOUD",
      "qty": 36.8,
      "avg": 12.7,
-     "last": 12.84,
+     "last": 13.04,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.1
+     "pnl_pct": 2.68
     },
     {
      "symbol": "CMBTO",
      "qty": 3.0,
      "avg": 157.8,
-     "last": 169.0,
+     "last": 170.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 7.1
+     "pnl_pct": 8.11
     },
     {
      "symbol": "COLO-B.CO",
      "qty": 0.69,
      "avg": 490.0,
-     "last": 507.0,
+     "last": 512.8,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": 3.47
+     "pnl_pct": 4.65
     },
     {
      "symbol": "COSH",
      "qty": 3.88,
      "avg": 129.93,
-     "last": 110.0,
+     "last": 114.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -15.34
+     "pnl_pct": -12.26
     },
     {
      "symbol": "CRNA",
      "qty": 48.84,
      "avg": 9.4,
-     "last": 9.81,
+     "last": 9.83,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 4.36
+     "pnl_pct": 4.57
     },
     {
      "symbol": "DANSKE.CO",
      "qty": 0.91,
      "avg": 372.0,
-     "last": 353.1,
+     "last": 361.2,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -5.08
+     "pnl_pct": -2.9
     },
     {
      "symbol": "DDRIL",
@@ -396,19 +396,19 @@
      "symbol": "DELIA",
      "qty": 26.41,
      "avg": 18.2,
-     "last": 17.48,
+     "last": 17.52,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.96
+     "pnl_pct": -3.74
     },
     {
      "symbol": "DEMANT.CO",
      "qty": 0.91,
      "avg": 369.2,
-     "last": 325.4,
+     "last": 335.2,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -11.86
+     "pnl_pct": -9.21
     },
     {
      "symbol": "DFENS",
@@ -423,1234 +423,1234 @@
      "symbol": "DNB",
      "qty": 1.46,
      "avg": 326.1,
-     "last": 320.8,
+     "last": 325.7,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -1.63
+     "pnl_pct": -0.12
     },
     {
      "symbol": "DNO",
      "qty": 23.76,
      "avg": 20.34,
-     "last": 20.16,
+     "last": 19.86,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.88
+     "pnl_pct": -2.36
     },
     {
      "symbol": "DOFG",
      "qty": 3.84,
      "avg": 128.86,
-     "last": 127.0,
+     "last": 133.9,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -1.45
+     "pnl_pct": 3.91
     },
     {
      "symbol": "DSV.CO",
      "qty": 0.23,
      "avg": 1438.5,
-     "last": 1376.5,
+     "last": 1381.5,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -4.31
+     "pnl_pct": -3.96
     },
     {
      "symbol": "ELISA.HE",
      "qty": 1.32,
      "avg": 33.64,
-     "last": 31.5,
+     "last": 32.16,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -6.36
+     "pnl_pct": -4.4
     },
     {
      "symbol": "ELK",
      "qty": 14.81,
      "avg": 32.38,
-     "last": 29.24,
+     "last": 30.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -9.7
+     "pnl_pct": -6.73
     },
     {
      "symbol": "ELO",
      "qty": 13.35,
      "avg": 36.2,
-     "last": 36.45,
+     "last": 37.15,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 0.69
+     "pnl_pct": 2.62
     },
     {
      "symbol": "ELUX-B.ST",
      "qty": 15.38,
      "avg": 32.28,
-     "last": 29.26,
+     "last": 30.02,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -9.36
+     "pnl_pct": -7.0
     },
     {
      "symbol": "ENDUR",
      "qty": 3.67,
      "avg": 129.2,
-     "last": 135.6,
+     "last": 138.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 4.95
+     "pnl_pct": 7.12
     },
     {
      "symbol": "ENH",
      "qty": 70.13,
      "avg": 6.8,
-     "last": 6.48,
+     "last": 6.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.71
+     "pnl_pct": -2.94
     },
     {
      "symbol": "ENTRA",
      "qty": 4.67,
      "avg": 100.2,
-     "last": 98.2,
+     "last": 102.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.0
+     "pnl_pct": 2.0
     },
     {
      "symbol": "ENVIP",
      "qty": 11.21,
      "avg": 39.65,
-     "last": 32.45,
+     "last": 28.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -18.16
+     "pnl_pct": -28.37
     },
     {
      "symbol": "EPI-A.ST",
      "qty": 2.01,
      "avg": 251.7,
-     "last": 220.2,
+     "last": 229.2,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -12.51
+     "pnl_pct": -8.94
     },
     {
      "symbol": "EPR",
      "qty": 5.71,
      "avg": 83.0,
-     "last": 82.4,
+     "last": 84.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.72
+     "pnl_pct": 1.93
     },
     {
      "symbol": "EQNR",
      "qty": 1.25,
      "avg": 385.57,
-     "last": 384.6,
+     "last": 383.7,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.25
+     "pnl_pct": -0.48
     },
     {
      "symbol": "EQT.ST",
      "qty": 1.59,
      "avg": 313.2,
-     "last": 289.2,
+     "last": 301.0,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -7.66
+     "pnl_pct": -3.9
     },
     {
      "symbol": "ERIC-B.ST",
      "qty": 4.81,
      "avg": 104.75,
-     "last": 103.1,
+     "last": 105.5,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -1.58
+     "pnl_pct": 0.72
     },
     {
      "symbol": "ESSITY-B.ST",
      "qty": 1.7,
      "avg": 290.1,
-     "last": 292.5,
+     "last": 293.7,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": 0.83
+     "pnl_pct": 1.24
     },
     {
      "symbol": "EVO.ST",
      "qty": 0.58,
      "avg": 852.4,
-     "last": 877.4,
+     "last": 893.0,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": 2.93
+     "pnl_pct": 4.76
     },
     {
      "symbol": "FLS.CO",
      "qty": 0.59,
      "avg": 593.0,
-     "last": 451.8,
+     "last": 467.2,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -23.81
+     "pnl_pct": -21.21
     },
     {
      "symbol": "FORTUM.HE",
      "qty": 1.92,
      "avg": 23.43,
-     "last": 21.81,
+     "last": 22.02,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -6.91
+     "pnl_pct": -6.02
     },
     {
      "symbol": "FRO",
      "qty": 1.14,
      "avg": 419.4,
-     "last": 461.7,
+     "last": 468.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 10.09
+     "pnl_pct": 11.59
     },
     {
      "symbol": "GETI-B.ST",
      "qty": 1.83,
      "avg": 271.2,
-     "last": 277.3,
+     "last": 278.2,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": 2.25
+     "pnl_pct": 2.58
     },
     {
      "symbol": "GJF",
      "qty": 1.72,
      "avg": 276.0,
-     "last": 281.2,
+     "last": 284.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.88
+     "pnl_pct": 3.19
     },
     {
      "symbol": "GMAB.CO",
      "qty": 0.09,
      "avg": 3600.0,
-     "last": 3771.0,
+     "last": 3872.0,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": 4.75
+     "pnl_pct": 7.56
     },
     {
      "symbol": "GN.CO",
      "qty": 2.8,
      "avg": 119.55,
-     "last": 114.0,
+     "last": 118.5,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -4.64
+     "pnl_pct": -0.88
     },
     {
      "symbol": "GOD",
      "qty": 31.86,
      "avg": 14.9,
-     "last": 14.05,
+     "last": 14.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.7
+     "pnl_pct": -4.7
     },
     {
      "symbol": "HAFNI",
      "qty": 5.52,
      "avg": 86.5,
-     "last": 85.55,
+     "last": 87.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -1.1
+     "pnl_pct": 0.81
     },
     {
      "symbol": "HAUTO",
      "qty": 2.88,
      "avg": 171.65,
-     "last": 155.1,
+     "last": 154.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -9.64
+     "pnl_pct": -9.82
     },
     {
      "symbol": "HEX",
      "qty": 36.98,
      "avg": 12.9,
-     "last": 10.95,
+     "last": 11.29,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -15.12
+     "pnl_pct": -12.48
     },
     {
      "symbol": "HEXA-B.ST",
      "qty": 4.63,
      "avg": 107.45,
-     "last": 102.2,
+     "last": 104.5,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -4.89
+     "pnl_pct": -2.75
     },
     {
      "symbol": "HM-B.ST",
      "qty": 2.77,
      "avg": 178.15,
-     "last": 182.5,
+     "last": 184.15,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": 2.44
+     "pnl_pct": 3.37
     },
     {
      "symbol": "HSHP",
      "qty": 3.21,
      "avg": 152.52,
-     "last": 149.2,
+     "last": 153.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.17
+     "pnl_pct": 0.45
     },
     {
      "symbol": "HUH1V.HE",
      "qty": 1.69,
      "avg": 26.6,
-     "last": 26.58,
+     "last": 27.0,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -0.08
+     "pnl_pct": 1.5
     },
     {
      "symbol": "HUNT",
      "qty": 30.67,
      "avg": 15.5,
-     "last": 20.95,
+     "last": 20.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 35.16
+     "pnl_pct": 31.61
     },
     {
      "symbol": "INDU-C.ST",
      "qty": 0.92,
      "avg": 545.2,
-     "last": 505.0,
+     "last": 514.8,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -7.37
+     "pnl_pct": -5.58
     },
     {
      "symbol": "INVE-B.ST",
      "qty": 1.15,
      "avg": 433.2,
-     "last": 412.0,
+     "last": 417.45,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -4.89
+     "pnl_pct": -3.64
     },
     {
      "symbol": "ISS.CO",
      "qty": 1.08,
      "avg": 311.4,
-     "last": 309.6,
+     "last": 298.6,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -0.58
+     "pnl_pct": -4.11
     },
     {
      "symbol": "JYSK.CO",
      "qty": 0.29,
      "avg": 1155.0,
-     "last": 1052.0,
+     "last": 1067.0,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -8.92
+     "pnl_pct": -7.62
     },
     {
      "symbol": "KCC",
      "qty": 4.58,
      "avg": 103.6,
-     "last": 105.8,
+     "last": 106.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 2.12
+     "pnl_pct": 2.7
     },
     {
      "symbol": "KCR.HE",
      "qty": 1.52,
      "avg": 29.56,
-     "last": 26.32,
+     "last": 27.14,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -10.96
+     "pnl_pct": -8.19
     },
     {
      "symbol": "KEMIRA.HE",
      "qty": 2.87,
      "avg": 15.59,
-     "last": 14.84,
+     "last": 15.21,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -4.81
+     "pnl_pct": -2.44
     },
     {
      "symbol": "KESKOB.HE",
      "qty": 1.75,
      "avg": 25.62,
-     "last": 25.4,
+     "last": 25.7,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -0.86
+     "pnl_pct": 0.31
     },
     {
      "symbol": "KID",
      "qty": 3.25,
      "avg": 150.19,
-     "last": 149.0,
+     "last": 151.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.79
+     "pnl_pct": 0.54
     },
     {
      "symbol": "KINV-B.ST",
      "qty": 6.89,
      "avg": 71.84,
-     "last": 69.26,
+     "last": 72.2,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -3.59
+     "pnl_pct": 0.5
     },
     {
      "symbol": "KIT",
      "qty": 5.18,
      "avg": 92.4,
-     "last": 81.85,
+     "last": 85.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -11.42
+     "pnl_pct": -8.01
     },
     {
      "symbol": "KNEBV.HE",
      "qty": 0.78,
      "avg": 57.64,
-     "last": 57.32,
+     "last": 57.92,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -0.56
+     "pnl_pct": 0.49
     },
     {
      "symbol": "KOA",
      "qty": 231.59,
      "avg": 2.03,
-     "last": 1.96,
+     "last": 2.01,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.41
+     "pnl_pct": -0.99
     },
     {
      "symbol": "KOG",
      "qty": 1.34,
      "avg": 358.0,
-     "last": 330.6,
+     "last": 340.3,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -7.65
+     "pnl_pct": -4.94
     },
     {
      "symbol": "LIFCO-B.ST",
      "qty": 1.73,
      "avg": 287.2,
-     "last": 281.0,
+     "last": 286.6,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -2.16
+     "pnl_pct": -0.21
     },
     {
      "symbol": "LINK",
      "qty": 18.57,
      "avg": 25.5,
-     "last": 22.32,
+     "last": 23.66,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -12.47
+     "pnl_pct": -7.22
     },
     {
      "symbol": "LSG",
      "qty": 10.55,
      "avg": 44.44,
-     "last": 42.98,
+     "last": 43.74,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.29
+     "pnl_pct": -1.58
     },
     {
      "symbol": "MAERSK-B.CO",
      "qty": 0.02,
      "avg": 19345.0,
-     "last": 18995.0,
+     "last": 19085.0,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -1.81
+     "pnl_pct": -1.34
     },
     {
      "symbol": "MANTA.HE",
      "qty": 7.69,
      "avg": 5.89,
-     "last": 5.66,
+     "last": 5.79,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -3.82
+     "pnl_pct": -1.61
     },
     {
      "symbol": "MEDI",
      "qty": 1.51,
      "avg": 316.0,
-     "last": 330.0,
+     "last": 333.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 4.43
+     "pnl_pct": 5.38
     },
     {
      "symbol": "METSO.HE",
      "qty": 2.6,
      "avg": 17.44,
-     "last": 14.04,
+     "last": 14.33,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -19.5
+     "pnl_pct": -17.83
     },
     {
      "symbol": "MGN",
      "qty": 23.16,
      "avg": 20.65,
-     "last": 18.38,
+     "last": 18.18,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -10.99
+     "pnl_pct": -11.96
     },
     {
      "symbol": "MING",
      "qty": 2.13,
      "avg": 222.5,
-     "last": 216.1,
+     "last": 220.3,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.88
+     "pnl_pct": -0.99
     },
     {
      "symbol": "MORG",
      "qty": 4.2,
      "avg": 112.9,
-     "last": 111.0,
+     "last": 112.24,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -1.68
+     "pnl_pct": -0.58
     },
     {
      "symbol": "MORLD",
      "qty": 17.92,
      "avg": 26.85,
-     "last": 27.95,
+     "last": 28.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 4.1
+     "pnl_pct": 6.52
     },
     {
      "symbol": "MOWI",
      "qty": 2.13,
      "avg": 225.98,
-     "last": 228.6,
+     "last": 230.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.16
+     "pnl_pct": 1.78
     },
     {
      "symbol": "MPCC",
      "qty": 19.47,
      "avg": 24.54,
-     "last": 23.53,
+     "last": 21.98,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.12
+     "pnl_pct": -10.43
     },
     {
      "symbol": "MULTI",
      "qty": 3.57,
      "avg": 134.0,
-     "last": 130.2,
+     "last": 135.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.84
+     "pnl_pct": 1.19
     },
     {
      "symbol": "NAPA",
      "qty": 11.47,
      "avg": 41.9,
-     "last": 33.8,
+     "last": 34.45,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -19.33
+     "pnl_pct": -17.78
     },
     {
      "symbol": "NAS",
      "qty": 34.74,
      "avg": 13.62,
-     "last": 13.12,
+     "last": 13.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.67
+     "pnl_pct": -3.05
     },
     {
      "symbol": "NDA-FI.HE",
      "qty": 2.64,
      "avg": 17.07,
-     "last": 15.74,
+     "last": 16.08,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -7.76
+     "pnl_pct": -5.83
     },
     {
      "symbol": "NEL",
      "qty": 235.62,
      "avg": 2.04,
-     "last": 1.74,
+     "last": 1.77,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -14.51
+     "pnl_pct": -13.04
     },
     {
      "symbol": "NESTE.HE",
      "qty": 1.66,
      "avg": 27.07,
-     "last": 23.16,
+     "last": 24.0,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -14.44
+     "pnl_pct": -11.34
     },
     {
      "symbol": "NHY",
      "qty": 6.84,
      "avg": 70.26,
-     "last": 63.66,
+     "last": 65.28,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -9.39
+     "pnl_pct": -7.09
     },
     {
      "symbol": "NIBE-B.ST",
      "qty": 11.07,
      "avg": 43.65,
-     "last": 44.06,
+     "last": 45.35,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": 0.94
+     "pnl_pct": 3.89
     },
     {
      "symbol": "NKR",
      "qty": 24.99,
      "avg": 19.0,
-     "last": 20.9,
+     "last": 20.7,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 10.0
+     "pnl_pct": 8.95
     },
     {
      "symbol": "NKT.CO",
      "qty": 0.39,
      "avg": 885.0,
-     "last": 710.5,
+     "last": 745.5,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -19.72
+     "pnl_pct": -15.76
     },
     {
      "symbol": "NOD",
      "qty": 2.61,
      "avg": 184.2,
-     "last": 165.3,
+     "last": 175.5,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -10.26
+     "pnl_pct": -4.72
     },
     {
      "symbol": "NOKIA.HE",
      "qty": 6.03,
      "avg": 7.63,
-     "last": 6.32,
+     "last": 6.64,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -17.15
+     "pnl_pct": -12.95
     },
     {
      "symbol": "NONG",
      "qty": 2.58,
      "avg": 184.0,
-     "last": 179.5,
+     "last": 183.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.45
+     "pnl_pct": -0.54
     },
     {
      "symbol": "NORAM",
      "qty": 10.75,
      "avg": 44.58,
-     "last": 42.8,
+     "last": 41.9,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.0
+     "pnl_pct": -6.02
     },
     {
      "symbol": "NORBT",
      "qty": 2.85,
      "avg": 171.4,
-     "last": 153.8,
+     "last": 161.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -10.27
+     "pnl_pct": -5.83
     },
     {
      "symbol": "NORCO",
      "qty": 13.24,
      "avg": 36.25,
-     "last": 35.25,
+     "last": 35.7,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.76
+     "pnl_pct": -1.52
     },
     {
      "symbol": "NOVO-B.CO",
      "qty": 1.24,
      "avg": 271.5,
-     "last": 274.3,
+     "last": 277.25,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": 1.03
+     "pnl_pct": 2.12
     },
     {
      "symbol": "NRC",
      "qty": 52.29,
      "avg": 9.1,
-     "last": 8.46,
+     "last": 8.48,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -7.03
+     "pnl_pct": -6.81
     },
     {
      "symbol": "NSIS-B.CO",
      "qty": 0.76,
      "avg": 440.2,
-     "last": 444.8,
+     "last": 446.0,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": 1.04
+     "pnl_pct": 1.32
     },
     {
      "symbol": "NSKOG",
      "qty": 13.15,
      "avg": 36.4,
-     "last": 35.5,
+     "last": 36.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.47
+     "pnl_pct": 0.55
     },
     {
      "symbol": "NTI",
      "qty": 426.18,
      "avg": 1.14,
-     "last": 1.11,
+     "last": 1.1,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.98
+     "pnl_pct": -3.86
     },
     {
      "symbol": "ODF",
      "qty": 4.04,
      "avg": 118.0,
-     "last": 119.0,
+     "last": 119.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 0.85
+     "pnl_pct": 1.36
     },
     {
      "symbol": "ODFB",
      "qty": 4.06,
      "avg": 118.6,
-     "last": 117.4,
+     "last": 118.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -1.01
+     "pnl_pct": 0.0
     },
     {
      "symbol": "ODL",
      "qty": 4.7,
      "avg": 104.35,
-     "last": 99.1,
+     "last": 101.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.03
+     "pnl_pct": -2.63
     },
     {
      "symbol": "OET",
      "qty": 0.67,
      "avg": 777.99,
-     "last": 778.0,
+     "last": 793.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 0.0
+     "pnl_pct": 1.93
     },
     {
      "symbol": "OKEA",
      "qty": 10.52,
      "avg": 45.5,
-     "last": 46.4,
+     "last": 47.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.98
+     "pnl_pct": 3.3
     },
     {
      "symbol": "ONCIN",
      "qty": 7.19,
      "avg": 63.8,
-     "last": 69.6,
+     "last": 68.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 9.09
+     "pnl_pct": 7.84
     },
     {
      "symbol": "ORK",
      "qty": 4.45,
      "avg": 106.0,
-     "last": 104.4,
+     "last": 104.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -1.51
+     "pnl_pct": -1.13
     },
     {
      "symbol": "ORNBV.HE",
      "qty": 0.44,
      "avg": 101.9,
-     "last": 101.1,
+     "last": 102.3,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -0.79
+     "pnl_pct": 0.39
     },
     {
      "symbol": "ORSTED.CO",
      "qty": 2.32,
      "avg": 145.75,
-     "last": 137.5,
+     "last": 140.8,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -5.66
+     "pnl_pct": -3.4
     },
     {
      "symbol": "OTEC",
      "qty": 27.29,
      "avg": 17.46,
-     "last": 16.8,
+     "last": 17.62,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.78
+     "pnl_pct": 0.92
     },
     {
      "symbol": "OTL",
      "qty": 7.94,
      "avg": 60.0,
-     "last": 57.8,
+     "last": 61.9,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.67
+     "pnl_pct": 3.17
     },
     {
      "symbol": "OUT1V.HE",
      "qty": 11.93,
      "avg": 3.76,
-     "last": 3.17,
+     "last": 3.27,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -15.7
+     "pnl_pct": -12.88
     },
     {
      "symbol": "PARB",
      "qty": 9.5,
      "avg": 50.4,
-     "last": 47.15,
+     "last": 48.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -6.45
+     "pnl_pct": -4.37
     },
     {
      "symbol": "PEN",
      "qty": 16.12,
      "avg": 29.6,
-     "last": 27.6,
+     "last": 28.25,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -6.76
+     "pnl_pct": -4.56
     },
     {
      "symbol": "PEXIP",
      "qty": 6.86,
      "avg": 69.7,
-     "last": 69.7,
+     "last": 73.7,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 0.0
+     "pnl_pct": 5.74
     },
     {
      "symbol": "PHO",
      "qty": 11.36,
      "avg": 42.0,
-     "last": 39.6,
+     "last": 38.65,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.71
+     "pnl_pct": -7.98
     },
     {
      "symbol": "PLSV",
      "qty": 9.51,
      "avg": 49.8,
-     "last": 47.55,
+     "last": 49.55,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.52
+     "pnl_pct": -0.5
     },
     {
      "symbol": "PLT",
      "qty": 42.24,
      "avg": 11.2,
-     "last": 12.1,
+     "last": 12.62,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 8.04
+     "pnl_pct": 12.68
     },
     {
      "symbol": "PNDORA.CO",
      "qty": 0.35,
      "avg": 955.6,
-     "last": 922.4,
+     "last": 935.4,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -3.47
+     "pnl_pct": -2.11
     },
     {
      "symbol": "PNOR",
      "qty": 45.04,
      "avg": 10.58,
-     "last": 10.86,
+     "last": 10.98,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 2.65
+     "pnl_pct": 3.78
     },
     {
      "symbol": "PROT",
      "qty": 0.99,
      "avg": 481.0,
-     "last": 477.0,
+     "last": 481.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.83
+     "pnl_pct": 0.17
     },
     {
      "symbol": "PRS",
      "qty": 111.06,
      "avg": 4.5,
-     "last": 3.55,
+     "last": 3.62,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -21.11
+     "pnl_pct": -19.56
     },
     {
      "symbol": "PUBLI",
      "qty": 27.1,
      "avg": 17.6,
-     "last": 16.85,
+     "last": 17.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.26
+     "pnl_pct": -1.14
     },
     {
      "symbol": "QTCOM.HE",
      "qty": 1.48,
      "avg": 30.3,
-     "last": 28.52,
+     "last": 29.3,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -5.87
+     "pnl_pct": -3.3
     },
     {
      "symbol": "RBREW.CO",
      "qty": 0.74,
      "avg": 450.2,
-     "last": 488.2,
+     "last": 490.4,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": 8.44
+     "pnl_pct": 8.93
     },
     {
      "symbol": "REACH",
      "qty": 84.03,
      "avg": 5.7,
-     "last": 4.2,
+     "last": 4.53,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -26.32
+     "pnl_pct": -20.61
     },
     {
      "symbol": "ROCK-B.CO",
      "qty": 1.55,
      "avg": 215.8,
-     "last": 178.0,
+     "last": 175.1,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -17.52
+     "pnl_pct": -18.86
     },
     {
      "symbol": "SAAB-B.ST",
      "qty": 0.76,
      "avg": 659.8,
-     "last": 607.0,
+     "last": 624.1,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -8.0
+     "pnl_pct": -5.41
     },
     {
      "symbol": "SALM",
      "qty": 0.8,
      "avg": 593.0,
-     "last": 577.5,
+     "last": 587.5,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.61
+     "pnl_pct": -0.93
     },
     {
      "symbol": "SALME",
      "qty": 226.08,
      "avg": 2.12,
-     "last": 2.45,
+     "last": 2.48,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 15.29
+     "pnl_pct": 16.94
     },
     {
      "symbol": "SAMPO.HE",
      "qty": 4.5,
      "avg": 9.95,
-     "last": 9.91,
+     "last": 10.06,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -0.36
+     "pnl_pct": 1.06
     },
     {
      "symbol": "SAND.ST",
      "qty": 1.36,
      "avg": 371.6,
-     "last": 318.8,
+     "last": 326.5,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -14.21
+     "pnl_pct": -12.14
     },
     {
      "symbol": "SATS",
      "qty": 10.39,
      "avg": 45.85,
-     "last": 45.55,
+     "last": 46.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.65
+     "pnl_pct": 0.33
     },
     {
      "symbol": "SB1NO",
      "qty": 1.98,
      "avg": 239.5,
-     "last": 229.0,
+     "last": 233.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.38
+     "pnl_pct": -2.71
     },
     {
      "symbol": "SBNOR",
      "qty": 2.27,
      "avg": 208.5,
-     "last": 200.5,
+     "last": 204.1,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.84
+     "pnl_pct": -2.11
     },
     {
      "symbol": "SCA-B.ST",
      "qty": 4.15,
      "avg": 119.8,
-     "last": 114.15,
+     "last": 115.2,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -4.72
+     "pnl_pct": -3.84
     },
     {
      "symbol": "SCATC",
      "qty": 5.2,
      "avg": 91.75,
-     "last": 80.55,
+     "last": 83.35,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -12.21
+     "pnl_pct": -9.16
     },
     {
      "symbol": "SEA1",
      "qty": 18.88,
      "avg": 25.15,
-     "last": 24.65,
+     "last": 25.45,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -1.99
+     "pnl_pct": 1.19
     },
     {
      "symbol": "SEB-A.ST",
      "qty": 2.24,
      "avg": 222.7,
-     "last": 208.3,
+     "last": 212.9,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -6.47
+     "pnl_pct": -4.4
     },
     {
      "symbol": "SECU-B.ST",
      "qty": 3.15,
      "avg": 160.11,
-     "last": 162.4,
+     "last": 164.7,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": 1.43
+     "pnl_pct": 2.86
     },
     {
      "symbol": "SHB-A.ST",
      "qty": 3.02,
      "avg": 165.05,
-     "last": 157.55,
+     "last": 160.25,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -4.54
+     "pnl_pct": -2.91
     },
     {
      "symbol": "SINCH.ST",
      "qty": 11.83,
      "avg": 42.05,
-     "last": 39.22,
+     "last": 41.03,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -6.73
+     "pnl_pct": -2.43
     },
     {
      "symbol": "SKA-B.ST",
      "qty": 1.64,
      "avg": 301.9,
-     "last": 297.0,
+     "last": 302.7,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -1.62
+     "pnl_pct": 0.26
     },
     {
      "symbol": "SKF-B.ST",
      "qty": 1.81,
      "avg": 278.3,
-     "last": 263.4,
+     "last": 260.0,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -5.35
+     "pnl_pct": -6.58
     },
     {
      "symbol": "SMOP",
      "qty": 8.92,
      "avg": 54.2,
-     "last": 50.2,
+     "last": 51.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -7.38
+     "pnl_pct": -5.17
     },
     {
      "symbol": "SNI",
      "qty": 1.52,
      "avg": 322.0,
-     "last": 313.0,
+     "last": 321.5,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.8
+     "pnl_pct": -0.16
     },
     {
      "symbol": "SNTIA",
      "qty": 5.49,
      "avg": 89.0,
-     "last": 92.0,
+     "last": 93.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 3.37
+     "pnl_pct": 4.72
     },
     {
      "symbol": "SOFF",
      "qty": 6.93,
      "avg": 66.7,
-     "last": 64.4,
+     "last": 66.1,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.45
+     "pnl_pct": -0.9
     },
     {
      "symbol": "SOMA",
      "qty": 17.08,
      "avg": 28.0,
-     "last": 26.45,
+     "last": 27.05,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.54
+     "pnl_pct": -3.39
     },
     {
      "symbol": "SPOL",
      "qty": 2.26,
      "avg": 210.0,
-     "last": 204.4,
+     "last": 207.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.67
+     "pnl_pct": -1.43
     },
     {
      "symbol": "STB",
      "qty": 2.3,
      "avg": 206.0,
-     "last": 196.5,
+     "last": 199.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.61
+     "pnl_pct": -3.01
     },
     {
      "symbol": "STERV.HE",
      "qty": 4.74,
      "avg": 9.44,
-     "last": 9.06,
+     "last": 9.28,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -3.94
+     "pnl_pct": -1.65
     },
     {
      "symbol": "SUBC",
      "qty": 1.51,
      "avg": 316.4,
-     "last": 326.2,
+     "last": 335.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 3.1
+     "pnl_pct": 6.01
     },
     {
      "symbol": "SWED-A.ST",
      "qty": 1.19,
      "avg": 420.0,
-     "last": 397.1,
+     "last": 403.9,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -5.45
+     "pnl_pct": -3.83
     },
     {
      "symbol": "SWON",
@@ -1665,235 +1665,235 @@
      "symbol": "TEL",
      "qty": 3.51,
      "avg": 134.9,
-     "last": 133.7,
+     "last": 134.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.89
+     "pnl_pct": -0.07
     },
     {
      "symbol": "TEL2-B.ST",
      "qty": 3.06,
      "avg": 162.0,
-     "last": 161.45,
+     "last": 162.95,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -0.34
+     "pnl_pct": 0.59
     },
     {
      "symbol": "TELIA.ST",
      "qty": 10.17,
      "avg": 48.54,
-     "last": 50.16,
+     "last": 50.58,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": 3.34
+     "pnl_pct": 4.2
     },
     {
      "symbol": "TGS",
      "qty": 3.53,
      "avg": 136.0,
-     "last": 121.0,
+     "last": 126.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -11.03
+     "pnl_pct": -7.35
     },
     {
      "symbol": "TIETO.HE",
      "qty": 2.47,
      "avg": 18.1,
-     "last": 18.33,
+     "last": 18.5,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": 1.27
+     "pnl_pct": 2.21
     },
     {
      "symbol": "TOM",
      "qty": 4.71,
      "avg": 101.1,
-     "last": 78.0,
+     "last": 81.25,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -22.85
+     "pnl_pct": -19.63
     },
     {
      "symbol": "TREL-B.ST",
      "qty": 1.08,
      "avg": 463.6,
-     "last": 455.2,
+     "last": 465.4,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -1.81
+     "pnl_pct": 0.39
     },
     {
      "symbol": "TRMED",
      "qty": 113.85,
      "avg": 4.2,
-     "last": 3.68,
+     "last": 2.97,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -12.26
+     "pnl_pct": -29.29
     },
     {
      "symbol": "TRYG.CO",
      "qty": 2.05,
      "avg": 163.0,
-     "last": 166.8,
+     "last": 167.5,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": 2.33
+     "pnl_pct": 2.76
     },
     {
      "symbol": "UPM.HE",
      "qty": 2.06,
      "avg": 21.8,
-     "last": 21.66,
+     "last": 21.97,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -0.64
+     "pnl_pct": 0.78
     },
     {
      "symbol": "VALMT.HE",
      "qty": 1.56,
      "avg": 28.74,
-     "last": 27.08,
+     "last": 27.74,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -5.78
+     "pnl_pct": -3.48
     },
     {
      "symbol": "VAR",
      "qty": 10.05,
      "avg": 48.96,
-     "last": 43.49,
+     "last": 43.56,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -11.17
+     "pnl_pct": -11.03
     },
     {
      "symbol": "VEI",
      "qty": 2.14,
      "avg": 221.5,
-     "last": 227.5,
+     "last": 230.5,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 2.71
+     "pnl_pct": 4.06
     },
     {
      "symbol": "VEND",
      "qty": 2.01,
      "avg": 236.0,
-     "last": 220.8,
+     "last": 225.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -6.44
+     "pnl_pct": -4.41
     },
     {
      "symbol": "VOLV-B.ST",
      "qty": 1.55,
      "avg": 322.8,
-     "last": 315.6,
+     "last": 325.7,
      "stop": 0.0,
      "currency": "SEK",
-     "pnl_pct": -2.23
+     "pnl_pct": 0.9
     },
     {
      "symbol": "VOW",
      "qty": 168.66,
      "avg": 2.82,
-     "last": 2.07,
+     "last": 2.08,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -26.77
+     "pnl_pct": -26.24
     },
     {
      "symbol": "VTURA",
      "qty": 14.05,
      "avg": 34.0,
-     "last": 31.2,
+     "last": 32.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -8.24
+     "pnl_pct": -5.88
     },
     {
      "symbol": "VWS.CO",
      "qty": 1.69,
      "avg": 187.5,
-     "last": 163.0,
+     "last": 168.0,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -13.07
+     "pnl_pct": -10.4
     },
     {
      "symbol": "WAWI",
      "qty": 2.99,
      "avg": 160.6,
-     "last": 160.0,
+     "last": 159.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.37
+     "pnl_pct": -0.5
     },
     {
      "symbol": "WRT1V.HE",
      "qty": 1.74,
      "avg": 26.21,
-     "last": 23.64,
+     "last": 24.2,
      "stop": 0.0,
      "currency": "EUR",
-     "pnl_pct": -9.81
+     "pnl_pct": -7.67
     },
     {
      "symbol": "WWI",
      "qty": 0.54,
      "avg": 882.0,
-     "last": 888.0,
+     "last": 893.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 0.68
+     "pnl_pct": 1.25
     },
     {
      "symbol": "WWIB",
      "qty": 0.55,
      "avg": 832.0,
-     "last": 859.0,
+     "last": 865.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 3.25
+     "pnl_pct": 3.97
     },
     {
      "symbol": "XPLRA",
      "qty": 19.3,
      "avg": 25.0,
-     "last": 21.05,
+     "last": 22.3,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -15.8
+     "pnl_pct": -10.8
     },
     {
      "symbol": "YAR",
      "qty": 1.18,
      "avg": 402.0,
-     "last": 377.3,
+     "last": 383.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -6.14
+     "pnl_pct": -4.53
     },
     {
      "symbol": "ZAP",
      "qty": 8.13,
      "avg": 58.3,
-     "last": 55.3,
+     "last": 57.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.15
+     "pnl_pct": -2.23
     },
     {
      "symbol": "ZEAL.CO",
      "qty": 1.34,
      "avg": 249.6,
-     "last": 225.8,
+     "last": 236.1,
      "stop": 0.0,
      "currency": "DKK",
-     "pnl_pct": -9.54
+     "pnl_pct": -5.41
     }
    ],
    "pending": [],
@@ -2127,13 +2127,17 @@
     [
      "2026-11-25",
      96572.34
+    ],
+    [
+     "2026-11-26",
+     97898.86
     ]
    ],
    "journal": null,
    "llm": null,
    "vs_benchmark_pct": null,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -2148,63 +2152,77 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": null,
-   "last_date": "2026-11-25",
-   "equity": 100153.79,
-   "cash": 79970.69,
-   "return_pct": 0.154,
+   "last_date": "2026-11-26",
+   "equity": 100236.1,
+   "cash": 74451.34,
+   "return_pct": 0.236,
    "max_drawdown_pct": -0.701,
-   "fills": 6,
+   "fills": 7,
    "closed_trades": 1,
    "win_rate_pct": 0.0,
-   "fees": 60.0,
+   "fees": 70.0,
    "dividends": 38.5,
    "positions": [
     {
      "symbol": "AMBU-B.CO",
      "qty": 53,
      "avg": 86.39,
-     "last": 85.85,
+     "last": 86.85,
      "stop": 84.48,
      "currency": "DKK",
-     "pnl_pct": -0.63
+     "pnl_pct": 0.53
+    },
+    {
+     "symbol": "GMAB.CO",
+     "qty": 1,
+     "avg": 3848.92,
+     "last": 3872.0,
+     "stop": 3560.57,
+     "currency": "DKK",
+     "pnl_pct": 0.6
     },
     {
      "symbol": "KID",
      "qty": 14,
      "avg": 150.68,
-     "last": 149.0,
-     "stop": 140.48,
+     "last": 151.0,
+     "stop": 142.79,
      "currency": "NOK",
-     "pnl_pct": -1.11
+     "pnl_pct": 0.22
     },
     {
      "symbol": "NKR",
      "qty": 240,
      "avg": 19.01,
-     "last": 20.9,
+     "last": 20.7,
      "stop": 19.08,
      "currency": "NOK",
-     "pnl_pct": 9.95
+     "pnl_pct": 8.89
     },
     {
      "symbol": "ORNBV.HE",
      "qty": 6,
      "avg": 101.95,
-     "last": 101.1,
+     "last": 102.3,
      "stop": 98.29,
      "currency": "EUR",
-     "pnl_pct": -0.83
+     "pnl_pct": 0.34
     }
    ],
-   "pending": [
+   "pending": [],
+   "last_fills": [
     {
+     "date": "2026-11-26",
+     "symbol": "GMAB.CO",
      "side": "BUY",
      "qty": 1,
-     "symbol": "GMAB.CO",
+     "price": 3848.9235,
+     "currency": "DKK",
+     "fx": 1.4314,
+     "fee": 10.0,
+     "pnl": 0.0,
      "reason": "uptrend; sized by risk per trade"
-    }
-   ],
-   "last_fills": [
+    },
     {
      "date": "2026-11-25",
      "symbol": "ELUX-B.ST",
@@ -2338,13 +2356,17 @@
     [
      "2026-11-25",
      100153.79
+    ],
+    [
+     "2026-11-26",
+     100236.1
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": 3.582,
+   "vs_benchmark_pct": 2.337,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -2359,10 +2381,10 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": 0.085,
-   "last_date": "2026-11-25",
-   "equity": 104362.63,
+   "last_date": "2026-11-26",
+   "equity": 105371.73,
    "cash": 4658.73,
-   "return_pct": 4.363,
+   "return_pct": 5.372,
    "max_drawdown_pct": -2.196,
    "fills": 10,
    "closed_trades": 0,
@@ -2374,91 +2396,91 @@
      "symbol": "CMBTO",
      "qty": 61,
      "avg": 157.88,
-     "last": 169.0,
+     "last": 170.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 7.04
+     "pnl_pct": 8.06
     },
     {
      "symbol": "FRO",
      "qty": 23,
      "avg": 419.61,
-     "last": 461.7,
+     "last": 468.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 10.03
+     "pnl_pct": 11.53
     },
     {
      "symbol": "HAUTO",
      "qty": 56,
      "avg": 171.99,
-     "last": 155.1,
+     "last": 154.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -9.82
+     "pnl_pct": -9.99
     },
     {
      "symbol": "HSHP",
      "qty": 64,
      "avg": 152.68,
-     "last": 149.2,
+     "last": 153.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.28
+     "pnl_pct": 0.34
     },
     {
      "symbol": "HUNT",
      "qty": 624,
      "avg": 15.51,
-     "last": 20.95,
+     "last": 20.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 35.09
+     "pnl_pct": 31.55
     },
     {
      "symbol": "NSKOG",
      "qty": 267,
      "avg": 36.42,
-     "last": 35.5,
+     "last": 36.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.52
+     "pnl_pct": 0.5
     },
     {
      "symbol": "OET",
      "qty": 12,
      "avg": 781.39,
-     "last": 778.0,
+     "last": 793.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.43
+     "pnl_pct": 1.49
     },
     {
      "symbol": "OKEA",
      "qty": 214,
      "avg": 45.52,
-     "last": 46.4,
+     "last": 47.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.93
+     "pnl_pct": 3.25
     },
     {
      "symbol": "WAWI",
      "qty": 60,
      "avg": 160.68,
-     "last": 160.0,
+     "last": 159.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.42
+     "pnl_pct": -0.55
     },
     {
      "symbol": "ZAP",
      "qty": 165,
      "avg": 58.33,
-     "last": 55.3,
+     "last": 57.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.19
+     "pnl_pct": -2.28
     }
    ],
    "pending": [],
@@ -2668,13 +2690,17 @@
     [
      "2026-11-25",
      104362.63
+    ],
+    [
+     "2026-11-26",
+     105371.73
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": 7.791,
+   "vs_benchmark_pct": 7.473,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -2689,10 +2715,10 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": null,
-   "last_date": "2026-11-25",
-   "equity": 104362.63,
+   "last_date": "2026-11-26",
+   "equity": 105371.73,
    "cash": 4658.73,
-   "return_pct": 4.363,
+   "return_pct": 5.372,
    "max_drawdown_pct": -2.196,
    "fills": 10,
    "closed_trades": 0,
@@ -2704,91 +2730,91 @@
      "symbol": "CMBTO",
      "qty": 61,
      "avg": 157.88,
-     "last": 169.0,
+     "last": 170.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 7.04
+     "pnl_pct": 8.06
     },
     {
      "symbol": "FRO",
      "qty": 23,
      "avg": 419.61,
-     "last": 461.7,
+     "last": 468.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 10.03
+     "pnl_pct": 11.53
     },
     {
      "symbol": "HAUTO",
      "qty": 56,
      "avg": 171.99,
-     "last": 155.1,
+     "last": 154.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -9.82
+     "pnl_pct": -9.99
     },
     {
      "symbol": "HSHP",
      "qty": 64,
      "avg": 152.68,
-     "last": 149.2,
+     "last": 153.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.28
+     "pnl_pct": 0.34
     },
     {
      "symbol": "HUNT",
      "qty": 624,
      "avg": 15.51,
-     "last": 20.95,
+     "last": 20.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 35.09
+     "pnl_pct": 31.55
     },
     {
      "symbol": "NSKOG",
      "qty": 267,
      "avg": 36.42,
-     "last": 35.5,
+     "last": 36.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.52
+     "pnl_pct": 0.5
     },
     {
      "symbol": "OET",
      "qty": 12,
      "avg": 781.39,
-     "last": 778.0,
+     "last": 793.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.43
+     "pnl_pct": 1.49
     },
     {
      "symbol": "OKEA",
      "qty": 214,
      "avg": 45.52,
-     "last": 46.4,
+     "last": 47.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.93
+     "pnl_pct": 3.25
     },
     {
      "symbol": "WAWI",
      "qty": 60,
      "avg": 160.68,
-     "last": 160.0,
+     "last": 159.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.42
+     "pnl_pct": -0.55
     },
     {
      "symbol": "ZAP",
      "qty": 165,
      "avg": 58.33,
-     "last": 55.3,
+     "last": 57.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.19
+     "pnl_pct": -2.28
     }
    ],
    "pending": [],
@@ -2998,13 +3024,17 @@
     [
      "2026-11-25",
      104362.63
+    ],
+    [
+     "2026-11-26",
+     105371.73
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": 7.791,
+   "vs_benchmark_pct": 7.473,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -3019,72 +3049,81 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": null,
-   "last_date": "2026-11-25",
-   "equity": 98605.14,
-   "cash": 63297.87,
-   "return_pct": -1.395,
+   "last_date": "2026-11-26",
+   "equity": 98930.16,
+   "cash": 71601.65,
+   "return_pct": -1.07,
    "max_drawdown_pct": -1.638,
-   "fills": 21,
-   "closed_trades": 8,
-   "win_rate_pct": 37.5,
-   "fees": 210.0,
+   "fills": 22,
+   "closed_trades": 9,
+   "win_rate_pct": 33.3,
+   "fees": 220.0,
    "dividends": 0.0,
    "positions": [
     {
      "symbol": "DSV.CO",
      "qty": 2,
      "avg": 1382.19,
-     "last": 1376.5,
+     "last": 1381.5,
      "stop": 1269.11,
      "currency": "DKK",
-     "pnl_pct": -0.41
+     "pnl_pct": -0.05
     },
     {
      "symbol": "FORTUM.HE",
      "qty": 25,
      "avg": 22.08,
-     "last": 21.81,
+     "last": 22.02,
      "stop": 20.69,
      "currency": "EUR",
-     "pnl_pct": -1.23
-    },
-    {
-     "symbol": "HEXA-B.ST",
-     "qty": 84,
-     "avg": 104.75,
-     "last": 102.2,
-     "stop": 98.1,
-     "currency": "SEK",
-     "pnl_pct": -2.44
+     "pnl_pct": -0.28
     },
     {
      "symbol": "JYSK.CO",
      "qty": 6,
      "avg": 1083.54,
-     "last": 1052.0,
+     "last": 1067.0,
      "stop": 1028.79,
      "currency": "DKK",
-     "pnl_pct": -2.91
+     "pnl_pct": -1.53
     },
     {
      "symbol": "VALMT.HE",
      "qty": 28,
      "avg": 27.09,
-     "last": 27.08,
+     "last": 27.74,
      "stop": 25.33,
      "currency": "EUR",
-     "pnl_pct": -0.05
+     "pnl_pct": 2.39
     }
    ],
    "pending": [
     {
      "side": "SELL",
-     "qty": 84,
-     "symbol": "HEXA-B.ST",
+     "qty": 28,
+     "symbol": "VALMT.HE",
      "reason": "bounce: close above 5-day average"
+    },
+    {
+     "side": "BUY",
+     "qty": 9,
+     "symbol": "ISS.CO",
+     "reason": "dip in uptrend (RSI 5); sized by open-risk limit"
     }
    ],
    "last_fills": [
+    {
+     "date": "2026-11-26",
+     "symbol": "HEXA-B.ST",
+     "side": "SELL",
+     "qty": 84,
+     "price": 103.6481,
+     "currency": "SEK",
+     "fx": 0.9549,
+     "fee": 10,
+     "pnl": -98.57,
+     "reason": "bounce: close above 5-day average"
+    },
     {
      "date": "2026-11-25",
      "symbol": "FORTUM.HE",
@@ -3252,18 +3291,6 @@
      "fee": 10,
      "pnl": -110.38,
      "reason": "bounce: close above 5-day average"
-    },
-    {
-     "date": "2026-11-13",
-     "symbol": "GOD",
-     "side": "BUY",
-     "qty": 221,
-     "price": 14.057,
-     "currency": "NOK",
-     "fx": 1.0,
-     "fee": 10,
-     "pnl": 0.0,
-     "reason": "dip in uptrend (RSI 5); sized by open-risk limit"
     }
    ],
    "curve": [
@@ -3314,13 +3341,17 @@
     [
      "2026-11-25",
      98605.14
+    ],
+    [
+     "2026-11-26",
+     98930.16
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": 2.033,
+   "vs_benchmark_pct": 1.031,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -3335,60 +3366,89 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": null,
-   "last_date": "2026-11-25",
-   "equity": 100406.0,
-   "cash": 77983.7,
-   "return_pct": 0.406,
+   "last_date": "2026-11-26",
+   "equity": 100720.16,
+   "cash": 66482.96,
+   "return_pct": 0.72,
    "max_drawdown_pct": -0.482,
-   "fills": 7,
+   "fills": 9,
    "closed_trades": 2,
    "win_rate_pct": 0.0,
-   "fees": 70.0,
+   "fees": 90.0,
    "dividends": 112.7,
    "positions": [
+    {
+     "symbol": "AFG",
+     "qty": 25,
+     "avg": 199.1,
+     "last": 199.6,
+     "stop": 189.94,
+     "currency": "NOK",
+     "pnl_pct": 0.25
+    },
+    {
+     "symbol": "MEDI",
+     "qty": 20,
+     "avg": 325.16,
+     "last": 333.0,
+     "stop": 308.18,
+     "currency": "NOK",
+     "pnl_pct": 2.41
+    },
     {
      "symbol": "MORLD",
      "qty": 222,
      "avg": 26.86,
-     "last": 27.95,
-     "stop": 25.9,
+     "last": 28.6,
+     "stop": 26.71,
      "currency": "NOK",
-     "pnl_pct": 4.04
+     "pnl_pct": 6.46
     },
     {
      "symbol": "MOWI",
      "qty": 49,
      "avg": 226.11,
-     "last": 228.6,
-     "stop": 220.56,
+     "last": 230.0,
+     "stop": 221.01,
      "currency": "NOK",
-     "pnl_pct": 1.1
+     "pnl_pct": 1.72
     },
     {
      "symbol": "NKR",
      "qty": 240,
      "avg": 19.01,
-     "last": 20.9,
+     "last": 20.7,
      "stop": 19.08,
      "currency": "NOK",
-     "pnl_pct": 9.95
+     "pnl_pct": 8.89
     }
    ],
-   "pending": [
+   "pending": [],
+   "last_fills": [
     {
-     "side": "BUY",
-     "qty": 20,
-     "symbol": "MEDI",
-     "reason": "uptrend, score +0.57; sized by risk per trade"
-    },
-    {
+     "date": "2026-11-26",
+     "symbol": "AFG",
      "side": "BUY",
      "qty": 25,
-     "symbol": "AFG",
+     "price": 199.0995,
+     "currency": "NOK",
+     "fx": 1.0,
+     "fee": 10.0,
+     "pnl": 0.0,
      "reason": "uptrend, score +0.67; sized by open-risk limit"
-    }
-   ],
-   "last_fills": [
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "MEDI",
+     "side": "BUY",
+     "qty": 20,
+     "price": 325.1625,
+     "currency": "NOK",
+     "fx": 1.0,
+     "fee": 10.0,
+     "pnl": 0.0,
+     "reason": "uptrend, score +0.57; sized by risk per trade"
+    },
     {
      "date": "2026-11-25",
      "symbol": "SALM",
@@ -3534,13 +3594,17 @@
     [
      "2026-11-25",
      100406.0
+    ],
+    [
+     "2026-11-26",
+     100720.16
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": 3.834,
+   "vs_benchmark_pct": 2.821,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -3555,10 +3619,10 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": null,
-   "last_date": "2026-11-25",
-   "equity": 100951.1,
+   "last_date": "2026-11-26",
+   "equity": 101141.22,
    "cash": 77258.44,
-   "return_pct": 0.951,
+   "return_pct": 1.141,
    "max_drawdown_pct": -0.229,
    "fills": 4,
    "closed_trades": 0,
@@ -3570,37 +3634,37 @@
      "symbol": "MEDI",
      "qty": 18,
      "avg": 316.16,
-     "last": 330.0,
-     "stop": 306.07,
+     "last": 333.0,
+     "stop": 308.18,
      "currency": "NOK",
-     "pnl_pct": 4.38
+     "pnl_pct": 5.33
     },
     {
      "symbol": "MORLD",
      "qty": 222,
      "avg": 26.86,
-     "last": 27.95,
-     "stop": 25.9,
+     "last": 28.6,
+     "stop": 26.71,
      "currency": "NOK",
-     "pnl_pct": 4.04
+     "pnl_pct": 6.46
     },
     {
      "symbol": "NKR",
      "qty": 240,
      "avg": 19.01,
-     "last": 20.9,
+     "last": 20.7,
      "stop": 19.08,
      "currency": "NOK",
-     "pnl_pct": 9.95
+     "pnl_pct": 8.89
     },
     {
      "symbol": "ORNBV.HE",
      "qty": 6,
      "avg": 101.95,
-     "last": 101.1,
+     "last": 102.3,
      "stop": 98.29,
      "currency": "EUR",
-     "pnl_pct": -0.83
+     "pnl_pct": 0.34
     }
    ],
    "pending": [],
@@ -3702,36 +3766,40 @@
     [
      "2026-11-25",
      100951.1
+    ],
+    [
+     "2026-11-26",
+     101141.22
     ]
    ],
    "journal": {
-    "date": "2026-11-25",
+    "date": "2026-11-26",
     "lines": [
-     "MORLD (MORELD) +0.40: Står på 52-ukers høy med sterk momentum over 20, 60 og 126 dager, og volatiliteten er moderat.",
-     "ORNBV.HE (ORION) +0.30: Stabil oppgang over 60 og 126 dager, men svak nedgang siste 5 dager.",
-     "MEDI (MEDISTIM) +0.30: Stabil oppgang på alle horisonter og på 52-ukers høy; insiderhandel er nøytral.",
-     "NKR (NEKKAR) +0.30: Sterk kortsiktig oppgang på 31 % siste 20 dager og på toppen, men volatiliteten er høy.",
-     "GMAB.CO (GENMAB) +0.30: Svært sterk trend over 126 dager og god 5-dagersavkastning, men litt svakere siste måned.",
-     "KID (KID) +0.25: Jevn oppgang på alle horisonter og på 52-ukers høy, med lav til moderat volatilitet.",
-     "AZN.ST (ASTRAZENECA) +0.20: Stabil oppgang over flere horisonter og nær 52-ukers høy, men svakere over 126 dager.",
-     "PNDORA.CO (PANDORA) +0.20: Sterk 126-dagers oppgang, men høy volatilitet og litt under toppen.",
-     "MOWI (MOWI) +0.10: Moderat positiv trend med lav volatilitet, men ingen tydelig oppsidekatalysator.",
-     "HM-B.ST (H&M) +0.10: Moderat oppgang og nær toppen, men svak trend over 60 og 126 dager.",
-     "TRYG.CO (TRYG) +0.05: Stabil, lavvolatil oppgang, men svak momentum sammenlignet med andre kandidater.",
-     "RBREW.CO (ROYAL UNIBREW) +0.00: Positiv trend, men 22 % under 52-ukers høy gir svak teknisk støtte.",
-     "COLO-B.CO (COLOPLAST) +0.00: Svak kortsiktig momentum og 11,7 % under 52-ukers høy.",
-     "NAS (NORWEGIAN AIR SHUT) -0.30: Negativ 126-dagers avkastning og 23 % under 52-ukers høy.",
-     "ENDUR (ENDÚR) -0.40: Nedgang på 6,5 % siste 5 dager og nyhet om nedleggelse av skipsvedlikehold er negativ."
+     "MORLD (MORELD) +0.30: Sterk momentum over 20 og 126 dager og kurs på 52-ukers høy, men volatiliteten er merkbar.",
+     "NKR (NEKKAR) +0.30: Solid momentum på 20 og 60 dager, kurs nær toppnivå og moderat volatilitet.",
+     "MEDI (MEDISTIM) +0.30: Stabil oppgang over flere perioder og kurs på toppnivå, med lav daglig volatilitet.",
+     "GMAB.CO (GENMAB) +0.30: Svært sterk 126-dagers avkastning, men 20-dagers avkastningen er svak og kursen har steget raskt.",
+     "KID (KID) +0.30: Jevn oppgang på alle horisonter og kurs på 52-ukers høy med lav volatilitet.",
+     "AZN.ST (ASTRAZENECA) +0.25: Jevn oppgang over flere horisonter, nær 52-ukers høy og med moderat volatilitet.",
+     "PNDORA.CO (PANDORA) +0.20: Sterk 126-dagers avkastning, men høy volatilitet og svak 60-dagers trend begrenser oppsiden.",
+     "MOWI (MOWI) +0.20: Stabil trend og et aksjekjøpsprogram for ansatte gir moderat støtte, men gevinstpotensialet er begrenset.",
+     "ORNBV.HE (ORION) +0.10: Langsiktig trend er god, men kortsiktig momentum har avtatt markert og volatiliteten er lav.",
+     "COLO-B.CO (COLOPLAST) +0.10: Positiv 126-dagers trend, men kursen er 10,6 % under toppen og 60-dagers avkastningen er svak.",
+     "HM-B.ST (H&M) +0.05: Positiv, men svak trend med lav kortsiktig styrke og kurs nær årshøyden.",
+     "PROT (PROTECTOR FORSIKRG) +0.00: Svak 60-dagers avkastning og 9,3 % under toppen gir et nøytralt bilde.",
+     "RBREW.CO (ROYAL UNIBREW) -0.10: Kursen er 21,6 % under 52-ukers høy, så trenden er svakere til tross for en viss kortsiktig oppgang.",
+     "NAS (NORWEGIAN AIR SHUT) -0.20: Negativ 126-dagers avkastning og kurs 22,5 % under toppen gjør at oppgangen siste 20 dager er skjør.",
+     "ENDUR (ENDÚR) -0.40: Nyheten om stenging av skipsvedlikehold er negativ og aksjen har falt 4,9 % siste fem dager."
     ]
    },
    "llm": {
-    "calls": 13,
-    "cost_usd": 0.0372,
-    "tokens": 149966
+    "calls": 14,
+    "cost_usd": 0.0401,
+    "tokens": 161651
    },
-   "vs_benchmark_pct": 4.379,
+   "vs_benchmark_pct": 3.242,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -3746,10 +3814,10 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": 0.083,
-   "last_date": "2026-11-25",
-   "equity": 98855.09,
+   "last_date": "2026-11-26",
+   "equity": 100606.79,
    "cash": 4541.84,
-   "return_pct": -1.145,
+   "return_pct": 0.607,
    "max_drawdown_pct": -2.035,
    "fills": 10,
    "closed_trades": 0,
@@ -3761,91 +3829,91 @@
      "symbol": "ATEA",
      "qty": 57,
      "avg": 169.88,
-     "last": 163.6,
+     "last": 166.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.7
+     "pnl_pct": -1.82
     },
     {
      "symbol": "KCC",
      "qty": 93,
      "avg": 103.65,
-     "last": 105.8,
+     "last": 106.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 2.07
+     "pnl_pct": 2.65
     },
     {
      "symbol": "MORLD",
      "qty": 364,
      "avg": 26.86,
-     "last": 27.95,
+     "last": 28.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 4.04
+     "pnl_pct": 6.46
     },
     {
      "symbol": "MOWI",
      "qty": 42,
      "avg": 226.11,
-     "last": 228.6,
+     "last": 230.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.1
+     "pnl_pct": 1.72
     },
     {
      "symbol": "PLSV",
      "qty": 193,
      "avg": 49.82,
-     "last": 47.55,
+     "last": 49.55,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.57
+     "pnl_pct": -0.55
     },
     {
      "symbol": "SALM",
      "qty": 16,
      "avg": 593.3,
-     "last": 577.5,
+     "last": 587.5,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.66
+     "pnl_pct": -0.98
     },
     {
      "symbol": "SB1NO",
      "qty": 40,
      "avg": 239.62,
-     "last": 229.0,
+     "last": 233.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.43
+     "pnl_pct": -2.76
     },
     {
      "symbol": "SBNOR",
      "qty": 46,
      "avg": 208.6,
-     "last": 200.5,
+     "last": 204.1,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.88
+     "pnl_pct": -2.16
     },
     {
      "symbol": "WWIB",
      "qty": 11,
      "avg": 832.42,
-     "last": 859.0,
+     "last": 865.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 3.19
+     "pnl_pct": 3.91
     },
     {
      "symbol": "ZAP",
      "qty": 165,
      "avg": 58.33,
-     "last": 55.3,
+     "last": 57.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.19
+     "pnl_pct": -2.28
     }
    ],
    "pending": [],
@@ -4043,13 +4111,17 @@
     [
      "2026-11-25",
      98855.09
+    ],
+    [
+     "2026-11-26",
+     100606.79
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": 2.283,
+   "vs_benchmark_pct": 2.708,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -4064,10 +4136,10 @@
    "variant_of": "scoretopp",
    "ask_only": true,
    "historical_excess": 0.083,
-   "last_date": "2026-11-25",
-   "equity": 98865.36,
+   "last_date": "2026-11-26",
+   "equity": 100413.06,
    "cash": 4395.26,
-   "return_pct": -1.135,
+   "return_pct": 0.413,
    "max_drawdown_pct": -1.914,
    "fills": 10,
    "closed_trades": 0,
@@ -4079,91 +4151,91 @@
      "symbol": "ATEA",
      "qty": 57,
      "avg": 169.88,
-     "last": 163.6,
+     "last": 166.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.7
+     "pnl_pct": -1.82
     },
     {
      "symbol": "KCC",
      "qty": 93,
      "avg": 103.65,
-     "last": 105.8,
+     "last": 106.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 2.07
+     "pnl_pct": 2.65
     },
     {
      "symbol": "MORLD",
      "qty": 364,
      "avg": 26.86,
-     "last": 27.95,
+     "last": 28.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 4.04
+     "pnl_pct": 6.46
     },
     {
      "symbol": "MOWI",
      "qty": 42,
      "avg": 226.11,
-     "last": 228.6,
+     "last": 230.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.1
+     "pnl_pct": 1.72
     },
     {
      "symbol": "NONG",
      "qty": 52,
      "avg": 184.09,
-     "last": 179.5,
+     "last": 183.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.49
+     "pnl_pct": -0.59
     },
     {
      "symbol": "SALM",
      "qty": 16,
      "avg": 593.3,
-     "last": 577.5,
+     "last": 587.5,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.66
+     "pnl_pct": -0.98
     },
     {
      "symbol": "SB1NO",
      "qty": 40,
      "avg": 239.62,
-     "last": 229.0,
+     "last": 233.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -4.43
+     "pnl_pct": -2.76
     },
     {
      "symbol": "SBNOR",
      "qty": 46,
      "avg": 208.6,
-     "last": 200.5,
+     "last": 204.1,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -3.88
+     "pnl_pct": -2.16
     },
     {
      "symbol": "WWIB",
      "qty": 11,
      "avg": 832.42,
-     "last": 859.0,
+     "last": 865.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 3.19
+     "pnl_pct": 3.91
     },
     {
      "symbol": "ZAP",
      "qty": 165,
      "avg": 58.33,
-     "last": 55.3,
+     "last": 57.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.19
+     "pnl_pct": -2.28
     }
    ],
    "pending": [],
@@ -4361,13 +4433,17 @@
     [
      "2026-11-25",
      98865.36
+    ],
+    [
+     "2026-11-26",
+     100413.06
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": 2.293,
+   "vs_benchmark_pct": 2.514,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -4382,10 +4458,10 @@
    "variant_of": "momentum",
    "ask_only": true,
    "historical_excess": 0.085,
-   "last_date": "2026-11-25",
-   "equity": 103704.04,
+   "last_date": "2026-11-26",
+   "equity": 104821.69,
    "cash": 3360.49,
-   "return_pct": 3.704,
+   "return_pct": 4.822,
    "max_drawdown_pct": -2.71,
    "fills": 10,
    "closed_trades": 0,
@@ -4397,91 +4473,91 @@
      "symbol": "CMBTO",
      "qty": 61,
      "avg": 157.88,
-     "last": 169.0,
+     "last": 170.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 7.04
+     "pnl_pct": 8.06
     },
     {
      "symbol": "FRO",
      "qty": 23,
      "avg": 419.61,
-     "last": 461.7,
+     "last": 468.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 10.03
+     "pnl_pct": 11.53
     },
     {
      "symbol": "GOD",
      "qty": 649,
      "avg": 14.91,
-     "last": 14.05,
+     "last": 14.2,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.75
+     "pnl_pct": -4.75
     },
     {
      "symbol": "HAUTO",
      "qty": 56,
      "avg": 171.99,
-     "last": 155.1,
+     "last": 154.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -9.82
+     "pnl_pct": -9.99
     },
     {
      "symbol": "HUNT",
      "qty": 624,
      "avg": 15.51,
-     "last": 20.95,
+     "last": 20.4,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 35.09
+     "pnl_pct": 31.55
     },
     {
      "symbol": "NSKOG",
      "qty": 267,
      "avg": 36.42,
-     "last": 35.5,
+     "last": 36.6,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -2.52
+     "pnl_pct": 0.5
     },
     {
      "symbol": "OKEA",
      "qty": 214,
      "avg": 45.52,
-     "last": 46.4,
+     "last": 47.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 1.93
+     "pnl_pct": 3.25
     },
     {
      "symbol": "PLT",
      "qty": 860,
      "avg": 11.21,
-     "last": 12.1,
+     "last": 12.62,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": 7.98
+     "pnl_pct": 12.62
     },
     {
      "symbol": "WAWI",
      "qty": 60,
      "avg": 160.68,
-     "last": 160.0,
+     "last": 159.8,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -0.42
+     "pnl_pct": -0.55
     },
     {
      "symbol": "ZAP",
      "qty": 165,
      "avg": 58.33,
-     "last": 55.3,
+     "last": 57.0,
      "stop": 0.0,
      "currency": "NOK",
-     "pnl_pct": -5.19
+     "pnl_pct": -2.28
     }
    ],
    "pending": [],
@@ -4667,13 +4743,17 @@
     [
      "2026-11-25",
      103704.04
+    ],
+    [
+     "2026-11-26",
+     104821.69
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": 7.132,
+   "vs_benchmark_pct": 6.923,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -4688,15 +4768,15 @@
    "variant_of": null,
    "ask_only": false,
    "historical_excess": null,
-   "last_date": "2026-11-25",
-   "equity": 94305.68,
-   "cash": 94305.68,
-   "return_pct": -5.694,
+   "last_date": "2026-11-26",
+   "equity": 95129.22,
+   "cash": 95129.22,
+   "return_pct": -4.871,
    "max_drawdown_pct": -6.441,
-   "fills": 110,
-   "closed_trades": 55,
-   "win_rate_pct": 40.0,
-   "fees": 1100.0,
+   "fills": 120,
+   "closed_trades": 60,
+   "win_rate_pct": 43.3,
+   "fees": 1200.0,
    "dividends": 0.0,
    "positions": [],
    "pending": [
@@ -4708,30 +4788,150 @@
     },
     {
      "side": "BUY",
-     "qty": 854,
-     "symbol": "NKR",
-     "reason": "day trade: uptrend"
-    },
-    {
-     "side": "BUY",
-     "qty": 639,
+     "qty": 630,
      "symbol": "MORLD",
      "reason": "day trade: uptrend"
     },
     {
      "side": "BUY",
-     "qty": 54,
-     "symbol": "MEDI",
+     "qty": 176,
+     "symbol": "ENTRA",
      "reason": "day trade: uptrend"
     },
     {
      "side": "BUY",
-     "qty": 9,
+     "qty": 10,
      "symbol": "AZN.ST",
+     "reason": "day trade: uptrend"
+    },
+    {
+     "side": "BUY",
+     "qty": 261,
+     "symbol": "KINV-B.ST",
      "reason": "day trade: uptrend"
     }
    ],
    "last_fills": [
+    {
+     "date": "2026-11-26",
+     "symbol": "AZN.ST",
+     "side": "SELL",
+     "qty": 9,
+     "price": 1880.5593,
+     "currency": "SEK",
+     "fx": 0.9549,
+     "fee": 10,
+     "pnl": 253.28,
+     "reason": "flat at close"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "MEDI",
+     "side": "SELL",
+     "qty": 54,
+     "price": 332.8335,
+     "currency": "NOK",
+     "fx": 1.0,
+     "fee": 10,
+     "pnl": 404.23,
+     "reason": "flat at close"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "MORLD",
+     "side": "SELL",
+     "qty": 639,
+     "price": 28.5857,
+     "currency": "NOK",
+     "fx": 1.0,
+     "fee": 10,
+     "pnl": 419.25,
+     "reason": "flat at close"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "NKR",
+     "side": "SELL",
+     "qty": 854,
+     "price": 20.6897,
+     "currency": "NOK",
+     "fx": 1.0,
+     "fee": 10,
+     "pnl": -284.01,
+     "reason": "flat at close"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "GMAB.CO",
+     "side": "SELL",
+     "qty": 3,
+     "price": 3870.064,
+     "currency": "DKK",
+     "fx": 1.4314,
+     "fee": 10,
+     "pnl": 80.78,
+     "reason": "flat at close"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "AZN.ST",
+     "side": "BUY",
+     "qty": 9,
+     "price": 1849.9245,
+     "currency": "SEK",
+     "fx": 0.9549,
+     "fee": 10,
+     "pnl": 0.0,
+     "reason": "day trade: uptrend"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "MEDI",
+     "side": "BUY",
+     "qty": 54,
+     "price": 325.1625,
+     "currency": "NOK",
+     "fx": 1.0,
+     "fee": 10,
+     "pnl": 0.0,
+     "reason": "day trade: uptrend"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "MORLD",
+     "side": "BUY",
+     "qty": 639,
+     "price": 27.9139,
+     "currency": "NOK",
+     "fx": 1.0,
+     "fee": 10,
+     "pnl": 0.0,
+     "reason": "day trade: uptrend"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "NKR",
+     "side": "BUY",
+     "qty": 854,
+     "price": 21.0105,
+     "currency": "NOK",
+     "fx": 1.0,
+     "fee": 10,
+     "pnl": 0.0,
+     "reason": "day trade: uptrend"
+    },
+    {
+     "date": "2026-11-26",
+     "symbol": "GMAB.CO",
+     "side": "BUY",
+     "qty": 3,
+     "price": 3848.9235,
+     "currency": "DKK",
+     "fx": 1.4314,
+     "fee": 10,
+     "pnl": 0.0,
+     "reason": "day trade: uptrend"
+    },
     {
      "date": "2026-11-25",
      "symbol": "MEDI",
@@ -4791,126 +4991,6 @@
      "fee": 10,
      "pnl": -307.11,
      "reason": "flat at close"
-    },
-    {
-     "date": "2026-11-25",
-     "symbol": "MEDI",
-     "side": "BUY",
-     "qty": 54,
-     "price": 326.163,
-     "currency": "NOK",
-     "fx": 1.0,
-     "fee": 10,
-     "pnl": 0.0,
-     "reason": "day trade: uptrend"
-    },
-    {
-     "date": "2026-11-25",
-     "symbol": "RBREW.CO",
-     "side": "BUY",
-     "qty": 25,
-     "price": 479.2395,
-     "currency": "DKK",
-     "fx": 1.4394,
-     "fee": 10,
-     "pnl": 0.0,
-     "reason": "day trade: uptrend"
-    },
-    {
-     "date": "2026-11-25",
-     "symbol": "OET",
-     "side": "BUY",
-     "qty": 22,
-     "price": 784.392,
-     "currency": "NOK",
-     "fx": 1.0,
-     "fee": 10,
-     "pnl": 0.0,
-     "reason": "day trade: uptrend"
-    },
-    {
-     "date": "2026-11-25",
-     "symbol": "BAVA.CO",
-     "side": "BUY",
-     "qty": 49,
-     "price": 252.7263,
-     "currency": "DKK",
-     "fx": 1.4394,
-     "fee": 10,
-     "pnl": 0.0,
-     "reason": "day trade: uptrend"
-    },
-    {
-     "date": "2026-11-25",
-     "symbol": "GMAB.CO",
-     "side": "BUY",
-     "qty": 3,
-     "price": 3837.918,
-     "currency": "DKK",
-     "fx": 1.4394,
-     "fee": 10,
-     "pnl": 0.0,
-     "reason": "day trade: uptrend"
-    },
-    {
-     "date": "2026-11-24",
-     "symbol": "NKR",
-     "side": "SELL",
-     "qty": 895,
-     "price": 20.6897,
-     "currency": "NOK",
-     "fx": 1.0,
-     "fee": 10,
-     "pnl": 240.11,
-     "reason": "flat at close"
-    },
-    {
-     "date": "2026-11-24",
-     "symbol": "OET",
-     "side": "SELL",
-     "qty": 23,
-     "price": 780.6095,
-     "currency": "NOK",
-     "fx": 1.0,
-     "fee": 10,
-     "pnl": 110.11,
-     "reason": "flat at close"
-    },
-    {
-     "date": "2026-11-24",
-     "symbol": "WWIB",
-     "side": "SELL",
-     "qty": 20,
-     "price": 854.5725,
-     "currency": "NOK",
-     "fx": 1.0,
-     "fee": 10,
-     "pnl": -847.51,
-     "reason": "flat at close"
-    },
-    {
-     "date": "2026-11-24",
-     "symbol": "BAVA.CO",
-     "side": "SELL",
-     "qty": 50,
-     "price": 252.8735,
-     "currency": "DKK",
-     "fx": 1.4355,
-     "fee": 10,
-     "pnl": 201.64,
-     "reason": "flat at close"
-    },
-    {
-     "date": "2026-11-24",
-     "symbol": "SMOP",
-     "side": "SELL",
-     "qty": 319,
-     "price": 53.973,
-     "currency": "NOK",
-     "fx": 1.0,
-     "fee": 10,
-     "pnl": -984.7,
-     "reason": "flat at close"
     }
    ],
    "curve": [
@@ -4961,13 +5041,17 @@
     [
      "2026-11-25",
      94305.68
+    ],
+    [
+     "2026-11-26",
+     95129.22
     ]
    ],
    "journal": null,
    "llm": null,
-   "vs_benchmark_pct": -2.266,
+   "vs_benchmark_pct": -2.77,
    "error": null,
-   "days": 11,
+   "days": 12,
    "t_vs_benchmark": null,
    "tracking_error_pct": null,
    "excess_annual_pct": null,
@@ -4981,7 +5065,7 @@
  },
  "index": {
   "name": "OSEBX",
-  "return_pct": -2.479,
+  "return_pct": -1.053,
   "curve": [
    [
     "2026-11-10",
@@ -5030,6 +5114,10 @@
    [
     "2026-11-25",
     -2.479
+   ],
+   [
+    "2026-11-26",
+    -1.053
    ]
   ]
  },

@@ -215,3 +215,21 @@
 - **COLO-B.CO** (COLOPLAST) +0.00: Svak kortsiktig momentum og 11,7 % under 52-ukers høy.
 - **NAS** (NORWEGIAN AIR SHUT) -0.30: Negativ 126-dagers avkastning og 23 % under 52-ukers høy.
 - **ENDUR** (ENDÚR) -0.40: Nedgang på 6,5 % siste 5 dager og nyhet om nedleggelse av skipsvedlikehold er negativ.
+
+## 2026-11-26
+
+- **MORLD** (MORELD) +0.30: Sterk momentum over 20 og 126 dager og kurs på 52-ukers høy, men volatiliteten er merkbar.
+- **NKR** (NEKKAR) +0.30: Solid momentum på 20 og 60 dager, kurs nær toppnivå og moderat volatilitet.
+- **MEDI** (MEDISTIM) +0.30: Stabil oppgang over flere perioder og kurs på toppnivå, med lav daglig volatilitet.
+- **GMAB.CO** (GENMAB) +0.30: Svært sterk 126-dagers avkastning, men 20-dagers avkastningen er svak og kursen har steget raskt.
+- **KID** (KID) +0.30: Jevn oppgang på alle horisonter og kurs på 52-ukers høy med lav volatilitet.
+- **AZN.ST** (ASTRAZENECA) +0.25: Jevn oppgang over flere horisonter, nær 52-ukers høy og med moderat volatilitet.
+- **PNDORA.CO** (PANDORA) +0.20: Sterk 126-dagers avkastning, men høy volatilitet og svak 60-dagers trend begrenser oppsiden.
+- **MOWI** (MOWI) +0.20: Stabil trend og et aksjekjøpsprogram for ansatte gir moderat støtte, men gevinstpotensialet er begrenset.
+- **ORNBV.HE** (ORION) +0.10: Langsiktig trend er god, men kortsiktig momentum har avtatt markert og volatiliteten er lav.
+- **COLO-B.CO** (COLOPLAST) +0.10: Positiv 126-dagers trend, men kursen er 10,6 % under toppen og 60-dagers avkastningen er svak.
+- **HM-B.ST** (H&M) +0.05: Positiv, men svak trend med lav kortsiktig styrke og kurs nær årshøyden.
+- **PROT** (PROTECTOR FORSIKRG) +0.00: Svak 60-dagers avkastning og 9,3 % under toppen gir et nøytralt bilde.
+- **RBREW.CO** (ROYAL UNIBREW) -0.10: Kursen er 21,6 % under 52-ukers høy, så trenden er svakere til tross for en viss kortsiktig oppgang.
+- **NAS** (NORWEGIAN AIR SHUT) -0.20: Negativ 126-dagers avkastning og kurs 22,5 % under toppen gjør at oppgangen siste 20 dager er skjør.
+- **ENDUR** (ENDÚR) -0.40: Nyheten om stenging av skipsvedlikehold er negativ og aksjen har falt 4,9 % siste fem dager.

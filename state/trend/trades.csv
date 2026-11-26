@@ -6,3 +6,4 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-12,KID,BUY,14,150.6753,NOK,1.0,10,0.0,uptrend; sized by open-risk limit
 2026-11-17,KID,DIV,14,2.75,NOK,1.0,0.0,38.5,dividend
 2026-11-25,ELUX-B.ST,SELL,140,29.6088,SEK,0.9579,10,-370.39,stop hit
+2026-11-26,GMAB.CO,BUY,1,3848.9235,DKK,1.4314,10,0.0,uptrend; sized by risk per trade

@@ -20,3 +20,4 @@ date,symbol,side,qty,price,currency,fx,fee,pnl,reason
 2026-11-23,JYSK.CO,BUY,6,1083.5415,DKK,1.4331,10,0.0,dip in uptrend (RSI 1); sized by risk per trade
 2026-11-23,DSV.CO,BUY,2,1382.1907,DKK,1.4331,10,0.0,dip in uptrend (RSI 1); sized by open-risk limit
 2026-11-25,FORTUM.HE,BUY,25,22.081,EUR,10.76781,10,0.0,dip in uptrend (RSI 2); sized by open-risk limit
+2026-11-26,HEXA-B.ST,SELL,84,103.6481,SEK,0.9549,10,-98.57,bounce: close above 5-day average
