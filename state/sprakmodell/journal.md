@@ -233,3 +233,21 @@
 - **RBREW.CO** (ROYAL UNIBREW) -0.10: Kursen er 21,6 % under 52-ukers høy, så trenden er svakere til tross for en viss kortsiktig oppgang.
 - **NAS** (NORWEGIAN AIR SHUT) -0.20: Negativ 126-dagers avkastning og kurs 22,5 % under toppen gjør at oppgangen siste 20 dager er skjør.
 - **ENDUR** (ENDÚR) -0.40: Nyheten om stenging av skipsvedlikehold er negativ og aksjen har falt 4,9 % siste fem dager.
+
+## 2026-11-27
+
+- **MORLD** (MORELD) +0.35: God momentum på 20 og 126 dager med kurs nær 52-ukers høy og moderat volatilitet.
+- **AMBU-B.CO** (AMBU) +0.35: Jevn oppgang på alle tidshorisonter og handel nær 52-ukers høy.
+- **MEDI** (MEDISTIM) +0.30: Sterk trend over 60 og 126 dager og kurs ved 52-ukers høy, men nyheten er bare en meldepliktig handel uten ny informasjon.
+- **NKR** (NEKKAR) +0.30: Sterk avkastning på 20 og 60 dager og kurs ved 52-ukers høy, men volatiliteten er forhøyet.
+- **GMAB.CO** (GENMAB) +0.30: Svært sterk trend over 126 dager, men etter en kraftig oppgang er risikoen for tilbakefall og volatiliteten høy.
+- **PNDORA.CO** (PANDORA) +0.25: Sterk 126-dagersutvikling og god 20-dagersoppgang, men 60-dagersutviklingen er svakere.
+- **KID** (KID) +0.20: Jevn oppgang og kurs på 52-ukers høy med lav volatilitet, men svakere langsiktig momentum.
+- **AZN.ST** (ASTRAZENECA) +0.15: Stabil oppgang nær 52-ukers høy med lav volatilitet, men begrenset kortsiktig momentum.
+- **ORNBV.HE** (ORION) +0.10: Trenden er intakt, men siste 20 dager har vært flate, så momentumet har avtatt.
+- **COLO-B.CO** (COLOPLAST) +0.00: Blandet bilde: god langsiktig trend, men 10,8 % under 52-ukers høy og svakere siste 60 dager.
+- **OKEA** (OKEA) +0.00: Negativ 20-dagers avkastning, selv om 60-dagers trenden er positiv.
+- **KOG** (KONGSBERG GRUPPEN) -0.05: Kurs 14,7 % under toppen og flat 20-dagersutvikling; ansattprogrammet gir liten prisinformasjon.
+- **PROT** (PROTECTOR FORSIKRG) -0.10: Svak 60-dagers trend og 8,7 % under årshøyden, med beskjeden kortsiktig oppgang.
+- **ENDUR** (ENDÚR) -0.20: Nyhet om stengning av skipsvedlikeholdsvirksomheten svekker utsiktene til tross for positiv 20-dagersutvikling.
+- **RBREW.CO** (ROYAL UNIBREW) -0.20: Kursen ligger 22,6 % under 52-ukers høy og trenden er svak, så vi bør unngå kjøp.
